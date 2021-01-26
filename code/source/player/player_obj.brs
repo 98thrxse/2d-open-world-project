@@ -15,6 +15,9 @@ function player_obj(object)
   ' addAnimatedImage
     m.obj = m.addAnimatedImage("player_obj", [stand_front_region, stand_back_region, stand_side_region, walk_side1_region, walk_side2_region], { index: 0 })
 
+    ' addColliderRectangle
+    m.addColliderRectangle("player_col", m.obj.offset_x, m.obj.offset_y, stand_side_region.GetWidth(), stand_side_region.GetHeight())
+
     ' playerPos
     m.x = 640
     m.y = 360

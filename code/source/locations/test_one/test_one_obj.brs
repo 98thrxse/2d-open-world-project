@@ -13,7 +13,7 @@ function test_one_obj(object)
         obj_region = media_wnd.obj_region
 
         ' addAnimatedImage
-        m.obj = m.addAnimatedImage("obj", [obj_region, invalid], { index: 0
+        m.obj = m.addAnimatedImage("obj_obj", [obj_region, invalid], { index: 0
             offset_x: 0
             offset_y: 0
         })
@@ -25,21 +25,13 @@ function test_one_obj(object)
 
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
-        if other_instance.name = "player_obj" and other_collider_name = "obj_col"
+        if other_instance.name = "player_obj" and other_collider_name = "player_col"
 
             print "stas"
 
         end if
 
     end function
-
-    ' object.onUpdate = function(dt as float)
-
-    '     if m.game.getInstanceByName("player_obj").x < m.game.getInstanceByName("test_one_obj").x
-    '         print "fix stas"
-    '     end if
-
-    ' end function
 
     object.onButton = function(code as integer)
 
