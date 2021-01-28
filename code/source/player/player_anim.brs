@@ -26,8 +26,6 @@ function player_anim(object)
 			m.obj.index = 0
 
 		else if code = 1004 ' left
-			m.obj.scale_x = -1.0
-
 			if m.anim_options.timer = invalid
 				m.anim_options.timer = CreateObject("roTimeSpan")
 				m.anim_options.timer.Mark()
@@ -42,8 +40,6 @@ function player_anim(object)
 			end if
 
 		else if code = 1005 ' right
-			m.obj.scale_x = 1.0
-
 			if m.anim_options.timer = invalid
 				m.anim_options.timer = CreateObject("roTimeSpan")
 				m.anim_options.timer.Mark()
@@ -60,12 +56,16 @@ function player_anim(object)
 		' released
 		else if code = 102 ' up
 			m.obj.index = 1
+
 		else if code = 103 ' down
 			m.obj.index = 0
+
 		else if code = 104 ' left
 			m.obj.index = 2
+			
 		else if code = 105 ' right
 			m.obj.index = 2
+			
 		end if
 
 	end function

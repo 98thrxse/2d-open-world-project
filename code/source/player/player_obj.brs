@@ -3,14 +3,14 @@ function player_obj(object)
   object.onCreate = function(args)
 
     ' createInstance
-		media_wnd = m.game.createInstance("player_media")
-
+    m.media_wnd = m.game.createInstance("player_media")
+    
 		' window initialization
-	  stand_front_region = media_wnd.stand_front_region
-	  stand_back_region = media_wnd.stand_back_region
-	  stand_side_region = media_wnd.stand_side_region
-	  walk_side1_region = media_wnd.walk_side1_region
-    walk_side2_region = media_wnd.walk_side2_region
+	  stand_front_region = m.media_wnd.stand_front_region
+	  stand_back_region = m.media_wnd.stand_back_region
+	  stand_side_region = m.media_wnd.stand_side_region
+	  walk_side1_region = m.media_wnd.walk_side1_region
+    walk_side2_region = m.media_wnd.walk_side2_region
 
   ' addAnimatedImage
     m.obj = m.addAnimatedImage("player_obj", [stand_front_region, stand_back_region, stand_side_region, walk_side1_region, walk_side2_region], { index: 0
@@ -26,14 +26,29 @@ function player_obj(object)
 
   end function
 
-  object.onDrawEnd = function(canvas as object)
+  object.onButton = function(code as integer)
 
-    ' test addColliderRectangle
-    canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + 28, 48 - 6, 1, &hFFFFFFFF)
-    canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + 56, 48 - 6, 1, &hFFFFFFFF)
-    canvas.DrawRect(m.obj.offset_x, m.obj.offset_y + 28 + 3, 1, 28 - 6, &hFFFFFFFF)
-    canvas.DrawRect(m.obj.offset_x + 48, m.obj.offset_y + 28 + 3, 1, 28 - 6, &hFFFFFFFF)
+		' pressed
+		if code = 2 ' up
 
-  end function
+		else if code = 3 ' down
+
+		else if code = 4 ' left
+      if m.obj.scale_x <> -1.0
+        m.obj.offset_x += m.media_wnd.stand_front_region.GetWidth()
+        m.obj.scale_x = -1.0
+
+      end if
+
+		else if code = 5 ' right
+      if m.obj.scale_x <> 1.0
+        m.obj.offset_x -= m.media_wnd.stand_front_region.GetWidth()
+        m.obj.scale_x = 1.0
+
+      end if
+      
+		end if
+
+	end function
     
 end function
