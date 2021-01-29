@@ -1,5 +1,27 @@
 function player_obj(object)
 
+  object.control_options = {
+        
+    direction: {
+      x: 0,
+      y: 0
+    },
+
+    collider: {
+      up: false,
+      down: false
+      left: false,
+      right: false
+    }
+
+    speed: {
+      up: 3,
+      down: 3,
+      left: 3,
+      right: 3
+    }
+  }
+
   object.onCreate = function(args)
 
     ' createInstance
