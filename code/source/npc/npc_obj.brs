@@ -1,11 +1,6 @@
 function npc_obj(object)
 
   object.control_options = {
-        
-    direction: {
-        x: 0,
-        y: 0
-    },
 
     collider: {
         up: false,
@@ -72,7 +67,6 @@ function npc_obj(object)
 
     ' held
     if code = 1002 ' up
-      m.control_options.direction.y = 1
 
       if m.control_options.collider.up = false
         m.y += m.control_options.speed.up
@@ -83,7 +77,6 @@ function npc_obj(object)
       end if
                     
     else if code = 1003 ' down
-      m.control_options.direction.y = -1
 
       if m.control_options.collider.down = false
         m.y -= m.control_options.speed.down
@@ -95,7 +88,6 @@ function npc_obj(object)
         
         
     else if code = 1004 ' left
-      m.control_options.direction.x = 1
 
       if m.control_options.collider.left = false
         m.x += m.control_options.speed.left
@@ -106,7 +98,6 @@ function npc_obj(object)
       end if
         
     else if code = 1005 ' right
-      m.control_options.direction.x = -1
 
       if m.control_options.collider.right = false
         m.x -= m.control_options.speed.right

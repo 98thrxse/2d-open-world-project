@@ -1,28 +1,10 @@
 function player_obj(object)
 
-  object.control_options = {
-        
-    direction: {
-      x: 0,
-      y: 0
-    },
-
-    collider: {
-      up: false,
-      down: false
-      left: false,
-      right: false
-    }
-
-    speed: {
-      up: 3,
-      down: 3,
-      left: 3,
-      right: 3
-    }
-  }
+  object.stas = player_data(object)
 
   object.onCreate = function(args)
+
+    print m.stas
 
     ' createInstance
     m.media_wnd = m.game.createInstance("player_media")
