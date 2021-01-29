@@ -6,14 +6,19 @@ function player_obj(object)
     m.media_wnd = m.game.createInstance("player_media")
     
 		' window initialization
-	  stand_front_region = m.media_wnd.stand_front_region
-	  stand_back_region = m.media_wnd.stand_back_region
-	  stand_side_region = m.media_wnd.stand_side_region
-	  walk_side1_region = m.media_wnd.walk_side1_region
+    stand_front_region = m.media_wnd.stand_front_region
+    stand_back_region = m.media_wnd.stand_back_region
+    stand_side_region = m.media_wnd.stand_side_region
+    
+    walk_front1_region = m.media_wnd.walk_front1_region
+    walk_front2_region = m.media_wnd.walk_front2_region
+    walk_back1_region = m.media_wnd.walk_back1_region
+    walk_back2_region = m.media_wnd.walk_back2_region
+    walk_side1_region = m.media_wnd.walk_side1_region
     walk_side2_region = m.media_wnd.walk_side2_region
 
   ' addAnimatedImage
-    m.obj = m.addAnimatedImage("player_obj", [stand_front_region, stand_back_region, stand_side_region, walk_side1_region, walk_side2_region], { index: 0
+    m.obj = m.addAnimatedImage("player_obj", [stand_front_region, stand_back_region, stand_side_region, walk_front1_region, walk_front2_region, walk_back1_region, walk_back2_region, walk_side1_region, walk_side2_region], { index: 0
       offset_x: 640,
       offset_y: 360
     })
@@ -29,11 +34,7 @@ function player_obj(object)
   object.onButton = function(code as integer)
 
 		' pressed
-		if code = 2 ' up
-
-		else if code = 3 ' down
-
-		else if code = 4 ' left
+    if code = 4 ' left
       if m.obj.scale_x <> -1.0
         m.obj.offset_x += m.media_wnd.stand_front_region.GetWidth()
         m.obj.scale_x = -1.0

@@ -20,12 +20,20 @@ function player_anim(object)
 
 		' held
 		if code = 1002 ' up
-			m.obj.index = 1
+			if m.anim_options.timer = invalid
+				m.anim_options.timer = CreateObject("roTimeSpan")
+				m.anim_options.timer.Mark()
+			end if
+
+			if m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_one
+				m.obj.index = 5
+			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_two
+				m.obj.index = 6
+			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_two
+				m.anim_options.timer = invalid
+			end if
 
 		else if code = 1003 ' down
-			m.obj.index = 0
-
-		else if code = 1004 ' left
 			if m.anim_options.timer = invalid
 				m.anim_options.timer = CreateObject("roTimeSpan")
 				m.anim_options.timer.Mark()
@@ -39,6 +47,20 @@ function player_anim(object)
 				m.anim_options.timer = invalid
 			end if
 
+		else if code = 1004 ' left
+			if m.anim_options.timer = invalid
+				m.anim_options.timer = CreateObject("roTimeSpan")
+				m.anim_options.timer.Mark()
+			end if
+
+			if m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_one
+				m.obj.index = 7
+			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_two
+				m.obj.index = 8
+			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_two
+				m.anim_options.timer = invalid
+			end if
+
 		else if code = 1005 ' right
 			if m.anim_options.timer = invalid
 				m.anim_options.timer = CreateObject("roTimeSpan")
@@ -46,9 +68,9 @@ function player_anim(object)
 			end if
 
 			if m.anim_options.timer.TotalMilliseconds() < 100
-				m.obj.index = 3
+				m.obj.index = 7
 			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_two
-				m.obj.index = 4
+				m.obj.index = 8
 			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_two
 				m.anim_options.timer = invalid
 			end if
