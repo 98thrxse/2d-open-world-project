@@ -1,21 +1,6 @@
 function test_one_obj(object)
 
-    object.control_options = {
-
-        collider: {
-            up: false,
-            down: false
-            left: false,
-            right: false
-        }
-
-        speed: {
-            up: 3,
-            down: 3,
-            left: 3,
-            right: 3
-        }
-	}
+    object.control_options = player_data(object)
 
     object.onCreate = function(args)
 

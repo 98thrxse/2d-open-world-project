@@ -2,23 +2,18 @@ function player_data(object as object)
 
     control_options = {
         
-        direction: {
-            x: invalid,
-            y: invalid
+        collider: {
+            up: false,
+            down: false
+            left: false,
+            right: false
         },
     
-        collider: {
-            up: invalid,
-            down: invalid
-            left: invalid,
-            right: invalid
-        }
-    
         speed: {
-            up: invalid,
-            down: invalid,
-            left: invalid,
-            right: invalid
+            up: 3,
+            down: 3,
+            left: 3,
+            right: 3
         }
     }
 
