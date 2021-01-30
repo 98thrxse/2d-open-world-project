@@ -1,7 +1,5 @@
 function npc_obj(object)
 
-  object.control_options = player_data(object)
-
   object.onCreate = function(args)
 
     ' createInstance
@@ -32,17 +30,17 @@ function npc_obj(object)
 
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
-    if other_instance.name = "player_obj" and other_collider_name = "player_col_up"
-        m.control_options.collider.up = true
+    if other_instance.name = "character_obj" and other_collider_name = "character_col_up"
+      character_setUpCollider(true)
 
-    else if other_instance.name = "player_obj" and other_collider_name = "player_col_down"
-        m.control_options.collider.down = true
+    else if other_instance.name = "character_obj" and other_collider_name = "character_col_down"
+      character_setDownCollider(true)
 
-    else if other_instance.name = "player_obj" and other_collider_name = "player_col_left"
-        m.control_options.collider.left = true
+    else if other_instance.name = "character_obj" and other_collider_name = "character_col_left"
+      character_setLeftCollider(true)
 
-    else if other_instance.name = "player_obj" and other_collider_name = "player_col_right"
-        m.control_options.collider.right = true
+    else if other_instance.name = "character_obj" and other_collider_name = "character_col_right"
+      character_setRightCollider(true)
 
     end if
 
@@ -53,42 +51,42 @@ function npc_obj(object)
     ' held
     if code = 1002 ' up
 
-      if m.control_options.collider.up = false
-        m.y += m.control_options.speed.up
-        m.control_options.collider.down = false
-        m.control_options.collider.left = false
-        m.control_options.collider.right = false
+      if character_getUpCollider() = false
+        m.y += character_getUpSpeed()
+        character_setDownCollider(false)
+        character_setLeftCollider(false)
+        character_setRightCollider(false)
 
       end if
                     
     else if code = 1003 ' down
 
-      if m.control_options.collider.down = false
-        m.y -= m.control_options.speed.down
-        m.control_options.collider.up = false
-        m.control_options.collider.left = false
-        m.control_options.collider.right = false
+      if character_getDownCollider() = false
+        m.y -= character_getDownSpeed()
+        character_setUpCollider(false)
+        character_setLeftCollider(false)
+        character_setRightCollider(false)
 
       end if
         
         
     else if code = 1004 ' left
 
-      if m.control_options.collider.left = false
-        m.x += m.control_options.speed.left
-        m.control_options.collider.up = false
-        m.control_options.collider.down = false
-        m.control_options.collider.right = false
+      if character_getLeftCollider() = false
+        m.x += character_getLeftSpeed()
+        character_setUpCollider(false)
+        character_setDownCollider(false)
+        character_setRightCollider(false)
 
       end if
         
     else if code = 1005 ' right
 
-      if m.control_options.collider.right = false
-        m.x -= m.control_options.speed.right
-        m.control_options.collider.up = false
-        m.control_options.collider.down = false
-        m.control_options.collider.left = false
+      if character_getRightCollider() = false
+        m.x -= character_getRightSpeed()
+        character_setUpCollider(false)
+        character_setDownCollider(false)
+        character_setLeftCollider(false)
 
       end if
         

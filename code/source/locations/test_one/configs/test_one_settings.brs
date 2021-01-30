@@ -1,6 +1,5 @@
-function player_data(object as object)
-
-    control_options = {
+function test_one_settings() as object
+    settings = {
         
         collider: {
             up: false,
@@ -17,6 +16,6 @@ function player_data(object as object)
         }
     }
 
-    return control_options
+    return settings
 
 end function

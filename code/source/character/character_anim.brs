@@ -1,4 +1,4 @@
-function player_anim(object)
+function character_anim(object)
 
 	object.anim_options = {
 		frame_one: 100
@@ -9,7 +9,7 @@ function player_anim(object)
 	object.onCreate = function(args)
 
 		' createInstance
-		obj_wnd = m.game.createInstance("player_obj")
+		obj_wnd = m.game.createInstance("character_obj")
 
 		' window initialization
 		m.obj = obj_wnd.obj
