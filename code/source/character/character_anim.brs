@@ -1,9 +1,8 @@
 function character_anim(object)
 
 	object.anim_options = {
-		frame_one: 100
-		frame_two: 200
-		timer: CreateObject("roTimeSpan")
+		frame: 100
+		timer: invalid
 	}
     
 	object.onCreate = function(args)
@@ -15,80 +14,52 @@ function character_anim(object)
 		m.obj = obj_wnd.obj
 
 	end function
-	
+
 	object.onButton = function(code as integer)
 
 		' held
 		if code = 1002 ' up
-			if m.anim_options.timer = invalid
-				m.anim_options.timer = CreateObject("roTimeSpan")
-				m.anim_options.timer.Mark()
-			end if
-
-			if m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_one
-				m.obj.index = 5
-			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_two
-				m.obj.index = 6
-			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_two
-				m.anim_options.timer = invalid
-			end if
+			m.animationTimer([3,4])
 
 		else if code = 1003 ' down
-			if m.anim_options.timer = invalid
-				m.anim_options.timer = CreateObject("roTimeSpan")
-				m.anim_options.timer.Mark()
-			end if
-
-			if m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_one
-				m.obj.index = 3
-			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_two
-				m.obj.index = 4
-			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_two
-				m.anim_options.timer = invalid
-			end if
+			m.animationTimer([5,6])
 
 		else if code = 1004 ' left
-			if m.anim_options.timer = invalid
-				m.anim_options.timer = CreateObject("roTimeSpan")
-				m.anim_options.timer.Mark()
-			end if
-
-			if m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_one
-				m.obj.index = 7
-			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_two
-				m.obj.index = 8
-			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_two
-				m.anim_options.timer = invalid
-			end if
+			m.animationTimer([7,8])
 
 		else if code = 1005 ' right
-			if m.anim_options.timer = invalid
-				m.anim_options.timer = CreateObject("roTimeSpan")
-				m.anim_options.timer.Mark()
-			end if
-
-			if m.anim_options.timer.TotalMilliseconds() < 100
-				m.obj.index = 7
-			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() < m.anim_options.frame_two
-				m.obj.index = 8
-			else if m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_one and m.anim_options.timer.TotalMilliseconds() > m.anim_options.frame_two
-				m.anim_options.timer = invalid
-			end if
+			m.animationTimer([7,8])
 
 		' released
 		else if code = 102 ' up
-			m.obj.index = 1
-
-		else if code = 103 ' down
+			m.anim_options.timer = invalid
 			m.obj.index = 0
 
+		else if code = 103 ' down
+			m.anim_options.timer = invalid
+			m.obj.index = 1
+
 		else if code = 104 ' left
+			m.anim_options.timer = invalid
 			m.obj.index = 2
 			
 		else if code = 105 ' right
-			m.obj.index = 2
-			
+			m.anim_options.timer = invalid
+			m.obj.index = 2			
+
 		end if
+
+	end function
+
+	object.animationTimer = function(arr)
+
+		if m.anim_options.timer = invalid
+			m.anim_options.timer = CreateObject("roTimeSpan")
+			m.anim_options.timer.Mark()
+		end if
+
+		if m.anim_options.timer.TotalMilliseconds() + 1 >= arr.Count() * m.anim_options.frame then m.anim_options.timer.Mark()
+		m.obj.index = arr[int(m.anim_options.timer.TotalMilliseconds() / m.anim_options.frame)]
 
 	end function
     

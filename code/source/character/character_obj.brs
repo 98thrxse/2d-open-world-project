@@ -19,7 +19,7 @@ function character_obj(object)
     walk_side2_region = m.media_wnd.walk_side2_region
 
   ' addAnimatedImage
-    m.obj = m.addAnimatedImage("character_obj", [stand_front_region, stand_back_region, stand_side_region, walk_front1_region, walk_front2_region, walk_back1_region, walk_back2_region, walk_side1_region, walk_side2_region], { index: 0
+    m.obj = m.addAnimatedImage("character_obj", [stand_back_region, stand_front_region, stand_side_region, walk_back1_region, walk_back2_region, walk_front1_region, walk_front2_region, walk_side1_region, walk_side2_region], { index: 1
       offset_x: 640,
       offset_y: 360
     })
