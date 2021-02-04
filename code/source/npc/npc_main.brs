@@ -1,23 +1,23 @@
 function npc_main(object)
 
-    object.data = character_data()
-    object.settings = test_one_settings()
+    object.save = character_save()
+    object.data = test_one_data()
 
     object.onCreate = function(args)
 
-        ' loading npc settings to player data
+        ' loading npc data to player data
         
         ' collider
-        character_setUpCollider(m.settings.collider.up)
-        character_setDownCollider(m.settings.collider.down)
-        character_setLeftCollider(m.settings.collider.left)
-        character_setRightCollider(m.settings.collider.right)
+        character_setUpCollider(m.data.collider.up)
+        character_setDownCollider(m.data.collider.down)
+        character_setLeftCollider(m.data.collider.left)
+        character_setRightCollider(m.data.collider.right)
 
         ' speed
-        character_setUpSpeed(m.settings.speed.up)
-        character_setDownSpeed(m.settings.speed.down)
-        character_setLeftSpeed(m.settings.speed.left)
-        character_setRightSpeed(m.settings.speed.right)
+        character_setUpSpeed(m.data.speed.up)
+        character_setDownSpeed(m.data.speed.down)
+        character_setLeftSpeed(m.data.speed.left)
+        character_setRightSpeed(m.data.speed.right)
 
 		' createInstance
         m.game.createInstance("npc_anim")

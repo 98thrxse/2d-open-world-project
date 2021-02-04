@@ -1,4 +1,4 @@
-function character_data() as object
+function character_save() as object
 
     m.data = {
 
@@ -74,7 +74,7 @@ function character_getHP() as integer
     return m.data.params.attributes.hp
 end function
 
-sub character_setHP(hp as integer) 
+sub character_setHP(hp as integer)
     m.data.params.attributes.hp = hp
 end sub
 

@@ -1,5 +1,5 @@
-function test_one_settings() as object
-    settings = {
+function test_one_data() as object
+    data = {
         
         collider: {
             up: false,
@@ -16,6 +16,6 @@ function test_one_settings() as object
         }
     }
 
-    return settings
+    return data
 
 end function

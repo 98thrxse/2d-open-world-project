@@ -1,5 +1,7 @@
 function interface_hp(object)
 
+    object.hp = character_getHP()
+
     object.onCreate = function(args)
 
         ' loadFont
@@ -12,7 +14,7 @@ function interface_hp(object)
         ' getFont
         hp_font = m.game.getFont("VT323-36")
         
-        DrawText(canvas, "100", canvas.GetWidth() / 2, canvas.GetWidth() / 2, hp_font, "center", &hFFFFFFFF)
+        DrawText(canvas, m.hp.toStr(), canvas.GetWidth() / 2, canvas.GetWidth() / 2, hp_font, "center", &hFF0000FF)
 
     end function
 
