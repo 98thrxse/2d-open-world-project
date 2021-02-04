@@ -1,4 +1,4 @@
-function interface_hp(object)
+function interface_sp(object)
 
     object.onCreate = function(args)
 
@@ -10,9 +10,9 @@ function interface_hp(object)
     object.onDrawEnd = function(canvas)
 
         ' getFont
-        hp_font = m.game.getFont("VT323-36")
+        sp_font = m.game.getFont("VT323-36")
         
-        DrawText(canvas, character_getHP().toStr(), canvas.GetWidth() / 2, canvas.GetWidth() / 2, hp_font, "center", &hFF0000FF)
+        DrawText(canvas, character_getSP().toStr(), canvas.GetWidth() / 2 + 100, canvas.GetWidth() / 2, sp_font, "center", &h55ff00FF)
 
     end function
 

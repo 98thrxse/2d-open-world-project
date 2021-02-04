@@ -2,7 +2,8 @@ function character_main(object)
 
     object.onCreate = function(args)
 
-		' createInstance
+        ' createInstance
+        m.game.createInstance("character_action")
         m.game.createInstance("character_anim")
 
     end function

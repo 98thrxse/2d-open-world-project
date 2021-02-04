@@ -6,6 +6,7 @@ function character_init(object)
 		m.game.defineObject("character_main", character_main)
 		m.game.defineObject("character_media", character_media)
 		m.game.defineObject("character_obj", character_obj)
+		m.game.defineObject("character_action", character_action)
 		m.game.defineObject("character_anim", character_anim)
 
 		' createInstance
