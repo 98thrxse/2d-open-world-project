@@ -32,15 +32,19 @@ function npc_obj(object)
 
     if other_instance.name = "character_obj" and other_collider_name = "character_col_up"
       character_setUpCollider(true)
+      character_setNPCCollider(true)
 
     else if other_instance.name = "character_obj" and other_collider_name = "character_col_down"
       character_setDownCollider(true)
+      character_setNPCCollider(true)
 
     else if other_instance.name = "character_obj" and other_collider_name = "character_col_left"
       character_setLeftCollider(true)
+      character_setNPCCollider(true)
 
     else if other_instance.name = "character_obj" and other_collider_name = "character_col_right"
       character_setRightCollider(true)
+      character_setNPCCollider(true)
 
     end if
 
@@ -56,6 +60,7 @@ function npc_obj(object)
         character_setDownCollider(false)
         character_setLeftCollider(false)
         character_setRightCollider(false)
+        character_setNPCCollider(false)
 
       end if
                     
@@ -66,6 +71,7 @@ function npc_obj(object)
         character_setUpCollider(false)
         character_setLeftCollider(false)
         character_setRightCollider(false)
+        character_setNPCCollider(false)
 
       end if
         
@@ -77,6 +83,7 @@ function npc_obj(object)
         character_setUpCollider(false)
         character_setDownCollider(false)
         character_setRightCollider(false)
+        character_setNPCCollider(false)
 
       end if
         
@@ -87,6 +94,7 @@ function npc_obj(object)
         character_setUpCollider(false)
         character_setDownCollider(false)
         character_setLeftCollider(false)
+        character_setNPCCollider(false)
 
       end if
         

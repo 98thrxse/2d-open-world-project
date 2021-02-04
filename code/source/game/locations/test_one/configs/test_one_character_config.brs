@@ -1,9 +1,15 @@
 function test_one_character_config() as object
     config = {
 
+        attributes: {
+            hp: invalid,
+            sp: invalid
+        },
+
         damage: {
             hp: 10,
             sp: 10
+            time: 500,
         },
 
         anim: {
@@ -11,6 +17,8 @@ function test_one_character_config() as object
         },
         
         collider: {
+            npc: false,
+
             up: false,
             down: false
             left: false,

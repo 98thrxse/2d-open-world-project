@@ -17,6 +17,9 @@ function character_data() as object
         getSPDamage: character_getSPDamage
         setSPDamage: character_setSPDamage
 
+        getDamageTime: character_getDamageTime
+        setDamageTime: character_setDamageTime
+
 
         ' animation
         getAnimTime: character_getAnimTime
@@ -24,6 +27,9 @@ function character_data() as object
 
 
         ' collider
+        getNPCCollider: character_getNPCCollider
+        setNPCCollider: character_setNPCCollider
+
         getUpCollider: character_getUpCollider
         setUpCollider: character_setUpCollider
 
@@ -63,7 +69,8 @@ function character_data() as object
 
             damage: {
                 hp: 10,
-                sp: 10
+                sp: 10,
+                time: 500
             },
 
             anim: {
@@ -71,6 +78,8 @@ function character_data() as object
             },
         
             collider: {
+                npc: false,
+                
                 up: false,
                 down: false
                 left: false,
@@ -127,12 +136,32 @@ sub character_setSPDamage(sp as integer)
 end sub
 
 
+function character_getDamageTime() as integer
+    return m.data.params.damage.time
+end function
+
+sub character_setDamageTime(time as integer)
+    m.data.params.damage.time = time
+end sub
+
+
+
 function character_getAnimTime() as integer
     return m.data.params.anim.time
 end function
 
 sub character_setAnimTime(time as integer)
     m.data.params.anim.time = time
+end sub
+
+
+
+function character_getNPCCollider() as boolean
+    return m.data.params.collider.npc
+end function
+
+sub character_setNPCCollider(collider as boolean) 
+    m.data.params.collider.npc = collider
 end sub
 
 
@@ -207,6 +236,3 @@ end function
 sub character_setRightSpeed(speed as object) 
     m.data.params.speed.right = speed
 end sub
-
-
-
