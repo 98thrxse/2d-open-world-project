@@ -1,5 +1,5 @@
-function test_one_data() as object
-    data = {
+function test_one_map_config() as object
+    config = {
         
         collider: {
             up: false,
@@ -16,6 +16,6 @@ function test_one_data() as object
         }
     }
 
-    return data
+    return config
 
 end function

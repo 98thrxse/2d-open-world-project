@@ -1,4 +1,4 @@
-function character_save() as object
+function character_data() as object
 
     m.data = {
 
