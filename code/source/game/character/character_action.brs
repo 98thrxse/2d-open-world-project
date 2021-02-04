@@ -9,13 +9,13 @@ function character_action(object)
         
         ' held
         if code = 1006
-            m.playAction()
-            
+            m.playAttack()
+
         end if
 
     end function
 
-    object.playAction = function()
+    object.playAttack = function()
 
         if m.timer = invalid
             character_setSP(character_getSP() - character_getSPDamage())
@@ -23,7 +23,7 @@ function character_action(object)
             m.timer.Mark()
         end if
         
-        if m.timer.TotalMilliseconds() + 1 >= 1000
+        if m.timer.TotalMilliseconds() + 1 >= 500
             m.timer = invalid
         end if
 
