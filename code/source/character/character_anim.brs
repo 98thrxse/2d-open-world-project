@@ -14,16 +14,16 @@ function character_anim(object)
 
 		' held
 		if code = 1002 ' up
-			m.animationTimer([3,4])
+			m.playAnim([3,4])
 
 		else if code = 1003 ' down
-			m.animationTimer([5,6])
+			m.playAnim([5,6])
 
 		else if code = 1004 ' left
-			m.animationTimer([7,8])
+			m.playAnim([7,8])
 
 		else if code = 1005 ' right
-			m.animationTimer([7,8])
+			m.playAnim([7,8])
 
 		' released
 		else if code = 102 ' up
@@ -46,7 +46,7 @@ function character_anim(object)
 
 	end function
 
-	object.animationTimer = function(arr)
+	object.playAnim = function(arr)
 
 		if m.timer = invalid
 			m.timer = CreateObject("roTimeSpan")

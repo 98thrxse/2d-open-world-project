@@ -10,6 +10,14 @@ function character_data() as object
         setSP: character_setSP
 
 
+        ' damage
+        getHPDamage: character_getHPDamage
+        setHPDamage: character_setHPDamage
+
+        getSPDamage: character_getSPDamage
+        setSPDamage: character_setSPDamage
+
+
         ' animation
         getAnimTime: character_getAnimTime
         setAnimTime: character_setAnimTime
@@ -53,6 +61,11 @@ function character_data() as object
                 sp: 100
             },
 
+            damage: {
+                hp: 10,
+                sp: 10
+            },
+
             anim: {
 		        time: 100
             },
@@ -93,6 +106,24 @@ end function
 
 sub character_setSP(sp as integer)
     m.data.params.attributes.sp = sp
+end sub
+
+
+function character_getHPDamage() as integer
+    return m.data.params.damage.hp
+end function
+
+sub character_setHPDamage(hp as integer)
+    m.data.params.damage.hp = hp
+end sub
+
+
+function character_getSPDamage() as integer
+    return m.data.params.damage.sp
+end function
+
+sub character_setSPDamage(sp as integer)
+    m.data.params.damage.sp = sp
 end sub
 
 

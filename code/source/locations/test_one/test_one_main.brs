@@ -7,6 +7,10 @@ function test_one_main(object)
         
         ' loading map config to player data
 
+        ' damage
+        character_setHPDamage(m.config.damage.hp)
+        character_setSPDamage(m.config.damage.sp)
+
         ' anim
         character_setAnimTime(m.config.anim.time)
         

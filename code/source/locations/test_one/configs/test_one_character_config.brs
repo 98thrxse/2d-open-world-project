@@ -1,6 +1,11 @@
 function test_one_character_config() as object
     config = {
 
+        damage: {
+            hp: 10,
+            sp: 10
+        },
+
         anim: {
             time: 100
         },
