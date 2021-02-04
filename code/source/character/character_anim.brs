@@ -1,7 +1,7 @@
 function character_anim(object)
 
 	object.anim_options = {
-		frame: 100
+		time: 100
 		timer: invalid
 	}
     
@@ -58,8 +58,8 @@ function character_anim(object)
 			m.anim_options.timer.Mark()
 		end if
 
-		if m.anim_options.timer.TotalMilliseconds() + 1 >= arr.Count() * m.anim_options.frame then m.anim_options.timer.Mark()
-		m.obj.index = arr[int(m.anim_options.timer.TotalMilliseconds() / m.anim_options.frame)]
+		if m.anim_options.timer.TotalMilliseconds() + 1 >= arr.Count() * m.anim_options.time then m.anim_options.timer.Mark()
+		m.obj.index = arr[int(m.anim_options.timer.TotalMilliseconds() / m.anim_options.time)]
 
 	end function
     

@@ -5,7 +5,7 @@ function test_one_media(object)
       ' SPRITES
 
       ' loadBitmap
-      m.game.loadBitmap("obj", "pkg:/source/locations/test_one/media/sprites/obj.png")
+      m.game.loadBitmap("obj", "pkg:/media/locations/test_one/sprites/obj.png")
 
   
       ' getBitmap

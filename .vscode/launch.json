@@ -17,6 +17,7 @@
             "stopDebuggerOnAppExit": false,
             "files": [
                 "manifest",
+                "media/**/*.*",
                 "source/**/*.*",
                 "images/**/*.*",
             ]

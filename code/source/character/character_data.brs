@@ -2,6 +2,14 @@ function character_data() as object
 
     m.data = {
 
+        ' attributes
+        getHP: character_getHP
+        setHP: character_setHP
+
+        getSP: character_getSP
+        setSP: character_setSP
+
+
         ' collider
         getUpCollider: character_getUpCollider
         setUpCollider: character_setUpCollider
@@ -34,6 +42,11 @@ function character_data() as object
 
     if m.data.params = invalid
         m.data.params = {
+
+            attributes: {
+                hp: 100,
+                sp: 100
+            },
         
             collider: {
                 up: false,
@@ -56,6 +69,24 @@ function character_data() as object
     return m.data
 
 end function
+
+function character_getHP() as integer
+    return m.data.params.attributes.hp
+end function
+
+sub character_setHP(hp as integer) 
+    m.data.params.attributes.hp = hp
+end sub
+
+
+function character_getSP() as integer
+    return m.data.params.attributes.sp
+end function
+
+sub character_setSP(sp as integer)
+    m.data.params.attributes.sp = sp
+end sub
+
 
 function character_getUpCollider() as boolean
     return m.data.params.collider.up

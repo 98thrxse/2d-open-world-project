@@ -20,7 +20,7 @@ function character_obj(object)
 
   ' addAnimatedImage
     m.obj = m.addAnimatedImage("character_obj", [stand_back_region, stand_front_region, stand_side_region, walk_back1_region, walk_back2_region, walk_front1_region, walk_front2_region, walk_side1_region, walk_side2_region], { index: 1
-      offset_x: 640,
+      offset_x: 640 - stand_front_region.GetWidth() / 2,
       offset_y: 360
     })
 

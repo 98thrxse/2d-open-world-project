@@ -4,6 +4,7 @@ function locations_main(object)
 
         ' createInstance
         m.game.createInstance("character_init")
+        m.game.createInstance("interface_init")
         m.game.createInstance("npc_init")
         m.game.createInstance("test_one_init")
 
