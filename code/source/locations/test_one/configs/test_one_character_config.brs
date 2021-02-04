@@ -1,5 +1,9 @@
-function test_one_map_config() as object
+function test_one_character_config() as object
     config = {
+
+        anim: {
+            time: 100
+        },
         
         collider: {
             up: false,

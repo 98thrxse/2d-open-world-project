@@ -1,11 +1,14 @@
 function test_one_main(object)
 
     object.data = character_data()
-    object.config = test_one_map_config()
+    object.config = test_one_character_config()
 
     object.onCreate = function(args)
         
         ' loading map config to player data
+
+        ' anim
+        character_setAnimTime(m.config.anim.time)
         
         ' collider
         character_setUpCollider(m.config.collider.up)

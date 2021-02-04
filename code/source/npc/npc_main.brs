@@ -1,7 +1,7 @@
 function npc_main(object)
 
     object.data = character_data()
-    object.config = test_one_map_config()
+    object.config = test_one_character_config()
 
     object.onCreate = function(args)
 

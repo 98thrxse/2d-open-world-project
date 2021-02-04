@@ -10,6 +10,11 @@ function character_data() as object
         setSP: character_setSP
 
 
+        ' animation
+        getAnimTime: character_getAnimTime
+        setAnimTime: character_setAnimTime
+
+
         ' collider
         getUpCollider: character_getUpCollider
         setUpCollider: character_setUpCollider
@@ -47,6 +52,10 @@ function character_data() as object
                 hp: 100,
                 sp: 100
             },
+
+            anim: {
+		        time: 100
+            },
         
             collider: {
                 up: false,
@@ -65,7 +74,6 @@ function character_data() as object
 
     end if
 
-    ' return m.data.params
     return m.data
 
 end function
@@ -85,6 +93,15 @@ end function
 
 sub character_setSP(sp as integer)
     m.data.params.attributes.sp = sp
+end sub
+
+
+function character_getAnimTime() as integer
+    return m.data.params.anim.time
+end function
+
+sub character_setAnimTime(time as integer)
+    m.data.params.anim.time = time
 end sub
 
 

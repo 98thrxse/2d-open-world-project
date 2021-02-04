@@ -1,10 +1,5 @@
 function character_anim(object)
-
-	object.anim_options = {
-		time: 100
-		timer: invalid
-	}
-    
+  
 	object.onCreate = function(args)
 
 		' createInstance
@@ -32,19 +27,19 @@ function character_anim(object)
 
 		' released
 		else if code = 102 ' up
-			m.anim_options.timer = invalid
+			m.timer = invalid
 			m.obj.index = 0
 
 		else if code = 103 ' down
-			m.anim_options.timer = invalid
+			m.timer = invalid
 			m.obj.index = 1
 
 		else if code = 104 ' left
-			m.anim_options.timer = invalid
+			m.timer = invalid
 			m.obj.index = 2
 			
 		else if code = 105 ' right
-			m.anim_options.timer = invalid
+			m.timer = invalid
 			m.obj.index = 2			
 
 		end if
@@ -53,13 +48,13 @@ function character_anim(object)
 
 	object.animationTimer = function(arr)
 
-		if m.anim_options.timer = invalid
-			m.anim_options.timer = CreateObject("roTimeSpan")
-			m.anim_options.timer.Mark()
+		if m.timer = invalid
+			m.timer = CreateObject("roTimeSpan")
+			m.timer.Mark()
 		end if
 
-		if m.anim_options.timer.TotalMilliseconds() + 1 >= arr.Count() * m.anim_options.time then m.anim_options.timer.Mark()
-		m.obj.index = arr[int(m.anim_options.timer.TotalMilliseconds() / m.anim_options.time)]
+		if m.timer.TotalMilliseconds() + 1 >= arr.Count() * character_getAnimTime() then m.timer.Mark()
+		m.obj.index = arr[int(m.timer.TotalMilliseconds() / character_getAnimTime())]
 
 	end function
     
