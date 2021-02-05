@@ -212,7 +212,7 @@ This is called whenever a button is pressed, released, or held.
 | Info | 10 | 110 | 1010 |
 | Play | 13 | 113 | 1013 |
 
-##### onECPKeyboard(character)
+##### onECPKeyboard(char)
 This can be used to receive text input from ECP keyboard events.
 
 ##### onAudioEvent(message)

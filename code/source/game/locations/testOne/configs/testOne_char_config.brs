@@ -1,4 +1,4 @@
-function testOne_character_config() as object
+function testOne_char_config() as object
     config = {
 
         attributes: {

@@ -4,7 +4,7 @@ function locations_init(object)
 
         ' defineObject
 	    m.game.defineObject("locations_main", locations_main)
-	    m.game.defineObject("character_init", character_init)
+	    m.game.defineObject("char_init", char_init)
 	    m.game.defineObject("interface_init", interface_init)
         m.game.defineObject("obj_init", obj_init)
         m.game.defineObject("npc_init", npc_init)

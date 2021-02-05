@@ -1,9 +1,9 @@
-function character_anim(object)
+function char_anim(object)
   
 	object.onCreate = function(args)
 
 		' createInstance
-		obj_wnd = m.game.createInstance("character_obj")
+		obj_wnd = m.game.createInstance("char_obj")
 
 		' window initialization
 		m.obj = obj_wnd.obj
@@ -53,8 +53,8 @@ function character_anim(object)
 			m.timer.Mark()
 		end if
 
-		if m.timer.TotalMilliseconds() + 1 >= arr.Count() * character_getAnimTime() then m.timer.Mark()
-		m.obj.index = arr[int(m.timer.TotalMilliseconds() / character_getAnimTime())]
+		if m.timer.TotalMilliseconds() + 1 >= arr.Count() * char_getAnimTime() then m.timer.Mark()
+		m.obj.index = arr[int(m.timer.TotalMilliseconds() / char_getAnimTime())]
 
 	end function
     

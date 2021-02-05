@@ -28,17 +28,17 @@ function obj_static(object)
 
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
-        if other_instance.name = "character_obj" and other_collider_name = "character_col_up"
-            character_setUpCollider(true)
+        if other_instance.name = "char_obj" and other_collider_name = "char_col_up"
+            char_setUpCollider(true)
 
-        else if other_instance.name = "character_obj" and other_collider_name = "character_col_down"
-            character_setDownCollider(true)
+        else if other_instance.name = "char_obj" and other_collider_name = "char_col_down"
+            char_setDownCollider(true)
 
-        else if other_instance.name = "character_obj" and other_collider_name = "character_col_left"
-            character_setLeftCollider(true)
+        else if other_instance.name = "char_obj" and other_collider_name = "char_col_left"
+            char_setLeftCollider(true)
 
-        else if other_instance.name = "character_obj" and other_collider_name = "character_col_right"
-            character_setRightCollider(true)
+        else if other_instance.name = "char_obj" and other_collider_name = "char_col_right"
+            char_setRightCollider(true)
 
         end if
 
@@ -49,42 +49,42 @@ function obj_static(object)
         ' held
         if code = 1002 ' up
 
-            if character_getUpCollider() = false
-                m.y += character_getUpSpeed()
-                character_setDownCollider(false)
-                character_setLeftCollider(false)
-                character_setRightCollider(false)
+            if char_getUpCollider() = false
+                m.y += char_getUpSpeed()
+                char_setDownCollider(false)
+                char_setLeftCollider(false)
+                char_setRightCollider(false)
 
             end if
                         
 		else if code = 1003 ' down
 
-            if character_getDownCollider() = false
-                m.y -= character_getDownSpeed()
-                character_setUpCollider(false)
-                character_setLeftCollider(false)
-                character_setRightCollider(false)
+            if char_getDownCollider() = false
+                m.y -= char_getDownSpeed()
+                char_setUpCollider(false)
+                char_setLeftCollider(false)
+                char_setRightCollider(false)
 
             end if
             
             
 		else if code = 1004 ' left
 
-            if character_getLeftCollider() = false
-                m.x += character_getLeftSpeed()
-                character_setUpCollider(false)
-                character_setDownCollider(false)
-                character_setRightCollider(false)
+            if char_getLeftCollider() = false
+                m.x += char_getLeftSpeed()
+                char_setUpCollider(false)
+                char_setDownCollider(false)
+                char_setRightCollider(false)
 
             end if
             
         else if code = 1005 ' right
 
-            if character_getRightCollider() = false
-                m.x -= character_getRightSpeed()
-                character_setUpCollider(false)
-                character_setDownCollider(false)
-                character_setLeftCollider(false)
+            if char_getRightCollider() = false
+                m.x -= char_getRightSpeed()
+                char_setUpCollider(false)
+                char_setDownCollider(false)
+                char_setLeftCollider(false)
 
             end if
             

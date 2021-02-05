@@ -3,7 +3,7 @@ function locations_main(object)
 	object.onCreate = function(args)
 
         ' createInstance
-        m.game.createInstance("character_init")
+        m.game.createInstance("char_init")
         m.game.createInstance("interface_init")
         m.game.createInstance("obj_init")
         m.game.createInstance("npc_init")

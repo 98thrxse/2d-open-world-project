@@ -1,20 +1,20 @@
-function character_media(object)
+function char_media(object)
 
   object.onCreate = function(args)
 
     ' SPRITES
 
     ' loadBitmap
-    m.game.loadBitmap("stand_front", "pkg:/media/character/sprites/stand_front.png")
-    m.game.loadBitmap("stand_back", "pkg:/media/character/sprites/stand_back.png")
-    m.game.loadBitmap("stand_side", "pkg:/media/character/sprites/stand_side.png")
+    m.game.loadBitmap("stand_front", "pkg:/media/char/sprites/stand_front.png")
+    m.game.loadBitmap("stand_back", "pkg:/media/char/sprites/stand_back.png")
+    m.game.loadBitmap("stand_side", "pkg:/media/char/sprites/stand_side.png")
 
-    m.game.loadBitmap("walk_front1", "pkg:/media/character/sprites/walk_front1.png")
-    m.game.loadBitmap("walk_front2", "pkg:/media/character/sprites/walk_front2.png")
-    m.game.loadBitmap("walk_back1", "pkg:/media/character/sprites/walk_back1.png")
-    m.game.loadBitmap("walk_back2", "pkg:/media/character/sprites/walk_back2.png")
-    m.game.loadBitmap("walk_side1", "pkg:/media/character/sprites/walk_side1.png")
-    m.game.loadBitmap("walk_side2", "pkg:/media/character/sprites/walk_side2.png")
+    m.game.loadBitmap("walk_front1", "pkg:/media/char/sprites/walk_front1.png")
+    m.game.loadBitmap("walk_front2", "pkg:/media/char/sprites/walk_front2.png")
+    m.game.loadBitmap("walk_back1", "pkg:/media/char/sprites/walk_back1.png")
+    m.game.loadBitmap("walk_back2", "pkg:/media/char/sprites/walk_back2.png")
+    m.game.loadBitmap("walk_side1", "pkg:/media/char/sprites/walk_side1.png")
+    m.game.loadBitmap("walk_side2", "pkg:/media/char/sprites/walk_side2.png")
 
 
     ' getBitmap
