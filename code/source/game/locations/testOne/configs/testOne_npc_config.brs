@@ -1,4 +1,4 @@
-function test_one_npc_config() as object
+function testOne_npc_config() as object
     config = [
 
         {

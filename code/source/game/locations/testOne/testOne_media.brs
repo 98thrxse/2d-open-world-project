@@ -1,11 +1,11 @@
-function test_one_media(object)
+function testOne_media(object)
 
     object.onCreate = function(args)
 
       ' SPRITES
 
       ' loadBitmap
-      m.game.loadBitmap("obj", "pkg:/media/locations/test_one/sprites/obj.png")
+      m.game.loadBitmap("obj", "pkg:/media/locations/testOne/sprites/obj.png")
 
   
       ' getBitmap

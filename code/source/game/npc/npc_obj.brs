@@ -1,6 +1,6 @@
 function npc_obj(object)
 
-  object.config = test_one_npc_config() ' fix stas
+  object.config = testOne_npc_config() ' fix stas
 
   object.onCreate = function(args)
 

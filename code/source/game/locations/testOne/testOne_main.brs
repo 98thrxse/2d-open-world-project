@@ -1,7 +1,7 @@
-function test_one_main(object)
+function testOne_main(object)
 
     object.data = character_data()
-    object.config = test_one_character_config()
+    object.config = testOne_data_config()
 
     object.onCreate = function(args)
         
@@ -40,7 +40,7 @@ function test_one_main(object)
 
 
         ' createInstance
-        m.game.createInstance("test_one_map")
+        m.game.createInstance("testOne_map")
 
     end function
     

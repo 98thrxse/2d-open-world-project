@@ -6,7 +6,7 @@ function locations_main(object)
         m.game.createInstance("character_init")
         m.game.createInstance("interface_init")
         m.game.createInstance("npc_init")
-        m.game.createInstance("test_one_init")
+        m.game.createInstance("testOne_init")
 
     end function
     

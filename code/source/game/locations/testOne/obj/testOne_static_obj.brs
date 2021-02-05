@@ -1,11 +1,11 @@
-function test_one_static_obj(object)
+function testOne_static_obj(object)
 
-    object.config = test_one_static_obj_config() ' fix stas
+    object.config = testOne_static_obj_config() ' fix stas
 
     object.onCreate = function(args)
 
         ' createInstance
-        media_wnd = m.game.createInstance("test_one_media")
+        media_wnd = m.game.createInstance("testOne_media")
 
         ' window initialization
         obj_region = media_wnd.obj_region 
