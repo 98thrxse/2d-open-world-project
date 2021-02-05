@@ -1,6 +1,6 @@
 function npc_obj(object)
 
-  object.config = testOne_npc_config() ' fix stas
+  object.map_config = testOne_npc_config() ' fix stas
 
   object.onCreate = function(args)
 
@@ -20,17 +20,17 @@ function npc_obj(object)
     walk_side2_region = m.media_wnd.walk_side2_region
 
     ' loading map config to create npc
-    for i = 0 to m.config.Count() - 1
+    for i = 0 to m.map_config.Count() - 1
       
       ' addAnimatedImage
-      m.obj = m.addAnimatedImage(m.config[i].obj_name.toStr() + m.config[i].id.toStr(), [stand_front_region, stand_back_region, stand_side_region, walk_front1_region, walk_front2_region, walk_back1_region, walk_back2_region, walk_side1_region, walk_side2_region], { index: 0
-        offset_x: m.config[i].offset_x,
-        offset_y: m.config[i].offset_y
+      m.obj = m.addAnimatedImage(m.map_config[i].obj_name.toStr() + m.map_config[i].id.toStr(), [stand_front_region, stand_back_region, stand_side_region, walk_front1_region, walk_front2_region, walk_back1_region, walk_back2_region, walk_side1_region, walk_side2_region], { index: 0
+        offset_x: m.map_config[i].offset_x,
+        offset_y: m.map_config[i].offset_y
       })
 
 
       ' addColliderRectangle
-      m.addColliderRectangle(m.config[i].col_name.toStr() + m.config[i].id.toStr(), m.config[i].offset_x, m.config[i].offset_y, m.config[i].width, m.config[i].height)
+      m.addColliderRectangle(m.map_config[i].col_name.toStr() + m.map_config[i].id.toStr(), m.map_config[i].offset_x, m.map_config[i].offset_y, m.map_config[i].width, m.map_config[i].height)
     
     end for
 
