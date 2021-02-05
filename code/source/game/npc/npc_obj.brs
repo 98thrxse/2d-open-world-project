@@ -1,5 +1,7 @@
 function npc_obj(object)
 
+  object.config = test_one_npc_config() ' fix stas
+
   object.onCreate = function(args)
 
     ' createInstance
@@ -17,14 +19,19 @@ function npc_obj(object)
     walk_side1_region = m.media_wnd.walk_side1_region
     walk_side2_region = m.media_wnd.walk_side2_region
 
-  ' addAnimatedImage
-    m.obj = m.addAnimatedImage("npc_obj", [stand_front_region, stand_back_region, stand_side_region, walk_front1_region, walk_front2_region, walk_back1_region, walk_back2_region, walk_side1_region, walk_side2_region], { index: 0
-      offset_x: 300,
-      offset_y: 200
-    })
+    ' loading map config to create npc
+    for i = 0 to m.config.Count() - 1
+      ' addAnimatedImage
+      m.obj = m.addAnimatedImage(m.config[i].obj_name.toStr() + m.config[i].id.toStr(), [stand_front_region, stand_back_region, stand_side_region, walk_front1_region, walk_front2_region, walk_back1_region, walk_back2_region, walk_side1_region, walk_side2_region], { index: 0
+        offset_x: m.config[i].offset_x,
+        offset_y: m.config[i].offset_y
+      })
 
-    ' addColliderRectangle
-    m.addColliderRectangle("npc_col", m.obj.offset_x, m.obj.offset_y, stand_front_region.GetWidth(), stand_front_region.GetHeight())
+
+      ' addColliderRectangle
+      m.addColliderRectangle(m.config[i].col_name.toStr() + m.config[i].id.toStr(), m.config[i].offset_x, m.config[i].offset_y, stand_front_region.GetWidth(), stand_front_region.GetHeight())
+    
+    end for
 
   end function
 
