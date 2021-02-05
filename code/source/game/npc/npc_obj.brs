@@ -21,6 +21,7 @@ function npc_obj(object)
 
     ' loading map config to create npc
     for i = 0 to m.config.Count() - 1
+      
       ' addAnimatedImage
       m.obj = m.addAnimatedImage(m.config[i].obj_name.toStr() + m.config[i].id.toStr(), [stand_front_region, stand_back_region, stand_side_region, walk_front1_region, walk_front2_region, walk_back1_region, walk_back2_region, walk_side1_region, walk_side2_region], { index: 0
         offset_x: m.config[i].offset_x,
@@ -29,7 +30,7 @@ function npc_obj(object)
 
 
       ' addColliderRectangle
-      m.addColliderRectangle(m.config[i].col_name.toStr() + m.config[i].id.toStr(), m.config[i].offset_x, m.config[i].offset_y, stand_front_region.GetWidth(), stand_front_region.GetHeight())
+      m.addColliderRectangle(m.config[i].col_name.toStr() + m.config[i].id.toStr(), m.config[i].offset_x, m.config[i].offset_y, m.config[i].width, m.config[i].height)
     
     end for
 
@@ -38,19 +39,19 @@ function npc_obj(object)
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
     if other_instance.name = "character_obj" and other_collider_name = "character_col_up"
-      character_setUpCollider(true)
+      ' character_setUpCollider(true)
       character_setNPCCollider(true)
 
     else if other_instance.name = "character_obj" and other_collider_name = "character_col_down"
-      character_setDownCollider(true)
+      ' character_setDownCollider(true)
       character_setNPCCollider(true)
 
     else if other_instance.name = "character_obj" and other_collider_name = "character_col_left"
-      character_setLeftCollider(true)
+      ' character_setLeftCollider(true)
       character_setNPCCollider(true)
 
     else if other_instance.name = "character_obj" and other_collider_name = "character_col_right"
-      character_setRightCollider(true)
+      ' character_setRightCollider(true)
       character_setNPCCollider(true)
 
     end if
@@ -64,9 +65,9 @@ function npc_obj(object)
 
       if character_getUpCollider() = false
         m.y += character_getUpSpeed()
-        character_setDownCollider(false)
-        character_setLeftCollider(false)
-        character_setRightCollider(false)
+        ' character_setDownCollider(false)
+        ' character_setLeftCollider(false)
+        ' character_setRightCollider(false)
         character_setNPCCollider(false)
 
       end if
@@ -75,9 +76,9 @@ function npc_obj(object)
 
       if character_getDownCollider() = false
         m.y -= character_getDownSpeed()
-        character_setUpCollider(false)
-        character_setLeftCollider(false)
-        character_setRightCollider(false)
+        ' character_setUpCollider(false)
+        ' character_setLeftCollider(false)
+        ' character_setRightCollider(false)
         character_setNPCCollider(false)
 
       end if
@@ -87,9 +88,9 @@ function npc_obj(object)
 
       if character_getLeftCollider() = false
         m.x += character_getLeftSpeed()
-        character_setUpCollider(false)
-        character_setDownCollider(false)
-        character_setRightCollider(false)
+        ' character_setUpCollider(false)
+        ' character_setDownCollider(false)
+        ' character_setRightCollider(false)
         character_setNPCCollider(false)
 
       end if
@@ -98,9 +99,9 @@ function npc_obj(object)
 
       if character_getRightCollider() = false
         m.x -= character_getRightSpeed()
-        character_setUpCollider(false)
-        character_setDownCollider(false)
-        character_setLeftCollider(false)
+        ' character_setUpCollider(false)
+        ' character_setDownCollider(false)
+        ' character_setLeftCollider(false)
         character_setNPCCollider(false)
 
       end if

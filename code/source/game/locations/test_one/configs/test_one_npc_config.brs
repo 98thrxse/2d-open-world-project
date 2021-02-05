@@ -6,7 +6,9 @@ function test_one_npc_config() as object
             obj_name: "npc_obj",
             col_name: "npc_col",
             offset_x: 200,
-            offset_y: 100
+            offset_y: 100,
+            width: 48,
+            height: 56
         },
 
         {
@@ -15,6 +17,8 @@ function test_one_npc_config() as object
             col_name: "npc_col",
             offset_x: 400,
             offset_y: 300
+            width: 48,
+            height: 56
         }
     ]
 

@@ -1,5 +1,7 @@
 function test_one_static_obj(object)
 
+    object.config = test_one_static_obj_config() ' fix stas
+
     object.onCreate = function(args)
 
         ' createInstance
@@ -8,15 +10,20 @@ function test_one_static_obj(object)
         ' window initialization
         obj_region = media_wnd.obj_region 
 
-        ' addAnimatedImage
-        m.obj = m.addAnimatedImage("obj_obj", [obj_region, invalid], { index: 0
-            offset_x: 0
-            offset_y: 0
-        })
+        ' loading map config to create static obj
+        for i = 0 to m.config.Count() - 1
+
+            ' addAnimatedImage
+            m.obj = m.addAnimatedImage(m.config[i].obj_name.toStr() + m.config[i].id.toStr(), [obj_region, invalid], { index: 0
+                offset_x: m.config[i].offset_x,
+                offset_y: m.config[i].offset_y
+            })
+            
+            ' addColliderRectangle
+            m.addColliderRectangle(m.config[i].col_name.toStr() + m.config[i].id.toStr(), m.config[i].offset_x, m.config[i].offset_y, m.config[i].width, m.config[i].height)
         
-        ' addColliderRectangle
-        m.addColliderRectangle("obj_col", m.obj.offset_x, m.obj.offset_y, obj_region.GetWidth(), obj_region.GetHeight())
-        
+        end for
+
     end function
 
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
