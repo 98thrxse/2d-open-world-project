@@ -1,4 +1,4 @@
-function char_action(object)
+function action_char_npc(object)
 
     object.onCreate = function(args)
         

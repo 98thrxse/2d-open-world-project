@@ -8,6 +8,7 @@ function locations_init(object)
 	    m.game.defineObject("interface_init", interface_init)
         m.game.defineObject("obj_init", obj_init)
         m.game.defineObject("npc_init", npc_init)
+        m.game.defineObject("action_init", action_init)
         m.game.defineObject("testOne_init", testOne_init)
 
         ' createInstance
