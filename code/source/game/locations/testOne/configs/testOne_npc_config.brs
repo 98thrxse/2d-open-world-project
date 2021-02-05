@@ -8,7 +8,8 @@ function testOne_npc_config() as object
             offset_x: 200,
             offset_y: 100,
             width: 48,
-            height: 56
+            height: 56,
+            health: 100
         },
 
         {
@@ -18,7 +19,8 @@ function testOne_npc_config() as object
             offset_x: 400,
             offset_y: 300
             width: 48,
-            height: 56
+            height: 56,
+            health: 100
         }
     ]
 

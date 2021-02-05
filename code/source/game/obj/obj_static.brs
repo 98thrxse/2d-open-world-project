@@ -14,13 +14,13 @@ function obj_static(object)
         for i = 0 to m.obj_config.Count() - 1
 
             ' addAnimatedImage
-            m.obj = m.addAnimatedImage(m.obj_config[i].obj_name.toStr() + m.obj_config[i].id.toStr(), [obj_region, invalid], { index: 0
+            m.obj = m.addAnimatedImage(m.obj_config[i].obj_name.toStr() + "_" + m.obj_config[i].id.toStr(), [obj_region, invalid], { index: 0
                 offset_x: m.obj_config[i].offset_x,
                 offset_y: m.obj_config[i].offset_y
             })
             
             ' addColliderRectangle
-            m.addColliderRectangle(m.obj_config[i].col_name.toStr() + m.obj_config[i].id.toStr(), m.obj_config[i].offset_x, m.obj_config[i].offset_y, m.obj_config[i].width, m.obj_config[i].height)
+            m.addColliderRectangle(m.obj_config[i].col_name.toStr() + "_" + m.obj_config[i].id.toStr(), m.obj_config[i].offset_x, m.obj_config[i].offset_y, m.obj_config[i].width, m.obj_config[i].height)
         
         end for
 

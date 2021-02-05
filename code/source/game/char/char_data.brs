@@ -78,7 +78,7 @@ function char_data() as object
             },
         
             collider: {
-                npc: false,
+                npc: invalid,
                 
                 up: false,
                 down: false
@@ -156,12 +156,12 @@ end sub
 
 
 
-function char_getNPCCollider() as boolean
+function char_getNPCCollider() as object
     return m.data.params.collider.npc
 end function
 
-sub char_setNPCCollider(collider as boolean) 
-    m.data.params.collider.npc = collider
+sub char_setNPCCollider(id as object) 
+    m.data.params.collider.npc = id
 end sub
 
 

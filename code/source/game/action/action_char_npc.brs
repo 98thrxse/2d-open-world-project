@@ -1,5 +1,7 @@
 function action_char_npc(object)
 
+    object.npc_config = testOne_npc_config() ' fix stas
+
     object.onCreate = function(args)
         
     end function
@@ -21,8 +23,17 @@ function action_char_npc(object)
     object.playAttack = function()
 
         if m.timer = invalid
-            if char_getNPCCollider() = true then print "NPC was attacked" ' fix stas
+            if char_getNPCCollider() <> invalid
+
+                m.npc_config[right(char_getNPCCollider(), 1).toInt()].health -= char_getHPDamage()
+
+                print char_getNPCCollider() + " was attacked"
+                print m.npc_config[right(char_getNPCCollider(), 1).toInt()].health
+
+            end if
+
             char_setSP(char_getSP() - char_getSPDamage())
+            
 			m.timer = CreateObject("roTimeSpan")
             m.timer.Mark()
         end if
