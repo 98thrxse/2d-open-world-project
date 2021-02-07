@@ -10,8 +10,8 @@ function terrain_static(object)
 
         ' addAnimatedImage
         m.terrain = m.addAnimatedImage("terrain_obj", [terrain_region, invalid], { index: 0
-            offset_x: - char_getPosX(),
-            offset_y: - char_getPosY()
+            offset_x: 0 - char_getPosX(),
+            offset_y: 0 - char_getPosY()
         })
 
     end function
