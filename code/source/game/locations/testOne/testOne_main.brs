@@ -7,6 +7,11 @@ function testOne_main(object)
         
         ' loading map config to player data
 
+        ' pos
+        if m.map_config.pos.x <> invalid then char_setPosX(m.map_config.pos.x)
+        if m.map_config.pos.y <> invalid then char_setPosY(m.map_config.pos.y)
+
+
         ' attributes
         if m.map_config.attributes.hp <> invalid then char_setHP(m.map_config.attributes.hp)
         if m.map_config.attributes.sp <> invalid then char_setSP(m.map_config.attributes.sp)

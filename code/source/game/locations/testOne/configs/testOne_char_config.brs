@@ -1,6 +1,11 @@
 function testOne_char_config() as object
     config = {
 
+        pos: {
+            x: 0,
+            y: 0
+        },
+
         attributes: {
             hp: invalid,
             sp: invalid

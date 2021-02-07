@@ -12,7 +12,7 @@ function action_char_npc(object)
         ' held
         if code = 1006
             if char_getSP() >= char_getSPDamage()
-                m.npcHPDamage()
+                m.actionHPDamage()
 
             end if
 
@@ -20,7 +20,7 @@ function action_char_npc(object)
 
     end function
 
-    object.npcHPDamage = function()
+    object.actionHPDamage = function()
 
         if m.hp_damage_timer = invalid
             if char_getNPCCollider() <> invalid

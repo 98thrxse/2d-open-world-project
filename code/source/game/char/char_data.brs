@@ -2,6 +2,14 @@ function char_data() as object
 
     m.data = {
 
+        'pos
+        getPosX: char_getPosX
+        setPosX: char_setPosX
+        
+        getPosY: char_getPosY
+        setPosY: char_setPosY  
+
+
         ' attributes
         getHP: char_getHP
         setHP: char_setHP
@@ -79,6 +87,11 @@ function char_data() as object
     if m.data.params = invalid
         m.data.params = {
 
+            pos: {
+                x: 0,
+                y: 0
+            },
+
             attributes: {
                 hp: 100,
                 sp: 100
@@ -124,6 +137,25 @@ function char_data() as object
     return m.data
 
 end function
+
+function char_getPosX() as integer
+    return m.data.params.pos.x
+end function
+
+sub char_setPosX(x as integer)
+    m.data.params.pos.x = x
+end sub
+
+
+function char_getPosY() as integer
+    return m.data.params.pos.y
+end function
+
+sub char_setPosY(y as integer)
+    m.data.params.pos.y = y
+end sub
+
+
 
 function char_getHP() as integer
     return m.data.params.attributes.hp
@@ -178,6 +210,7 @@ sub char_setSPDamageTime(sp_time as integer)
 end sub
 
 
+
 function char_getHPRegen() as integer
     return m.data.params.regen.hp
 end function
@@ -211,6 +244,7 @@ end function
 sub char_setSPRegenTime(sp_time as integer)
     m.data.params.regen.sp_time = sp_time
 end sub
+
 
 
 function char_getAnimTime() as integer

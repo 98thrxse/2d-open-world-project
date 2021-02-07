@@ -10,7 +10,7 @@ function action_char(object)
         ' held
         if code = 1006
             if char_getSP() >= char_getSPDamage()
-                m.charSPDamage()
+                m.actionSPDamage()
 
             end if
 
@@ -18,7 +18,7 @@ function action_char(object)
 
     end function
 
-    object.charSPDamage = function()
+    object.actionSPDamage = function()
 
         if m.sp_damage_timer = invalid
             char_setSP(char_getSP() - char_getSPDamage())
@@ -34,7 +34,7 @@ function action_char(object)
 
     end function
 
-    object.charSPRegen = function()
+    object.actionSPRegen = function()
 
         if m.sp_regen_timer = invalid
             m.sp_regen_timer = CreateObject("roTimeSpan")
@@ -54,7 +54,7 @@ function action_char(object)
     object.onUpdate = function(dt as float)
 
         if char_getSP() < 100 ' fix stas
-            m.charSPRegen()
+            m.actionSPRegen()
 
         end if
 
