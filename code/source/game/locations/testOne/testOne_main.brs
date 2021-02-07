@@ -18,6 +18,12 @@ function testOne_main(object)
         if m.map_config.damage.time <> invalid then char_setDamageTime(m.map_config.damage.time)
 
 
+        ' regen
+        if m.map_config.regen.hp <> invalid then char_setHPRegen(m.map_config.regen.hp)
+        if m.map_config.regen.sp <> invalid then char_setSPRegen(m.map_config.regen.sp)
+        if m.map_config.regen.time <> invalid then char_setRegenTime(m.map_config.regen.time)
+
+
         ' anim
         if m.map_config.anim.time <> invalid then char_setAnimTime(m.map_config.anim.time)
         

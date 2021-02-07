@@ -20,6 +20,10 @@ function char_data() as object
         getDamageTime: char_getDamageTime
         setDamageTime: char_setDamageTime
 
+        ' regen
+        getRegenTime: char_getRegenTime
+        setRegenTime: char_setRegenTime
+
 
         ' animation
         getAnimTime: char_getAnimTime
@@ -71,6 +75,12 @@ function char_data() as object
                 hp: 10,
                 sp: 10,
                 time: 500
+            },
+
+            regen: {
+                hp: 5,
+                sp: 5,
+                time: 1000
             },
 
             anim: {
@@ -144,6 +154,32 @@ sub char_setDamageTime(time as integer)
     m.data.params.damage.time = time
 end sub
 
+
+function char_getHPRegen() as integer
+    return m.data.params.regen.hp
+end function
+
+sub char_setHPRegen(hp as integer)
+    m.data.params.regen.hp = hp
+end sub
+
+
+function char_getSPRegen() as integer
+    return m.data.params.regen.sp
+end function
+
+sub char_setSPRegen(sp as integer)
+    m.data.params.regen.sp = sp
+end sub
+
+
+function char_getRegenTime() as integer
+    return m.data.params.regen.time
+end function
+
+sub char_setRegenTime(time as integer)
+    m.data.params.regen.time = time
+end sub
 
 
 function char_getAnimTime() as integer

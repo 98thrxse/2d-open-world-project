@@ -12,6 +12,12 @@ function testOne_char_config() as object
             time: 500,
         },
 
+        regen: {
+            hp: 5,
+            sp: 5
+            time: 1000,
+        },
+
         anim: {
             time: 100
         },
