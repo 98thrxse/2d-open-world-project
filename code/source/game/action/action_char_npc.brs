@@ -25,9 +25,7 @@ function action_char_npc(object)
 
         if m.hp_damage_timer = invalid
             if char_getNPCCollider() <> invalid
-
                 id = right(char_getNPCCollider(), 1).toInt()
-
                 m.npc_config[id].health -= char_getHPDamage()
 
                 print char_getNPCCollider() + " was attacked"
@@ -40,9 +38,9 @@ function action_char_npc(object)
 
         end if
         
-        if m.hp_damage_timer.TotalMilliseconds() + 1 >= char_getDamageTime()
+        if m.hp_damage_timer.TotalMilliseconds() + 1 >= char_getSPDamageTime()
             m.hp_damage_timer = invalid
-            
+
         end if
 
     end function
@@ -56,7 +54,7 @@ function action_char_npc(object)
 
         end if
 
-        if m.sp_damage_timer.TotalMilliseconds() + 1 >= char_getDamageTime()
+        if m.sp_damage_timer.TotalMilliseconds() + 1 >= char_getSPDamageTime()
             m.sp_damage_timer = invalid
 
         end if
@@ -71,7 +69,7 @@ function action_char_npc(object)
 
         end if
 
-        if m.sp_regen_timer.TotalMilliseconds() + 1 >= char_getRegenTime()
+        if m.sp_regen_timer.TotalMilliseconds() + 1 >= char_getSPRegenTime()
             char_setSP(char_getSP() + char_getSPRegen())
             m.sp_regen_timer = invalid
 

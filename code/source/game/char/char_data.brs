@@ -17,12 +17,25 @@ function char_data() as object
         getSPDamage: char_getSPDamage
         setSPDamage: char_setSPDamage
 
-        getDamageTime: char_getDamageTime
-        setDamageTime: char_setDamageTime
+        getHPDamageTime: char_getHPDamageTime
+        setHPDamageTime: char_setHPDamageTime
+
+        getSPDamageTime: char_getSPDamageTime
+        setSPDamageTime: char_setSPDamageTime
+
 
         ' regen
-        getRegenTime: char_getRegenTime
-        setRegenTime: char_setRegenTime
+        getHPRegen: char_getHPRegen
+        setHPRegen: char_setHPRegen
+
+        getSPRegen: char_getSPRegen
+        setSPRegen: char_setSPRegen
+
+        getHPRegenTime: char_getHPRegenTime
+        setHPRegenTime: char_setHPRegenTime
+
+        getSPRegenTime: char_getSPRegenTime
+        setSPRegenTime: char_setSPRegenTime
 
 
         ' animation
@@ -74,13 +87,15 @@ function char_data() as object
             damage: {
                 hp: 10,
                 sp: 10,
-                time: 500
+                hp_time: 500,
+                sp_time: 500
             },
 
             regen: {
                 hp: 5,
                 sp: 5,
-                time: 1000
+                hp_time: 1000,
+                sp_time: 1000
             },
 
             anim: {
@@ -146,12 +161,20 @@ sub char_setSPDamage(sp as integer)
 end sub
 
 
-function char_getDamageTime() as integer
-    return m.data.params.damage.time
+function char_getHPDamageTime() as integer
+    return m.data.params.damage.hp_time
 end function
 
-sub char_setDamageTime(time as integer)
-    m.data.params.damage.time = time
+sub char_setHPDamageTime(hp_time as integer)
+    m.data.params.damage.hp_time = hp_time
+end sub
+
+function char_getSPDamageTime() as integer
+    return m.data.params.damage.sp_time
+end function
+
+sub char_setSPDamageTime(sp_time as integer)
+    m.data.params.damage.sp_time = sp_time
 end sub
 
 
@@ -173,12 +196,20 @@ sub char_setSPRegen(sp as integer)
 end sub
 
 
-function char_getRegenTime() as integer
-    return m.data.params.regen.time
+function char_getHPRegenTime() as integer
+    return m.data.params.regen.hp_time
 end function
 
-sub char_setRegenTime(time as integer)
-    m.data.params.regen.time = time
+sub char_setHPRegenTime(hp_time as integer)
+    m.data.params.regen.hp_time = hp_time
+end sub
+
+function char_getSPRegenTime() as integer
+    return m.data.params.regen.sp_time
+end function
+
+sub char_setSPRegenTime(sp_time as integer)
+    m.data.params.regen.sp_time = sp_time
 end sub
 
 

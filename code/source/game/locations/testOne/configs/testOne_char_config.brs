@@ -9,13 +9,15 @@ function testOne_char_config() as object
         damage: {
             hp: 10,
             sp: 10
-            time: 500,
+            hp_time: 500,
+            sp_time: 500
         },
 
         regen: {
             hp: 5,
             sp: 5
-            time: 1000,
+            hp_time: 1000,
+            sp_time: 1000
         },
 
         anim: {
