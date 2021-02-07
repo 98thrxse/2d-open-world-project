@@ -15,12 +15,12 @@ function obj_static(object)
 
             ' addAnimatedImage
             m.obj = m.addAnimatedImage(m.obj_config[i].obj_name.toStr() + "_" + m.obj_config[i].id.toStr(), [obj_region, invalid], { index: 0
-                offset_x: m.obj_config[i].offset_x,
-                offset_y: m.obj_config[i].offset_y
+                offset_x: m.obj_config[i].offset_x - char_getPosX(),
+                offset_y: m.obj_config[i].offset_y - char_getPosY()
             })
             
             ' addColliderRectangle
-            m.addColliderRectangle(m.obj_config[i].col_name.toStr() + "_" + m.obj_config[i].id.toStr(), m.obj_config[i].offset_x, m.obj_config[i].offset_y, m.obj_config[i].width, m.obj_config[i].height)
+            m.addColliderRectangle(m.obj_config[i].col_name.toStr() + "_" + m.obj_config[i].id.toStr(), m.obj_config[i].offset_x - char_getPosX(), m.obj_config[i].offset_y - char_getPosY(), m.obj_config[i].width, m.obj_config[i].height)
         
         end for
 

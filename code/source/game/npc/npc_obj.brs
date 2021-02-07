@@ -24,13 +24,13 @@ function npc_obj(object)
       
       ' addAnimatedImage
       m.obj = m.addAnimatedImage(m.npc_config[i].obj_name.toStr() + "_" + m.npc_config[i].id.toStr(), [stand_front_region, stand_back_region, stand_side_region, walk_front1_region, walk_front2_region, walk_back1_region, walk_back2_region, walk_side1_region, walk_side2_region], { index: 0
-        offset_x: m.npc_config[i].offset_x,
-        offset_y: m.npc_config[i].offset_y
+        offset_x: m.npc_config[i].offset_x - char_getPosX(),
+        offset_y: m.npc_config[i].offset_y - char_getPosY()
       })
 
 
       ' addColliderRectangle
-      m.addColliderRectangle(m.npc_config[i].col_name.toStr() + "_" + m.npc_config[i].id.toStr(), m.npc_config[i].offset_x, m.npc_config[i].offset_y, m.npc_config[i].width, m.npc_config[i].height)
+      m.addColliderRectangle(m.npc_config[i].col_name.toStr() + "_" + m.npc_config[i].id.toStr(), m.npc_config[i].offset_x - char_getPosX(), m.npc_config[i].offset_y - char_getPosY(), m.npc_config[i].width, m.npc_config[i].height)
     
     end for
 

@@ -8,16 +8,11 @@ function terrain_static(object)
         ' window initialization
         terrain_region = media_wnd.terrain_region 
 
-
         ' addAnimatedImage
         m.terrain = m.addAnimatedImage("terrain_obj", [terrain_region, invalid], { index: 0
-            offset_x: 0
-            offset_y: 0
+            offset_x: - char_getPosX(),
+            offset_y: - char_getPosY()
         })
-        
-        ' addColliderRectangle
-        m.addColliderRectangle("terrain_col", 0, 0, terrain_region.GetWidth(), terrain_region.GetHeight())
-        
 
     end function
 
