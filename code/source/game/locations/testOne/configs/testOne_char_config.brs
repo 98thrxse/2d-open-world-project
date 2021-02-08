@@ -2,8 +2,8 @@ function testOne_char_config() as object
     config = {
 
         pos: {
-            x: 640,
-            y: 360
+            x: 0,
+            y: 0
         },
 
         attributes: {

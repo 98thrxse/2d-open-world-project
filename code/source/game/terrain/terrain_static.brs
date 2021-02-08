@@ -1,18 +1,40 @@
 function terrain_static(object)
 
+    object.terrain_config = testOne_terrain_static_config() ' fix stas
+
     object.onCreate = function(args)
 
         ' createInstance
         media_wnd = m.game.createInstance("terrain_media")
 
         ' window initialization
-        terrain_region = media_wnd.terrain_region 
+        m.terrain_region = media_wnd.terrain_region 
+
+        ' position
+        m.x -= char_getPosX()
+        m.y -= char_getPosY()
 
         ' addAnimatedImage
-        m.terrain = m.addAnimatedImage("terrain_obj", [terrain_region, invalid], { index: 0
-            offset_x: 0 - char_getPosX(),
-            offset_y: 0 - char_getPosY()
+        m.terrain = m.addAnimatedImage(m.terrain_config[0].obj_name.toStr() + "_" + m.terrain_config[0].id.toStr(), [m.terrain_region, invalid], { index: 0
+            offset_x: m.terrain_config[0].offset_x,
+            offset_y: m.terrain_config[0].offset_y
         })
+
+    end function
+
+    object.onUpdate = function(dt as float)
+
+        if m.x < - char_getPosX()
+            if m.getImage(m.terrain_config[1].obj_name.toStr() + "_" + m.terrain_config[1].id.toStr()) = invalid
+                ' addAnimatedImage
+                m.addAnimatedImage(m.terrain_config[1].obj_name.toStr() + "_" + m.terrain_config[1].id.toStr(), [m.terrain_region, invalid], { index: 0
+                    offset_x: m.terrain_config[1].offset_x,
+                    offset_y: m.terrain_config[1].offset_y
+                })
+
+            end if
+
+        end if
 
     end function
 

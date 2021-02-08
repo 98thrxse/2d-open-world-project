@@ -8,19 +8,23 @@ function obj_static(object)
         media_wnd = m.game.createInstance("obj_media")
 
         ' window initialization
-        obj_region = media_wnd.obj_region 
+        obj_region = media_wnd.obj_region
+
+        ' position
+        m.x -= char_getPosX()
+        m.y -= char_getPosY()
 
         ' loading map config to create static obj
         for i = 0 to m.obj_config.Count() - 1
 
             ' addAnimatedImage
             m.obj = m.addAnimatedImage(m.obj_config[i].obj_name.toStr() + "_" + m.obj_config[i].id.toStr(), [obj_region, invalid], { index: 0
-                offset_x: m.obj_config[i].offset_x - char_getPosX(),
-                offset_y: m.obj_config[i].offset_y - char_getPosY()
+                offset_x: m.obj_config[i].offset_x,
+                offset_y: m.obj_config[i].offset_y
             })
             
             ' addColliderRectangle
-            m.addColliderRectangle(m.obj_config[i].col_name.toStr() + "_" + m.obj_config[i].id.toStr(), m.obj_config[i].offset_x - char_getPosX(), m.obj_config[i].offset_y - char_getPosY(), m.obj_config[i].width, m.obj_config[i].height)
+            m.addColliderRectangle(m.obj_config[i].col_name.toStr() + "_" + m.obj_config[i].id.toStr(), m.obj_config[i].offset_x, m.obj_config[i].offset_y, m.obj_config[i].width, m.obj_config[i].height)
         
         end for
 
