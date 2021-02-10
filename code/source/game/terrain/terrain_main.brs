@@ -3,7 +3,7 @@ function terrain_main(object)
     object.onCreate = function(args)
         
         ' createInstance
-        m.game.createInstance("terrain_static")
+        m.game.createInstance("terrain_obj")
 
     end function
     

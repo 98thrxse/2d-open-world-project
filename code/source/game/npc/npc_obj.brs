@@ -20,8 +20,8 @@ function npc_obj(object)
     walk_side2_region = m.media_wnd.walk_side2_region
 
     ' position
-    m.x -= char_getPosX()
-    m.y -= char_getPosY()
+    m.x = m.game.screen.GetWidth() / 2 - char_getPosX()
+    m.y = m.game.screen.GetHeight() / 2 - char_getPosY()
 
     ' loading map config to create npc
     for i = 0 to m.npc_config.Count() - 1
@@ -37,6 +37,19 @@ function npc_obj(object)
       m.addColliderRectangle(m.npc_config[i].col_name.toStr() + "_" + m.npc_config[i].id.toStr(), m.npc_config[i].offset_x, m.npc_config[i].offset_y, m.npc_config[i].width, m.npc_config[i].height)
     
     end for
+
+  end function
+
+  object.posXY = function()
+
+    char_setPosX(m.game.screen.GetWidth() / 2 - m.x)
+    char_setPosY(m.game.screen.GetHeight() / 2 - m.y)
+
+  end function
+
+  object.onUpdate = function(dt as float)
+
+    m.posXY()
 
   end function
 

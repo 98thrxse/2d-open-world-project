@@ -1,4 +1,4 @@
-function testOne_terrain_static_config() as object
+function testOne_terrain_config() as object
     config = [
 
         {

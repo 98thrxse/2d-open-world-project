@@ -11,8 +11,8 @@ function obj_static(object)
         obj_region = media_wnd.obj_region
 
         ' position
-        m.x -= char_getPosX()
-        m.y -= char_getPosY()
+        m.x = m.game.screen.GetWidth() / 2 - char_getPosX()
+        m.y = m.game.screen.GetHeight() / 2 - char_getPosY()
 
         ' loading map config to create static obj
         for i = 0 to m.obj_config.Count() - 1
@@ -27,6 +27,19 @@ function obj_static(object)
             m.addColliderRectangle(m.obj_config[i].col_name.toStr() + "_" + m.obj_config[i].id.toStr(), m.obj_config[i].offset_x, m.obj_config[i].offset_y, m.obj_config[i].width, m.obj_config[i].height)
         
         end for
+
+    end function
+    
+    object.posXY = function()
+
+        char_setPosX(m.game.screen.GetWidth() / 2 - m.x)
+        char_setPosY(m.game.screen.GetHeight() / 2 - m.y)
+
+    end function
+
+    object.onUpdate = function(dt as float)
+
+        m.posXY()
 
     end function
 
