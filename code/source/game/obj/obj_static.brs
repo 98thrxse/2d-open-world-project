@@ -65,46 +65,53 @@ function obj_static(object)
 
         ' held
         if code = 1002 ' up
-
             if m.game.char.getUpCollider() = false
                 m.y += m.game.char.getUpSpeed()
-                m.game.char.setDownCollider(false)
-                m.game.char.setLeftCollider(false)
-                m.game.char.setRightCollider(false)
 
             end if
                         
 		else if code = 1003 ' down
-
             if m.game.char.getDownCollider() = false
                 m.y -= m.game.char.getDownSpeed()
-                m.game.char.setUpCollider(false)
-                m.game.char.setLeftCollider(false)
-                m.game.char.setRightCollider(false)
 
             end if
             
             
 		else if code = 1004 ' left
-
             if m.game.char.getLeftCollider() = false
                 m.x += m.game.char.getLeftSpeed()
-                m.game.char.setUpCollider(false)
-                m.game.char.setDownCollider(false)
-                m.game.char.setRightCollider(false)
 
             end if
             
         else if code = 1005 ' right
-
             if m.game.char.getRightCollider() = false
                 m.x -= m.game.char.getRightSpeed()
-                m.game.char.setUpCollider(false)
-                m.game.char.setDownCollider(false)
-                m.game.char.setLeftCollider(false)
 
             end if
             
+        end if
+
+        ' released
+        if code = 102
+            m.game.char.setDownCollider(false)
+            m.game.char.setLeftCollider(false)
+            m.game.char.setRightCollider(false)
+
+        else if code = 103
+            m.game.char.setUpCollider(false)
+            m.game.char.setLeftCollider(false)
+            m.game.char.setRightCollider(false)
+
+        else if code = 104
+            m.game.char.setUpCollider(false)
+            m.game.char.setDownCollider(false)
+            m.game.char.setRightCollider(false)
+
+        else if code = 105
+            m.game.char.setUpCollider(false)
+            m.game.char.setDownCollider(false)
+            m.game.char.setLeftCollider(false)
+
         end if
 
     end function

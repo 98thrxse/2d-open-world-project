@@ -78,7 +78,6 @@ function npc_obj(object)
 
       if m.game.char.getUpCollider() = false
         m.y += m.game.char.getUpSpeed()
-        m.game.char.setNPCCollider(invalid)
 
       end if
                     
@@ -86,7 +85,6 @@ function npc_obj(object)
 
       if m.game.char.getDownCollider() = false
         m.y -= m.game.char.getDownSpeed()
-        m.game.char.setNPCCollider(invalid)
 
       end if
         
@@ -95,7 +93,6 @@ function npc_obj(object)
 
       if m.game.char.getLeftCollider() = false
         m.x += m.game.char.getLeftSpeed()
-        m.game.char.setNPCCollider(invalid)
 
       end if
         
@@ -103,10 +100,28 @@ function npc_obj(object)
 
       if m.game.char.getRightCollider() = false
         m.x -= m.game.char.getRightSpeed()
-        m.game.char.setNPCCollider(invalid)
 
       end if
         
+    end if
+
+    ' released
+    if code = 102
+      m.game.char.setNPCCollider(invalid)
+
+
+    else if code = 103
+      m.game.char.setNPCCollider(invalid)
+
+
+    else if code = 104
+      m.game.char.setNPCCollider(invalid)
+
+
+    else if code = 105
+      m.game.char.setNPCCollider(invalid)
+
+
     end if
 
   end function
