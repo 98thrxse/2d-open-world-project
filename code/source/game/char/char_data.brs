@@ -148,6 +148,8 @@ function char_data() as object
 end function
 
 
+' char data to save
+
 function char_getPosX() as integer
     return m._params.pos.x
 end function
@@ -372,7 +374,7 @@ end sub
 
 
 
-' SAVE & LOAD CHARACTER - fix stas
+' save & load functions - fix stas
 
 Function LoadSavedGame() as Dynamic
 json = GetRegistryString("SavedGame")
@@ -391,7 +393,7 @@ End Sub
 
 
 
-' REGISTRY FUNCTIONS
+' registry functions
 
 Sub SaveRegistryString(key As String, value As String)
 sec = CreateObject("roRegistrySection", "PoP")

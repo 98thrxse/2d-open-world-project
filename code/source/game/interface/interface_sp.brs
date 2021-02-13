@@ -12,7 +12,7 @@ function interface_sp(object)
         ' getFont
         sp_font = m.game.getFont("VT323-36")
         
-        DrawText(canvas, m.game.user.getSP().toStr() + "%", canvas.GetWidth() / 2 + 100, canvas.GetWidth() / 2, sp_font, "center", &h55ff00FF)
+        DrawText(canvas, m.game.char.getSP().toStr() + "%", canvas.GetWidth() / 2 + 100, canvas.GetWidth() / 2, sp_font, "center", &h55ff00FF)
 
     end function
 

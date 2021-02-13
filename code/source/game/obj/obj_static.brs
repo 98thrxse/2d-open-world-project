@@ -11,8 +11,8 @@ function obj_static(object)
         obj_region = media_wnd.obj_region
 
         ' position
-        m.x = m.game.screen.GetWidth() / 2 - m.game.user.getPosX()
-        m.y = m.game.screen.GetHeight() / 2 - m.game.user.getPosY()
+        m.x = m.game.screen.GetWidth() / 2 - m.game.char.getPosX()
+        m.y = m.game.screen.GetHeight() / 2 - m.game.char.getPosY()
 
         ' loading map config to create static obj
         for i = 0 to m.obj_config.Count() - 1
@@ -32,8 +32,8 @@ function obj_static(object)
     
     object.posXY = function()
 
-        m.game.user.setPosX(m.game.screen.GetWidth() / 2 - m.x)
-        m.game.user.setPosY(m.game.screen.GetHeight() / 2 - m.y)
+        m.game.char.setPosX(m.game.screen.GetWidth() / 2 - m.x)
+        m.game.char.setPosY(m.game.screen.GetHeight() / 2 - m.y)
 
     end function
 
@@ -46,16 +46,16 @@ function obj_static(object)
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
         if other_instance.name = "char_obj" and other_collider_name = "char_col_up"
-            m.game.user.setUpCollider(true)
+            m.game.char.setUpCollider(true)
 
         else if other_instance.name = "char_obj" and other_collider_name = "char_col_down"
-            m.game.user.setDownCollider(true)
+            m.game.char.setDownCollider(true)
 
         else if other_instance.name = "char_obj" and other_collider_name = "char_col_left"
-            m.game.user.setLeftCollider(true)
+            m.game.char.setLeftCollider(true)
 
         else if other_instance.name = "char_obj" and other_collider_name = "char_col_right"
-            m.game.user.setRightCollider(true)
+            m.game.char.setRightCollider(true)
 
         end if
 
@@ -66,42 +66,42 @@ function obj_static(object)
         ' held
         if code = 1002 ' up
 
-            if m.game.user.getUpCollider() = false
-                m.y += m.game.user.getUpSpeed()
-                m.game.user.setDownCollider(false)
-                m.game.user.setLeftCollider(false)
-                m.game.user.setRightCollider(false)
+            if m.game.char.getUpCollider() = false
+                m.y += m.game.char.getUpSpeed()
+                m.game.char.setDownCollider(false)
+                m.game.char.setLeftCollider(false)
+                m.game.char.setRightCollider(false)
 
             end if
                         
 		else if code = 1003 ' down
 
-            if m.game.user.getDownCollider() = false
-                m.y -= m.game.user.getDownSpeed()
-                m.game.user.setUpCollider(false)
-                m.game.user.setLeftCollider(false)
-                m.game.user.setRightCollider(false)
+            if m.game.char.getDownCollider() = false
+                m.y -= m.game.char.getDownSpeed()
+                m.game.char.setUpCollider(false)
+                m.game.char.setLeftCollider(false)
+                m.game.char.setRightCollider(false)
 
             end if
             
             
 		else if code = 1004 ' left
 
-            if m.game.user.getLeftCollider() = false
-                m.x += m.game.user.getLeftSpeed()
-                m.game.user.setUpCollider(false)
-                m.game.user.setDownCollider(false)
-                m.game.user.setRightCollider(false)
+            if m.game.char.getLeftCollider() = false
+                m.x += m.game.char.getLeftSpeed()
+                m.game.char.setUpCollider(false)
+                m.game.char.setDownCollider(false)
+                m.game.char.setRightCollider(false)
 
             end if
             
         else if code = 1005 ' right
 
-            if m.game.user.getRightCollider() = false
-                m.x -= m.game.user.getRightSpeed()
-                m.game.user.setUpCollider(false)
-                m.game.user.setDownCollider(false)
-                m.game.user.setLeftCollider(false)
+            if m.game.char.getRightCollider() = false
+                m.x -= m.game.char.getRightSpeed()
+                m.game.char.setUpCollider(false)
+                m.game.char.setDownCollider(false)
+                m.game.char.setLeftCollider(false)
 
             end if
             

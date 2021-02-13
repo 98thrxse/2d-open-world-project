@@ -11,22 +11,22 @@ function terrain_obj(object)
         m.terrain_region = media_wnd.terrain_region
 
         ' position
-        m.x = m.game.screen.GetWidth() / 2 - m.game.user.getPosX()
-        m.y = m.game.screen.GetHeight() / 2 - m.game.user.getPosY()
+        m.x = m.game.screen.GetWidth() / 2 - m.game.char.getPosX()
+        m.y = m.game.screen.GetHeight() / 2 - m.game.char.getPosY()
 
     end function
 
     object.posXY = function()
 
-        m.game.user.setPosX(m.game.screen.GetWidth() / 2 - m.x)
-        m.game.user.setPosY(m.game.screen.GetHeight() / 2 - m.y)
+        m.game.char.setPosX(m.game.screen.GetWidth() / 2 - m.x)
+        m.game.char.setPosY(m.game.screen.GetHeight() / 2 - m.y)
 
     end function
 
 
     object.terrainGen = function()
 
-        if m.game.user.getPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[0].offset_x
+        if m.game.char.getPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[0].offset_x
             if m.getImage(m.terrain_config[0].obj_name.toStr() + "_" + m.terrain_config[0].id.toStr()) = invalid
                 m.addAnimatedImage(m.terrain_config[0].obj_name.toStr() + "_" + m.terrain_config[0].id.toStr(), [m.terrain_region, invalid], { index: 0
                     offset_x: m.terrain_config[0].offset_x,
@@ -35,7 +35,7 @@ function terrain_obj(object)
 
             end if
 
-        else if m.game.user.getPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[m.terrain_config.Count() - 1].offset_x
+        else if m.game.char.getPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[m.terrain_config.Count() - 1].offset_x
             if m.getImage(m.terrain_config[m.terrain_config.Count() - 1].obj_name.toStr() + "_" + m.terrain_config[m.terrain_config.Count() - 1].id.toStr()) = invalid
                 m.addAnimatedImage(m.terrain_config[m.terrain_config.Count() - 1].obj_name.toStr() + "_" + m.terrain_config[m.terrain_config.Count() - 1].id.toStr(), [m.terrain_region, invalid], { index: 0
                     offset_x: m.terrain_config[m.terrain_config.Count() - 1].offset_x,
@@ -46,7 +46,7 @@ function terrain_obj(object)
 
         else
             for i = 0 to m.terrain_config.Count() - 2
-                if m.game.user.getPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[i].offset_x and m.game.user.getPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[i + 1].offset_x
+                if m.game.char.getPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[i].offset_x and m.game.char.getPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[i + 1].offset_x
     
                     if m.getImage(m.terrain_config[i].obj_name.toStr() + "_" + m.terrain_config[i].id.toStr()) = invalid
                         m.addAnimatedImage(m.terrain_config[i].obj_name.toStr() + "_" + m.terrain_config[i].id.toStr(), [m.terrain_region, invalid], { index: 0
@@ -87,29 +87,29 @@ function terrain_obj(object)
         ' held
         if code = 1002 ' up
 
-            if m.game.user.getUpCollider() = false
-                m.y += m.game.user.getUpSpeed()
+            if m.game.char.getUpCollider() = false
+                m.y += m.game.char.getUpSpeed()
 
             end if
                         
 		else if code = 1003 ' down
 
-            if m.game.user.getDownCollider() = false
-                m.y -= m.game.user.getDownSpeed()
+            if m.game.char.getDownCollider() = false
+                m.y -= m.game.char.getDownSpeed()
 
             end if
             
 		else if code = 1004 ' left
 
-            if m.game.user.getLeftCollider() = false
-                m.x += m.game.user.getLeftSpeed()
+            if m.game.char.getLeftCollider() = false
+                m.x += m.game.char.getLeftSpeed()
 
             end if
             
         else if code = 1005 ' right
 
-            if m.game.user.getRightCollider() = false
-                m.x -= m.game.user.getRightSpeed()
+            if m.game.char.getRightCollider() = false
+                m.x -= m.game.char.getRightSpeed()
 
             end if
             

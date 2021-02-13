@@ -11,7 +11,7 @@ function action_char_npc(object)
         
         ' held
         if code = 1006
-            if m.game.user.getSP() >= m.game.user.getSPDamage()
+            if m.game.char.getSP() >= m.game.char.getSPDamage()
                 m.actionHPDamage()
 
             end if
@@ -23,11 +23,11 @@ function action_char_npc(object)
     object.actionHPDamage = function()
 
         if m.hp_damage_timer = invalid
-            if m.game.user.getNPCCollider() <> invalid
-                id = right(m.game.user.getNPCCollider(), 1).toInt()
-                m.npc_config[id].health -= m.game.user.getHPDamage()
+            if m.game.char.getNPCCollider() <> invalid
+                id = right(m.game.char.getNPCCollider(), 1).toInt()
+                m.npc_config[id].health -= m.game.char.getHPDamage()
 
-                print m.game.user.getNPCCollider() + " was attacked"
+                print m.game.char.getNPCCollider() + " was attacked"
                 print m.npc_config[id].health
 
             end if
@@ -37,7 +37,7 @@ function action_char_npc(object)
 
         end if
         
-        if m.hp_damage_timer.TotalMilliseconds() + 1 >= m.game.user.getSPDamageTime()
+        if m.hp_damage_timer.TotalMilliseconds() + 1 >= m.game.char.getSPDamageTime()
             m.hp_damage_timer = invalid
 
         end if
