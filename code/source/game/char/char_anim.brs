@@ -53,8 +53,8 @@ function char_anim(object)
 			m.timer.Mark()
 		end if
 
-		if m.timer.TotalMilliseconds() + 1 >= arr.Count() * char_getAnimTime() then m.timer.Mark()
-		m.obj.index = arr[int(m.timer.TotalMilliseconds() / char_getAnimTime())]
+		if m.timer.TotalMilliseconds() + 1 >= arr.Count() * m.game.user.getAnimTime() then m.timer.Mark()
+		m.obj.index = arr[int(m.timer.TotalMilliseconds() / m.game.user.getAnimTime())]
 
 	end function
     

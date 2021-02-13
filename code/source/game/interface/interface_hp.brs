@@ -12,7 +12,7 @@ function interface_hp(object)
         ' getFont
         hp_font = m.game.getFont("VT323-36")
         
-        DrawText(canvas, char_getHP().toStr() + "%", canvas.GetWidth() / 2, canvas.GetWidth() / 2, hp_font, "center", &hFF0000FF)
+        DrawText(canvas, m.game.user.getHP().toStr() + "%", canvas.GetWidth() / 2, canvas.GetWidth() / 2, hp_font, "center", &hFF0000FF)
 
     end function
 

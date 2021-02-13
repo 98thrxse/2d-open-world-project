@@ -9,7 +9,7 @@ function action_char(object)
         
         ' held
         if code = 1006
-            if char_getSP() >= char_getSPDamage()
+            if m.game.user.getSP() >= m.game.user.getSPDamage()
                 m.actionSPDamage()
 
             end if
@@ -21,13 +21,13 @@ function action_char(object)
     object.actionSPDamage = function()
 
         if m.sp_damage_timer = invalid
-            char_setSP(char_getSP() - char_getSPDamage())
+            m.game.user.setSP(m.game.user.getSP() - m.game.user.getSPDamage())
 			m.sp_damage_timer = CreateObject("roTimeSpan")
             m.sp_damage_timer.Mark()
 
         end if
 
-        if m.sp_damage_timer.TotalMilliseconds() + 1 >= char_getSPDamageTime()
+        if m.sp_damage_timer.TotalMilliseconds() + 1 >= m.game.user.getSPDamageTime()
             m.sp_damage_timer = invalid
 
         end if
@@ -42,8 +42,8 @@ function action_char(object)
 
         end if
 
-        if m.sp_regen_timer.TotalMilliseconds() + 1 >= char_getSPRegenTime()
-            char_setSP(char_getSP() + char_getSPRegen())
+        if m.sp_regen_timer.TotalMilliseconds() + 1 >= m.game.user.getSPRegenTime()
+            m.game.user.setSP(m.game.user.getSP() + m.game.user.getSPRegen())
             m.sp_regen_timer = invalid
 
         end if
@@ -53,7 +53,7 @@ function action_char(object)
 
     object.onUpdate = function(dt as float)
 
-        if char_getSP() < 100 ' fix stas
+        if m.game.user.getSP() < 100 ' fix stas
             m.actionSPRegen()
 
         end if

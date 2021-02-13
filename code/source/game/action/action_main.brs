@@ -4,6 +4,7 @@ function action_main(object)
 
 		' createInstance
         m.game.createInstance("action_char")
+        m.game.createInstance("action_npc")
         m.game.createInstance("action_char_npc")
 
 	end function

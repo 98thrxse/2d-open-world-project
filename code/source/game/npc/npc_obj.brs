@@ -20,8 +20,8 @@ function npc_obj(object)
     walk_side2_region = m.media_wnd.walk_side2_region
 
     ' position
-    m.x = m.game.screen.GetWidth() / 2 - char_getPosX()
-    m.y = m.game.screen.GetHeight() / 2 - char_getPosY()
+    m.x = m.game.screen.GetWidth() / 2 - m.game.user.getPosX()
+    m.y = m.game.screen.GetHeight() / 2 - m.game.user.getPosY()
 
     ' loading map config to create npc
     for i = 0 to m.npc_config.Count() - 1
@@ -42,8 +42,8 @@ function npc_obj(object)
 
   object.posXY = function()
 
-    char_setPosX(m.game.screen.GetWidth() / 2 - m.x)
-    char_setPosY(m.game.screen.GetHeight() / 2 - m.y)
+    m.game.user.setPosX(m.game.screen.GetWidth() / 2 - m.x)
+    m.game.user.setPosY(m.game.screen.GetHeight() / 2 - m.y)
 
   end function
 
@@ -56,20 +56,16 @@ function npc_obj(object)
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
     if other_instance.name = "char_obj" and other_collider_name = "char_col_up"
-      ' char_setUpCollider(true)
-      char_setNPCCollider(collider_name)
+      m.game.user.setNPCCollider(collider_name)
 
     else if other_instance.name = "char_obj" and other_collider_name = "char_col_down"
-      ' char_setDownCollider(true)
-      char_setNPCCollider(collider_name)
+      m.game.user.setNPCCollider(collider_name)
 
     else if other_instance.name = "char_obj" and other_collider_name = "char_col_left"
-      ' char_setLeftCollider(true)
-      char_setNPCCollider(collider_name)
+      m.game.user.setNPCCollider(collider_name)
 
     else if other_instance.name = "char_obj" and other_collider_name = "char_col_right"
-      ' char_setRightCollider(true)
-      char_setNPCCollider(collider_name)
+      m.game.user.setNPCCollider(collider_name)
 
     end if
 
@@ -80,46 +76,34 @@ function npc_obj(object)
     ' held
     if code = 1002 ' up
 
-      if char_getUpCollider() = false
-        m.y += char_getUpSpeed()
-        ' char_setDownCollider(false)
-        ' char_setLeftCollider(false)
-        ' char_setRightCollider(false)
-        char_setNPCCollider(invalid)
+      if m.game.user.getUpCollider() = false
+        m.y += m.game.user.getUpSpeed()
+        m.game.user.setNPCCollider(invalid)
 
       end if
                     
     else if code = 1003 ' down
 
-      if char_getDownCollider() = false
-        m.y -= char_getDownSpeed()
-        ' char_setUpCollider(false)
-        ' char_setLeftCollider(false)
-        ' char_setRightCollider(false)
-        char_setNPCCollider(invalid)
+      if m.game.user.getDownCollider() = false
+        m.y -= m.game.user.getDownSpeed()
+        m.game.user.setNPCCollider(invalid)
 
       end if
         
         
     else if code = 1004 ' left
 
-      if char_getLeftCollider() = false
-        m.x += char_getLeftSpeed()
-        ' char_setUpCollider(false)
-        ' char_setDownCollider(false)
-        ' char_setRightCollider(false)
-        char_setNPCCollider(invalid)
+      if m.game.user.getLeftCollider() = false
+        m.x += m.game.user.getLeftSpeed()
+        m.game.user.setNPCCollider(invalid)
 
       end if
         
     else if code = 1005 ' right
 
-      if char_getRightCollider() = false
-        m.x -= char_getRightSpeed()
-        ' char_setUpCollider(false)
-        ' char_setDownCollider(false)
-        ' char_setLeftCollider(false)
-        char_setNPCCollider(invalid)
+      if m.game.user.getRightCollider() = false
+        m.x -= m.game.user.getRightSpeed()
+        m.game.user.setNPCCollider(invalid)
 
       end if
         

@@ -1,6 +1,6 @@
 function char_data() as object
 
-    m.data = {
+    this = {
 
         'pos
         getPosX: char_getPosX
@@ -81,11 +81,16 @@ function char_data() as object
         getRightSpeed: char_getRightSpeed
         setRightSpeed: char_setRightSpeed
 
-        params: invalid
+        _params: invalid
     }
 
-    if m.data.params = invalid
-        m.data.params = {
+    this._params = LoadSavedGame()
+    this._build = "1.0.0"
+
+    if this._params = invalid OR this._params.version <> this._build
+        SaveGame(invalid)
+
+        this._params = {
 
             pos: {
                 x: 0,
@@ -129,211 +134,275 @@ function char_data() as object
                 down: 3,
                 left: 3,
                 right: 3
-            }
+            },
+
+            version: this._build
         }
+
+        SaveGame(m._params)
 
     end if
 
-    return m.data
+    return this
 
 end function
 
+
 function char_getPosX() as integer
-    return m.data.params.pos.x
+    return m._params.pos.x
 end function
 
 sub char_setPosX(x as integer)
-    m.data.params.pos.x = x
+    m._params.pos.x = x
+    SaveGame(m._params)
 end sub
 
 
 function char_getPosY() as integer
-    return m.data.params.pos.y
+    return m._params.pos.y
 end function
 
 sub char_setPosY(y as integer)
-    m.data.params.pos.y = y
+    m._params.pos.y = y
+    SaveGame(m._params)
 end sub
 
 
 
 function char_getHP() as integer
-    return m.data.params.attributes.hp
+    return m._params.attributes.hp
 end function
 
 sub char_setHP(hp as integer)
-    m.data.params.attributes.hp = hp
+    m._params.attributes.hp = hp
+    SaveGame(m._params)
 end sub
 
 
 function char_getSP() as integer
-    return m.data.params.attributes.sp
+    return m._params.attributes.sp
 end function
 
 sub char_setSP(sp as integer)
-    m.data.params.attributes.sp = sp
+    m._params.attributes.sp = sp
+    SaveGame(m._params)
 end sub
 
 
 function char_getHPDamage() as integer
-    return m.data.params.damage.hp
+    return m._params.damage.hp
 end function
 
 sub char_setHPDamage(hp as integer)
-    m.data.params.damage.hp = hp
+    m._params.damage.hp = hp
+    SaveGame(m._params)
 end sub
 
 
 function char_getSPDamage() as integer
-    return m.data.params.damage.sp
+    return m._params.damage.sp
 end function
 
 sub char_setSPDamage(sp as integer)
-    m.data.params.damage.sp = sp
+    m._params.damage.sp = sp
+    SaveGame(m._params)
 end sub
 
 
 function char_getHPDamageTime() as integer
-    return m.data.params.damage.hp_time
+    return m._params.damage.hp_time
 end function
 
 sub char_setHPDamageTime(hp_time as integer)
-    m.data.params.damage.hp_time = hp_time
+    m._params.damage.hp_time = hp_time
+    SaveGame(m._params)
 end sub
 
 function char_getSPDamageTime() as integer
-    return m.data.params.damage.sp_time
+    return m._params.damage.sp_time
 end function
 
 sub char_setSPDamageTime(sp_time as integer)
-    m.data.params.damage.sp_time = sp_time
+    m._params.damage.sp_time = sp_time
+    SaveGame(m._params)
 end sub
 
 
 
 function char_getHPRegen() as integer
-    return m.data.params.regen.hp
+    return m._params.regen.hp
 end function
 
 sub char_setHPRegen(hp as integer)
-    m.data.params.regen.hp = hp
+    m._params.regen.hp = hp
+    SaveGame(m._params)
 end sub
 
 
 function char_getSPRegen() as integer
-    return m.data.params.regen.sp
+    return m._params.regen.sp
 end function
 
 sub char_setSPRegen(sp as integer)
-    m.data.params.regen.sp = sp
+    m._params.regen.sp = sp
+    SaveGame(m._params)
 end sub
 
 
 function char_getHPRegenTime() as integer
-    return m.data.params.regen.hp_time
+    return m._params.regen.hp_time
 end function
 
 sub char_setHPRegenTime(hp_time as integer)
-    m.data.params.regen.hp_time = hp_time
+    m._params.regen.hp_time = hp_time
+    SaveGame(m._params)
 end sub
 
 function char_getSPRegenTime() as integer
-    return m.data.params.regen.sp_time
+    return m._params.regen.sp_time
 end function
 
 sub char_setSPRegenTime(sp_time as integer)
-    m.data.params.regen.sp_time = sp_time
+    m._params.regen.sp_time = sp_time
+    SaveGame(m._params)
 end sub
 
 
 
 function char_getAnimTime() as integer
-    return m.data.params.anim.time
+    return m._params.anim.time
 end function
 
 sub char_setAnimTime(time as integer)
-    m.data.params.anim.time = time
+    m._params.anim.time = time
+    SaveGame(m._params)
 end sub
 
 
 
 function char_getNPCCollider() as object
-    return m.data.params.collider.npc
+    return m._params.collider.npc
 end function
 
 sub char_setNPCCollider(id as object) 
-    m.data.params.collider.npc = id
+    m._params.collider.npc = id
+    SaveGame(m._params)
 end sub
 
 
 function char_getUpCollider() as boolean
-    return m.data.params.collider.up
+    return m._params.collider.up
 end function
 
 sub char_setUpCollider(collider as boolean) 
-    m.data.params.collider.up = collider
+    m._params.collider.up = collider
+    SaveGame(m._params)
 end sub
 
 
 function char_getDownCollider() as boolean
-    return m.data.params.collider.down
+    return m._params.collider.down
 end function
 
 sub char_setDownCollider(collider as boolean) 
-    m.data.params.collider.down = collider
+    m._params.collider.down = collider
+    SaveGame(m._params)
 end sub
 
 
 function char_getLeftCollider() as boolean
-    return m.data.params.collider.left
+    return m._params.collider.left
 end function
 
 sub char_setLeftCollider(collider as boolean) 
-    m.data.params.collider.left = collider
+    m._params.collider.left = collider
+    SaveGame(m._params)
 end sub
 
 
 function char_getRightCollider() as boolean
-    return m.data.params.collider.right
+    return m._params.collider.right
 end function
 
 sub char_setRightCollider(collider as boolean) 
-    m.data.params.collider.right = collider
+    m._params.collider.right = collider
+    SaveGame(m._params)
 end sub
 
 
 
 function char_getUpSpeed() as object
-    return m.data.params.speed.up
+    return m._params.speed.up
 end function
 
 sub char_setUpSpeed(speed as object) 
-    m.data.params.speed.up = speed
+    m._params.speed.up = speed
+    SaveGame(m._params)
 end sub
 
 
 function char_getDownSpeed() as object
-    return m.data.params.speed.down
+    return m._params.speed.down
 end function
 
 sub char_setDownSpeed(speed as object) 
-    m.data.params.speed.down = speed
+    m._params.speed.down = speed
+    SaveGame(m._params)
 end sub
 
 
 function char_getLeftSpeed() as object
-    return m.data.params.speed.left
+    return m._params.speed.left
 end function
 
 sub char_setLeftSpeed(speed as object) 
-    m.data.params.speed.left = speed
+    m._params.speed.left = speed
+    SaveGame(m._params)
 end sub
 
 
 function char_getRightSpeed() as object
-    return m.data.params.speed.right
+    return m._params.speed.right
 end function
 
 sub char_setRightSpeed(speed as object) 
-    m.data.params.speed.right = speed
+    m._params.speed.right = speed
+    SaveGame(m._params)
 end sub
+
+
+
+' SAVE & LOAD CHARACTER - fix stas
+
+Function LoadSavedGame() as Dynamic
+json = GetRegistryString("SavedGame")
+if json <> ""
+    obj = ParseJSON(json)
+    if obj <> invalid and obj.savedGame <> invalid
+        return obj.savedGame
+    end if
+end if
+return invalid
+End Function
+
+Sub SaveGame(game as Object)
+SaveRegistryString("SavedGame", FormatJSON({savedGame: game}, 1))
+End Sub
+
+
+
+' REGISTRY FUNCTIONS
+
+Sub SaveRegistryString(key As String, value As String)
+sec = CreateObject("roRegistrySection", "PoP")
+sec.Write(key, value)
+sec.Flush()
+End Sub
+
+Function GetRegistryString(key as String, default = "") As String
+sec = CreateObject("roRegistrySection", "PoP")
+if sec.Exists(key)
+    return sec.Read(key)
+end if
+return default
+End Function
