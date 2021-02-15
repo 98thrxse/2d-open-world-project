@@ -2,6 +2,8 @@ function npc_init(object)
 
 	object.onCreate = function(args)
 
+		m.game.npc = npc_data()
+
 		' defineObject
 		m.game.defineObject("npc_main", npc_main)
 		m.game.defineObject("npc_media", npc_media)

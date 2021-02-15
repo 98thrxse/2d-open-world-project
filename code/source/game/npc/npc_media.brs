@@ -15,6 +15,8 @@ function npc_media(object)
       m.game.loadBitmap("walk_back2", "pkg:/media/npc/sprites/walk_back2.png")
       m.game.loadBitmap("walk_side1", "pkg:/media/npc/sprites/walk_side1.png")
       m.game.loadBitmap("walk_side2", "pkg:/media/npc/sprites/walk_side2.png")
+
+      m.game.loadBitmap("beaten", "pkg:/media/npc/sprites/beaten.png")
   
   
       ' getBitmap
@@ -28,6 +30,9 @@ function npc_media(object)
       walk_back2_bitmap = m.game.getBitmap("walk_back2")
       walk_side1_bitmap = m.game.getBitmap("walk_side1")
       walk_side2_bitmap = m.game.getBitmap("walk_side2")
+
+      beaten_bitmap = m.game.getBitmap("beaten")
+
   
       ' roRegion
       m.stand_front_region = CreateObject("roRegion", stand_front_bitmap, 0, 0, stand_front_bitmap.GetWidth(), stand_front_bitmap.GetHeight())
@@ -40,6 +45,8 @@ function npc_media(object)
       m.walk_back2_region = CreateObject("roRegion", walk_back2_bitmap, 0, 0, walk_back2_bitmap.GetWidth(), walk_back2_bitmap.GetHeight())
       m.walk_side1_region = CreateObject("roRegion", walk_side1_bitmap, 0, 0, walk_side1_bitmap.GetWidth(), walk_side1_bitmap.GetHeight())
       m.walk_side2_region = CreateObject("roRegion", walk_side2_bitmap, 0, 0, walk_side2_bitmap.GetWidth(), walk_side2_bitmap.GetHeight())
+
+      m.beaten_region = CreateObject("roRegion", beaten_bitmap, 0, 0, beaten_bitmap.GetWidth(), beaten_bitmap.GetHeight())
   
     end function
         

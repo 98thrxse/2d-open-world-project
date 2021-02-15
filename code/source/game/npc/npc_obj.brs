@@ -1,44 +1,53 @@
 function npc_obj(object)
 
-  object.npc_config = testOne_npc_config() ' fix stas
-
   object.onCreate = function(args)
 
     ' createInstance
     m.media_wnd = m.game.createInstance("npc_media")
     
     ' window initialization
-    stand_front_region = m.media_wnd.stand_front_region
-    stand_back_region = m.media_wnd.stand_back_region
-    stand_side_region = m.media_wnd.stand_side_region
+    m.stand_front_region = m.media_wnd.stand_front_region
+    m.stand_back_region = m.media_wnd.stand_back_region
+    m.stand_side_region = m.media_wnd.stand_side_region
     
-    walk_front1_region = m.media_wnd.walk_front1_region
-    walk_front2_region = m.media_wnd.walk_front2_region
-    walk_back1_region = m.media_wnd.walk_back1_region
-    walk_back2_region = m.media_wnd.walk_back2_region
-    walk_side1_region = m.media_wnd.walk_side1_region
-    walk_side2_region = m.media_wnd.walk_side2_region
+    m.walk_front1_region = m.media_wnd.walk_front1_region
+    m.walk_front2_region = m.media_wnd.walk_front2_region
+    m.walk_back1_region = m.media_wnd.walk_back1_region
+    m.walk_back2_region = m.media_wnd.walk_back2_region
+    m.walk_side1_region = m.media_wnd.walk_side1_region
+    m.walk_side2_region = m.media_wnd.walk_side2_region
+
+    m.beaten_region = m.media_wnd.beaten_region
 
     ' position
     m.x = m.game.screen.GetWidth() / 2 - m.game.char.getPosX()
     m.y = m.game.screen.GetHeight() / 2 - m.game.char.getPosY()
 
+  end function
+
+
+  object.npcGen = function()
+
     ' loading map config to create npc
-    for i = 0 to m.npc_config.Count() - 1
+    for i = 0 to m.game.npc.config.Count() - 1
+      if m.getImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr()) = invalid
+        ' addAnimatedImage
+        m.addAnimatedImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr(), [m.stand_front_region, m.stand_back_region, m.stand_side_region, m.walk_front1_region, m.walk_front2_region, m.walk_back1_region, m.walk_back2_region, m.walk_side1_region, m.walk_side2_region, m.beaten_region], { index: m.game.npc.npcGetAnim(i)
+          offset_x: m.game.npc.config[i].offset_x,
+          offset_y: m.game.npc.config[i].offset_y
+        })
+
+      end if
+
+      if m.colliders[m.game.npc.config[i].col_name.toStr() + "_" + m.game.npc.config[i].id.toStr()] = invalid
+        ' addColliderRectangle
+        m.addColliderRectangle(m.game.npc.config[i].col_name.toStr() + "_" + m.game.npc.config[i].id.toStr(), m.game.npc.config[i].offset_x, m.game.npc.config[i].offset_y, m.game.npc.config[i].width, m.game.npc.config[i].height)
+      end if
       
-      ' addAnimatedImage
-      m.obj = m.addAnimatedImage(m.npc_config[i].obj_name.toStr() + "_" + m.npc_config[i].id.toStr(), [stand_front_region, stand_back_region, stand_side_region, walk_front1_region, walk_front2_region, walk_back1_region, walk_back2_region, walk_side1_region, walk_side2_region], { index: 0
-        offset_x: m.npc_config[i].offset_x,
-        offset_y: m.npc_config[i].offset_y
-      })
-
-
-      ' addColliderRectangle
-      m.addColliderRectangle(m.npc_config[i].col_name.toStr() + "_" + m.npc_config[i].id.toStr(), m.npc_config[i].offset_x, m.npc_config[i].offset_y, m.npc_config[i].width, m.npc_config[i].height)
-    
     end for
 
   end function
+
 
   object.posXY = function()
 
@@ -50,6 +59,7 @@ function npc_obj(object)
   object.onUpdate = function(dt as float)
 
     m.posXY()
+    m.npcGen()
 
   end function
 
@@ -109,10 +119,8 @@ function npc_obj(object)
     if code = 102
       m.game.char.setNPCCollider(invalid)
 
-
     else if code = 103
       m.game.char.setNPCCollider(invalid)
-
 
     else if code = 104
       m.game.char.setNPCCollider(invalid)
@@ -120,7 +128,6 @@ function npc_obj(object)
 
     else if code = 105
       m.game.char.setNPCCollider(invalid)
-
 
     end if
 

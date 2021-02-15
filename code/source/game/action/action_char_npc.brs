@@ -1,7 +1,5 @@
 function action_char_npc(object)
 
-    object.npc_config = testOne_npc_config() ' fix stas
-
     object.onCreate = function(args)
         
     end function
@@ -25,10 +23,10 @@ function action_char_npc(object)
         if m.hp_damage_timer = invalid
             if m.game.char.getNPCCollider() <> invalid
                 id = right(m.game.char.getNPCCollider(), 1).toInt()
-                m.npc_config[id].health -= m.game.char.getHPDamage()
+                m.game.npc.npcSetHP(id, m.game.npc.npcGetHP(id) - m.game.char.getHPDamage())
 
                 print m.game.char.getNPCCollider() + " was attacked"
-                print m.npc_config[id].health
+                print m.game.npc.npcGetHP(id)
 
             end if
 

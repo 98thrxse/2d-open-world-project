@@ -14,5 +14,18 @@ function npc_anim(object)
 		m.obj = obj_wnd.obj
 
 	end function
+
+
+	object.onUpdate = function(dt as float)
+
+		for i = 0 to m.game.npc.config.Count() - 1
+
+			if m.game.npc.npcGetHP(i) <= 0
+				m.game.npc.npcSetAnim(i, 9)
+			end if
+
+		end for
+
+	end function
     
 end function
