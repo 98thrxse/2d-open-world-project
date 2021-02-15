@@ -23,10 +23,10 @@ function action_char_npc(object)
         if m.hp_damage_timer = invalid
             if m.game.char.getNPCCollider() <> invalid
                 id = right(m.game.char.getNPCCollider(), 1).toInt()
-                m.game.npc.npcSetHP(id, m.game.npc.npcGetHP(id) - m.game.char.getHPDamage())
+                m.game.npc.setHP(id, m.game.npc.getHP(id) - m.game.char.getHPDamage())
 
                 print m.game.char.getNPCCollider() + " was attacked"
-                print m.game.npc.npcGetHP(id)
+                print m.game.npc.getHP(id)
 
             end if
 

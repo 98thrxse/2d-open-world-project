@@ -8,10 +8,7 @@ function npc_anim(object)
 	object.onCreate = function(args)
 
 		' createInstance
-		obj_wnd = m.game.createInstance("npc_obj")
-
-		' window initialization
-		m.obj = obj_wnd.obj
+		m.obj_wnd = m.game.createInstance("npc_obj")
 
 	end function
 
@@ -20,9 +17,12 @@ function npc_anim(object)
 
 		for i = 0 to m.game.npc.config.Count() - 1
 
-			if m.game.npc.npcGetHP(i) <= 0
-				m.game.npc.npcSetAnim(i, 9)
+			if m.game.npc.getHP(i) <= 0
+				m.game.npc.setAnim(i, 9)
 			end if
+
+			' update npc anim
+			m.game.getInstanceByName("npc_obj").getImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr()).index = m.game.npc.getAnim(i)
 
 		end for
 

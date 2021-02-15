@@ -32,6 +32,7 @@ function testOne_main(object)
 
 
         ' anim
+        if m.map_char_config.anim.index <> invalid then m.game.char.setAnim(m.map_char_config.anim.index)
         if m.map_char_config.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.anim.time)
         
 
@@ -62,10 +63,16 @@ function testOne_main(object)
         for i = 0 to m.map_npc_config.Count() - 1
 
             ' attributes
-            if m.map_npc_config[i].hp <> invalid then m.game.npc.npcSetHP(i, m.map_npc_config[i].hp)
+            if m.map_npc_config[i].hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].hp)
+
 
             ' anim
-            if m.map_npc_config[i].index <> invalid then m.game.npc.npcSetAnim(i, m.map_npc_config[i].index)
+            if m.map_npc_config[i].index <> invalid then m.game.npc.setAnim(i, m.map_npc_config[i].index)
+
+
+            ' pos
+            if m.map_npc_config[i].x <> invalid then m.game.npc.setPosX(i, m.map_npc_config[i].x)
+            if m.map_npc_config[i].y <> invalid then m.game.npc.setPosY(i, m.map_npc_config[i].y)
 
         end for
 

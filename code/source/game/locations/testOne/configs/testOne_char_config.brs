@@ -26,6 +26,7 @@ function testOne_char_config() as object
         },
 
         anim: {
+            index: 9
             time: 100
         },
         

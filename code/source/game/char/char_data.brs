@@ -2,7 +2,7 @@ function char_data() as object
 
     this = {
 
-        'pos
+        ' pos
         getPosX: char_getPosX
         setPosX: char_setPosX
         
@@ -46,7 +46,10 @@ function char_data() as object
         setSPRegenTime: char_setSPRegenTime
 
 
-        ' animation
+        ' anim
+        getAnim: char_getAnim
+        setAnim: char_setAnim
+
         getAnimTime: char_getAnimTime
         setAnimTime: char_setAnimTime
 
@@ -117,6 +120,7 @@ function char_data() as object
             },
 
             anim: {
+                index: 0
 		        time: 100
             },
         
@@ -269,6 +273,16 @@ sub char_setSPRegenTime(sp_time as integer)
     SaveGame(m._params)
 end sub
 
+
+
+function char_getAnim() as integer
+    return m._params.anim.index
+end function
+
+sub char_setAnim(index as integer)
+    m._params.anim.index = index
+    SaveGame(m._params)
+end sub
 
 
 function char_getAnimTime() as integer
