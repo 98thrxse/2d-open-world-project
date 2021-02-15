@@ -26,7 +26,7 @@ function testOne_char_config() as object
         },
 
         anim: {
-            index: 9
+            index: invalid
             time: 100
         },
         

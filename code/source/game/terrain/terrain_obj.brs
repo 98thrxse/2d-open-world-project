@@ -26,50 +26,61 @@ function terrain_obj(object)
 
     object.terrainGen = function()
 
-        if m.game.char.getPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[0].offset_x
-            if m.getImage(m.terrain_config[0].obj_name.toStr() + "_" + m.terrain_config[0].id.toStr()) = invalid
-                m.addAnimatedImage(m.terrain_config[0].obj_name.toStr() + "_" + m.terrain_config[0].id.toStr(), [m.terrain_region, invalid], { index: 0
-                    offset_x: m.terrain_config[0].offset_x,
-                    offset_y: m.terrain_config[0].offset_y
-                })
+        id_x = []
+        id_y = []
 
-            end if
+        if m.game.char.getPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[0][0].offset_x
+            id_x.push(0)
 
-        else if m.game.char.getPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[m.terrain_config.Count() - 1].offset_x
-            if m.getImage(m.terrain_config[m.terrain_config.Count() - 1].obj_name.toStr() + "_" + m.terrain_config[m.terrain_config.Count() - 1].id.toStr()) = invalid
-                m.addAnimatedImage(m.terrain_config[m.terrain_config.Count() - 1].obj_name.toStr() + "_" + m.terrain_config[m.terrain_config.Count() - 1].id.toStr(), [m.terrain_region, invalid], { index: 0
-                    offset_x: m.terrain_config[m.terrain_config.Count() - 1].offset_x,
-                    offset_y: m.terrain_config[m.terrain_config.Count() - 1].offset_y
-                })
-
-            end if
+        else if m.game.char.getPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[0][m.terrain_config[0].Count() - 1].offset_x
+            id_x.push(m.terrain_config[0].Count() - 1)
 
         else
-            for i = 0 to m.terrain_config.Count() - 2
-                if m.game.char.getPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[i].offset_x and m.game.char.getPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[i + 1].offset_x
-    
-                    if m.getImage(m.terrain_config[i].obj_name.toStr() + "_" + m.terrain_config[i].id.toStr()) = invalid
-                        m.addAnimatedImage(m.terrain_config[i].obj_name.toStr() + "_" + m.terrain_config[i].id.toStr(), [m.terrain_region, invalid], { index: 0
-                            offset_x: m.terrain_config[i].offset_x,
-                            offset_y: m.terrain_config[i].offset_y
-                        })
-    
-                    end if
-    
-                    if m.getImage(m.terrain_config[i + 1].obj_name.toStr() + "_" + m.terrain_config[i + 1].id.toStr()) = invalid
-                        m.addAnimatedImage(m.terrain_config[i + 1].obj_name.toStr() + "_" + m.terrain_config[i + 1].id.toStr(), [m.terrain_region, invalid], { index: 0
-                            offset_x: m.terrain_config[i + 1].offset_x,
-                            offset_y: m.terrain_config[i + 1].offset_y
-                        })
-                        
-                    end if
+            for i = 0 to m.terrain_config[0].Count() - 2
+                if m.game.char.getPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[0][i].offset_x and m.game.char.getPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[0][i + 1].offset_x
+                    id_x.push(i)
+                    id_x.push(i+1) 
+                    i = m.terrain_config[0].Count()
 
-                    i = m.terrain_config.Count()
                 end if
 
             end for
-            
+
         end if
+
+        if m.game.char.getPosY() - m.game.screen.GetHeight() / 2 < m.terrain_config[0][0].offset_y
+            id_y.push(0)
+
+        else if m.game.char.getPosY() - m.game.screen.GetHeight() / 2 > m.terrain_config[m.terrain_config.Count() - 1][0].offset_y
+            id_y.push(m.terrain_config.Count() - 1)
+
+        else
+            for i = 0 to m.terrain_config.Count() - 2
+                if m.game.char.getPosY() - m.game.screen.GetHeight() / 2 > m.terrain_config[i][0].offset_y and m.game.char.getPosY() - m.game.screen.GetHeight() / 2 < m.terrain_config[i + 1][0].offset_y
+                    id_y.push(i)
+                    id_y.push(i + 1)  
+                    i = m.terrain_config.Count()
+
+                end if
+
+            end for
+
+        end if
+
+        for i = 0 to id_y.Count() - 1
+            for j = 0 to id_x.Count() - 1
+                if m.getImage(m.terrain_config[id_y[i]][id_x[j]].obj_name.toStr() + "_" + m.terrain_config[id_y[i]][id_x[j]].id.toStr()) = invalid
+                    m.addAnimatedImage(m.terrain_config[id_y[i]][id_x[j]].obj_name.toStr() + "_" + m.terrain_config[id_y[i]][id_x[j]].id.toStr(), [m.terrain_region, invalid], { index: 0
+                        offset_x: m.terrain_config[id_y[i]][id_x[j]].offset_x,
+                        offset_y: m.terrain_config[id_y[i]][id_x[j]].offset_y
+                    })
+                    
+                end if
+
+            end for
+
+        end for
+
         
     end function
 
