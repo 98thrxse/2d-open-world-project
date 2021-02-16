@@ -53,7 +53,7 @@ function action_char(object)
 
     object.onUpdate = function(dt as float)
 
-        if m.game.char.getSP() < 100 ' fix stas
+        if m.game.char.getSP() < 100
             m.actionSPRegen()
 
         end if
