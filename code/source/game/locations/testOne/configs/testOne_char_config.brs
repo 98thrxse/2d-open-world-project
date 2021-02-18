@@ -26,7 +26,7 @@ function testOne_char_config() as object
         },
 
         anim: {
-            index: invalid
+            index: 9,
             time: 100
         },
         
@@ -34,7 +34,7 @@ function testOne_char_config() as object
             npc: invalid,
 
             up: false,
-            down: false
+            down: false,
             left: false,
             right: false
         },

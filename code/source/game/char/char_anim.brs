@@ -3,7 +3,7 @@ function char_anim(object)
 	object.onCreate = function(args)
 
 		' createInstance
-		obj_wnd = m.game.createInstance("char_obj")
+		obj_wnd = m.game.getInstanceByName("char_obj")
 
 		' window initialization
 		m.obj = obj_wnd.obj
@@ -28,19 +28,19 @@ function char_anim(object)
 		' released
 		else if code = 102 ' up
 			m.timer = invalid
-			m.obj.index = 0
-
+			m.playAnim([0])
+			
 		else if code = 103 ' down
 			m.timer = invalid
-			m.obj.index = 1
+			m.playAnim([1])
 
 		else if code = 104 ' left
 			m.timer = invalid
-			m.obj.index = 2
-			
+			m.playAnim([2])
+
 		else if code = 105 ' right
 			m.timer = invalid
-			m.obj.index = 2			
+			m.playAnim([2])
 
 		end if
 

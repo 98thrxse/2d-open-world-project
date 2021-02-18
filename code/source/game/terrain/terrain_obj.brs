@@ -5,7 +5,7 @@ function terrain_obj(object)
     object.onCreate = function(args)
 
         ' createInstance
-        media_wnd = m.game.createInstance("terrain_media")
+        media_wnd = m.game.getInstanceByName("terrain_media")
 
         ' window initialization
         m.terrain_region = media_wnd.terrain_region

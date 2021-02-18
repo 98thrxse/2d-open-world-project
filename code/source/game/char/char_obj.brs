@@ -3,7 +3,7 @@ function char_obj(object)
   object.onCreate = function(args)
 
     ' createInstance
-    m.media_wnd = m.game.createInstance("char_media")
+    m.media_wnd = m.game.getInstanceByName("char_media")
     
 		' window initialization
     stand_front_region = m.media_wnd.stand_front_region
@@ -37,7 +37,19 @@ function char_obj(object)
   object.onButton = function(code as integer)
 
 		' pressed
-    if code = 4 ' left
+    if code = 2 ' up
+      if m.obj.scale_x <> 1.0
+        m.obj.offset_x -= m.media_wnd.stand_front_region.GetWidth()
+      end if
+      m.obj.scale_x = 1.0
+
+    else if code = 3 ' down
+      if m.obj.scale_x <> 1.0
+        m.obj.offset_x -= m.media_wnd.stand_front_region.GetWidth()
+      end if
+      m.obj.scale_x = 1.0
+
+    else if code = 4 ' left
       if m.obj.scale_x <> -1.0
         m.obj.offset_x += m.media_wnd.stand_front_region.GetWidth()
         m.obj.scale_x = -1.0
