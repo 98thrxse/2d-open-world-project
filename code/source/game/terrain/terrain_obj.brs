@@ -24,7 +24,7 @@ function terrain_obj(object)
     end function
 
 
-    object.terrainGen = function()
+    object.objGen = function()
 
         id_x = []
         id_y = []
@@ -88,7 +88,7 @@ function terrain_obj(object)
     object.onUpdate = function(dt as float)
 
         m.posXY()
-        m.terrainGen()
+        m.objGen()
 
     end function
 

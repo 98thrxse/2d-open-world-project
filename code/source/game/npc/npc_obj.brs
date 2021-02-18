@@ -26,7 +26,7 @@ function npc_obj(object)
   end function
 
 
-  object.npcGen = function()
+  object.objGen = function()
 
     ' loading map config to create npc
     for i = 0 to m.game.npc.config.Count() - 1
@@ -60,7 +60,7 @@ function npc_obj(object)
   object.onUpdate = function(dt as float)
 
     m.posXY()
-    m.npcGen()
+    m.objGen()
 
   end function
 
