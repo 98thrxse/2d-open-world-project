@@ -1,33 +1,42 @@
 function obj_static(object)
 
-    object.obj_config = testOne_obj_static_config() ' fix stas
+    ' object.obj_config = testOne_obj_static_config() ' fix stas
 
     object.onCreate = function(args)
 
         ' createInstance
-        media_wnd = m.game.getInstanceByName("obj_media")
+        m.media_wnd = m.game.getInstanceByName("obj_media")
 
         ' window initialization
-        obj_region = media_wnd.obj_region
+        m.obj_region = m.media_wnd.obj_region
 
         ' position
         m.x = m.game.screen.GetWidth() / 2 - m.game.char.getPosX()
         m.y = m.game.screen.GetHeight() / 2 - m.game.char.getPosY()
 
-        ' loading map config to create static obj
-        for i = 0 to m.obj_config.Count() - 1
+    end function
 
+    object.objGen = function()
+
+        ' loading map config to create obj
+        for i = 0 to m.game.obj.config.Count() - 1
+          if m.getImage(m.game.obj.config[i].obj_name.toStr() + "_" + m.game.obj.config[i].id.toStr()) = invalid
             ' addAnimatedImage
-            m.obj = m.addAnimatedImage(m.obj_config[i].obj_name.toStr() + "_" + m.obj_config[i].id.toStr(), [obj_region, invalid], { index: 0
-                offset_x: m.obj_config[i].offset_x,
-                offset_y: m.obj_config[i].offset_y
+            m.addAnimatedImage(m.game.obj.config[i].obj_name.toStr() + "_" + m.game.obj.config[i].id.toStr(), [m.obj_region, invalid], { index: 0
+                offset_x: m.game.obj.getPosX(i),
+                offset_y: m.game.obj.getPosY(i)
             })
-            
+    
+          end if
+    
+          if m.colliders[m.game.obj.config[i].col_name.toStr() + "_" + m.game.obj.config[i].id.toStr()] = invalid
             ' addColliderRectangle
-            m.addColliderRectangle(m.obj_config[i].col_name.toStr() + "_" + m.obj_config[i].id.toStr(), m.obj_config[i].offset_x, m.obj_config[i].offset_y, m.obj_config[i].width, m.obj_config[i].height)
-        
+            m.addColliderRectangle(m.game.obj.config[i].col_name.toStr() + "_" + m.game.obj.config[i].id.toStr(), m.game.obj.getPosX(i), m.game.obj.getPosY(i), m.game.obj.config[i].width, m.game.obj.config[i].height)
+          
+          end if
+          
         end for
-
+    
     end function
     
     object.posXY = function()
@@ -40,6 +49,7 @@ function obj_static(object)
     object.onUpdate = function(dt as float)
 
         m.posXY()
+        m.objGen()
 
     end function
 

@@ -1,6 +1,7 @@
 function testOne_map(object)
 
     object.map_char_config = testOne_char_config()
+    object.map_obj_static_config = testOne_obj_static_config()
     object.map_npc_config = testOne_npc_config()
 
     object.onCreate = function(args)
@@ -51,6 +52,23 @@ function testOne_map(object)
         if m.map_char_config.speed.left <> invalid then m.game.char.setLeftSpeed(m.map_char_config.speed.left)
         if m.map_char_config.speed.right <> invalid then m.game.char.setRightSpeed(m.map_char_config.speed.right)
       
+
+
+        ' loading map config to obj data
+
+        ' fix stas
+        if m.game.obj.config.Count() <> m.map_obj_static_config.Count()
+            m.game.obj.config = m.map_obj_static_config
+        end if
+
+        for i = 0 to m.map_obj_static_config.Count() - 1
+
+            ' pos
+            if m.map_obj_static_config[i].x <> invalid then m.game.obj.setPosX(i, m.map_obj_static_config[i].x)
+            if m.map_obj_static_config[i].y <> invalid then m.game.obj.setPosY(i, m.map_obj_static_config[i].y)
+
+        end for
+
 
 
         ' loading map config to npc data
