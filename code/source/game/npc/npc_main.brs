@@ -3,6 +3,8 @@ function npc_main(object)
     object.onCreate = function(args)
 
 		' createInstance
+        m.game.createInstance("npc_media")
+        m.game.createInstance("npc_obj")
         m.game.createInstance("npc_anim")
 
     end function

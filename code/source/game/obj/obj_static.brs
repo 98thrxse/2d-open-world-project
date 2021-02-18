@@ -5,7 +5,7 @@ function obj_static(object)
     object.onCreate = function(args)
 
         ' createInstance
-        media_wnd = m.game.createInstance("obj_media")
+        media_wnd = m.game.getInstanceByName("obj_media")
 
         ' window initialization
         obj_region = media_wnd.obj_region

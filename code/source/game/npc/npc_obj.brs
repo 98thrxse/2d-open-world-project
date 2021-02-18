@@ -3,7 +3,7 @@ function npc_obj(object)
   object.onCreate = function(args)
 
     ' createInstance
-    m.media_wnd = m.game.createInstance("npc_media")
+    m.media_wnd = m.game.getInstanceByName("npc_media")
     
     ' window initialization
     m.stand_front_region = m.media_wnd.stand_front_region
@@ -28,8 +28,6 @@ function npc_obj(object)
 
   object.npcGen = function()
 
-    ' print m.getImage(m.game.npc.config[0].obj_name.toStr() + "_" + m.game.npc.config[0].id.toStr())
-
     ' loading map config to create npc
     for i = 0 to m.game.npc.config.Count() - 1
       if m.getImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr()) = invalid
@@ -44,6 +42,7 @@ function npc_obj(object)
       if m.colliders[m.game.npc.config[i].col_name.toStr() + "_" + m.game.npc.config[i].id.toStr()] = invalid
         ' addColliderRectangle
         m.addColliderRectangle(m.game.npc.config[i].col_name.toStr() + "_" + m.game.npc.config[i].id.toStr(), m.game.npc.getPosX(i), m.game.npc.getPosY(i), m.game.npc.config[i].width, m.game.npc.config[i].height)
+      
       end if
       
     end for
