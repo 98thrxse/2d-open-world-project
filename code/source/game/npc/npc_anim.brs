@@ -7,7 +7,7 @@ function npc_anim(object)
     
 	object.onCreate = function(args)
 
-		' createInstance
+		' getInstanceByName
 		m.obj_wnd = m.game.getInstanceByName("npc_obj")
 
 	end function

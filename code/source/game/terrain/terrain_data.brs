@@ -95,19 +95,19 @@ end function
 
 
 
-function terrain_getPosX(id_x as integer, id_y as integer) as integer
-    return m.config[id_x][id_y].x
+function terrain_getPosX(i as integer, j as integer) as integer
+    return m.config[i][j].x
 end function
 
 sub terrain_setPosX(id_x as integer, id_y as integer, x as integer)
-    m.config[id_x][id_y].x = x
+    m.config[i][j].x = x
 end sub
 
 
-function terrain_getPosY(id_x as integer, id_y as integer) as integer
-    return m.config[id_x][id_y].y
+function terrain_getPosY(i as integer, j as integer) as integer
+    return m.config[i][j].y
 end function
 
-sub terrain_setPosY(id_x as integer, id_y as integer, y as integer)
-    m.config[id_x][id_y].y = y
+sub terrain_setPosY(i as integer, j as integer, y as integer)
+    m.config[i][j].y = y
 end sub

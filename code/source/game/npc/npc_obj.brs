@@ -2,22 +2,8 @@ function npc_obj(object)
 
   object.onCreate = function(args)
 
-    ' createInstance
+    ' getInstanceByName
     m.media_wnd = m.game.getInstanceByName("npc_media")
-    
-    ' window initialization
-    m.stand_front_region = m.media_wnd.stand_front_region
-    m.stand_back_region = m.media_wnd.stand_back_region
-    m.stand_side_region = m.media_wnd.stand_side_region
-    
-    m.walk_front1_region = m.media_wnd.walk_front1_region
-    m.walk_front2_region = m.media_wnd.walk_front2_region
-    m.walk_back1_region = m.media_wnd.walk_back1_region
-    m.walk_back2_region = m.media_wnd.walk_back2_region
-    m.walk_side1_region = m.media_wnd.walk_side1_region
-    m.walk_side2_region = m.media_wnd.walk_side2_region
-
-    m.beaten_region = m.media_wnd.beaten_region
 
     ' position
     m.x = m.game.screen.GetWidth() / 2 - m.game.char.getPosX()
@@ -32,7 +18,7 @@ function npc_obj(object)
     for i = 0 to m.game.npc.config.Count() - 1
       if m.getImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr()) = invalid
         ' addAnimatedImage
-        m.addAnimatedImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr(), [m.stand_front_region, m.stand_back_region, m.stand_side_region, m.walk_front1_region, m.walk_front2_region, m.walk_back1_region, m.walk_back2_region, m.walk_side1_region, m.walk_side2_region, m.beaten_region], { index: m.game.npc.getAnim(i)
+        m.addAnimatedImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr(), [m.media_wnd.stand_front_region, m.media_wnd.stand_back_region, m.media_wnd.stand_side_region, m.media_wnd.walk_front1_region, m.media_wnd.walk_front2_region, m.media_wnd.walk_back1_region, m.media_wnd.walk_back2_region, m.media_wnd.walk_side1_region, m.media_wnd.walk_side2_region, m.media_wnd.beaten_region], { index: m.game.npc.getAnim(i)
           offset_x: m.game.npc.getPosX(i),
           offset_y: m.game.npc.getPosY(i)
         })

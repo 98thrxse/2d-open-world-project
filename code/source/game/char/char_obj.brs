@@ -2,37 +2,33 @@ function char_obj(object)
 
   object.onCreate = function(args)
 
-    ' createInstance
+    ' getInstanceByName
     m.media_wnd = m.game.getInstanceByName("char_media")
     
-		' window initialization
-    stand_front_region = m.media_wnd.stand_front_region
-    stand_back_region = m.media_wnd.stand_back_region
-    stand_side_region = m.media_wnd.stand_side_region
-    
-    walk_front1_region = m.media_wnd.walk_front1_region
-    walk_front2_region = m.media_wnd.walk_front2_region
-    walk_back1_region = m.media_wnd.walk_back1_region
-    walk_back2_region = m.media_wnd.walk_back2_region
-    walk_side1_region = m.media_wnd.walk_side1_region
-    walk_side2_region = m.media_wnd.walk_side2_region
-
-    beaten_region = m.media_wnd.beaten_region
-
-
   ' addAnimatedImage
-    m.obj = m.addAnimatedImage("char_obj", [stand_back_region, stand_front_region, stand_side_region, walk_back1_region, walk_back2_region, walk_front1_region, walk_front2_region, walk_side1_region, walk_side2_region, beaten_region], { index: m.game.char.getAnim()
-      offset_x: 640 - stand_front_region.GetWidth() / 2,
+    m.obj = m.addAnimatedImage("char_obj", [m.media_wnd.stand_back_region, m.media_wnd.stand_front_region, m.media_wnd.stand_side_region, m.media_wnd.walk_back1_region, m.media_wnd.walk_back2_region, m.media_wnd.walk_front1_region, m.media_wnd.walk_front2_region, m.media_wnd.walk_side1_region, m.media_wnd.walk_side2_region, m.media_wnd.beaten_region], { index: m.game.char.getAnim()
+      offset_x: 640 - m.media_wnd.stand_front_region.GetWidth() / 2,
       offset_y: 360
     })
 
     ' addColliderRectangle
-    m.addColliderRectangle("char_col_up", m.obj.offset_x + 3, m.obj.offset_y + stand_side_region.GetHeight() / 2, stand_side_region.GetWidth() - 6, 1)
-    m.addColliderRectangle("char_col_down", m.obj.offset_x + 3, m.obj.offset_y + stand_side_region.GetHeight(), stand_side_region.GetWidth() - 6, 1)
-    m.addColliderRectangle("char_col_left", m.obj.offset_x, m.obj.offset_y + stand_side_region.GetHeight() / 2 + 3, 1, stand_side_region.GetHeight() / 2 - 6)
-    m.addColliderRectangle("char_col_right", m.obj.offset_x + stand_side_region.GetWidth(), m.obj.offset_y + stand_side_region.GetHeight() / 2 + 3, 1, stand_side_region.GetHeight() / 2 - 6)
+    m.addColliderRectangle("char_col_up", m.obj.offset_x + 3, m.obj.offset_y + m.media_wnd.stand_side_region.GetHeight() / 2 - 3, m.media_wnd.stand_side_region.GetWidth() - 6, 1)
+    m.addColliderRectangle("char_col_down", m.obj.offset_x + 3, m.obj.offset_y + m.media_wnd.stand_side_region.GetHeight() / 2 + 3, m.media_wnd.stand_side_region.GetWidth() - 6, 1)
+    m.addColliderRectangle("char_col_left", m.obj.offset_x, m.obj.offset_y + m.media_wnd.stand_side_region.GetHeight() / 2, 1, 3)
+    m.addColliderRectangle("char_col_right", m.obj.offset_x + m.media_wnd.stand_side_region.GetWidth(), m.obj.offset_y + m.media_wnd.stand_side_region.GetHeight() / 2, 1, 3)
 
   end function
+
+  
+  object.onDrawEnd = function(canvas)
+
+    canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + 56 / 2 - 3, 48 - 6, 1, &hFFFFFFFF)
+    canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + 56 / 2 + 3, 48 - 6, 1, &hFFFFFFFF)
+    canvas.DrawRect(m.obj.offset_x, m.obj.offset_y + 56 / 2, 1, 3, &hFFFFFFFF)
+    canvas.DrawRect(m.obj.offset_x + 48, m.obj.offset_y + 56 / 2, 1, 3, &hFFFFFFFF)
+
+  end function
+
 
   object.onButton = function(code as integer)
 

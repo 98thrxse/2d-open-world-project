@@ -2,7 +2,7 @@ function char_anim(object)
   
 	object.onCreate = function(args)
 
-		' createInstance
+		' getInstanceByName
 		obj_wnd = m.game.getInstanceByName("char_obj")
 
 		' window initialization

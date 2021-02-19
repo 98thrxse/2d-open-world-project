@@ -4,11 +4,8 @@ function terrain_obj(object)
 
     object.onCreate = function(args)
 
-        ' createInstance
-        media_wnd = m.game.getInstanceByName("terrain_media")
-
-        ' window initialization
-        m.terrain_region = media_wnd.terrain_region
+        ' getInstanceByName
+        m.media_wnd = m.game.getInstanceByName("terrain_media")
 
         ' position
         m.x = m.game.screen.GetWidth() / 2 - m.game.char.getPosX()
@@ -70,7 +67,7 @@ function terrain_obj(object)
         for i = 0 to id_y.Count() - 1
             for j = 0 to id_x.Count() - 1
                 if m.getImage(m.terrain_config[id_y[i]][id_x[j]].obj_name.toStr() + "_" + m.terrain_config[id_y[i]][id_x[j]].id.toStr()) = invalid
-                    m.addAnimatedImage(m.terrain_config[id_y[i]][id_x[j]].obj_name.toStr() + "_" + m.terrain_config[id_y[i]][id_x[j]].id.toStr(), [m.terrain_region, invalid], { index: 0
+                    m.addAnimatedImage(m.terrain_config[id_y[i]][id_x[j]].obj_name.toStr() + "_" + m.terrain_config[id_y[i]][id_x[j]].id.toStr(), [m.media_wnd.terrain_region, invalid], { index: 0
                         offset_x: m.terrain_config[id_y[i]][id_x[j]].offset_x,
                         offset_y: m.terrain_config[id_y[i]][id_x[j]].offset_y
                     })
