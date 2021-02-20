@@ -16,18 +16,18 @@ function npc_obj(object)
 
     ' loading map config to create npc
     for i = 0 to m.game.npc.config.Count() - 1
-      if m.getImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr()) = invalid
+      if m.getImage(m.game.npc.config[i].obj.name.toStr() + "_" + m.game.npc.config[i].id.toStr()) = invalid
         ' addAnimatedImage
-        m.addAnimatedImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr(), [m.media_wnd.stand_front_region, m.media_wnd.stand_back_region, m.media_wnd.stand_side_region, m.media_wnd.walk_front1_region, m.media_wnd.walk_front2_region, m.media_wnd.walk_back1_region, m.media_wnd.walk_back2_region, m.media_wnd.walk_side1_region, m.media_wnd.walk_side2_region, m.media_wnd.beaten_region], { index: m.game.npc.getAnim(i)
-          offset_x: m.game.npc.getPosX(i),
-          offset_y: m.game.npc.getPosY(i)
+        m.addAnimatedImage(m.game.npc.config[i].obj.name.toStr() + "_" + m.game.npc.config[i].id.toStr(), [m.media_wnd.stand_front_region, m.media_wnd.stand_back_region, m.media_wnd.stand_side_region, m.media_wnd.walk_front1_region, m.media_wnd.walk_front2_region, m.media_wnd.walk_back1_region, m.media_wnd.walk_back2_region, m.media_wnd.walk_side1_region, m.media_wnd.walk_side2_region, m.media_wnd.beaten_region], { index: m.game.npc.getAnim(i)
+          offset_x: m.game.npc.getObjPosX(i),
+          offset_y: m.game.npc.getObjPosY(i)
         })
 
       end if
 
-      if m.colliders[m.game.npc.config[i].col_name.toStr() + "_" + m.game.npc.config[i].id.toStr()] = invalid
+      if m.colliders[m.game.npc.config[i].col.name.toStr() + "_" + m.game.npc.config[i].id.toStr()] = invalid
         ' addColliderRectangle
-        m.addColliderRectangle(m.game.npc.config[i].col_name.toStr() + "_" + m.game.npc.config[i].id.toStr(), m.game.npc.getPosX(i), m.game.npc.getPosY(i), m.game.npc.getW(i), m.game.npc.getH(i))
+        m.addColliderRectangle(m.game.npc.config[i].col.name.toStr() + "_" + m.game.npc.config[i].id.toStr(), m.game.npc.getColPosX(i), m.game.npc.getColPosY(i), m.game.npc.getColW(i), m.game.npc.getColH(i))
       
       end if
       

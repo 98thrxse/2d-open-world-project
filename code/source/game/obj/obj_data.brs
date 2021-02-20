@@ -3,19 +3,37 @@ function obj_data() as object
     m.obj = {
 
         ' pos
-        getPosX: obj_getPosX
-        setPosX: obj_setPosX
+
+        ' obj
+        getObjPosX: obj_getObjPosX
+        setObjPosX: obj_setObjPosX
         
-        getPosY: obj_getPosY
-        setPosY: obj_setPosY
+        getObjPosY: obj_getObjPosY
+        setObjPosY: obj_setObjPosY
+
+        ' col
+        getColPosX: obj_getColPosX
+        setColPosX: obj_setColPosX
+        
+        getColPosY: obj_getColPosY
+        setColPosY: obj_setColPosY
 
 
         ' size
-        getH: obj_getH
-        setH: obj_setH
+
+        ' obj
+        getObjH: obj_getObjH
+        setObjH: obj_setObjH
         
-        getW: obj_getW
-        setW: obj_setW
+        getObjW: obj_getObjW
+        setObjW: obj_setObjW
+
+        ' col
+        getColH: obj_getColH
+        setColH: obj_setColH
+        
+        getColW: obj_getColW
+        setColW: obj_setColW
 
 
         config: invalid
@@ -24,27 +42,7 @@ function obj_data() as object
 
     if m.obj.config = invalid
 
-        m.obj.config = [
-            {
-                id: 0,
-                obj_name: "obj_obj",
-                col_name: "obj_col",
-                x: 700,
-                y: 100,
-                width: 128,
-                height: 72
-            },
-    
-            {
-                id: 1
-                obj_name: "obj_obj",
-                col_name: "obj_col",
-                x: 90,
-                y: 600,
-                width: 128,
-                height: 72
-            }
-        ]
+        m.obj.config = []
 
     end if
 
@@ -54,39 +52,80 @@ end function
 
 
 
-function obj_getPosX(id as integer) as integer
-    return m.config[id].x
+function obj_getObjPosX(id as integer) as integer
+    return m.config[id].obj.x
 end function
 
-sub obj_setPosX(id as integer, x as integer)
-    m.config[id].x = x
+sub obj_setObjPosX(id as integer, x as integer)
+    m.config[id].obj.x = x
 end sub
 
 
-function obj_getPosY(id as integer) as integer
-    return m.config[id].y
+function obj_getObjPosY(id as integer) as integer
+    return m.config[id].obj.y
 end function
 
-sub obj_setPosY(id as integer, y as integer)
-    m.config[id].y = y
+sub obj_setObjPosY(id as integer, y as integer)
+    m.config[id].obj.y = y
 end sub
 
 
-function obj_getH(id as integer) as integer
-    return m.config[id].height
+
+function obj_getColPosX(id as integer) as integer
+    return m.config[id].col.x
 end function
 
-sub obj_setH(id as integer, height as integer)
-    m.config[id].height = height
+sub obj_setColPosX(id as integer, x as integer)
+    m.config[id].col.x = x
+end sub
+
+
+function obj_getColPosY(id as integer) as integer
+    return m.config[id].col.y
+end function
+
+sub obj_setColPosY(id as integer, y as integer)
+    m.config[id].col.y = y
+end sub
+
+
+
+function obj_getObjH(id as integer) as integer
+    return m.config[id].obj.height
+end function
+
+sub obj_setObjH(id as integer, height as integer)
+    m.config[id].obj.height = height
     SaveGame(m._params)
 end sub
 
 
-function obj_getW(id as integer) as integer
-    return m.config[id].width
+function obj_getObjW(id as integer) as integer
+    return m.config[id].obj.width
 end function
 
-sub obj_setW(id as integer, width as integer)
-    m.config[id].width = width
+sub obj_setObjW(id as integer, width as integer)
+    m.config[id].obj.width = width
+    SaveGame(m._params)
+end sub
+
+
+
+function obj_getColH(id as integer) as integer
+    return m.config[id].col.height
+end function
+
+sub obj_setColH(id as integer, height as integer)
+    m.config[id].col.height = height
+    SaveGame(m._params)
+end sub
+
+
+function obj_getColW(id as integer) as integer
+    return m.config[id].col.width
+end function
+
+sub obj_setColW(id as integer, width as integer)
+    m.config[id].col.width = width
     SaveGame(m._params)
 end sub

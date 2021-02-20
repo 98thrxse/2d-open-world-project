@@ -69,13 +69,25 @@ function testOne_map(object)
         for i = 0 to m.map_obj_static_config.Count() - 1
 
             ' pos
-            if m.map_obj_static_config[i].x <> invalid then m.game.obj.setPosX(i, m.map_obj_static_config[i].x)
-            if m.map_obj_static_config[i].y <> invalid then m.game.obj.setPosY(i, m.map_obj_static_config[i].y)
+
+            ' obj
+            if m.map_obj_static_config[i].obj.x <> invalid then m.game.obj.setObjPosX(i, m.map_obj_static_config[i].obj.x)
+            if m.map_obj_static_config[i].obj.y <> invalid then m.game.obj.setObjPosY(i, m.map_obj_static_config[i].obj.y)
+
+            ' col
+            if m.map_obj_static_config[i].obj.x <> invalid then m.game.obj.setObjPosX(i, m.map_obj_static_config[i].obj.x)
+            if m.map_obj_static_config[i].obj.y <> invalid then m.game.obj.setObjPosY(i, m.map_obj_static_config[i].obj.y)
 
 
             ' size
-            if m.map_obj_static_config[i].width <> invalid then m.game.obj.setW(i, m.map_obj_static_config[i].width)
-            if m.map_obj_static_config[i].height <> invalid then m.game.obj.setH(i, m.map_obj_static_config[i].height)
+
+            ' obj
+            if m.map_obj_static_config[i].obj.width <> invalid then m.game.obj.setObjW(i, m.map_obj_static_config[i].obj.width)
+            if m.map_obj_static_config[i].obj.height <> invalid then m.game.obj.setObjH(i, m.map_obj_static_config[i].obj.height)
+            
+            ' col
+            if m.map_obj_static_config[i].col.width <> invalid then m.game.obj.setColW(i, m.map_obj_static_config[i].col.width)
+            if m.map_obj_static_config[i].col.height <> invalid then m.game.obj.setColH(i, m.map_obj_static_config[i].col.height)
 
         end for
 
@@ -99,13 +111,25 @@ function testOne_map(object)
 
 
             ' pos
-            if m.map_npc_config[i].x <> invalid then m.game.npc.setPosX(i, m.map_npc_config[i].x)
-            if m.map_npc_config[i].y <> invalid then m.game.npc.setPosY(i, m.map_npc_config[i].y)
+
+            ' obj
+            if m.map_npc_config[i].obj.x <> invalid then m.game.npc.setObjPosX(i, m.map_npc_config[i].obj.x)
+            if m.map_npc_config[i].obj.y <> invalid then m.game.npc.setObjPosY(i, m.map_npc_config[i].obj.y)
+
+            ' col
+            if m.map_npc_config[i].col.x <> invalid then m.game.npc.setColPosX(i, m.map_npc_config[i].col.x)
+            if m.map_npc_config[i].col.y <> invalid then m.game.npc.setColPosY(i, m.map_npc_config[i].col.y)
 
 
             ' size
-            if m.map_npc_config[i].width <> invalid then m.game.npc.setW(i, m.map_npc_config[i].width)
-            if m.map_npc_config[i].height <> invalid then m.game.npc.setH(i, m.map_npc_config[i].height)
+
+            ' obj
+            if m.map_npc_config[i].obj.width <> invalid then m.game.npc.setObjW(i, m.map_npc_config[i].obj.width)
+            if m.map_npc_config[i].obj.height <> invalid then m.game.npc.setObjH(i, m.map_npc_config[i].obj.height)
+
+            ' col
+            if m.map_npc_config[i].col.width <> invalid then m.game.npc.setColW(i, m.map_npc_config[i].col.width)
+            if m.map_npc_config[i].col.height <> invalid then m.game.npc.setColH(i, m.map_npc_config[i].col.height)
 
         end for
 

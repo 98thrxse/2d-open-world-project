@@ -96,7 +96,7 @@ function char_data() as object
     }
 
     this._params = LoadSavedGame()
-    this._build = "1.0.1"
+    this._build = "1.0.0"
 
     if this._params = invalid OR this._params.version <> this._build
         SaveGame(invalid)

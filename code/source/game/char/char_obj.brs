@@ -12,20 +12,20 @@ function char_obj(object)
     })
 
     ' addColliderRectangle
-    m.addColliderRectangle("char_col_up", m.obj.offset_x + 3, m.obj.offset_y + m.game.char.getH() / 2, m.game.char.getW() - 6, 1)
-    m.addColliderRectangle("char_col_down", m.obj.offset_x + 3, m.obj.offset_y + m.game.char.getH() / 2 + m.game.char.getH() / 7 + 1, m.game.char.getW() - 6, 1)
-    m.addColliderRectangle("char_col_left", m.obj.offset_x, m.obj.offset_y + m.game.char.getH() / 2 + 3, 1, m.game.char.getH() / 14)
-    m.addColliderRectangle("char_col_right", m.obj.offset_x + m.game.char.getW() - 1, m.obj.offset_y + m.game.char.getH() / 2 + 3, 1, m.game.char.getH() / 14)
-
+    m.addColliderRectangle("char_col_up", m.obj.offset_x + 3, m.obj.offset_y, m.game.char.getW() - 6, 1)
+    m.addColliderRectangle("char_col_down", m.obj.offset_x + 3, m.obj.offset_y + m.game.char.getH(), m.game.char.getW() - 6, 1)
+    m.addColliderRectangle("char_col_left", m.obj.offset_x, m.obj.offset_y + 3, 1, m.game.char.getH() - 6)
+    m.addColliderRectangle("char_col_right", m.obj.offset_x + m.game.char.getW() - 1, m.obj.offset_y + 3, 1, m.game.char.getH() - 6)
+  
   end function
 
   
   ' object.onDrawEnd = function(canvas)
 
-  '   canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + m.game.char.getH() / 2, m.game.char.getW() - 6, 1, &hFFFFFFFF)
-  '   canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + m.game.char.getH() / 2 + m.game.char.getH() / 7 + 1, m.game.char.getW() - 6, 1, &hFFFFFFFF)
-  '   canvas.DrawRect(m.obj.offset_x, m.obj.offset_y + m.game.char.getH() / 2 + 3, 1, m.game.char.getH() / 14, &hFFFFFFFF)
-  '   canvas.DrawRect(m.obj.offset_x + m.game.char.getW() - 1, m.obj.offset_y + m.game.char.getH() / 2 + 3, 1, m.game.char.getH() / 14, &hFFFFFFFF)
+  '   canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y, m.game.char.getW() - 6, 1, &hFFFFFFFF)
+  '   canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + m.game.char.getH(), m.game.char.getW() - 6, 1, &hFFFFFFFF)
+  '   canvas.DrawRect(m.obj.offset_x, m.obj.offset_y + 3, 1, m.game.char.getH() - 6, &hFFFFFFFF)
+  '   canvas.DrawRect(m.obj.offset_x + m.game.char.getW() - 1, m.obj.offset_y + 3, 1, m.game.char.getH() - 6, &hFFFFFFFF)
 
   ' end function
 

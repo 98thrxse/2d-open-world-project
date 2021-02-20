@@ -29,9 +29,9 @@ function npc_anim(object)
 	object.animUpdate = function()
 
 		for i = 0 to m.game.npc.config.Count() - 1
-			if m.obj_wnd.getImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr()) <> invalid
+			if m.obj_wnd.getImage(m.game.npc.config[i].obj.name.toStr() + "_" + m.game.npc.config[i].id.toStr()) <> invalid
 				' update npc anim
-				m.obj_wnd.getImage(m.game.npc.config[i].obj_name.toStr() + "_" + m.game.npc.config[i].id.toStr()).index = m.game.npc.getAnim(i)
+				m.obj_wnd.getImage(m.game.npc.config[i].obj.name.toStr() + "_" + m.game.npc.config[i].id.toStr()).index = m.game.npc.getAnim(i)
 
 			end if
 		

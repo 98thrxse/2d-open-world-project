@@ -8,19 +8,37 @@ function npc_data() as object
 
 
         ' pos
-        getPosX: npc_getPosX
-        setPosX: npc_setPosX
+
+        ' obj
+        getObjPosX: npc_getObjPosX
+        setObjPosX: npc_setObjPosX
         
-        getPosY: npc_getPosY
-        setPosY: npc_setPosY
+        getObjPosY: npc_getObjPosY
+        setObjPosY: npc_setObjPosY
+
+        ' col
+        getColPosX: npc_getColPosX
+        setColPosX: npc_setColPosX
+        
+        getColPosY: npc_getColPosY
+        setColPosY: npc_setColPosY
 
 
         ' size
-        getW: npc_getW
-        setW: npc_setW
+
+        ' obj
+        getObjW: npc_getObjW
+        setObjW: npc_setObjW
         
-        getH: npc_getH
-        setH: npc_setH 
+        getObjH: npc_getObjH
+        setObjH: npc_setObjH
+
+        ' col
+        getColW: npc_getColW
+        setColW: npc_setColW
+        
+        getColH: npc_getObjH
+        setColH: npc_setColH
 
 
         ' anim
@@ -34,31 +52,7 @@ function npc_data() as object
 
     if m.npc.config = invalid
 
-        m.npc.config = [
-            {
-                id: 0,
-                index: 0,
-                obj_name: "npc_obj",
-                col_name: "npc_col",
-                x: 200,
-                y: 100,
-                width: 48,
-                height: 56,
-                hp: 100
-            },
-
-            {
-                id: 1
-                index: 0,
-                obj_name: "npc_obj",
-                col_name: "npc_col",
-                x: 400,
-                y: 300
-                width: 48,
-                height: 56,
-                hp: 100
-            }  
-        ]
+        m.npc.config = []
 
     end if
 
@@ -68,59 +62,97 @@ end function
 
 
 
-function npc_getPosX(id as integer) as integer
-    return m.config[id].x
+function npc_getObjPosX(id as integer) as integer
+    return m.config[id].obj.x
 end function
 
-sub npc_setPosX(id as integer, x as integer)
-    m.config[id].x = x
+sub npc_setObjPosX(id as integer, x as integer)
+    m.config[id].obj.x = x
 end sub
 
 
-function npc_getPosY(id as integer) as integer
-    return m.config[id].y
+function npc_getObjPosY(id as integer) as integer
+    return m.config[id].obj.y
 end function
 
-sub npc_setPosY(id as integer, y as integer)
-    m.config[id].y = y
+sub npc_setObjPosY(id as integer, y as integer)
+    m.config[id].obj.y = y
 end sub
 
 
 
-function npc_getW(id as integer) as integer
-    return m.config[id].width
+function npc_getColPosX(id as integer) as integer
+    return m.config[id].col.x
 end function
 
-sub npc_setW(id as integer, width as integer)
-    m.config[id].width = width
+sub npc_setColPosX(id as integer, x as integer)
+    m.config[id].col.x = x
 end sub
 
 
-function npc_getH(id as integer) as integer
-    return m.config[id].height
+function npc_getColPosY(id as integer) as integer
+    return m.config[id].col.y
 end function
 
-sub npc_setH(id as integer, height as integer)
-    m.config[id].height = height
+sub npc_setColPosY(id as integer, y as integer)
+    m.config[id].col.y = y
+end sub
+
+
+
+function npc_getObjW(id as integer) as integer
+    return m.config[id].obj.width
+end function
+
+sub npc_setObjW(id as integer, width as integer)
+    m.config[id].obj.width = width
+end sub
+
+
+function npc_getObjH(id as integer) as integer
+    return m.config[id].obj.height
+end function
+
+sub npc_setObjH(id as integer, height as integer)
+    m.config[id].obj.height = height
+end sub
+
+
+
+function npc_getColW(id as integer) as integer
+    return m.config[id].col.width
+end function
+
+sub npc_setColW(id as integer, width as integer)
+    m.config[id].col.width = width
+end sub
+
+
+function npc_getColH(id as integer) as integer
+    return m.config[id].col.height
+end function
+
+sub npc_setColH(id as integer, height as integer)
+    m.config[id].col.height = height
 end sub
 
 
 
 function npc_getHP(id as integer) as integer
-    return m.config[id].hp
+    return m.config[id].attributes.hp
 end function
 
 
 sub npc_setHP(id as integer, hp as integer)
-    m.config[id].hp = hp
+    m.config[id].attributes.hp = hp
 end sub
 
 
 
 function npc_getAnim(id as integer) as integer
-    return m.config[id].index
+    return m.config[id].anim.index
 end function
 
 sub npc_setAnim(id as integer, index as integer)
-    m.config[id].index = index
+    m.config[id].anim.index = index
 end sub

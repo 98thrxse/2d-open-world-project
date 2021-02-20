@@ -15,18 +15,18 @@ function obj_static(object)
 
         ' loading map config to create obj
         for i = 0 to m.game.obj.config.Count() - 1
-          if m.getImage(m.game.obj.config[i].obj_name.toStr() + "_" + m.game.obj.config[i].id.toStr()) = invalid
+          if m.getImage(m.game.obj.config[i].obj.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) = invalid
             ' addAnimatedImage
-            m.addAnimatedImage(m.game.obj.config[i].obj_name.toStr() + "_" + m.game.obj.config[i].id.toStr(), [m.media_wnd.obj_region, invalid], { index: 0
-                offset_x: m.game.obj.getPosX(i),
-                offset_y: m.game.obj.getPosY(i)
+            m.addAnimatedImage(m.game.obj.config[i].obj.name.toStr() + "_" + m.game.obj.config[i].id.toStr(), [m.media_wnd.obj_region, invalid], { index: 0
+                offset_x: m.game.obj.getObjPosX(i),
+                offset_y: m.game.obj.getObjPosY(i)
             })
     
           end if
     
-          if m.colliders[m.game.obj.config[i].col_name.toStr() + "_" + m.game.obj.config[i].id.toStr()] = invalid
+          if m.colliders[m.game.obj.config[i].col.name.toStr() + "_" + m.game.obj.config[i].id.toStr()] = invalid
             ' addColliderRectangle
-            m.addColliderRectangle(m.game.obj.config[i].col_name.toStr() + "_" + m.game.obj.config[i].id.toStr(), m.game.obj.getPosX(i), m.game.obj.getPosY(i), m.game.obj.getW(i), m.game.obj.getH(i))
+            m.addColliderRectangle(m.game.obj.config[i].col.name.toStr() + "_" + m.game.obj.config[i].id.toStr(), m.game.obj.getColPosX(i), m.game.obj.getColPosY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
           
           end if
           

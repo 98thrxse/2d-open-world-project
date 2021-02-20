@@ -99,7 +99,7 @@ function terrain_getPosX(i as integer, j as integer) as integer
     return m.config[i][j].x
 end function
 
-sub terrain_setPosX(id_x as integer, id_y as integer, x as integer)
+sub terrain_setPosX(i as integer, j as integer, x as integer)
     m.config[i][j].x = x
 end sub
 
