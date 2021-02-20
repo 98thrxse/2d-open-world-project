@@ -26,7 +26,7 @@ function obj_static(object)
     
           if m.colliders[m.game.obj.config[i].col_name.toStr() + "_" + m.game.obj.config[i].id.toStr()] = invalid
             ' addColliderRectangle
-            m.addColliderRectangle(m.game.obj.config[i].col_name.toStr() + "_" + m.game.obj.config[i].id.toStr(), m.game.obj.getPosX(i), m.game.obj.getPosY(i), m.game.obj.config[i].width, m.game.obj.config[i].height)
+            m.addColliderRectangle(m.game.obj.config[i].col_name.toStr() + "_" + m.game.obj.config[i].id.toStr(), m.game.obj.getPosX(i), m.game.obj.getPosY(i), m.game.obj.getW(i), m.game.obj.getH(i))
           
           end if
           
@@ -53,20 +53,15 @@ function obj_static(object)
 
         if other_instance.name = "char_obj" and other_collider_name = "char_col_up"
             m.game.char.setUpCollider(true)
-            print "up"
 
         else if other_instance.name = "char_obj" and other_collider_name = "char_col_down"
             m.game.char.setDownCollider(true)
-            print "down"
-
 
         else if other_instance.name = "char_obj" and other_collider_name = "char_col_left"
             m.game.char.setLeftCollider(true)
-            print "left"
 
         else if other_instance.name = "char_obj" and other_collider_name = "char_col_right"
             m.game.char.setRightCollider(true)
-            print "right"
 
         end if
 

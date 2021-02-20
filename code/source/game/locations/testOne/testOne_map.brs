@@ -13,6 +13,11 @@ function testOne_map(object)
         if m.map_char_config.pos.y <> invalid then m.game.char.setPosY(m.map_char_config.pos.y)
 
 
+        ' size
+        if m.map_char_config.size.width <> invalid then m.game.char.setW(m.map_char_config.size.width)
+        if m.map_char_config.size.height <> invalid then m.game.char.setH(m.map_char_config.size.height)
+
+
         ' attributes
         if m.map_char_config.attributes.hp <> invalid then m.game.char.setHP(m.map_char_config.attributes.hp)
         if m.map_char_config.attributes.sp <> invalid then m.game.char.setSP(m.map_char_config.attributes.sp)
@@ -67,6 +72,11 @@ function testOne_map(object)
             if m.map_obj_static_config[i].x <> invalid then m.game.obj.setPosX(i, m.map_obj_static_config[i].x)
             if m.map_obj_static_config[i].y <> invalid then m.game.obj.setPosY(i, m.map_obj_static_config[i].y)
 
+
+            ' size
+            if m.map_obj_static_config[i].width <> invalid then m.game.obj.setW(i, m.map_obj_static_config[i].width)
+            if m.map_obj_static_config[i].height <> invalid then m.game.obj.setH(i, m.map_obj_static_config[i].height)
+
         end for
 
 
@@ -91,6 +101,11 @@ function testOne_map(object)
             ' pos
             if m.map_npc_config[i].x <> invalid then m.game.npc.setPosX(i, m.map_npc_config[i].x)
             if m.map_npc_config[i].y <> invalid then m.game.npc.setPosY(i, m.map_npc_config[i].y)
+
+
+            ' size
+            if m.map_npc_config[i].width <> invalid then m.game.npc.setW(i, m.map_npc_config[i].width)
+            if m.map_npc_config[i].height <> invalid then m.game.npc.setH(i, m.map_npc_config[i].height)
 
         end for
 

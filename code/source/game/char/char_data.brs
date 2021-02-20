@@ -10,6 +10,14 @@ function char_data() as object
         setPosY: char_setPosY  
 
 
+        ' size
+        getH: char_getH
+        setH: char_setH
+        
+        getW: char_getW
+        setW: char_setW
+
+
         ' attributes
         getHP: char_getHP
         setHP: char_setHP
@@ -88,7 +96,7 @@ function char_data() as object
     }
 
     this._params = LoadSavedGame()
-    this._build = "1.0.0"
+    this._build = "1.0.1"
 
     if this._params = invalid OR this._params.version <> this._build
         SaveGame(invalid)
@@ -98,6 +106,11 @@ function char_data() as object
             pos: {
                 x: 0,
                 y: 0
+            },
+
+            size: {
+                width: 48,
+                height: 56,
             },
 
             attributes: {
@@ -173,6 +186,25 @@ sub char_setPosY(y as integer)
     SaveGame(m._params)
 end sub
 
+
+function char_getH() as integer
+    return m._params.size.height
+end function
+
+sub char_setH(height as integer)
+    m._params.size.height = height
+    SaveGame(m._params)
+end sub
+
+
+function char_getW() as integer
+    return m._params.size.width
+end function
+
+sub char_setW(width as integer)
+    m._params.size.width = width
+    SaveGame(m._params)
+end sub
 
 
 function char_getHP() as integer

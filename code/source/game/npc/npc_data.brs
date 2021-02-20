@@ -6,12 +6,22 @@ function npc_data() as object
         getHP: npc_getHP
         setHP: npc_setHP
 
+
         ' pos
         getPosX: npc_getPosX
         setPosX: npc_setPosX
         
         getPosY: npc_getPosY
-        setPosY: npc_setPosY 
+        setPosY: npc_setPosY
+
+
+        ' size
+        getW: npc_getW
+        setW: npc_setW
+        
+        getH: npc_getH
+        setH: npc_setH 
+
 
         ' anim
         getAnim: npc_getAnim
@@ -73,6 +83,25 @@ end function
 
 sub npc_setPosY(id as integer, y as integer)
     m.config[id].y = y
+end sub
+
+
+
+function npc_getW(id as integer) as integer
+    return m.config[id].width
+end function
+
+sub npc_setW(id as integer, width as integer)
+    m.config[id].width = width
+end sub
+
+
+function npc_getH(id as integer) as integer
+    return m.config[id].height
+end function
+
+sub npc_setH(id as integer, height as integer)
+    m.config[id].height = height
 end sub
 
 

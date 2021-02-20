@@ -10,6 +10,14 @@ function obj_data() as object
         setPosY: obj_setPosY
 
 
+        ' size
+        getH: obj_getH
+        setH: obj_setH
+        
+        getW: obj_getW
+        setW: obj_setW
+
+
         config: invalid
 
     }
@@ -64,11 +72,21 @@ sub obj_setPosY(id as integer, y as integer)
 end sub
 
 
-
-function obj_getAnim(id as integer) as integer
-    return m.config[id].index
+function obj_getH(id as integer) as integer
+    return m.config[id].height
 end function
 
-sub obj_setAnim(id as integer, index as integer)
-    m.config[id].index = index
+sub obj_setH(id as integer, height as integer)
+    m.config[id].height = height
+    SaveGame(m._params)
+end sub
+
+
+function obj_getW(id as integer) as integer
+    return m.config[id].width
+end function
+
+sub obj_setW(id as integer, width as integer)
+    m.config[id].width = width
+    SaveGame(m._params)
 end sub

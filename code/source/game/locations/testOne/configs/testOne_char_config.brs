@@ -6,6 +6,11 @@ function testOne_char_config() as object
             y: invalid
         },
 
+        size: {
+            width: invalid,
+            height: invalid,
+        },
+
         attributes: {
             hp: invalid,
             sp: invalid
