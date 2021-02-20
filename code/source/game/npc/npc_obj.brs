@@ -27,7 +27,7 @@ function npc_obj(object)
 
       if m.colliders[m.game.npc.config[i].col_name.toStr() + "_" + m.game.npc.config[i].id.toStr()] = invalid
         ' addColliderRectangle
-        m.addColliderRectangle(m.game.npc.config[i].col_name.toStr() + "_" + m.game.npc.config[i].id.toStr(), m.game.npc.getPosX(i), m.game.npc.getPosY(i), m.game.npc.config[i].width, m.game.npc.config[i].height)
+        m.addColliderRectangle(m.game.npc.config[i].col_name.toStr() + "_" + m.game.npc.config[i].id.toStr(), m.game.npc.getPosX(i), m.game.npc.getPosY(i), m.game.npc.getW(i), m.game.npc.getH(i))
       
       end if
       
