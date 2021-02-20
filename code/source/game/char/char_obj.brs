@@ -12,20 +12,20 @@ function char_obj(object)
     })
 
     ' addColliderRectangle
-    m.addColliderRectangle("char_col_up", m.obj.offset_x + 3, m.obj.offset_y + m.media_wnd.stand_side_region.GetHeight() / 2 - 3, m.media_wnd.stand_side_region.GetWidth() - 6, 1)
-    m.addColliderRectangle("char_col_down", m.obj.offset_x + 3, m.obj.offset_y + m.media_wnd.stand_side_region.GetHeight() / 2 + 3, m.media_wnd.stand_side_region.GetWidth() - 6, 1)
-    m.addColliderRectangle("char_col_left", m.obj.offset_x, m.obj.offset_y + m.media_wnd.stand_side_region.GetHeight() / 2, 1, 3)
-    m.addColliderRectangle("char_col_right", m.obj.offset_x + m.media_wnd.stand_side_region.GetWidth(), m.obj.offset_y + m.media_wnd.stand_side_region.GetHeight() / 2, 1, 3)
+    m.addColliderRectangle("char_col_up", m.obj.offset_x + 3, m.obj.offset_y + m.media_wnd.stand_back_region.GetHeight() / 2, m.media_wnd.stand_back_region.GetWidth() - 6, 1)
+    m.addColliderRectangle("char_col_down", m.obj.offset_x + 3, m.obj.offset_y + m.media_wnd.stand_back_region.GetHeight() / 2 + m.media_wnd.stand_back_region.GetHeight() / 7 + 1, m.media_wnd.stand_back_region.GetWidth() - 6, 1)
+    m.addColliderRectangle("char_col_left", m.obj.offset_x, m.obj.offset_y + m.media_wnd.stand_back_region.GetHeight() / 2 + 3, 1, m.media_wnd.stand_back_region.GetHeight() / 14)
+    m.addColliderRectangle("char_col_right", m.obj.offset_x + m.media_wnd.stand_back_region.GetWidth() - 1, m.obj.offset_y + m.media_wnd.stand_back_region.GetHeight() / 2 + 3, 1, m.media_wnd.stand_back_region.GetHeight() / 14)
 
   end function
 
   
   object.onDrawEnd = function(canvas)
 
-    canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + 56 / 2 - 3, 48 - 6, 1, &hFFFFFFFF)
-    canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + 56 / 2 + 3, 48 - 6, 1, &hFFFFFFFF)
-    canvas.DrawRect(m.obj.offset_x, m.obj.offset_y + 56 / 2, 1, 3, &hFFFFFFFF)
-    canvas.DrawRect(m.obj.offset_x + 48, m.obj.offset_y + 56 / 2, 1, 3, &hFFFFFFFF)
+    canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + m.media_wnd.stand_back_region.GetHeight() / 2, m.media_wnd.stand_back_region.GetWidth() - 6, 1, &hFFFFFFFF)
+    canvas.DrawRect(m.obj.offset_x + 3, m.obj.offset_y + m.media_wnd.stand_back_region.GetHeight() / 2 + m.media_wnd.stand_back_region.GetHeight() / 7 + 1, m.media_wnd.stand_back_region.GetWidth() - 6, 1, &hFFFFFFFF)
+    canvas.DrawRect(m.obj.offset_x, m.obj.offset_y + m.media_wnd.stand_back_region.GetHeight() / 2 + 3, 1, m.media_wnd.stand_back_region.GetHeight() / 14, &hFFFFFFFF)
+    canvas.DrawRect(m.obj.offset_x + m.media_wnd.stand_back_region.GetWidth() - 1, m.obj.offset_y + m.media_wnd.stand_back_region.GetHeight() / 2 + 3, 1, m.media_wnd.stand_back_region.GetHeight() / 14, &hFFFFFFFF)
 
   end function
 
