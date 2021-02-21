@@ -1,4 +1,4 @@
-function char_action(object)
+function char_act(object)
 
     object.onCreate = function(args)
         
@@ -10,7 +10,7 @@ function char_action(object)
         ' held
         if code = 1006
             if m.game.char.getSP() >= m.game.char.getSPDamage()
-                m.actionSPDamage()
+                m.actSPDamage()
 
             end if
 
@@ -18,7 +18,7 @@ function char_action(object)
 
     end function
 
-    object.actionSPDamage = function()
+    object.actSPDamage = function()
 
         if m.sp_damage_timer = invalid
             m.game.char.setSP(m.game.char.getSP() - m.game.char.getSPDamage())
@@ -34,7 +34,7 @@ function char_action(object)
 
     end function
 
-    object.actionSPRegen = function()
+    object.actSPRegen = function()
 
         if m.sp_regen_timer = invalid
             m.sp_regen_timer = CreateObject("roTimeSpan")
@@ -54,7 +54,7 @@ function char_action(object)
     object.onUpdate = function(dt as float)
 
         if m.game.char.getSP() < 100
-            m.actionSPRegen()
+            m.actSPRegen()
 
         end if
 
