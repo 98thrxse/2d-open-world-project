@@ -9,11 +9,11 @@ function obj_data() as object
         ' pos
 
         ' obj
-        getObjPosX: obj_getObjPosX
-        setObjPosX: obj_setObjPosX
+        getEntityPosX: obj_getEntityPosX
+        setEntityPosX: obj_setEntityPosX
         
-        getObjPosY: obj_getObjPosY
-        setObjPosY: obj_setObjPosY
+        getEntityPosY: obj_getEntityPosY
+        setEntityPosY: obj_setEntityPosY
 
         ' col
         getColPosX: obj_getColPosX
@@ -26,11 +26,11 @@ function obj_data() as object
         ' size
 
         ' obj
-        getObjH: obj_getObjH
-        setObjH: obj_setObjH
+        getEntityH: obj_getEntityH
+        setEntityH: obj_setEntityH
         
-        getObjW: obj_getObjW
-        setObjW: obj_setObjW
+        getEntityW: obj_getEntityW
+        setEntityW: obj_setEntityW
 
         ' col
         getColH: obj_getColH
@@ -66,20 +66,20 @@ end sub
 
 
 
-function obj_getObjPosX(id as integer) as integer
+function obj_getEntityPosX(id as integer) as integer
     return m.config[id].entity.x
 end function
 
-sub obj_setObjPosX(id as integer, x as integer)
+sub obj_setEntityPosX(id as integer, x as integer)
     m.config[id].entity.x = x
 end sub
 
 
-function obj_getObjPosY(id as integer) as integer
+function obj_getEntityPosY(id as integer) as integer
     return m.config[id].entity.y
 end function
 
-sub obj_setObjPosY(id as integer, y as integer)
+sub obj_setEntityPosY(id as integer, y as integer)
     m.config[id].entity.y = y
 end sub
 
@@ -104,21 +104,21 @@ end sub
 
 
 
-function obj_getObjH(id as integer) as integer
+function obj_getEntityH(id as integer) as integer
     return m.config[id].entity.height
 end function
 
-sub obj_setObjH(id as integer, height as integer)
+sub obj_setEntityH(id as integer, height as integer)
     m.config[id].entity.height = height
     SaveGame(m._params)
 end sub
 
 
-function obj_getObjW(id as integer) as integer
+function obj_getEntityW(id as integer) as integer
     return m.config[id].entity.width
 end function
 
-sub obj_setObjW(id as integer, width as integer)
+sub obj_setEntityW(id as integer, width as integer)
     m.config[id].entity.width = width
     SaveGame(m._params)
 end sub

@@ -3,11 +3,11 @@ function terrain_data() as object
     m.terrain = {
 
         ' pos
-        getPosX: terrain_getPosX
-        setPosX: terrain_setPosX
+        getEntityPosX: terrain_getEntityPosX
+        setEntityPosX: terrain_setEntityPosX
         
-        getPosY: terrain_getPosY
-        setPosY: terrain_setPosY
+        getEntityPosY: terrain_getEntityPosY
+        setEntityPosY: terrain_setEntityPosY
 
 
         config: invalid
@@ -95,19 +95,19 @@ end function
 
 
 
-function terrain_getPosX(i as integer, j as integer) as integer
+function terrain_getEntityPosX(i as integer, j as integer) as integer
     return m.config[i][j].x
 end function
 
-sub terrain_setPosX(i as integer, j as integer, x as integer)
+sub terrain_setEntityPosX(i as integer, j as integer, x as integer)
     m.config[i][j].x = x
 end sub
 
 
-function terrain_getPosY(i as integer, j as integer) as integer
+function terrain_getEntityPosY(i as integer, j as integer) as integer
     return m.config[i][j].y
 end function
 
-sub terrain_setPosY(i as integer, j as integer, y as integer)
+sub terrain_setEntityPosY(i as integer, j as integer, y as integer)
     m.config[i][j].y = y
 end sub

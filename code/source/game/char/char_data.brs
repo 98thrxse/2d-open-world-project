@@ -3,19 +3,19 @@ function char_data() as object
     this = {
 
         ' pos
-        getPosX: char_getPosX
-        setPosX: char_setPosX
+        getEntityPosX: char_getEntityPosX
+        setEntityPosX: char_setEntityPosX
         
-        getPosY: char_getPosY
-        setPosY: char_setPosY  
+        getEntityPosY: char_getEntityPosY
+        setEntityPosY: char_setEntityPosY  
 
 
         ' size
-        getH: char_getH
-        setH: char_setH
+        getEntityH: char_getEntityH
+        setEntityH: char_setEntityH
         
-        getW: char_getW
-        setW: char_setW
+        getEntityW: char_getEntityW
+        setEntityW: char_setEntityW
 
 
         ' attributes
@@ -167,41 +167,41 @@ end function
 
 ' char data to save
 
-function char_getPosX() as integer
+function char_getEntityPosX() as integer
     return m._params.pos.x
 end function
 
-sub char_setPosX(x as integer)
+sub char_setEntityPosX(x as integer)
     m._params.pos.x = x
     SaveGame(m._params)
 end sub
 
 
-function char_getPosY() as integer
+function char_getEntityPosY() as integer
     return m._params.pos.y
 end function
 
-sub char_setPosY(y as integer)
+sub char_setEntityPosY(y as integer)
     m._params.pos.y = y
     SaveGame(m._params)
 end sub
 
 
-function char_getH() as integer
+function char_getEntityH() as integer
     return m._params.size.height
 end function
 
-sub char_setH(height as integer)
+sub char_setEntityH(height as integer)
     m._params.size.height = height
     SaveGame(m._params)
 end sub
 
 
-function char_getW() as integer
+function char_getEntityW() as integer
     return m._params.size.width
 end function
 
-sub char_setW(width as integer)
+sub char_setEntityW(width as integer)
     m._params.size.width = width
     SaveGame(m._params)
 end sub

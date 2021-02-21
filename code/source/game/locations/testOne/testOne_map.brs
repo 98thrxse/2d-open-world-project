@@ -9,13 +9,13 @@ function testOne_map(object)
         ' loading map config to player data
 
         ' pos
-        if m.map_char_config.pos.x <> invalid then m.game.char.setPosX(m.map_char_config.pos.x)
-        if m.map_char_config.pos.y <> invalid then m.game.char.setPosY(m.map_char_config.pos.y)
+        if m.map_char_config.pos.x <> invalid then m.game.char.setEntityPosX(m.map_char_config.pos.x)
+        if m.map_char_config.pos.y <> invalid then m.game.char.setEntityPosY(m.map_char_config.pos.y)
 
 
         ' size
-        if m.map_char_config.size.width <> invalid then m.game.char.setW(m.map_char_config.size.width)
-        if m.map_char_config.size.height <> invalid then m.game.char.setH(m.map_char_config.size.height)
+        if m.map_char_config.size.width <> invalid then m.game.char.setEntityW(m.map_char_config.size.width)
+        if m.map_char_config.size.height <> invalid then m.game.char.setEntityH(m.map_char_config.size.height)
 
 
         ' attributes
@@ -71,19 +71,19 @@ function testOne_map(object)
             ' pos
 
             ' obj
-            if m.map_obj_config[i].entity.x <> invalid then m.game.obj.setObjPosX(i, m.map_obj_config[i].entity.x)
-            if m.map_obj_config[i].entity.y <> invalid then m.game.obj.setObjPosY(i, m.map_obj_config[i].entity.y)
+            if m.map_obj_config[i].entity.x <> invalid then m.game.obj.setEntityPosX(i, m.map_obj_config[i].entity.x)
+            if m.map_obj_config[i].entity.y <> invalid then m.game.obj.setEntityPosY(i, m.map_obj_config[i].entity.y)
 
             ' col
-            if m.map_obj_config[i].entity.x <> invalid then m.game.obj.setObjPosX(i, m.map_obj_config[i].entity.x)
-            if m.map_obj_config[i].entity.y <> invalid then m.game.obj.setObjPosY(i, m.map_obj_config[i].entity.y)
+            if m.map_obj_config[i].entity.x <> invalid then m.game.obj.setEntityPosX(i, m.map_obj_config[i].entity.x)
+            if m.map_obj_config[i].entity.y <> invalid then m.game.obj.setEntityPosY(i, m.map_obj_config[i].entity.y)
 
 
             ' size
 
             ' obj
-            if m.map_obj_config[i].entity.width <> invalid then m.game.obj.setObjW(i, m.map_obj_config[i].entity.width)
-            if m.map_obj_config[i].entity.height <> invalid then m.game.obj.setObjH(i, m.map_obj_config[i].entity.height)
+            if m.map_obj_config[i].entity.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.width)
+            if m.map_obj_config[i].entity.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.height)
             
             ' col
             if m.map_obj_config[i].col.width <> invalid then m.game.obj.setColW(i, m.map_obj_config[i].col.width)
@@ -118,8 +118,8 @@ function testOne_map(object)
             ' pos
 
             ' obj
-            if m.map_npc_config[i].entity.x <> invalid then m.game.npc.setObjPosX(i, m.map_npc_config[i].entity.x)
-            if m.map_npc_config[i].entity.y <> invalid then m.game.npc.setObjPosY(i, m.map_npc_config[i].entity.y)
+            if m.map_npc_config[i].entity.x <> invalid then m.game.npc.setEntityPosX(i, m.map_npc_config[i].entity.x)
+            if m.map_npc_config[i].entity.y <> invalid then m.game.npc.setEntityPosY(i, m.map_npc_config[i].entity.y)
 
             ' col
             if m.map_npc_config[i].col.x <> invalid then m.game.npc.setColPosX(i, m.map_npc_config[i].col.x)
@@ -129,8 +129,8 @@ function testOne_map(object)
             ' size
 
             ' obj
-            if m.map_npc_config[i].entity.width <> invalid then m.game.npc.setObjW(i, m.map_npc_config[i].entity.width)
-            if m.map_npc_config[i].entity.height <> invalid then m.game.npc.setObjH(i, m.map_npc_config[i].entity.height)
+            if m.map_npc_config[i].entity.width <> invalid then m.game.npc.setEntityW(i, m.map_npc_config[i].entity.width)
+            if m.map_npc_config[i].entity.height <> invalid then m.game.npc.setEntityH(i, m.map_npc_config[i].entity.height)
 
             ' col
             if m.map_npc_config[i].col.width <> invalid then m.game.npc.setColW(i, m.map_npc_config[i].col.width)

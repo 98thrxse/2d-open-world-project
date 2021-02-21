@@ -6,8 +6,8 @@ function npc_entity(object)
     m.media_wnd = m.game.getInstanceByName("npc_media")
 
     ' position
-    m.x = m.game.screen.GetWidth() / 2 - m.game.char.getPosX()
-    m.y = m.game.screen.GetHeight() / 2 - m.game.char.getPosY()
+    m.x = m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX()
+    m.y = m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY()
 
   end function
 
@@ -19,8 +19,8 @@ function npc_entity(object)
       if m.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()) = invalid
         ' addAnimatedImage
         m.addAnimatedImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr(), [m.media_wnd.stand_back_region, m.media_wnd.stand_front_region, m.media_wnd.stand_side_region, m.media_wnd.walk_back1_region, m.media_wnd.walk_back2_region, m.media_wnd.walk_front1_region, m.media_wnd.walk_front2_region, m.media_wnd.walk_side1_region, m.media_wnd.walk_side2_region, m.media_wnd.beaten_region, m.media_wnd.attack_side_region, m.media_wnd.fist_attack1_region, m.media_wnd.fist_attack2_region, m.media_wnd.fist_attack3_region, m.media_wnd.fist_attack4_region, m.media_wnd.fist_attack5_region, m.media_wnd.fist_attack6_region, m.media_wnd.leg_attack1_region, m.media_wnd.leg_attack2_region, m.media_wnd.leg_attack3_region], { index: m.game.npc.getAnim(i)
-          offset_x: m.game.npc.getObjPosX(i),
-          offset_y: m.game.npc.getObjPosY(i)
+          offset_x: m.game.npc.getEntityPosX(i),
+          offset_y: m.game.npc.getEntityPosY(i)
         })
 
       end if
@@ -38,8 +38,8 @@ function npc_entity(object)
 
   object.posXY = function()
 
-    m.game.char.setPosX(m.game.screen.GetWidth() / 2 - m.x)
-    m.game.char.setPosY(m.game.screen.GetHeight() / 2 - m.y)
+    m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.x)
+    m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.y)
 
   end function
 

@@ -10,11 +10,11 @@ function npc_data() as object
         ' pos
 
         ' obj
-        getObjPosX: npc_getObjPosX
-        setObjPosX: npc_setObjPosX
+        getEntityPosX: npc_getEntityPosX
+        setEntityPosX: npc_setEntityPosX
         
-        getObjPosY: npc_getObjPosY
-        setObjPosY: npc_setObjPosY
+        getEntityPosY: npc_getEntityPosY
+        setEntityPosY: npc_setEntityPosY
 
         ' col
         getColPosX: npc_getColPosX
@@ -27,17 +27,17 @@ function npc_data() as object
         ' size
 
         ' obj
-        getObjW: npc_getObjW
-        setObjW: npc_setObjW
+        getEntityW: npc_getEntityW
+        setEntityW: npc_setEntityW
         
-        getObjH: npc_getObjH
-        setObjH: npc_setObjH
+        getEntityH: npc_getEntityH
+        setEntityH: npc_setEntityH
 
         ' col
         getColW: npc_getColW
         setColW: npc_setColW
         
-        getColH: npc_getObjH
+        getColH: npc_getEntityH
         setColH: npc_setColH
 
 
@@ -62,20 +62,20 @@ end function
 
 
 
-function npc_getObjPosX(id as integer) as integer
+function npc_getEntityPosX(id as integer) as integer
     return m.config[id].entity.x
 end function
 
-sub npc_setObjPosX(id as integer, x as integer)
+sub npc_setEntityPosX(id as integer, x as integer)
     m.config[id].entity.x = x
 end sub
 
 
-function npc_getObjPosY(id as integer) as integer
+function npc_getEntityPosY(id as integer) as integer
     return m.config[id].entity.y
 end function
 
-sub npc_setObjPosY(id as integer, y as integer)
+sub npc_setEntityPosY(id as integer, y as integer)
     m.config[id].entity.y = y
 end sub
 
@@ -100,20 +100,20 @@ end sub
 
 
 
-function npc_getObjW(id as integer) as integer
+function npc_getEntityW(id as integer) as integer
     return m.config[id].entity.width
 end function
 
-sub npc_setObjW(id as integer, width as integer)
+sub npc_setEntityW(id as integer, width as integer)
     m.config[id].entity.width = width
 end sub
 
 
-function npc_getObjH(id as integer) as integer
+function npc_getEntityH(id as integer) as integer
     return m.config[id].entity.height
 end function
 
-sub npc_setObjH(id as integer, height as integer)
+sub npc_setEntityH(id as integer, height as integer)
     m.config[id].entity.height = height
 end sub
 
