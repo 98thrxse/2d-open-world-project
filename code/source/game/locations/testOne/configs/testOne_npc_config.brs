@@ -7,7 +7,7 @@ function testOne_npc_config() as object
                 index: 1,
             },
 
-            obj: {
+            entity: {
                 name: "npc_obj",
                 x: 800,
                 y: 100,
@@ -35,7 +35,7 @@ function testOne_npc_config() as object
                 index: 1,
             },
 
-            obj: {
+            entity: {
                 name: "npc_obj",
                 x: 800,
                 y: 300,
@@ -62,7 +62,7 @@ function testOne_npc_config() as object
                 index: 1,
             },
 
-            obj: {
+            entity: {
                 name: "npc_obj",
                 x: 800,
                 y: 500,

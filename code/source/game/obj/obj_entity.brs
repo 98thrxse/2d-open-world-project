@@ -15,9 +15,9 @@ function obj_entity(object)
 
         ' loading map config to create obj
         for i = 0 to m.game.obj.config.Count() - 1
-          if m.getImage(m.game.obj.config[i].obj.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) = invalid
+          if m.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) = invalid
             ' addAnimatedImage
-            m.addAnimatedImage(m.game.obj.config[i].obj.name.toStr() + "_" + m.game.obj.config[i].id.toStr(), [m.media_wnd.obj_region, invalid], { index: 0
+            m.addAnimatedImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr(), [m.media_wnd.obj_region, invalid], { index: 0
                 offset_x: m.game.obj.getObjPosX(i),
                 offset_y: m.game.obj.getObjPosY(i),
                 alpha: m.game.obj.getAlpha(i)

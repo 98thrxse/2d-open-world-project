@@ -63,20 +63,20 @@ end function
 
 
 function npc_getObjPosX(id as integer) as integer
-    return m.config[id].obj.x
+    return m.config[id].entity.x
 end function
 
 sub npc_setObjPosX(id as integer, x as integer)
-    m.config[id].obj.x = x
+    m.config[id].entity.x = x
 end sub
 
 
 function npc_getObjPosY(id as integer) as integer
-    return m.config[id].obj.y
+    return m.config[id].entity.y
 end function
 
 sub npc_setObjPosY(id as integer, y as integer)
-    m.config[id].obj.y = y
+    m.config[id].entity.y = y
 end sub
 
 
@@ -101,20 +101,20 @@ end sub
 
 
 function npc_getObjW(id as integer) as integer
-    return m.config[id].obj.width
+    return m.config[id].entity.width
 end function
 
 sub npc_setObjW(id as integer, width as integer)
-    m.config[id].obj.width = width
+    m.config[id].entity.width = width
 end sub
 
 
 function npc_getObjH(id as integer) as integer
-    return m.config[id].obj.height
+    return m.config[id].entity.height
 end function
 
 sub npc_setObjH(id as integer, height as integer)
-    m.config[id].obj.height = height
+    m.config[id].entity.height = height
 end sub
 
 

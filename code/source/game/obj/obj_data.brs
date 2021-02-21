@@ -67,20 +67,20 @@ end sub
 
 
 function obj_getObjPosX(id as integer) as integer
-    return m.config[id].obj.x
+    return m.config[id].entity.x
 end function
 
 sub obj_setObjPosX(id as integer, x as integer)
-    m.config[id].obj.x = x
+    m.config[id].entity.x = x
 end sub
 
 
 function obj_getObjPosY(id as integer) as integer
-    return m.config[id].obj.y
+    return m.config[id].entity.y
 end function
 
 sub obj_setObjPosY(id as integer, y as integer)
-    m.config[id].obj.y = y
+    m.config[id].entity.y = y
 end sub
 
 
@@ -105,21 +105,21 @@ end sub
 
 
 function obj_getObjH(id as integer) as integer
-    return m.config[id].obj.height
+    return m.config[id].entity.height
 end function
 
 sub obj_setObjH(id as integer, height as integer)
-    m.config[id].obj.height = height
+    m.config[id].entity.height = height
     SaveGame(m._params)
 end sub
 
 
 function obj_getObjW(id as integer) as integer
-    return m.config[id].obj.width
+    return m.config[id].entity.width
 end function
 
 sub obj_setObjW(id as integer, width as integer)
-    m.config[id].obj.width = width
+    m.config[id].entity.width = width
     SaveGame(m._params)
 end sub
 

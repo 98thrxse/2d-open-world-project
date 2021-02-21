@@ -18,9 +18,9 @@ function obj_anim(object)
     object.animUpdate = function()
 
         for i = 0 to m.game.obj.config.Count() - 1
-            if m.obj_wnd.getImage(m.game.obj.config[i].obj.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) <> invalid
+            if m.obj_wnd.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) <> invalid
                 ' update obj alpha
-                m.obj_wnd.getImage(m.game.obj.config[i].obj.name.toStr() + "_" + m.game.obj.config[i].id.toStr()).alpha = m.game.obj.getAlpha(i)
+                m.obj_wnd.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()).alpha = m.game.obj.getAlpha(i)
 
             end if
         

@@ -7,7 +7,7 @@ function testOne_obj_config() as object
                 alpha: 255
             },
             
-            obj: {
+            entity: {
                 name: "obj_obj",
                 x: 100,
                 y: 100,
@@ -30,7 +30,7 @@ function testOne_obj_config() as object
                 alpha: 255
             },
 
-            obj: {
+            entity: {
                 name: "obj_obj",
                 x: 300,
                 y: 100,
@@ -52,7 +52,7 @@ function testOne_obj_config() as object
                 alpha: 255
             },
 
-            obj: {
+            entity: {
                 name: "obj_obj",
                 x: 500,
                 y: 100,
