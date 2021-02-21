@@ -1,4 +1,4 @@
-function testOne_obj_static_config() as object
+function testOne_obj_config() as object
     config = [
 
         {

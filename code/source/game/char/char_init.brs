@@ -7,7 +7,7 @@ function char_init(object)
 		' defineObject
 		m.game.defineObject("char_main", char_main)
 		m.game.defineObject("char_media", char_media)
-		m.game.defineObject("char_obj", char_obj)
+		m.game.defineObject("char_entity", char_entity)
 		m.game.defineObject("char_anim", char_anim)
 
 		' createInstance

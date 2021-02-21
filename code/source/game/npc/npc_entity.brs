@@ -1,4 +1,4 @@
-function npc_obj(object)
+function npc_entity(object)
 
   object.onCreate = function(args)
 
@@ -52,16 +52,16 @@ function npc_obj(object)
 
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
-    if other_instance.name = "char_obj" and other_collider_name = "char_col_up"
+    if other_instance.name = "char_entity" and other_collider_name = "char_col_up"
       m.game.char.setNPCCollider(collider_name)
 
-    else if other_instance.name = "char_obj" and other_collider_name = "char_col_down"
+    else if other_instance.name = "char_entity" and other_collider_name = "char_col_down"
       m.game.char.setNPCCollider(collider_name)
 
-    else if other_instance.name = "char_obj" and other_collider_name = "char_col_left"
+    else if other_instance.name = "char_entity" and other_collider_name = "char_col_left"
       m.game.char.setNPCCollider(collider_name)
 
-    else if other_instance.name = "char_obj" and other_collider_name = "char_col_right"
+    else if other_instance.name = "char_entity" and other_collider_name = "char_col_right"
       m.game.char.setNPCCollider(collider_name)
 
     end if

@@ -1,4 +1,4 @@
-function obj_static(object)
+function obj_entity(object)
 
     object.onCreate = function(args)
 
@@ -52,16 +52,16 @@ function obj_static(object)
 
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
-        if other_instance.name = "char_obj" and other_collider_name = "char_col_up"
+        if other_instance.name = "char_entity" and other_collider_name = "char_col_up"
             if m.game.char.getUpCollider() <> true then m.game.char.setUpCollider(true)
 
-        else if other_instance.name = "char_obj" and other_collider_name = "char_col_down"
+        else if other_instance.name = "char_entity" and other_collider_name = "char_col_down"
             if m.game.char.getDownCollider() <> true then m.game.char.setDownCollider(true)
 
-        else if other_instance.name = "char_obj" and other_collider_name = "char_col_left"
+        else if other_instance.name = "char_entity" and other_collider_name = "char_col_left"
             if m.game.char.getLeftCollider() <> true then m.game.char.setLeftCollider(true)
 
-        else if other_instance.name = "char_obj" and other_collider_name = "char_col_right"
+        else if other_instance.name = "char_entity" and other_collider_name = "char_col_right"
             if m.game.char.getRightCollider() <> true then m.game.char.setRightCollider(true)
 
         end if

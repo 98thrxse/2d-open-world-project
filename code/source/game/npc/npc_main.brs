@@ -4,7 +4,7 @@ function npc_main(object)
 
 		' createInstance
         m.game.createInstance("npc_media")
-        m.game.createInstance("npc_obj")
+        m.game.createInstance("npc_entity")
         m.game.createInstance("npc_anim")
 
     end function

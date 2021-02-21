@@ -3,7 +3,7 @@ function npc_anim(object)
 	object.onCreate = function(args)
 
 		' getInstanceByName
-		m.obj_wnd = m.game.getInstanceByName("npc_obj")
+		m.obj_wnd = m.game.getInstanceByName("npc_entity")
 
 	end function
 

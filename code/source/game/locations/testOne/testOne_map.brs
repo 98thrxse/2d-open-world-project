@@ -1,7 +1,7 @@
 function testOne_map(object)
 
     object.map_char_config = testOne_char_config()
-    object.map_obj_static_config = testOne_obj_static_config()
+    object.map_obj_static_config = testOne_obj_config()
     object.map_npc_config = testOne_npc_config()
 
     object.onCreate = function(args)

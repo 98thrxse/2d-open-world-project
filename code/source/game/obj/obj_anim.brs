@@ -3,7 +3,7 @@ function obj_anim(object)
 	object.onCreate = function(args)
 
 		' getInstanceByName
-		m.obj_wnd = m.game.getInstanceByName("obj_static")
+		m.obj_wnd = m.game.getInstanceByName("obj_entity")
 
 	end function
 

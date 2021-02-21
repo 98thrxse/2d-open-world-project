@@ -1,4 +1,4 @@
-function terrain_obj(object)
+function terrain_entity(object)
 
     object.terrain_config = testOne_terrain_config() ' fix stas
 

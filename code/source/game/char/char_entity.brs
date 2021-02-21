@@ -1,4 +1,4 @@
-function char_obj(object)
+function char_entity(object)
 
   object.onCreate = function(args)
 

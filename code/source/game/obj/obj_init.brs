@@ -7,7 +7,7 @@ function obj_init(object)
         ' defineObject
         m.game.defineObject("obj_main", obj_main)
 		m.game.defineObject("obj_media", obj_media)
-        m.game.defineObject("obj_static", obj_static)
+        m.game.defineObject("obj_entity", obj_entity)
         m.game.defineObject("obj_anim", obj_anim)
 
         ' createInstance

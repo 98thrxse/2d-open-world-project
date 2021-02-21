@@ -4,7 +4,7 @@ function char_main(object)
 
         ' createInstance
         m.game.createInstance("char_media")
-        m.game.createInstance("char_obj")
+        m.game.createInstance("char_entity")
         m.game.createInstance("char_anim")
         
 
