@@ -39,12 +39,13 @@ function testOne_map(object)
 
         ' anim
         if m.map_char_config.anim.index <> invalid then m.game.char.setAnim(m.map_char_config.anim.index)
+        if m.map_char_config.anim.alpha <> invalid then m.game.char.setAlpha(m.map_char_config.anim.alpha)
         if m.map_char_config.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.anim.time)
         
 
         ' collider
         if m.map_char_config.collider.npc <> invalid then m.game.char.setNPCCollider(m.map_char_config.collider.npc)
-
+        
         if m.map_char_config.collider.up <> invalid then m.game.char.setUpCollider(m.map_char_config.collider.up)
         if m.map_char_config.collider.down <> invalid then m.game.char.setDownCollider(m.map_char_config.collider.down)
         if m.map_char_config.collider.left <> invalid then m.game.char.setLeftCollider(m.map_char_config.collider.left)

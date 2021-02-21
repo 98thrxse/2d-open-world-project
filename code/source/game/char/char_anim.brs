@@ -3,10 +3,7 @@ function char_anim(object)
 	object.onCreate = function(args)
 
 		' getInstanceByName
-		obj_wnd = m.game.getInstanceByName("char_entity")
-
-		' window initialization
-		m.obj = obj_wnd.obj
+		m.obj_wnd = m.game.getInstanceByName("char_entity")
 
 	end function
 
@@ -60,8 +57,26 @@ function char_anim(object)
 		end if
 
 		if m.timer.TotalMilliseconds() + 1 >= arr.Count() * m.game.char.getAnimTime() then m.timer.Mark()
-		m.obj.index = arr[int(m.timer.TotalMilliseconds() / m.game.char.getAnimTime())]
+		m.obj_wnd.obj.index = arr[int(m.timer.TotalMilliseconds() / m.game.char.getAnimTime())]
 
 	end function
+
+	object.onUpdate = function(dt as float)
+
+        m.animUpdate()
+
+    end function
+
+
+    object.animUpdate = function()
+
+        if m.obj_wnd.getImage("char_obj") <> invalid
+                
+			' update char alpha
+			m.obj_wnd.getImage("char_obj").alpha = m.game.char.getAlpha()
+
+        end if
+        
+    end function
     
 end function

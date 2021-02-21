@@ -61,8 +61,11 @@ function char_data() as object
         getAnimTime: char_getAnimTime
         setAnimTime: char_setAnimTime
 
+        getAlpha: char_getAlpha
+        setAlpha: char_setAlpha
 
-        ' collider
+
+        ' col
         getNPCCollider: char_getNPCCollider
         setNPCCollider: char_setNPCCollider
 
@@ -133,13 +136,14 @@ function char_data() as object
             },
 
             anim: {
-                index: 0
+                index: 0,
+                alpha: 255,
 		        time: 100
             },
         
             collider: {
                 npc: invalid,
-                
+
                 up: false,
                 down: false
                 left: false,
@@ -324,6 +328,15 @@ end function
 sub char_setAnimTime(time as integer)
     m._params.anim.time = time
     SaveGame(m._params)
+end sub
+
+
+function char_getAlpha() as integer
+    return m._params.anim.alpha
+end function
+
+sub char_setAlpha(alpha as integer)
+    m._params.anim.alpha = alpha
 end sub
 
 
