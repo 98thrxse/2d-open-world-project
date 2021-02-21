@@ -17,9 +17,9 @@ function testOne_obj_config() as object
 
             col: {
                 name: "obj_col",
-                x: 100,
+                x: 110,
                 y: 132,
-                width: 128,
+                width: 110,
                 height: 8
             }
         },
@@ -39,9 +39,9 @@ function testOne_obj_config() as object
             },
             col: {
                 name: "obj_col",
-                x: 300,
+                x: 310,
                 y: 132,
-                width: 128,
+                width: 110,
                 height: 8
             }
         },
@@ -61,9 +61,9 @@ function testOne_obj_config() as object
             },
             col: {
                 name: "obj_col",
-                x: 500,
+                x: 510,
                 y: 132,
-                width: 128,
+                width: 110,
                 height: 8
             }
         }
