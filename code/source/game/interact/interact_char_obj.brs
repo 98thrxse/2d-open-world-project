@@ -1,11 +1,11 @@
-function action_char_obj(object)
+function interact_char_obj(object)
 
     object.onCreate = function(args)
         
     end function
 
 
-    object.objAlpha = function()
+    object.interactAlpha = function()
 
         for i = 0 to m.game.obj.config.Count() - 1
             if m.game.char.getEntityPosX() < m.game.obj.getEntityPosX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityPosX() > m.game.obj.getEntityPosX(i)
@@ -26,7 +26,7 @@ function action_char_obj(object)
 
     object.onUpdate = function(dt as float)
 
-        m.objAlpha()
+        m.interactAlpha()
 
     end function
 

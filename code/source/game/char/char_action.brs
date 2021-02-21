@@ -1,4 +1,4 @@
-function action_char(object)
+function char_action(object)
 
     object.onCreate = function(args)
         

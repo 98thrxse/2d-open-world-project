@@ -6,7 +6,7 @@ function char_main(object)
         m.game.createInstance("char_media")
         m.game.createInstance("char_entity")
         m.game.createInstance("char_anim")
-        
+        m.game.createInstance("char_action") 
 
     end function
     

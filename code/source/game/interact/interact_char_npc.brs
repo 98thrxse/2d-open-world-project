@@ -1,4 +1,4 @@
-function action_char_npc(object)
+function interact_char_npc(object)
 
     object.onCreate = function(args)
         
@@ -10,7 +10,7 @@ function action_char_npc(object)
         ' held
         if code = 1006
             if m.game.char.getSP() >= m.game.char.getSPDamage()
-                m.actionHPDamage()
+                m.interactHPDamage()
 
             end if
 
@@ -18,7 +18,7 @@ function action_char_npc(object)
 
     end function
 
-    object.actionHPDamage = function()
+    object.interactHPDamage = function()
 
         if m.hp_damage_timer = invalid
             if m.game.char.getNPCCollider() <> invalid
