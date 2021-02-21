@@ -2,6 +2,10 @@ function obj_data() as object
 
     m.obj = {
 
+        ' anim
+        getAlpha: obj_getAlpha
+        setAlpha: obj_setAlpha
+
         ' pos
 
         ' obj
@@ -49,6 +53,16 @@ function obj_data() as object
     return m.obj
 
 end function
+
+
+
+function obj_getAlpha(id as integer) as integer
+    return m.config[id].anim.alpha
+end function
+
+sub obj_setAlpha(id as integer, alpha as integer)
+    m.config[id].anim.alpha = alpha
+end sub
 
 
 

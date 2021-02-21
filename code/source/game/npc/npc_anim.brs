@@ -1,9 +1,4 @@
 function npc_anim(object)
-
-	object.anim_options = {
-		frame: 100
-		timer: invalid
-	}
     
 	object.onCreate = function(args)
 

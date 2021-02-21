@@ -89,6 +89,11 @@ function testOne_map(object)
             if m.map_obj_static_config[i].col.width <> invalid then m.game.obj.setColW(i, m.map_obj_static_config[i].col.width)
             if m.map_obj_static_config[i].col.height <> invalid then m.game.obj.setColH(i, m.map_obj_static_config[i].col.height)
 
+            ' anim
+            
+            ' alpha
+            if m.map_obj_static_config[i].anim.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_static_config[i].anim.alpha)
+
         end for
 
 

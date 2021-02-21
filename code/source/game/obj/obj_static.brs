@@ -19,7 +19,8 @@ function obj_static(object)
             ' addAnimatedImage
             m.addAnimatedImage(m.game.obj.config[i].obj.name.toStr() + "_" + m.game.obj.config[i].id.toStr(), [m.media_wnd.obj_region, invalid], { index: 0
                 offset_x: m.game.obj.getObjPosX(i),
-                offset_y: m.game.obj.getObjPosY(i)
+                offset_y: m.game.obj.getObjPosY(i),
+                alpha: m.game.obj.getAlpha(i)
             })
     
           end if
@@ -52,16 +53,16 @@ function obj_static(object)
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
         if other_instance.name = "char_obj" and other_collider_name = "char_col_up"
-            m.game.char.setUpCollider(true)
+            if m.game.char.getUpCollider() <> true then m.game.char.setUpCollider(true)
 
         else if other_instance.name = "char_obj" and other_collider_name = "char_col_down"
-            m.game.char.setDownCollider(true)
+            if m.game.char.getDownCollider() <> true then m.game.char.setDownCollider(true)
 
         else if other_instance.name = "char_obj" and other_collider_name = "char_col_left"
-            m.game.char.setLeftCollider(true)
+            if m.game.char.getLeftCollider() <> true then m.game.char.setLeftCollider(true)
 
         else if other_instance.name = "char_obj" and other_collider_name = "char_col_right"
-            m.game.char.setRightCollider(true)
+            if m.game.char.getRightCollider() <> true then m.game.char.setRightCollider(true)
 
         end if
 
@@ -99,24 +100,24 @@ function obj_static(object)
 
         ' released
         if code = 102
-            m.game.char.setDownCollider(false)
-            m.game.char.setLeftCollider(false)
-            m.game.char.setRightCollider(false)
+            if m.game.char.getDownCollider() <> false then m.game.char.setDownCollider(false)
+            if m.game.char.getLeftCollider() <> false then m.game.char.setLeftCollider(false)
+            if m.game.char.getRightCollider() <> false then m.game.char.setRightCollider(false)
 
         else if code = 103
-            m.game.char.setUpCollider(false)
-            m.game.char.setLeftCollider(false)
-            m.game.char.setRightCollider(false)
+            if m.game.char.getUpCollider() <> false then m.game.char.setUpCollider(false)
+            if m.game.char.getLeftCollider() <> false then m.game.char.setLeftCollider(false)
+            if m.game.char.getRightCollider() <> false then m.game.char.setRightCollider(false)
 
         else if code = 104
-            m.game.char.setUpCollider(false)
-            m.game.char.setDownCollider(false)
-            m.game.char.setRightCollider(false)
+            if m.game.char.getUpCollider() <> false then m.game.char.setUpCollider(false)
+            if m.game.char.getDownCollider() <> false then m.game.char.setDownCollider(false)
+            if m.game.char.getRightCollider() <> false then m.game.char.setRightCollider(false)
 
         else if code = 105
-            m.game.char.setUpCollider(false)
-            m.game.char.setDownCollider(false)
-            m.game.char.setLeftCollider(false)
+            if m.game.char.getUpCollider() <> false then m.game.char.setUpCollider(false)
+            if m.game.char.getDownCollider() <> false then m.game.char.setDownCollider(false)
+            if m.game.char.getLeftCollider() <> false then m.game.char.setLeftCollider(false)
 
         end if
 

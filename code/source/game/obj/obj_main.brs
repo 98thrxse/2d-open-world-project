@@ -5,6 +5,7 @@ function obj_main(object)
         ' createInstance
         m.game.createInstance("obj_media")
         m.game.createInstance("obj_static")
+        m.game.createInstance("obj_anim")
 
     end function
     

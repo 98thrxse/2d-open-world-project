@@ -3,6 +3,10 @@ function testOne_obj_static_config() as object
 
         {
             id: 0,
+            anim: {
+                alpha: 255
+            },
+            
             obj: {
                 name: "obj_obj",
                 x: 100,
@@ -10,17 +14,22 @@ function testOne_obj_static_config() as object
                 width: 128,
                 height: 72
             },
+
             col: {
                 name: "obj_col",
                 x: 100,
-                y: 100,
+                y: 132,
                 width: 128,
-                height: 72
+                height: 8
             }
         },
 
         {
             id: 1
+            anim: {
+                alpha: 255
+            },
+
             obj: {
                 name: "obj_obj",
                 x: 300,
@@ -31,14 +40,18 @@ function testOne_obj_static_config() as object
             col: {
                 name: "obj_col",
                 x: 300,
-                y: 100,
+                y: 132,
                 width: 128,
-                height: 72
+                height: 8
             }
         },
 
         {
-            id: 2
+            id: 2,
+            anim: {
+                alpha: 255
+            },
+
             obj: {
                 name: "obj_obj",
                 x: 500,
@@ -49,9 +62,9 @@ function testOne_obj_static_config() as object
             col: {
                 name: "obj_col",
                 x: 500,
-                y: 100,
+                y: 132,
                 width: 128,
-                height: 72
+                height: 8
             }
         }
     ]
