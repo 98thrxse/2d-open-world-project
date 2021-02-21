@@ -4,7 +4,7 @@ function testOne_npc_config() as object
         {
             id: 0,
             anim: {
-                index: 0,
+                index: 1,
             },
 
             obj: {
@@ -32,7 +32,7 @@ function testOne_npc_config() as object
         {
             id: 1
             anim: {
-                index: 0,
+                index: 1,
             },
 
             obj: {
@@ -59,7 +59,7 @@ function testOne_npc_config() as object
         {
             id: 2
             anim: {
-                index: 0,
+                index: 1,
             },
 
             obj: {

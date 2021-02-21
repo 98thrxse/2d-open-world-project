@@ -18,7 +18,7 @@ function npc_obj(object)
     for i = 0 to m.game.npc.config.Count() - 1
       if m.getImage(m.game.npc.config[i].obj.name.toStr() + "_" + m.game.npc.config[i].id.toStr()) = invalid
         ' addAnimatedImage
-        m.addAnimatedImage(m.game.npc.config[i].obj.name.toStr() + "_" + m.game.npc.config[i].id.toStr(), [m.media_wnd.stand_front_region, m.media_wnd.stand_back_region, m.media_wnd.stand_side_region, m.media_wnd.walk_front1_region, m.media_wnd.walk_front2_region, m.media_wnd.walk_back1_region, m.media_wnd.walk_back2_region, m.media_wnd.walk_side1_region, m.media_wnd.walk_side2_region, m.media_wnd.beaten_region], { index: m.game.npc.getAnim(i)
+        m.addAnimatedImage(m.game.npc.config[i].obj.name.toStr() + "_" + m.game.npc.config[i].id.toStr(), [m.media_wnd.stand_back_region, m.media_wnd.stand_front_region, m.media_wnd.stand_side_region, m.media_wnd.walk_back1_region, m.media_wnd.walk_back2_region, m.media_wnd.walk_front1_region, m.media_wnd.walk_front2_region, m.media_wnd.walk_side1_region, m.media_wnd.walk_side2_region, m.media_wnd.beaten_region, m.media_wnd.attack_side_region, m.media_wnd.fist_attack1_region, m.media_wnd.fist_attack2_region, m.media_wnd.fist_attack3_region, m.media_wnd.fist_attack4_region, m.media_wnd.fist_attack5_region, m.media_wnd.fist_attack6_region, m.media_wnd.leg_attack1_region, m.media_wnd.leg_attack2_region, m.media_wnd.leg_attack3_region], { index: m.game.npc.getAnim(i)
           offset_x: m.game.npc.getObjPosX(i),
           offset_y: m.game.npc.getObjPosY(i)
         })

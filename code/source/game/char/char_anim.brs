@@ -13,19 +13,25 @@ function char_anim(object)
 	object.onButton = function(code as integer)
 
 		' held
-		if code = 1002 ' up
-			m.playAnim([3,4])
+        if code = 1006 ' select
+			m.playAnim([10,11,12,13,12,11,10,14,15,16,15,14,10,17,18,19,18,17,10])
+
+		else if code = 1002 ' up
+			m.playAnim([3,0,4])
 
 		else if code = 1003 ' down
-			m.playAnim([5,6])
+			m.playAnim([5,1,6])
 
 		else if code = 1004 ' left
-			m.playAnim([7,8])
+			m.playAnim([7,2,8])
 
 		else if code = 1005 ' right
-			m.playAnim([7,8])
+			m.playAnim([7,2,8])
 
 		' released
+		else if code = 106 ' select
+			m.playAnim([10])
+
 		else if code = 102 ' up
 			m.timer = invalid
 			m.playAnim([0])
