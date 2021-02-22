@@ -53,16 +53,16 @@ function npc_entity(object)
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
     if other_instance.name = "char_entity" and other_collider_name = "char_col_up"
-      m.game.char.setNPCCollider(collider_name)
+      m.game.char.setNPCCol(collider_name)
 
     else if other_instance.name = "char_entity" and other_collider_name = "char_col_down"
-      m.game.char.setNPCCollider(collider_name)
+      m.game.char.setNPCCol(collider_name)
 
     else if other_instance.name = "char_entity" and other_collider_name = "char_col_left"
-      m.game.char.setNPCCollider(collider_name)
+      m.game.char.setNPCCol(collider_name)
 
     else if other_instance.name = "char_entity" and other_collider_name = "char_col_right"
-      m.game.char.setNPCCollider(collider_name)
+      m.game.char.setNPCCol(collider_name)
 
     end if
 
@@ -73,14 +73,14 @@ function npc_entity(object)
     ' held
     if code = 1002 ' up
 
-      if m.game.char.getUpCollider() = false
+      if m.game.char.getUpCol() = false
         m.y += m.game.char.getUpSpeed()
 
       end if
                     
     else if code = 1003 ' down
 
-      if m.game.char.getDownCollider() = false
+      if m.game.char.getDownCol() = false
         m.y -= m.game.char.getDownSpeed()
 
       end if
@@ -88,14 +88,14 @@ function npc_entity(object)
         
     else if code = 1004 ' left
 
-      if m.game.char.getLeftCollider() = false
+      if m.game.char.getLeftCol() = false
         m.x += m.game.char.getLeftSpeed()
 
       end if
         
     else if code = 1005 ' right
 
-      if m.game.char.getRightCollider() = false
+      if m.game.char.getRightCol() = false
         m.x -= m.game.char.getRightSpeed()
 
       end if
@@ -104,17 +104,17 @@ function npc_entity(object)
 
     ' released
     if code = 102
-      m.game.char.setNPCCollider(invalid)
+      m.game.char.setNPCCol(invalid)
 
     else if code = 103
-      m.game.char.setNPCCollider(invalid)
+      m.game.char.setNPCCol(invalid)
 
     else if code = 104
-      m.game.char.setNPCCollider(invalid)
+      m.game.char.setNPCCol(invalid)
 
 
     else if code = 105
-      m.game.char.setNPCCollider(invalid)
+      m.game.char.setNPCCol(invalid)
 
     end if
 

@@ -53,16 +53,16 @@ function obj_entity(object)
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
         if other_instance.name = "char_entity" and other_collider_name = "char_col_up"
-            if m.game.char.getUpCollider() <> true then m.game.char.setUpCollider(true)
+            if m.game.char.getUpCol() <> true then m.game.char.setUpCol(true)
 
         else if other_instance.name = "char_entity" and other_collider_name = "char_col_down"
-            if m.game.char.getDownCollider() <> true then m.game.char.setDownCollider(true)
+            if m.game.char.getDownCol() <> true then m.game.char.setDownCol(true)
 
         else if other_instance.name = "char_entity" and other_collider_name = "char_col_left"
-            if m.game.char.getLeftCollider() <> true then m.game.char.setLeftCollider(true)
+            if m.game.char.getLeftCol() <> true then m.game.char.setLeftCol(true)
 
         else if other_instance.name = "char_entity" and other_collider_name = "char_col_right"
-            if m.game.char.getRightCollider() <> true then m.game.char.setRightCollider(true)
+            if m.game.char.getRightCol() <> true then m.game.char.setRightCol(true)
 
         end if
 
@@ -72,26 +72,26 @@ function obj_entity(object)
 
         ' held
         if code = 1002 ' up
-            if m.game.char.getUpCollider() = false
+            if m.game.char.getUpCol() = false
                 m.y += m.game.char.getUpSpeed()
 
             end if
                         
 		else if code = 1003 ' down
-            if m.game.char.getDownCollider() = false
+            if m.game.char.getDownCol() = false
                 m.y -= m.game.char.getDownSpeed()
 
             end if
             
             
 		else if code = 1004 ' left
-            if m.game.char.getLeftCollider() = false
+            if m.game.char.getLeftCol() = false
                 m.x += m.game.char.getLeftSpeed()
 
             end if
             
         else if code = 1005 ' right
-            if m.game.char.getRightCollider() = false
+            if m.game.char.getRightCol() = false
                 m.x -= m.game.char.getRightSpeed()
 
             end if
@@ -100,24 +100,24 @@ function obj_entity(object)
 
         ' released
         if code = 102
-            if m.game.char.getDownCollider() <> false then m.game.char.setDownCollider(false)
-            if m.game.char.getLeftCollider() <> false then m.game.char.setLeftCollider(false)
-            if m.game.char.getRightCollider() <> false then m.game.char.setRightCollider(false)
+            if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
+            if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
+            if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
 
         else if code = 103
-            if m.game.char.getUpCollider() <> false then m.game.char.setUpCollider(false)
-            if m.game.char.getLeftCollider() <> false then m.game.char.setLeftCollider(false)
-            if m.game.char.getRightCollider() <> false then m.game.char.setRightCollider(false)
+            if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
+            if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
+            if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
 
         else if code = 104
-            if m.game.char.getUpCollider() <> false then m.game.char.setUpCollider(false)
-            if m.game.char.getDownCollider() <> false then m.game.char.setDownCollider(false)
-            if m.game.char.getRightCollider() <> false then m.game.char.setRightCollider(false)
+            if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
+            if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
+            if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
 
         else if code = 105
-            if m.game.char.getUpCollider() <> false then m.game.char.setUpCollider(false)
-            if m.game.char.getDownCollider() <> false then m.game.char.setDownCollider(false)
-            if m.game.char.getLeftCollider() <> false then m.game.char.setLeftCollider(false)
+            if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
+            if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
+            if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
 
         end if
 

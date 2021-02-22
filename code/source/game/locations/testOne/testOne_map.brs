@@ -43,13 +43,13 @@ function testOne_map(object)
         if m.map_char_config.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.anim.time)
         
 
-        ' collider
-        if m.map_char_config.collider.npc <> invalid then m.game.char.setNPCCollider(m.map_char_config.collider.npc)
+        ' col
+        if m.map_char_config.col.npc <> invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
         
-        if m.map_char_config.collider.up <> invalid then m.game.char.setUpCollider(m.map_char_config.collider.up)
-        if m.map_char_config.collider.down <> invalid then m.game.char.setDownCollider(m.map_char_config.collider.down)
-        if m.map_char_config.collider.left <> invalid then m.game.char.setLeftCollider(m.map_char_config.collider.left)
-        if m.map_char_config.collider.right <> invalid then m.game.char.setRightCollider(m.map_char_config.collider.right)
+        if m.map_char_config.col.up <> invalid then m.game.char.setUpCol(m.map_char_config.col.up)
+        if m.map_char_config.col.down <> invalid then m.game.char.setDownCol(m.map_char_config.col.down)
+        if m.map_char_config.col.left <> invalid then m.game.char.setLeftCol(m.map_char_config.col.left)
+        if m.map_char_config.col.right <> invalid then m.game.char.setRightCol(m.map_char_config.col.right)
 
 
         ' speed

@@ -66,20 +66,20 @@ function char_data() as object
 
 
         ' col
-        getNPCCollider: char_getNPCCollider
-        setNPCCollider: char_setNPCCollider
+        getNPCCol: char_getNPCCol
+        setNPCCol: char_setNPCCol
 
-        getUpCollider: char_getUpCollider
-        setUpCollider: char_setUpCollider
+        getUpCol: char_getUpCol
+        setUpCol: char_setUpCol
 
-        getDownCollider: char_getDownCollider
-        setDownCollider: char_setDownCollider
+        getDownCol: char_getDownCol
+        setDownCol: char_setDownCol
 
-        getLeftCollider: char_getLeftCollider
-        setLeftCollider: char_setLeftCollider
+        getLeftCol: char_getLeftCol
+        setLeftCol: char_setLeftCol
 
-        getRightCollider: char_getRightCollider
-        setRightCollider: char_setRightCollider
+        getRightCol: char_getRightCol
+        setRightCol: char_setRightCol
 
 
         ' speed
@@ -99,7 +99,7 @@ function char_data() as object
     }
 
     this._params = LoadSavedGame()
-    this._build = "1.0.0"
+    this._build = "1.0.1"
 
     if this._params = invalid OR this._params.version <> this._build
         SaveGame(invalid)
@@ -141,7 +141,7 @@ function char_data() as object
 		        time: 100
             },
         
-            collider: {
+            col: {
                 npc: invalid,
 
                 up: false,
@@ -341,52 +341,52 @@ end sub
 
 
 
-function char_getNPCCollider() as object
-    return m._params.collider.npc
+function char_getNPCCol() as object
+    return m._params.col.npc
 end function
 
-sub char_setNPCCollider(id as object) 
-    m._params.collider.npc = id
+sub char_setNPCCol(id as object) 
+    m._params.col.npc = id
     SaveGame(m._params)
 end sub
 
 
-function char_getUpCollider() as boolean
-    return m._params.collider.up
+function char_getUpCol() as boolean
+    return m._params.col.up
 end function
 
-sub char_setUpCollider(collider as boolean) 
-    m._params.collider.up = collider
+sub char_setUpCol(col as boolean) 
+    m._params.col.up = col
     SaveGame(m._params)
 end sub
 
 
-function char_getDownCollider() as boolean
-    return m._params.collider.down
+function char_getDownCol() as boolean
+    return m._params.col.down
 end function
 
-sub char_setDownCollider(collider as boolean) 
-    m._params.collider.down = collider
+sub char_setDownCol(col as boolean) 
+    m._params.col.down = col
     SaveGame(m._params)
 end sub
 
 
-function char_getLeftCollider() as boolean
-    return m._params.collider.left
+function char_getLeftCol() as boolean
+    return m._params.col.left
 end function
 
-sub char_setLeftCollider(collider as boolean) 
-    m._params.collider.left = collider
+sub char_setLeftCol(col as boolean) 
+    m._params.col.left = col
     SaveGame(m._params)
 end sub
 
 
-function char_getRightCollider() as boolean
-    return m._params.collider.right
+function char_getRightCol() as boolean
+    return m._params.col.right
 end function
 
-sub char_setRightCollider(collider as boolean) 
-    m._params.collider.right = collider
+sub char_setRightCol(col as boolean) 
+    m._params.col.right = col
     SaveGame(m._params)
 end sub
 

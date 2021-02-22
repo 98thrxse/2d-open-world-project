@@ -95,28 +95,28 @@ function terrain_entity(object)
         ' held
         if code = 1002 ' up
 
-            if m.game.char.getUpCollider() = false
+            if m.game.char.getUpCol() = false
                 m.y += m.game.char.getUpSpeed()
 
             end if
                         
 		else if code = 1003 ' down
 
-            if m.game.char.getDownCollider() = false
+            if m.game.char.getDownCol() = false
                 m.y -= m.game.char.getDownSpeed()
 
             end if
             
 		else if code = 1004 ' left
 
-            if m.game.char.getLeftCollider() = false
+            if m.game.char.getLeftCol() = false
                 m.x += m.game.char.getLeftSpeed()
 
             end if
             
         else if code = 1005 ' right
 
-            if m.game.char.getRightCollider() = false
+            if m.game.char.getRightCol() = false
                 m.x -= m.game.char.getRightSpeed()
 
             end if

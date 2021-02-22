@@ -36,7 +36,7 @@ function testOne_char_config() as object
             time: 100
         },
         
-        collider: {
+        col: {
             npc: invalid,
 
             up: false,
