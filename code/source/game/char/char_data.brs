@@ -1,6 +1,6 @@
 function char_data() as object
 
-    this = {
+    m.char = {
 
         ' pos
         getEntityPosX: char_getEntityPosX
@@ -92,16 +92,16 @@ function char_data() as object
         getRightSpeed: char_getRightSpeed
         setRightSpeed: char_setRightSpeed
 
-        _params: invalid
+        config: invalid
     }
 
-    this._params = LoadSavedGame()
-    this._build = "1.0.1"
+    m.char.config = LoadSavedGame()
+    m.char.build = "1.0.1"
 
-    if this._params = invalid OR this._params.version <> this._build
+    if m.char.config = invalid OR m.char.config.version <> m.char.build
         SaveGame(invalid)
 
-        this._params = {
+        m.char.config = {
 
             pos: {
                 x: 0,
@@ -152,14 +152,14 @@ function char_data() as object
                 right: 3
             },
 
-            version: this._build
+            version: m.char.build
         }
 
-        SaveGame(m._params)
+        SaveGame(m.config)
 
     end if
 
-    return this
+    return m.char
 
 end function
 
@@ -167,253 +167,253 @@ end function
 ' char data to save
 
 function char_getEntityPosX() as integer
-    return m._params.pos.x
+    return m.config.pos.x
 end function
 
 sub char_setEntityPosX(x as integer)
-    m._params.pos.x = x
-    SaveGame(m._params)
+    m.config.pos.x = x
+    SaveGame(m.config)
 end sub
 
 
 function char_getEntityPosY() as integer
-    return m._params.pos.y
+    return m.config.pos.y
 end function
 
 sub char_setEntityPosY(y as integer)
-    m._params.pos.y = y
-    SaveGame(m._params)
+    m.config.pos.y = y
+    SaveGame(m.config)
 end sub
 
 
 function char_getEntityH() as integer
-    return m._params.size.height
+    return m.config.size.height
 end function
 
 sub char_setEntityH(height as integer)
-    m._params.size.height = height
-    SaveGame(m._params)
+    m.config.size.height = height
+    SaveGame(m.config)
 end sub
 
 
 function char_getEntityW() as integer
-    return m._params.size.width
+    return m.config.size.width
 end function
 
 sub char_setEntityW(width as integer)
-    m._params.size.width = width
-    SaveGame(m._params)
+    m.config.size.width = width
+    SaveGame(m.config)
 end sub
 
 
 function char_getHP() as integer
-    return m._params.attributes.hp
+    return m.config.attributes.hp
 end function
 
 sub char_setHP(hp as integer)
-    m._params.attributes.hp = hp
-    SaveGame(m._params)
+    m.config.attributes.hp = hp
+    SaveGame(m.config)
 end sub
 
 
 function char_getSP() as integer
-    return m._params.attributes.sp
+    return m.config.attributes.sp
 end function
 
 sub char_setSP(sp as integer)
-    m._params.attributes.sp = sp
-    SaveGame(m._params)
+    m.config.attributes.sp = sp
+    SaveGame(m.config)
 end sub
 
 
 function char_getHPDamage() as integer
-    return m._params.damage.hp
+    return m.config.damage.hp
 end function
 
 sub char_setHPDamage(hp as integer)
-    m._params.damage.hp = hp
-    SaveGame(m._params)
+    m.config.damage.hp = hp
+    SaveGame(m.config)
 end sub
 
 
 function char_getSPDamage() as integer
-    return m._params.damage.sp
+    return m.config.damage.sp
 end function
 
 sub char_setSPDamage(sp as integer)
-    m._params.damage.sp = sp
-    SaveGame(m._params)
+    m.config.damage.sp = sp
+    SaveGame(m.config)
 end sub
 
 
 function char_getHPDamageTime() as integer
-    return m._params.damage.hp_time
+    return m.config.damage.hp_time
 end function
 
 sub char_setHPDamageTime(hp_time as integer)
-    m._params.damage.hp_time = hp_time
-    SaveGame(m._params)
+    m.config.damage.hp_time = hp_time
+    SaveGame(m.config)
 end sub
 
 function char_getSPDamageTime() as integer
-    return m._params.damage.sp_time
+    return m.config.damage.sp_time
 end function
 
 sub char_setSPDamageTime(sp_time as integer)
-    m._params.damage.sp_time = sp_time
-    SaveGame(m._params)
+    m.config.damage.sp_time = sp_time
+    SaveGame(m.config)
 end sub
 
 
 
 function char_getHPRegen() as integer
-    return m._params.regen.hp
+    return m.config.regen.hp
 end function
 
 sub char_setHPRegen(hp as integer)
-    m._params.regen.hp = hp
-    SaveGame(m._params)
+    m.config.regen.hp = hp
+    SaveGame(m.config)
 end sub
 
 
 function char_getSPRegen() as integer
-    return m._params.regen.sp
+    return m.config.regen.sp
 end function
 
 sub char_setSPRegen(sp as integer)
-    m._params.regen.sp = sp
-    SaveGame(m._params)
+    m.config.regen.sp = sp
+    SaveGame(m.config)
 end sub
 
 
 function char_getHPRegenTime() as integer
-    return m._params.regen.hp_time
+    return m.config.regen.hp_time
 end function
 
 sub char_setHPRegenTime(hp_time as integer)
-    m._params.regen.hp_time = hp_time
-    SaveGame(m._params)
+    m.config.regen.hp_time = hp_time
+    SaveGame(m.config)
 end sub
 
 function char_getSPRegenTime() as integer
-    return m._params.regen.sp_time
+    return m.config.regen.sp_time
 end function
 
 sub char_setSPRegenTime(sp_time as integer)
-    m._params.regen.sp_time = sp_time
-    SaveGame(m._params)
+    m.config.regen.sp_time = sp_time
+    SaveGame(m.config)
 end sub
 
 
 
 function char_getAnim() as integer
-    return m._params.anim.index
+    return m.config.anim.index
 end function
 
 sub char_setAnim(index as integer)
-    m._params.anim.index = index
-    SaveGame(m._params)
+    m.config.anim.index = index
+    SaveGame(m.config)
 end sub
 
 
 function char_getAnimTime() as integer
-    return m._params.anim.time
+    return m.config.anim.time
 end function
 
 sub char_setAnimTime(time as integer)
-    m._params.anim.time = time
-    SaveGame(m._params)
+    m.config.anim.time = time
+    SaveGame(m.config)
 end sub
 
 
 function char_getAlpha() as integer
-    return m._params.anim.alpha
+    return m.config.anim.alpha
 end function
 
 sub char_setAlpha(alpha as integer)
-    m._params.anim.alpha = alpha
+    m.config.anim.alpha = alpha
 end sub
 
 
 
 function char_getUpCol() as boolean
-    return m._params.col.up
+    return m.config.col.up
 end function
 
 sub char_setUpCol(col as boolean) 
-    m._params.col.up = col
-    SaveGame(m._params)
+    m.config.col.up = col
+    SaveGame(m.config)
 end sub
 
 
 function char_getDownCol() as boolean
-    return m._params.col.down
+    return m.config.col.down
 end function
 
 sub char_setDownCol(col as boolean) 
-    m._params.col.down = col
-    SaveGame(m._params)
+    m.config.col.down = col
+    SaveGame(m.config)
 end sub
 
 
 function char_getLeftCol() as boolean
-    return m._params.col.left
+    return m.config.col.left
 end function
 
 sub char_setLeftCol(col as boolean) 
-    m._params.col.left = col
-    SaveGame(m._params)
+    m.config.col.left = col
+    SaveGame(m.config)
 end sub
 
 
 function char_getRightCol() as boolean
-    return m._params.col.right
+    return m.config.col.right
 end function
 
 sub char_setRightCol(col as boolean) 
-    m._params.col.right = col
-    SaveGame(m._params)
+    m.config.col.right = col
+    SaveGame(m.config)
 end sub
 
 
 
 function char_getUpSpeed() as object
-    return m._params.speed.up
+    return m.config.speed.up
 end function
 
 sub char_setUpSpeed(speed as object) 
-    m._params.speed.up = speed
-    SaveGame(m._params)
+    m.config.speed.up = speed
+    SaveGame(m.config)
 end sub
 
 
 function char_getDownSpeed() as object
-    return m._params.speed.down
+    return m.config.speed.down
 end function
 
 sub char_setDownSpeed(speed as object) 
-    m._params.speed.down = speed
-    SaveGame(m._params)
+    m.config.speed.down = speed
+    SaveGame(m.config)
 end sub
 
 
 function char_getLeftSpeed() as object
-    return m._params.speed.left
+    return m.config.speed.left
 end function
 
 sub char_setLeftSpeed(speed as object) 
-    m._params.speed.left = speed
-    SaveGame(m._params)
+    m.config.speed.left = speed
+    SaveGame(m.config)
 end sub
 
 
 function char_getRightSpeed() as object
-    return m._params.speed.right
+    return m.config.speed.right
 end function
 
 sub char_setRightSpeed(speed as object) 
-    m._params.speed.right = speed
-    SaveGame(m._params)
+    m.config.speed.right = speed
+    SaveGame(m.config)
 end sub
 
 
