@@ -11,7 +11,7 @@ function obj_entity(object)
 
     end function
 
-    object.objGen = function()
+    object.entityGen = function()
 
         ' loading map config to create obj
         for i = 0 to m.game.obj.config.Count() - 1
@@ -46,7 +46,7 @@ function obj_entity(object)
     object.onUpdate = function(dt as float)
 
         m.posXY()
-        m.objGen()
+        m.entityGen()
 
     end function
 

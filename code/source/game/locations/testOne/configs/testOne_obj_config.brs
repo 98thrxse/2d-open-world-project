@@ -8,7 +8,7 @@ function testOne_obj_config() as object
             },
             
             entity: {
-                name: "obj_obj",
+                name: "obj_entity",
                 x: 100,
                 y: 100,
                 width: 128,
@@ -31,7 +31,7 @@ function testOne_obj_config() as object
             },
 
             entity: {
-                name: "obj_obj",
+                name: "obj_entity",
                 x: 300,
                 y: 100,
                 width: 128,
@@ -53,7 +53,7 @@ function testOne_obj_config() as object
             },
 
             entity: {
-                name: "obj_obj",
+                name: "obj_entity",
                 x: 500,
                 y: 100,
                 width: 128,

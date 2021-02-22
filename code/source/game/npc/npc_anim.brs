@@ -3,7 +3,7 @@ function npc_anim(object)
 	object.onCreate = function(args)
 
 		' getInstanceByName
-		m.obj_wnd = m.game.getInstanceByName("npc_entity")
+		m.entity_wnd = m.game.getInstanceByName("npc_entity")
 
 	end function
 
@@ -24,10 +24,10 @@ function npc_anim(object)
 	object.animUpdate = function()
 
 		for i = 0 to m.game.npc.config.Count() - 1
-			if m.obj_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()) <> invalid
+			if m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()) <> invalid
 				
 				' update npc anim
-				m.obj_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()).index = m.game.npc.getAnim(i)
+				m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()).index = m.game.npc.getAnim(i)
 
 			end if
 		

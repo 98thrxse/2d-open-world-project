@@ -12,7 +12,7 @@ function npc_entity(object)
   end function
 
 
-  object.objGen = function()
+  object.entityGen = function()
 
     ' loading map config to create npc
     for i = 0 to m.game.npc.config.Count() - 1
@@ -46,7 +46,7 @@ function npc_entity(object)
   object.onUpdate = function(dt as float)
 
     m.posXY()
-    m.objGen()
+    m.entityGen()
 
   end function
 

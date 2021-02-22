@@ -8,7 +8,7 @@ function testOne_npc_config() as object
             },
 
             entity: {
-                name: "npc_obj",
+                name: "npc_entity",
                 x: 800,
                 y: 100,
                 width: 48,
@@ -36,7 +36,7 @@ function testOne_npc_config() as object
             },
 
             entity: {
-                name: "npc_obj",
+                name: "npc_entity",
                 x: 800,
                 y: 300,
                 width: 48,
@@ -63,7 +63,7 @@ function testOne_npc_config() as object
             },
 
             entity: {
-                name: "npc_obj",
+                name: "npc_entity",
                 x: 800,
                 y: 500,
                 width: 48,

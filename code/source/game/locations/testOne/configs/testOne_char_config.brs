@@ -37,8 +37,6 @@ function testOne_char_config() as object
         },
         
         col: {
-            npc: invalid,
-
             up: false,
             down: false,
             left: false,

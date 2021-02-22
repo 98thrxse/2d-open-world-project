@@ -3,7 +3,7 @@ function obj_anim(object)
 	object.onCreate = function(args)
 
 		' getInstanceByName
-		m.obj_wnd = m.game.getInstanceByName("obj_entity")
+		m.entity_wnd = m.game.getInstanceByName("obj_entity")
 
 	end function
 
@@ -18,10 +18,10 @@ function obj_anim(object)
     object.animUpdate = function()
 
         for i = 0 to m.game.obj.config.Count() - 1
-            if m.obj_wnd.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) <> invalid
+            if m.entity_wnd.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) <> invalid
                 
                 ' update obj alpha
-                m.obj_wnd.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()).alpha = m.game.obj.getAlpha(i)
+                m.entity_wnd.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()).alpha = m.game.obj.getAlpha(i)
 
             end if
         
