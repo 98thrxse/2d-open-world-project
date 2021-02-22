@@ -9,6 +9,7 @@ function npc_init(object)
 		m.game.defineObject("npc_media", npc_media)
 		m.game.defineObject("npc_entity", npc_entity)
 		m.game.defineObject("npc_anim", npc_anim)
+		m.game.defineObject("npc_act", npc_act)
 
 		' createInstance
         m.game.createInstance("npc_main")
