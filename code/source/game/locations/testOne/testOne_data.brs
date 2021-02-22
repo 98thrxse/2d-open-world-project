@@ -2,6 +2,10 @@ function testOne_data() as object
 
     m.map = {
 
+        ' intersect
+        getCharObjIntersect: map_getCharObjIntersect
+        setCharObjIntersect: map_setCharObjIntersect
+
         ' col
         getCharNPCCol: map_getCharNPCCol
         setCharNPCCol: map_setCharNPCCol
@@ -15,8 +19,12 @@ function testOne_data() as object
 
         m.map.config = {
 
+            intersect: {
+                obj: invalid
+            }
+
             col: {
-                npc: invalid,
+                npc: invalid
             }
 
         }
@@ -33,4 +41,14 @@ end function
 
 sub map_setCharNPCCol(id as object) 
     m.config.col.npc = id
+end sub
+
+
+
+function map_getCharObjIntersect() as object
+    return m.config.intersect.obj
+end function
+
+sub map_setCharObjIntersect(id as object) 
+    m.config.intersect.obj = id
 end sub
