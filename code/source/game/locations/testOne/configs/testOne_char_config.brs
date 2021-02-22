@@ -35,8 +35,14 @@ function testOne_char_config() as object
             index: 9,
             time: 100
         },
+
+        intersect: {
+            obj: invalid
+        },
         
         col: {
+            npc: invalid,
+            
             up: false,
             down: false,
             left: false,

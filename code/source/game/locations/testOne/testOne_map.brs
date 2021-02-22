@@ -43,7 +43,13 @@ function testOne_map(object)
         if m.map_char_config.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.anim.time)
         
 
-        ' col        
+        ' intersect
+        if m.map_char_config.intersect.obj <> invalid then m.game.char.setObjIntersect(m.map_char_config.intersect.obj)
+
+
+        ' col
+        if m.map_char_config.col.up <> invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
+
         if m.map_char_config.col.up <> invalid then m.game.char.setUpCol(m.map_char_config.col.up)
         if m.map_char_config.col.down <> invalid then m.game.char.setDownCol(m.map_char_config.col.down)
         if m.map_char_config.col.left <> invalid then m.game.char.setLeftCol(m.map_char_config.col.left)

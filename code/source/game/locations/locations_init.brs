@@ -10,7 +10,6 @@ function locations_init(object)
         m.game.defineObject("obj_init", obj_init)
         m.game.defineObject("npc_init", npc_init)
         m.game.defineObject("terrain_init", terrain_init)
-        m.game.defineObject("interact_init", interact_init)
 
         m.game.defineObject("testOne_init", testOne_init)
 

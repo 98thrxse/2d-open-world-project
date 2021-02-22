@@ -65,7 +65,15 @@ function char_data() as object
         setAlpha: char_setAlpha
 
 
+        ' intersect
+        getObjIntersect: char_getObjIntersect
+        setObjIntersect: char_setObjIntersect
+
+
         ' col
+        getNPCCol: char_getNPCCol
+        setNPCCol: char_setNPCCol
+
         getUpCol: char_getUpCol
         setUpCol: char_setUpCol
 
@@ -137,8 +145,14 @@ function char_data() as object
                 alpha: 255,
 		        time: 100
             },
+
+            intersect: {
+                obj: invalid
+            },
         
             col: {
+                npc: invalid,
+
                 up: false,
                 down: false
                 left: false,
@@ -334,6 +348,26 @@ sub char_setAlpha(alpha as integer)
     m.config.anim.alpha = alpha
 end sub
 
+
+
+function char_getObjIntersect() as object
+    return m.config.intersect.obj
+end function
+
+sub char_setObjIntersect(id as object) 
+    m.config.intersect.obj = id
+end sub
+
+
+
+function char_getNPCCol() as object
+    return m.config.col.npc
+end function
+
+sub char_setNPCCol(id as object) 
+    m.config.col.npc = id
+    SaveGame(m.config)
+end sub
 
 
 function char_getUpCol() as boolean

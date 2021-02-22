@@ -36,6 +36,31 @@ function npc_entity(object)
   end function
 
 
+  object.npcHPDamage = function()
+
+    if m.hp_damage_timer = invalid
+      if m.game.char.getNPCCol() <> invalid
+        id = right(m.game.char.getNPCCol(), 1).toInt()
+        m.game.npc.setHP(id, m.game.npc.getHP(id) - m.game.char.getHPDamage())
+
+        print m.game.char.getNPCCol() + " was attacked"
+        print m.game.npc.getHP(id)
+
+      end if
+
+      m.hp_damage_timer = CreateObject("roTimeSpan")
+      m.hp_damage_timer.Mark()
+
+    end if
+      
+    if m.hp_damage_timer.TotalMilliseconds() + 1 >= m.game.char.getSPDamageTime()
+        m.hp_damage_timer = invalid
+
+    end if
+
+  end function
+
+
   object.posXY = function()
 
     m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.x)
@@ -53,16 +78,16 @@ function npc_entity(object)
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
     if other_instance.name = "char_entity" and other_collider_name = "char_col_up"
-      m.game.interact.setCharNPCCol(collider_name)
+      m.game.char.setNPCCol(collider_name)
 
     else if other_instance.name = "char_entity" and other_collider_name = "char_col_down"
-      m.game.interact.setCharNPCCol(collider_name)
+      m.game.char.setNPCCol(collider_name)
 
     else if other_instance.name = "char_entity" and other_collider_name = "char_col_left"
-      m.game.interact.setCharNPCCol(collider_name)
+      m.game.char.setNPCCol(collider_name)
 
     else if other_instance.name = "char_entity" and other_collider_name = "char_col_right"
-      m.game.interact.setCharNPCCol(collider_name)
+      m.game.char.setNPCCol(collider_name)
 
     end if
 
@@ -100,21 +125,27 @@ function npc_entity(object)
 
       end if
         
+    else if code = 1006 ' select
+      if m.game.char.getSP() >= m.game.char.getSPDamage()
+          m.npcHPDamage()
+
+      end if
+
     end if
 
     ' released
     if code = 102
-      m.game.interact.setCharNPCCol(invalid)
+      m.game.char.setNPCCol(invalid)
 
     else if code = 103
-      m.game.interact.setCharNPCCol(invalid)
+      m.game.char.setNPCCol(invalid)
 
     else if code = 104
-      m.game.interact.setCharNPCCol(invalid)
+      m.game.char.setNPCCol(invalid)
 
 
     else if code = 105
-      m.game.interact.setCharNPCCol(invalid)
+      m.game.char.setNPCCol(invalid)
 
     end if
 
