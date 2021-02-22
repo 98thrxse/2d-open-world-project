@@ -53,16 +53,16 @@ function npc_entity(object)
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
     if other_instance.name = "char_entity" and other_collider_name = "char_col_up"
-      m.game.char.setNPCCol(collider_name)
+      m.game.map.setCharNPCCol(collider_name)
 
     else if other_instance.name = "char_entity" and other_collider_name = "char_col_down"
-      m.game.char.setNPCCol(collider_name)
+      m.game.map.setCharNPCCol(collider_name)
 
     else if other_instance.name = "char_entity" and other_collider_name = "char_col_left"
-      m.game.char.setNPCCol(collider_name)
+      m.game.map.setCharNPCCol(collider_name)
 
     else if other_instance.name = "char_entity" and other_collider_name = "char_col_right"
-      m.game.char.setNPCCol(collider_name)
+      m.game.map.setCharNPCCol(collider_name)
 
     end if
 
@@ -104,17 +104,17 @@ function npc_entity(object)
 
     ' released
     if code = 102
-      m.game.char.setNPCCol(invalid)
+      m.game.map.setCharNPCCol(invalid)
 
     else if code = 103
-      m.game.char.setNPCCol(invalid)
+      m.game.map.setCharNPCCol(invalid)
 
     else if code = 104
-      m.game.char.setNPCCol(invalid)
+      m.game.map.setCharNPCCol(invalid)
 
 
     else if code = 105
-      m.game.char.setNPCCol(invalid)
+      m.game.map.setCharNPCCol(invalid)
 
     end if
 

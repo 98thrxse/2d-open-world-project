@@ -66,9 +66,6 @@ function char_data() as object
 
 
         ' col
-        getNPCCol: char_getNPCCol
-        setNPCCol: char_setNPCCol
-
         getUpCol: char_getUpCol
         setUpCol: char_setUpCol
 
@@ -142,8 +139,6 @@ function char_data() as object
             },
         
             col: {
-                npc: invalid,
-
                 up: false,
                 down: false
                 left: false,
@@ -339,16 +334,6 @@ sub char_setAlpha(alpha as integer)
     m._params.anim.alpha = alpha
 end sub
 
-
-
-function char_getNPCCol() as object
-    return m._params.col.npc
-end function
-
-sub char_setNPCCol(id as object) 
-    m._params.col.npc = id
-    SaveGame(m._params)
-end sub
 
 
 function char_getUpCol() as boolean

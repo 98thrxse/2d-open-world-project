@@ -21,11 +21,11 @@ function interact_char_npc(object)
     object.interactHPDamage = function()
 
         if m.hp_damage_timer = invalid
-            if m.game.char.getNPCCol() <> invalid
-                id = right(m.game.char.getNPCCol(), 1).toInt()
+            if m.game.map.getCharNPCCol() <> invalid
+                id = right(m.game.map.getCharNPCCol(), 1).toInt()
                 m.game.npc.setHP(id, m.game.npc.getHP(id) - m.game.char.getHPDamage())
 
-                print m.game.char.getNPCCol() + " was attacked"
+                print m.game.map.getCharNPCCol() + " was attacked"
                 print m.game.npc.getHP(id)
 
             end if
