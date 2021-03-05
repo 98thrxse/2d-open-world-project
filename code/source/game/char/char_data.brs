@@ -55,8 +55,8 @@ function char_data() as object
 
 
         ' anim
-        getAnim: char_getAnim
-        setAnim: char_setAnim
+        getIndex: char_getIndex
+        setIndex: char_setIndex
 
         getAnimTime: char_getAnimTime
         setAnimTime: char_setAnimTime
@@ -143,7 +143,7 @@ function char_data() as object
             anim: {
                 index: 0,
                 alpha: 255,
-		        time: 100
+                time: 100
             },
 
             intersect: {
@@ -264,8 +264,8 @@ function char_getHPDamageTime() as integer
     return m.config.damage.hp_time
 end function
 
-sub char_setHPDamageTime(hp_time as integer)
-    m.config.damage.hp_time = hp_time
+sub char_setHPDamageTime(time as integer)
+    m.config.damage.hp_time = time
     SaveGame(m.config)
 end sub
 
@@ -273,8 +273,8 @@ function char_getSPDamageTime() as integer
     return m.config.damage.sp_time
 end function
 
-sub char_setSPDamageTime(sp_time as integer)
-    m.config.damage.sp_time = sp_time
+sub char_setSPDamageTime(time as integer)
+    m.config.damage.sp_time = time
     SaveGame(m.config)
 end sub
 
@@ -304,8 +304,8 @@ function char_getHPRegenTime() as integer
     return m.config.regen.hp_time
 end function
 
-sub char_setHPRegenTime(hp_time as integer)
-    m.config.regen.hp_time = hp_time
+sub char_setHPRegenTime(time as integer)
+    m.config.regen.hp_time = time
     SaveGame(m.config)
 end sub
 
@@ -313,18 +313,18 @@ function char_getSPRegenTime() as integer
     return m.config.regen.sp_time
 end function
 
-sub char_setSPRegenTime(sp_time as integer)
-    m.config.regen.sp_time = sp_time
+sub char_setSPRegenTime(time as integer)
+    m.config.regen.sp_time = time
     SaveGame(m.config)
 end sub
 
 
 
-function char_getAnim() as integer
+function char_getIndex() as integer
     return m.config.anim.index
 end function
 
-sub char_setAnim(index as integer)
+sub char_setIndex(index as integer)
     m.config.anim.index = index
     SaveGame(m.config)
 end sub

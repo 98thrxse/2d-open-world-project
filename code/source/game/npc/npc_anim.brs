@@ -12,7 +12,7 @@ function npc_anim(object)
 
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) <= 0
-				m.game.npc.setAnim(i, 9)
+				m.game.npc.setIndex(i, 9)
 
 			end if
 
@@ -27,7 +27,7 @@ function npc_anim(object)
 			if m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()) <> invalid
 				
 				' update npc anim
-				m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()).index = m.game.npc.getAnim(i)
+				m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()).index = m.game.npc.getIndex(i)
 
 			end if
 		

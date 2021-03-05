@@ -38,7 +38,7 @@ function testOne_map(object)
 
 
         ' anim
-        if m.map_char_config.anim.index <> invalid then m.game.char.setAnim(m.map_char_config.anim.index)
+        if m.map_char_config.anim.index <> invalid then m.game.char.setIndex(m.map_char_config.anim.index)
         if m.map_char_config.anim.alpha <> invalid then m.game.char.setAlpha(m.map_char_config.anim.alpha)
         if m.map_char_config.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.anim.time)
         

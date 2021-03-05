@@ -42,8 +42,8 @@ function npc_data() as object
 
 
         ' anim
-        getAnim: npc_getAnim
-        setAnim: npc_setAnim
+        getIndex: npc_getIndex
+        setIndex: npc_setIndex
 
 
         config: invalid
@@ -149,10 +149,10 @@ end sub
 
 
 
-function npc_getAnim(id as integer) as integer
+function npc_getIndex(id as integer) as integer
     return m.config[id].anim.index
 end function
 
-sub npc_setAnim(id as integer, index as integer)
+sub npc_setIndex(id as integer, index as integer)
     m.config[id].anim.index = index
 end sub

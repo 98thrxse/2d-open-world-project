@@ -25,14 +25,14 @@ function testOne_char_config() as object
 
         regen: {
             hp: 5,
-            sp: 5
+            sp: 5,
             hp_time: 1000,
             sp_time: 1000
         },
 
         anim: {
-            alpha: 255,
             index: 9,
+            alpha: 255,
             time: 100
         },
 
