@@ -4,6 +4,7 @@ function interface_init(object)
 
         ' defineObject
 		m.game.defineObject("interface_main", interface_main)
+		m.game.defineObject("interface_menu", interface_menu)
         m.game.defineObject("interface_hp", interface_hp)
         m.game.defineObject("interface_sp", interface_sp)
 
