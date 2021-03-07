@@ -3,6 +3,8 @@ function testOne_map(object)
     object.map_char_config = testOne_char_config()
     object.map_obj_config = testOne_obj_config()
     object.map_npc_config = testOne_npc_config()
+    object.map_terrain_config = testOne_terrain_config()
+    
 
     object.onCreate = function(args)
     
@@ -141,6 +143,25 @@ function testOne_map(object)
             if m.map_npc_config[i].col.width <> invalid then m.game.npc.setColW(i, m.map_npc_config[i].col.width)
             if m.map_npc_config[i].col.height <> invalid then m.game.npc.setColH(i, m.map_npc_config[i].col.height)
 
+        end for
+
+
+        ' loading map config to terrain data
+        ' fix stas
+        if m.game.terrain.config.Count() <> m.map_terrain_config.Count()
+            m.game.terrain.config = m.map_terrain_config
+        end if
+
+        for i = 0 to m.map_terrain_config.Count() - 1
+            for j = 0 to m.map_terrain_config[i].Count() - 1
+
+                ' pos
+
+                ' obj
+                if m.map_terrain_config[i][j].entity.x <> invalid then m.game.terrain.setEntityPosX(i, j, m.map_terrain_config[i][j].entity.x)
+                if m.map_terrain_config[i][j].entity.y <> invalid then m.game.terrain.setEntityPosY(i, j, m.map_terrain_config[i][j].entity.y)
+            
+            end for
         end for
 
     end function

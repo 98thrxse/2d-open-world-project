@@ -1,6 +1,6 @@
 function terrain_entity(object)
 
-    object.terrain_config = testOne_terrain_config() ' fix stas
+    ' object.terrain_config = testOne_terrain_config() ' fix stas
 
     object.onCreate = function(args)
 
@@ -26,18 +26,21 @@ function terrain_entity(object)
         id_x = []
         id_y = []
 
-        if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[0][0].offset_x
+        if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 < m.game.terrain.getEntityPosX(0, 0) 'm.terrain_config[0][0].offset_x
             id_x.push(0)
 
-        else if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[0][m.terrain_config[0].Count() - 1].offset_x
-            id_x.push(m.terrain_config[0].Count() - 1)
+        else if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 > m.game.terrain.getEntityPosX(0, m.game.terrain.config[0].Count() - 1) 'm.terrain_config[0][m.terrain_config[0].Count() - 1].offset_x
+            ' id_x.push(m.terrain_config[0].Count() - 1)
+            id_x.push(m.game.terrain.config[0].Count() - 1)
 
         else
-            for i = 0 to m.terrain_config[0].Count() - 2
-                if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[0][i].offset_x and m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[0][i + 1].offset_x
+            for i = 0 to m.game.terrain.config[0].Count() - 2 'm.terrain_config[0].Count() - 2
+                ' if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 > m.terrain_config[0][i].offset_x and m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 < m.terrain_config[0][i + 1].offset_x
+                if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 > m.game.terrain.getEntityPosX(0, i) and m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 < m.game.terrain.getEntityPosX(0, i + 1)
                     id_x.push(i)
                     id_x.push(i+1) 
-                    i = m.terrain_config[0].Count()
+                    ' i = m.terrain_config[0].Count()
+                    i = m.game.terrain.config[0].Count()
 
                 end if
 
@@ -45,18 +48,21 @@ function terrain_entity(object)
 
         end if
 
-        if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 < m.terrain_config[0][0].offset_y
+        if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 < m.game.terrain.getEntityPosY(0, 0) 'm.terrain_config[0][0].offset_y
             id_y.push(0)
 
-        else if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 > m.terrain_config[m.terrain_config.Count() - 1][0].offset_y
-            id_y.push(m.terrain_config.Count() - 1)
+        else if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 > m.game.terrain.getEntityPosY(m.game.terrain.config.Count() - 1, 0) 'm.terrain_config[m.terrain_config.Count() - 1][0].offset_y
+            'id_y.push(m.terrain_config.Count() - 1)
+            id_y.push(m.game.terrain.config.Count() - 1)
 
         else
-            for i = 0 to m.terrain_config.Count() - 2
-                if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 > m.terrain_config[i][0].offset_y and m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 < m.terrain_config[i + 1][0].offset_y
+            for i = 0 to m.game.terrain.config.Count() - 2
+                'if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 > m.terrain_config[i][0].offset_y and m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 < m.terrain_config[i + 1][0].offset_y
+                if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 > m.game.terrain.getEntityPosY(i, 0) and m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 < m.game.terrain.getEntityPosY(i + 1, 0)
                     id_y.push(i)
                     id_y.push(i + 1)  
-                    i = m.terrain_config.Count()
+                    'i = m.terrain_config.Count()
+                    i = m.game.terrain.config.Count()
 
                 end if
 
@@ -66,10 +72,12 @@ function terrain_entity(object)
 
         for i = 0 to id_y.Count() - 1
             for j = 0 to id_x.Count() - 1
-                if m.getImage(m.terrain_config[id_y[i]][id_x[j]].obj_name.toStr() + "_" + m.terrain_config[id_y[i]][id_x[j]].id.toStr()) = invalid
-                    m.addAnimatedImage(m.terrain_config[id_y[i]][id_x[j]].obj_name.toStr() + "_" + m.terrain_config[id_y[i]][id_x[j]].id.toStr(), [m.media_wnd.terrain_region, invalid], { index: 0
-                        offset_x: m.terrain_config[id_y[i]][id_x[j]].offset_x,
-                        offset_y: m.terrain_config[id_y[i]][id_x[j]].offset_y
+                'if m.getImage(m.terrain_config[id_y[i]][id_x[j]].obj_name.toStr() + "_" + m.terrain_config[id_y[i]][id_x[j]].id.toStr()) = invalid
+                if m.getImage(m.game.terrain.config[id_y[i]][id_x[j]].entity.name.toStr() + "_" + m.game.terrain.config[id_y[i]][id_x[j]].id.toStr()) = invalid
+                    'm.addAnimatedImage(m.terrain_config[id_y[i]][id_x[j]].obj_name.toStr() + "_" + m.terrain_config[id_y[i]][id_x[j]].id.toStr(), [m.media_wnd.terrain_region, invalid], { index: 0
+                    m.addAnimatedImage(m.game.terrain.config[id_y[i]][id_x[j]].entity.name.toStr() + "_" + m.game.terrain.config[id_y[i]][id_x[j]].id.toStr(), [m.media_wnd.terrain_region, invalid], { index: 0
+                        offset_x: m.game.terrain.getEntityPosX(id_y[i], id_x[j]) 'm.terrain_config[id_y[i]][id_x[j]].offset_x,
+                        offset_y: m.game.terrain.getEntityPosY(id_y[i], id_x[j]) 'm.terrain_config[id_y[i]][id_x[j]].offset_y
                     })
                     
                 end if
