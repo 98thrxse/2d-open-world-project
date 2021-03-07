@@ -147,6 +147,7 @@ function testOne_map(object)
 
 
         ' loading map config to terrain data
+        
         ' fix stas
         if m.game.terrain.config.Count() <> m.map_terrain_config.Count()
             m.game.terrain.config = m.map_terrain_config
