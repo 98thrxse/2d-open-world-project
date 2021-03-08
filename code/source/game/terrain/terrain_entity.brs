@@ -64,8 +64,8 @@ function terrain_entity(object)
 
         for i = 0 to id_y.Count() - 1
             for j = 0 to id_x.Count() - 1
-                if m.getImage(m.game.terrain.config[id_y[i]][id_x[j]].entity.name.toStr() + "_" + m.game.terrain.config[id_y[i]][id_x[j]].id.toStr()) = invalid
-                    m.addAnimatedImage(m.game.terrain.config[id_y[i]][id_x[j]].entity.name.toStr() + "_" + m.game.terrain.config[id_y[i]][id_x[j]].id.toStr(), [m.media_wnd.terrain_region, invalid], { index: 0
+                if m.getImage(m.game.terrain.config[id_y[i]][id_x[j]].entity.name.toStr() + "_" + m.game.terrain.config[id_y[i]][id_x[j]].id[0].toStr() + m.game.terrain.config[id_y[i]][id_x[j]].id[1].toStr()) = invalid
+                    m.addAnimatedImage(m.game.terrain.config[id_y[i]][id_x[j]].entity.name.toStr() + "_" + m.game.terrain.config[id_y[i]][id_x[j]].id[0].toStr() + m.game.terrain.config[id_y[i]][id_x[j]].id[1].toStr(), [m.media_wnd.terrain_region, invalid], { index: 0
                         offset_x: m.game.terrain.getEntityPosX(id_y[i], id_x[j]) 
                         offset_y: m.game.terrain.getEntityPosY(id_y[i], id_x[j])
                     })

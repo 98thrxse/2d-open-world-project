@@ -9,7 +9,6 @@ function testOne_map(object)
     object.onCreate = function(args)
     
         ' loading map config to player data
-
         ' pos
         if m.map_char_config.pos.x <> invalid then m.game.char.setEntityPosX(m.map_char_config.pos.x)
         if m.map_char_config.pos.y <> invalid then m.game.char.setEntityPosY(m.map_char_config.pos.y)
@@ -67,10 +66,35 @@ function testOne_map(object)
 
 
         ' loading map config to obj data
-
-        ' fix stas
-        if m.game.obj.config.Count() <> m.map_obj_config.Count()
-            m.game.obj.config = m.map_obj_config
+        if m.game.obj.config.Count() < m.map_obj_config.Count()
+            for i = m.game.obj.config.Count() to m.map_obj_config.Count() - 1
+                m.game.obj.config.push({
+                    id: i,
+                    anim: {
+                        alpha: invalid
+                    },
+                    
+                    entity: {
+                        name: "obj_entity",
+                        x: invalid,
+                        y: invalid,
+                        width: invalid,
+                        height: invalid,
+                    },
+        
+                    col: {
+                        name: "obj_col",
+                        x: invalid,
+                        y: invalid,
+                        width: invalid,
+                        height: invalid
+                    }
+                })
+            end for
+        else if m.game.obj.config.Count() > m.map_obj_config.Count()
+            for i = m.map_obj_config.Count() to m.game.obj.config.Count() - 1
+                m.game.obj.config.pop()
+            end for
         end if
 
         for i = 0 to m.map_obj_config.Count() - 1
@@ -82,8 +106,8 @@ function testOne_map(object)
             if m.map_obj_config[i].entity.y <> invalid then m.game.obj.setEntityPosY(i, m.map_obj_config[i].entity.y)
 
             ' col
-            if m.map_obj_config[i].entity.x <> invalid then m.game.obj.setEntityPosX(i, m.map_obj_config[i].entity.x)
-            if m.map_obj_config[i].entity.y <> invalid then m.game.obj.setEntityPosY(i, m.map_obj_config[i].entity.y)
+            if m.map_obj_config[i].col.x <> invalid then m.game.obj.setColPosX(i, m.map_obj_config[i].col.x)
+            if m.map_obj_config[i].col.y <> invalid then m.game.obj.setColPosY(i, m.map_obj_config[i].col.y)
 
 
             ' size
@@ -106,20 +130,49 @@ function testOne_map(object)
 
 
         ' loading map config to npc data
-
-        ' fix stas
-        if m.game.npc.config.Count() <> m.map_npc_config.Count()
-            m.game.npc.config = m.map_npc_config
+        if m.game.npc.config.Count() < m.map_npc_config.Count()
+            for i = m.game.npc.config.Count() to m.map_npc_config.Count() - 1
+                m.game.npc.config.push({
+                    id: i,
+                    anim: {
+                        index: invalid,
+                    },
+        
+                    entity: {
+                        name: "npc_entity",
+                        x: invalid,
+                        y: invalid,
+                        width: invalid,
+                        height: invalid
+                    },
+        
+                    col: {
+                        name: "npc_col",
+                        x: invalid,
+                        y: invalid,
+                        width: invalid,
+                        height: invalid
+                    },
+        
+                    attributes: {
+                        hp: invalid
+                    }
+                })
+            end for
+        else if m.game.npc.config.Count() > m.map_npc_config.Count()
+            for i = m.map_npc_config.Count() to m.game.npc.config.Count() - 1
+                m.game.npc.config.pop()
+            end for
         end if
 
         for i = 0 to m.map_npc_config.Count() - 1
 
             ' attributes
-            if m.map_npc_config[i].hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].hp)
+            if m.map_npc_config[i].attributes.hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].attributes.hp)
 
 
             ' anim
-            if m.map_npc_config[i].index <> invalid then m.game.npc.setAnim(i, m.map_npc_config[i].index)
+            if m.map_npc_config[i].anim.index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].anim.index)
 
 
             ' pos
@@ -146,11 +199,34 @@ function testOne_map(object)
         end for
 
 
-        ' loading map config to terrain data
-        
-        ' fix stas
-        if m.game.terrain.config.Count() <> m.map_terrain_config.Count()
-            m.game.terrain.config = m.map_terrain_config
+        ' loading map config to terrain data      
+        for i = 0 to m.map_terrain_config.Count() - 1
+            if i > m.game.terrain.config.Count() - 1
+                m.game.terrain.config.push(m.map_terrain_config[i])
+            else
+                if m.game.terrain.config[i].Count() < m.map_terrain_config[i].Count()
+                    for j = m.game.terrain.config[i].Count() to m.map_terrain_config[i].Count() - 1
+                        m.game.terrain.config[i].push({
+                            id: [i, j],
+                            entity: {
+                                name: "terrain_entity",
+                                x: invalid,
+                                y: invalid
+                            }
+                        })
+                    end for
+                else if m.game.terrain.config[i].Count() > m.map_terrain_config[i].Count()
+                    for j = m.map_terrain_config[i].Count() to m.game.terrain.config[i].Count() - 1
+                        m.game.terrain.config[i].pop()
+                    end for
+                end if
+            end if
+        end for
+
+        if m.game.terrain.config.Count() > m.map_terrain_config.Count()
+            for i = m.map_terrain_config.Count() to m.game.terrain.config.Count() - 1
+                m.game.terrain.config.pop()
+            end for
         end if
 
         for i = 0 to m.map_terrain_config.Count() - 1
