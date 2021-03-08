@@ -7,15 +7,12 @@ function testOne_map(object)
     
 
     object.onCreate = function(args)
-        m.onInit()
-    end function
-
-    object.onInit = function()
         m.loadChar()
         m.loadNPC()
         m.loadObj()
         m.loadTerrain()
     end function
+    
 
     object.loadTerrain = function()
         ' loading map config to terrain data      

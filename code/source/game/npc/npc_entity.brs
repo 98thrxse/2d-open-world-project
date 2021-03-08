@@ -5,10 +5,15 @@ function npc_entity(object)
     ' getInstanceByName
     m.media_wnd = m.game.getInstanceByName("npc_media")
 
+    m.npcXY()
+
+  end function
+
+
+  object.npcXY = function()
     ' position
     m.x = m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX()
     m.y = m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY()
-
   end function
 
 
@@ -36,7 +41,7 @@ function npc_entity(object)
   end function
 
 
-  object.posXY = function()
+  object.charXY = function()
 
     m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.x)
     m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.y)
@@ -45,7 +50,7 @@ function npc_entity(object)
 
   object.onUpdate = function(dt as float)
 
-    m.posXY()
+    m.charXY()
     m.entityGen()
 
   end function
