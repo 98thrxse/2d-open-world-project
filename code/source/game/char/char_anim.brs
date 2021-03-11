@@ -11,7 +11,11 @@ function char_anim(object)
 
 		' held
         if code = 1006 ' select
-			m.playAnim([10,11,12,13,12,11,10,14,15,16,15,14,10,17,18,19,18,17,10])
+			if m.game.char.getSP() >= m.game.char.getSPDamage()
+				m.playAnim([11,12,13,14,13,12,11,15,16,17,16,15,11,18,19,20,19,18,11])
+			else
+				m.playAnim([10])
+			end if
 
 		else if code = 1002 ' up
 			m.playAnim([3,0,4])
@@ -27,7 +31,11 @@ function char_anim(object)
 
 		' released
 		else if code = 106 ' select
-			m.playAnim([10])
+			if m.game.char.getSP() >= m.game.char.getSPDamage()
+				m.playAnim([11])
+			else
+				m.playAnim([10])
+			end if
 
 		else if code = 102 ' up
 			m.timer = invalid
