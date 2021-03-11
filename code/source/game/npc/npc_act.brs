@@ -19,7 +19,7 @@ function npc_act(object)
     object.npcHPDamage = function()
 
         if m.hp_damage_timer = invalid
-          if m.game.char.getNPCCol() <> invalid
+          if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage()
             id = right(m.game.char.getNPCCol(), 1).toInt()
             m.game.npc.setHP(id, m.game.npc.getHP(id) - m.game.char.getHPDamage())
     
