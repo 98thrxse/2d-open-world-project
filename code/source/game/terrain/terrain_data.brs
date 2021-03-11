@@ -2,7 +2,10 @@ function terrain_data() as object
 
     m.terrain = {
 
-        ' pos
+        ' entity
+        getEntityName: terrain_getEntityName
+        setEntityName: terrain_setEntityName
+
         getEntityPosX: terrain_getEntityPosX
         setEntityPosX: terrain_setEntityPosX
         
@@ -24,6 +27,14 @@ function terrain_data() as object
 
 end function
 
+
+function terrain_getEntityName(i as integer, j as integer) as integer
+    return m.config[i][j].entity.name
+end function
+
+sub terrain_setEntityName(i as integer, j as integer, name as string)
+    m.config[i][j].entity.name = name
+end sub
 
 
 function terrain_getEntityPosX(i as integer, j as integer) as integer

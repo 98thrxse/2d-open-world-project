@@ -7,14 +7,21 @@ function npc_data() as object
         setHP: npc_setHP
 
 
-        ' pos
+        ' entity
+        getEntityName: npc_getEntityName
+        setEntityName: npc_setEntityName
 
-        ' obj
         getEntityPosX: npc_getEntityPosX
         setEntityPosX: npc_setEntityPosX
         
         getEntityPosY: npc_getEntityPosY
         setEntityPosY: npc_setEntityPosY
+
+        getEntityW: npc_getEntityW
+        setEntityW: npc_setEntityW
+        
+        getEntityH: npc_getEntityH
+        setEntityH: npc_setEntityH
 
         ' col
         getColPosX: npc_getColPosX
@@ -23,17 +30,6 @@ function npc_data() as object
         getColPosY: npc_getColPosY
         setColPosY: npc_setColPosY
 
-
-        ' size
-
-        ' obj
-        getEntityW: npc_getEntityW
-        setEntityW: npc_setEntityW
-        
-        getEntityH: npc_getEntityH
-        setEntityH: npc_setEntityH
-
-        ' col
         getColW: npc_getColW
         setColW: npc_setColW
         
@@ -60,6 +56,15 @@ function npc_data() as object
 
 end function
 
+
+
+function npc_getEntityName(id as integer) as integer
+    return m.config[id].entity.name
+end function
+
+sub npc_setEntityName(id as integer, name as string)
+    m.config[id].entity.name = name
+end sub
 
 
 function npc_getEntityPosX(id as integer) as integer

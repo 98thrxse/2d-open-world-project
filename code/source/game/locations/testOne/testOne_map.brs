@@ -25,7 +25,7 @@ function testOne_map(object)
                         m.game.terrain.config[i].push({
                             id: [i, j],
                             entity: {
-                                name: "terrain_entity",
+                                name: invalid,
                                 x: invalid,
                                 y: invalid
                             }
@@ -48,9 +48,8 @@ function testOne_map(object)
         for i = 0 to m.map_terrain_config.Count() - 1
             for j = 0 to m.map_terrain_config[i].Count() - 1
 
-                ' pos
-
-                ' obj
+                ' entity
+                if m.map_terrain_config[i][j].entity.name <> invalid then m.game.terrain.setEntityName(i, j, m.map_terrain_config[i][j].entity.name)
                 if m.map_terrain_config[i][j].entity.x <> invalid then m.game.terrain.setEntityPosX(i, j, m.map_terrain_config[i][j].entity.x)
                 if m.map_terrain_config[i][j].entity.y <> invalid then m.game.terrain.setEntityPosY(i, j, m.map_terrain_config[i][j].entity.y)
             
@@ -70,7 +69,7 @@ function testOne_map(object)
                     },
                     
                     entity: {
-                        name: "obj_entity",
+                        name: invalid,
                         x: invalid,
                         y: invalid,
                         width: invalid,
@@ -94,30 +93,20 @@ function testOne_map(object)
 
         for i = 0 to m.map_obj_config.Count() - 1
 
-            ' pos
-
-            ' obj
+            ' entity
+            if m.map_obj_config[i].entity.name <> invalid then m.game.obj.setEntityName(i, m.map_obj_config[i].entity.name)
             if m.map_obj_config[i].entity.x <> invalid then m.game.obj.setEntityPosX(i, m.map_obj_config[i].entity.x)
             if m.map_obj_config[i].entity.y <> invalid then m.game.obj.setEntityPosY(i, m.map_obj_config[i].entity.y)
-
-            ' col
-            if m.map_obj_config[i].col.x <> invalid then m.game.obj.setColPosX(i, m.map_obj_config[i].col.x)
-            if m.map_obj_config[i].col.y <> invalid then m.game.obj.setColPosY(i, m.map_obj_config[i].col.y)
-
-
-            ' size
-
-            ' obj
             if m.map_obj_config[i].entity.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.width)
             if m.map_obj_config[i].entity.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.height)
             
             ' col
+            if m.map_obj_config[i].col.x <> invalid then m.game.obj.setColPosX(i, m.map_obj_config[i].col.x)
+            if m.map_obj_config[i].col.y <> invalid then m.game.obj.setColPosY(i, m.map_obj_config[i].col.y)
             if m.map_obj_config[i].col.width <> invalid then m.game.obj.setColW(i, m.map_obj_config[i].col.width)
             if m.map_obj_config[i].col.height <> invalid then m.game.obj.setColH(i, m.map_obj_config[i].col.height)
 
             ' anim
-            
-            ' alpha
             if m.map_obj_config[i].anim.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].anim.alpha)
 
         end for
@@ -134,7 +123,7 @@ function testOne_map(object)
                     },
         
                     entity: {
-                        name: "npc_entity",
+                        name: invalid,
                         x: invalid,
                         y: invalid,
                         width: invalid,
@@ -165,29 +154,19 @@ function testOne_map(object)
             ' attributes
             if m.map_npc_config[i].attributes.hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].attributes.hp)
 
-
             ' anim
             if m.map_npc_config[i].anim.index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].anim.index)
 
-
-            ' pos
-
-            ' obj
+            ' entity
+            if m.map_npc_config[i].entity.name <> invalid then m.game.npc.setEntityName(i, m.map_npc_config[i].entity.name)
             if m.map_npc_config[i].entity.x <> invalid then m.game.npc.setEntityPosX(i, m.map_npc_config[i].entity.x)
             if m.map_npc_config[i].entity.y <> invalid then m.game.npc.setEntityPosY(i, m.map_npc_config[i].entity.y)
-
-            ' col
-            if m.map_npc_config[i].col.x <> invalid then m.game.npc.setColPosX(i, m.map_npc_config[i].col.x)
-            if m.map_npc_config[i].col.y <> invalid then m.game.npc.setColPosY(i, m.map_npc_config[i].col.y)
-
-
-            ' size
-
-            ' obj
             if m.map_npc_config[i].entity.width <> invalid then m.game.npc.setEntityW(i, m.map_npc_config[i].entity.width)
             if m.map_npc_config[i].entity.height <> invalid then m.game.npc.setEntityH(i, m.map_npc_config[i].entity.height)
 
             ' col
+            if m.map_npc_config[i].col.x <> invalid then m.game.npc.setColPosX(i, m.map_npc_config[i].col.x)
+            if m.map_npc_config[i].col.y <> invalid then m.game.npc.setColPosY(i, m.map_npc_config[i].col.y)
             if m.map_npc_config[i].col.width <> invalid then m.game.npc.setColW(i, m.map_npc_config[i].col.width)
             if m.map_npc_config[i].col.height <> invalid then m.game.npc.setColH(i, m.map_npc_config[i].col.height)
 
@@ -240,7 +219,6 @@ function testOne_map(object)
 
         ' col
         if m.map_char_config.col.up <> invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
-
         if m.map_char_config.col.up <> invalid then m.game.char.setUpCol(m.map_char_config.col.up)
         if m.map_char_config.col.down <> invalid then m.game.char.setDownCol(m.map_char_config.col.down)
         if m.map_char_config.col.left <> invalid then m.game.char.setLeftCol(m.map_char_config.col.left)

@@ -104,7 +104,7 @@ function char_data() as object
     }
 
     m.char.config = LoadSavedGame()
-    m.char.build = "1.0.0"
+    m.char.build = "1.0.1"
 
     if m.char.config = invalid OR m.char.config.version <> m.char.build
         SaveGame(invalid)
@@ -411,41 +411,41 @@ end sub
 
 
 
-function char_getUpSpeed() as object
+function char_getUpSpeed() as integer
     return m.config.speed.up
 end function
 
-sub char_setUpSpeed(speed as object) 
+sub char_setUpSpeed(speed as integer) 
     m.config.speed.up = speed
     SaveGame(m.config)
 end sub
 
 
-function char_getDownSpeed() as object
+function char_getDownSpeed() as integer
     return m.config.speed.down
 end function
 
-sub char_setDownSpeed(speed as object) 
+sub char_setDownSpeed(speed as integer) 
     m.config.speed.down = speed
     SaveGame(m.config)
 end sub
 
 
-function char_getLeftSpeed() as object
+function char_getLeftSpeed() as integer
     return m.config.speed.left
 end function
 
-sub char_setLeftSpeed(speed as object) 
+sub char_setLeftSpeed(speed as integer) 
     m.config.speed.left = speed
     SaveGame(m.config)
 end sub
 
 
-function char_getRightSpeed() as object
+function char_getRightSpeed() as integer
     return m.config.speed.right
 end function
 
-sub char_setRightSpeed(speed as object) 
+sub char_setRightSpeed(speed as integer) 
     m.config.speed.right = speed
     SaveGame(m.config)
 end sub

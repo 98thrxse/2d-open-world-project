@@ -6,14 +6,22 @@ function obj_data() as object
         getAlpha: obj_getAlpha
         setAlpha: obj_setAlpha
 
-        ' pos
 
-        ' obj
+        ' entity
+        getEntityName: obj_getEntityName
+        setEntityName: obj_setEntityName
+
         getEntityPosX: obj_getEntityPosX
         setEntityPosX: obj_setEntityPosX
         
         getEntityPosY: obj_getEntityPosY
         setEntityPosY: obj_setEntityPosY
+
+        getEntityH: obj_getEntityH
+        setEntityH: obj_setEntityH
+        
+        getEntityW: obj_getEntityW
+        setEntityW: obj_setEntityW
 
         ' col
         getColPosX: obj_getColPosX
@@ -22,17 +30,6 @@ function obj_data() as object
         getColPosY: obj_getColPosY
         setColPosY: obj_setColPosY
 
-
-        ' size
-
-        ' obj
-        getEntityH: obj_getEntityH
-        setEntityH: obj_setEntityH
-        
-        getEntityW: obj_getEntityW
-        setEntityW: obj_setEntityW
-
-        ' col
         getColH: obj_getColH
         setColH: obj_setColH
         
@@ -64,6 +61,15 @@ sub obj_setAlpha(id as integer, alpha as integer)
     m.config[id].anim.alpha = alpha
 end sub
 
+
+
+function obj_getEntityName(id as integer) as integer
+    return m.config[id].entity.name
+end function
+
+sub obj_setEntityName(id as integer, name as string)
+    m.config[id].entity.name = name
+end sub
 
 
 function obj_getEntityPosX(id as integer) as integer
