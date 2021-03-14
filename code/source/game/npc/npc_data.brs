@@ -24,6 +24,9 @@ function npc_data() as object
         setEntityH: npc_setEntityH
 
         ' col
+        getColName: npc_getColName
+        setColName: npc_setColName
+
         getColPosX: npc_getColPosX
         setColPosX: npc_setColPosX
         
@@ -56,6 +59,15 @@ function npc_data() as object
 
 end function
 
+
+
+function npc_getColName(id as integer) as integer
+    return m.config[id].col.name
+end function
+
+sub npc_setColName(id as integer, name as string)
+    m.config[id].col.name = name
+end sub
 
 
 function npc_getEntityName(id as integer) as integer

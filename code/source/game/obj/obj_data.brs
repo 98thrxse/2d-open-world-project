@@ -24,6 +24,9 @@ function obj_data() as object
         setEntityW: obj_setEntityW
 
         ' col
+        getColName: obj_getColName
+        setColName: obj_setColName
+
         getColPosX: obj_getColPosX
         setColPosX: obj_setColPosX
         
@@ -61,6 +64,14 @@ sub obj_setAlpha(id as integer, alpha as integer)
     m.config[id].anim.alpha = alpha
 end sub
 
+
+function obj_getColName(id as integer) as integer
+    return m.config[id].col.name
+end function
+
+sub obj_setColName(id as integer, name as string)
+    m.config[id].col.name = name
+end sub
 
 
 function obj_getEntityName(id as integer) as integer
