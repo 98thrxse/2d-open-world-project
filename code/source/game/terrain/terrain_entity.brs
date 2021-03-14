@@ -5,22 +5,16 @@ function terrain_entity(object)
         ' getInstanceByName
         m.media_wnd = m.game.getInstanceByName("terrain_media")
 
-        m.terrainXY()
+        m.entityXY()
 
     end function
 
 
-    object.terrainXY = function()
+    object.entityXY = function()
+
         ' position
         m.x = m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX()
         m.y = m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY()
-    end function
-    
-
-    object.charXY = function()
-
-        m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.x)
-        m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.y)
 
     end function
 
@@ -88,44 +82,7 @@ function terrain_entity(object)
 
     object.onUpdate = function(dt as float)
 
-        m.charXY()
         m.entityGen()
-
-    end function
-
-
-    object.onButton = function(code as integer)
-
-        ' held
-        if code = 1002 ' up
-
-            if m.game.char.getUpCol() = false
-                m.y += m.game.char.getUpSpeed()
-
-            end if
-                        
-		else if code = 1003 ' down
-
-            if m.game.char.getDownCol() = false
-                m.y -= m.game.char.getDownSpeed()
-
-            end if
-            
-		else if code = 1004 ' left
-
-            if m.game.char.getLeftCol() = false
-                m.x += m.game.char.getLeftSpeed()
-
-            end if
-            
-        else if code = 1005 ' right
-
-            if m.game.char.getRightCol() = false
-                m.x -= m.game.char.getRightSpeed()
-
-            end if
-            
-        end if
 
     end function
     

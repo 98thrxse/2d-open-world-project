@@ -5,6 +5,8 @@ function char_main(object)
         ' createInstance
         m.game.createInstance("char_media")
         m.game.createInstance("char_entity")
+        m.game.createInstance("char_col")
+        m.game.createInstance("char_control")
         m.game.createInstance("char_anim")
         m.game.createInstance("char_act") 
 

@@ -5,15 +5,16 @@ function obj_entity(object)
         ' getInstanceByName
         m.media_wnd = m.game.getInstanceByName("obj_media")
 
-        m.objXY()
+        m.entityXY()
 
     end function
 
 
-    object.objXY = function()
+    object.entityXY = function()
         ' position
         m.x = m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX()
         m.y = m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY()
+
     end function
 
 
@@ -30,102 +31,15 @@ function obj_entity(object)
             })
     
           end if
-    
-          if m.colliders[m.game.obj.config[i].col.name.toStr() + "_" + m.game.obj.config[i].id.toStr()] = invalid
-            ' addColliderRectangle
-            m.addColliderRectangle(m.game.obj.config[i].col.name.toStr() + "_" + m.game.obj.config[i].id.toStr(), m.game.obj.getColPosX(i), m.game.obj.getColPosY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
-          
-          end if
           
         end for
     
     end function
-    
-    
-    object.charXY = function()
 
-        m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.x)
-        m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.y)
-
-    end function
 
     object.onUpdate = function(dt as float)
 
-        m.charXY()
         m.entityGen()
-
-    end function
-
-    object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
-
-        if other_instance.name = "char_entity" and other_collider_name = "char_col_up"
-            if m.game.char.getUpCol() <> true then m.game.char.setUpCol(true)
-
-        else if other_instance.name = "char_entity" and other_collider_name = "char_col_down"
-            if m.game.char.getDownCol() <> true then m.game.char.setDownCol(true)
-
-        else if other_instance.name = "char_entity" and other_collider_name = "char_col_left"
-            if m.game.char.getLeftCol() <> true then m.game.char.setLeftCol(true)
-
-        else if other_instance.name = "char_entity" and other_collider_name = "char_col_right"
-            if m.game.char.getRightCol() <> true then m.game.char.setRightCol(true)
-
-        end if
-
-    end function
-
-    object.onButton = function(code as integer)
-
-        ' held
-        if code = 1002 ' up
-            if m.game.char.getUpCol() = false
-                m.y += m.game.char.getUpSpeed()
-
-            end if
-                        
-		else if code = 1003 ' down
-            if m.game.char.getDownCol() = false
-                m.y -= m.game.char.getDownSpeed()
-
-            end if
-            
-            
-		else if code = 1004 ' left
-            if m.game.char.getLeftCol() = false
-                m.x += m.game.char.getLeftSpeed()
-
-            end if
-            
-        else if code = 1005 ' right
-            if m.game.char.getRightCol() = false
-                m.x -= m.game.char.getRightSpeed()
-
-            end if
-            
-        end if
-
-        ' released
-        if code = 102
-            if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
-            if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
-            if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
-
-        else if code = 103
-            if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
-            if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
-            if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
-
-        else if code = 104
-            if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
-            if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
-            if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
-
-        else if code = 105
-            if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
-            if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
-            if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
-
-        end if
 
     end function
 

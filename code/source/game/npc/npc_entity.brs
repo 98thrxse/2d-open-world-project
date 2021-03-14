@@ -5,12 +5,12 @@ function npc_entity(object)
     ' getInstanceByName
     m.media_wnd = m.game.getInstanceByName("npc_media")
 
-    m.npcXY()
+    m.entityXY()
 
   end function
 
 
-  object.npcXY = function()
+  object.entityXY = function()
     ' position
     m.x = m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX()
     m.y = m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY()
@@ -29,99 +29,15 @@ function npc_entity(object)
         })
 
       end if
-
-      if m.colliders[m.game.npc.config[i].col.name.toStr() + "_" + m.game.npc.config[i].id.toStr()] = invalid
-        ' addColliderRectangle
-        m.addColliderRectangle(m.game.npc.config[i].col.name.toStr() + "_" + m.game.npc.config[i].id.toStr(), m.game.npc.getColPosX(i), m.game.npc.getColPosY(i), m.game.npc.getColW(i), m.game.npc.getColH(i))
-      
-      end if
       
     end for
 
   end function
-
-
-  object.charXY = function()
-
-    m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.x)
-    m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.y)
-
-  end function
+  
 
   object.onUpdate = function(dt as float)
 
-    m.charXY()
     m.entityGen()
-
-  end function
-
-  object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
-
-    if other_instance.name = "char_entity" and other_collider_name = "char_col_up"
-      m.game.char.setNPCCol(collider_name)
-
-    else if other_instance.name = "char_entity" and other_collider_name = "char_col_down"
-      m.game.char.setNPCCol(collider_name)
-
-    else if other_instance.name = "char_entity" and other_collider_name = "char_col_left"
-      m.game.char.setNPCCol(collider_name)
-
-    else if other_instance.name = "char_entity" and other_collider_name = "char_col_right"
-      m.game.char.setNPCCol(collider_name)
-
-    end if
-
-  end function
-  
-  object.onButton = function(code as integer)
-
-    ' held
-    if code = 1002 ' up
-
-      if m.game.char.getUpCol() = false
-        m.y += m.game.char.getUpSpeed()
-
-      end if
-                    
-    else if code = 1003 ' down
-
-      if m.game.char.getDownCol() = false
-        m.y -= m.game.char.getDownSpeed()
-
-      end if
-        
-        
-    else if code = 1004 ' left
-
-      if m.game.char.getLeftCol() = false
-        m.x += m.game.char.getLeftSpeed()
-
-      end if
-        
-    else if code = 1005 ' right
-
-      if m.game.char.getRightCol() = false
-        m.x -= m.game.char.getRightSpeed()
-
-      end if
-        
-    end if
-
-    ' released
-    if code = 102
-      m.game.char.setNPCCol(invalid)
-
-    else if code = 103
-      m.game.char.setNPCCol(invalid)
-
-    else if code = 104
-      m.game.char.setNPCCol(invalid)
-
-
-    else if code = 105
-      m.game.char.setNPCCol(invalid)
-
-    end if
 
   end function
       
