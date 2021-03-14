@@ -14,7 +14,7 @@ function npc_control(object)
     ' held
     if code = 1002 ' up
 
-      if m.game.char.getUpCol() = false
+      if m.game.char.getUpCol() = false and not m.game.interface.getMMToggle()
         m.entity_wnd.y += m.game.char.getUpSpeed()
         m.col_wnd.y += m.game.char.getUpSpeed()
 
@@ -22,7 +22,7 @@ function npc_control(object)
                     
     else if code = 1003 ' down
 
-      if m.game.char.getDownCol() = false
+      if m.game.char.getDownCol() = false and not m.game.interface.getMMToggle()
         m.entity_wnd.y -= m.game.char.getDownSpeed()
         m.col_wnd.y -= m.game.char.getDownSpeed()
 
@@ -31,7 +31,7 @@ function npc_control(object)
         
     else if code = 1004 ' left
 
-      if m.game.char.getLeftCol() = false
+      if m.game.char.getLeftCol() = false and not m.game.interface.getMMToggle()
         m.entity_wnd.x += m.game.char.getLeftSpeed()
         m.col_wnd.x += m.game.char.getLeftSpeed()
 
@@ -39,7 +39,7 @@ function npc_control(object)
         
     else if code = 1005 ' right
 
-      if m.game.char.getRightCol() = false
+      if m.game.char.getRightCol() = false and not m.game.interface.getMMToggle()
         m.entity_wnd.x -= m.game.char.getRightSpeed()
         m.col_wnd.x -= m.game.char.getRightSpeed()
 
@@ -49,17 +49,24 @@ function npc_control(object)
 
     ' released
     if code = 102
-      m.game.char.setNPCCol(invalid)
+      if not m.game.interface.getMMToggle()
+        m.game.char.setNPCCol(invalid)
+      end if
 
     else if code = 103
-      m.game.char.setNPCCol(invalid)
+      if not m.game.interface.getMMToggle()
+        m.game.char.setNPCCol(invalid)
+      end if
 
     else if code = 104
-      m.game.char.setNPCCol(invalid)
-
+      if not m.game.interface.getMMToggle()
+        m.game.char.setNPCCol(invalid)
+      end if
 
     else if code = 105
-      m.game.char.setNPCCol(invalid)
+      if not m.game.interface.getMMToggle()
+        m.game.char.setNPCCol(invalid)
+      end if
 
     end if
 

@@ -13,14 +13,14 @@ function obj_control(object)
 
         ' held
         if code = 1002 ' up
-            if m.game.char.getUpCol() = false
+            if m.game.char.getUpCol() = false and not m.game.interface.getMMToggle()
                 m.entity_wnd.y += m.game.char.getUpSpeed()
                 m.col_wnd.y += m.game.char.getUpSpeed()
 
             end if
                         
 		else if code = 1003 ' down
-            if m.game.char.getDownCol() = false
+            if m.game.char.getDownCol() = false and not m.game.interface.getMMToggle()
                 m.entity_wnd.y -= m.game.char.getDownSpeed()
                 m.col_wnd.y -= m.game.char.getDownSpeed()
 
@@ -28,14 +28,14 @@ function obj_control(object)
             
             
 		else if code = 1004 ' left
-            if m.game.char.getLeftCol() = false
+            if m.game.char.getLeftCol() = false and not m.game.interface.getMMToggle()
                 m.entity_wnd.x += m.game.char.getLeftSpeed()
                 m.col_wnd.x += m.game.char.getLeftSpeed()
 
             end if
             
         else if code = 1005 ' right
-            if m.game.char.getRightCol() = false
+            if m.game.char.getRightCol() = false and not m.game.interface.getMMToggle()
                 m.entity_wnd.x -= m.game.char.getRightSpeed()
                 m.col_wnd.x -= m.game.char.getRightSpeed()
 
@@ -45,24 +45,36 @@ function obj_control(object)
 
         ' released
         if code = 102
-            if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
-            if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
-            if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
+            if not m.game.interface.getMMToggle()
+                if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
+                if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
+                if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
+
+            end if
 
         else if code = 103
-            if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
-            if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
-            if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
+            if not m.game.interface.getMMToggle()
+                if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
+                if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
+                if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
+
+            end if
 
         else if code = 104
-            if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
-            if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
-            if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
+            if not m.game.interface.getMMToggle()
+                if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
+                if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
+                if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
+
+            end if
 
         else if code = 105
-            if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
-            if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
-            if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
+            if not m.game.interface.getMMToggle()
+                if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
+                if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
+                if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
+                
+            end if
 
         end if
 

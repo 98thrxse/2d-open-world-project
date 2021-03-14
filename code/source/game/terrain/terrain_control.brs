@@ -33,28 +33,28 @@ function terrain_control(object)
         ' held
         if code = 1002 ' up
 
-            if m.game.char.getUpCol() = false
+            if m.game.char.getUpCol() = false and not m.game.interface.getMMToggle()
                 m.entity_wnd.y += m.game.char.getUpSpeed()
 
             end if
                         
 		else if code = 1003 ' down
 
-            if m.game.char.getDownCol() = false
+            if m.game.char.getDownCol() = false and not m.game.interface.getMMToggle()
                 m.entity_wnd.y -= m.game.char.getDownSpeed()
 
             end if
             
 		else if code = 1004 ' left
 
-            if m.game.char.getLeftCol() = false
+            if m.game.char.getLeftCol() = false and not m.game.interface.getMMToggle()
                 m.entity_wnd.x += m.game.char.getLeftSpeed()
 
             end if
             
         else if code = 1005 ' right
 
-            if m.game.char.getRightCol() = false
+            if m.game.char.getRightCol() = false and not m.game.interface.getMMToggle()
                 m.entity_wnd.x -= m.game.char.getRightSpeed()
 
             end if
