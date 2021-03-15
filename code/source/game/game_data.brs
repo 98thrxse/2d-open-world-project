@@ -3,8 +3,8 @@ function game_data() as object
     m.data = {
 
         ' focus
-        getFocus: game_getFocus
-        setFocus: game_setFocus
+        getFocusGroup: game_getFocusGroup
+        setFocusGroup: game_setFocusGroup
 
 
         config: invalid
@@ -26,10 +26,10 @@ function game_data() as object
 end function
 
 
-function game_getFocus() as string
+function game_getFocusGroup() as string
     return m.config.focus.name
 end function
 
-sub game_setFocus(name as string)
+sub game_setFocusGroup(name as string)
     m.config.focus.name = name
 end sub

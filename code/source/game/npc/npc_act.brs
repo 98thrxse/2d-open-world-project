@@ -18,7 +18,7 @@ function npc_act(object)
     
     object.npcHPDamage = function()
 
-		if m.game.data.getFocus() = "char"
+		if m.game.data.getFocusGroup() = "char"
             if m.hp_damage_timer = invalid
             if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage()
                 id = right(m.game.char.getNPCCol(), 1).toInt()
@@ -38,7 +38,7 @@ function npc_act(object)
                 m.hp_damage_timer = invalid
         
             end if
-            
+
         end if
     
     end function

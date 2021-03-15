@@ -13,7 +13,7 @@ function char_control(object)
 
 		' pressed
     if code = 2 ' up
-			if m.game.data.getFocus() = "char"
+			if m.game.data.getFocusGroup() = "char"
         if m.entity_wnd.entity.scale_x <> 1.0
           m.entity_wnd.entity.offset_x -= m.game.char.getEntityW()
         end if
@@ -22,7 +22,7 @@ function char_control(object)
       end if
 
     else if code = 3 ' down
-			if m.game.data.getFocus() = "char"
+			if m.game.data.getFocusGroup() = "char"
         if m.entity_wnd.entity.scale_x <> 1.0
           m.entity_wnd.entity.offset_x -= m.game.char.getEntityW()
         end if
@@ -31,7 +31,7 @@ function char_control(object)
       end if
 
     else if code = 4 ' left
-			if m.game.data.getFocus() = "char"
+			if m.game.data.getFocusGroup() = "char"
         if m.entity_wnd.entity.scale_x <> -1.0
           m.entity_wnd.entity.offset_x += m.game.char.getEntityW()
           m.entity_wnd.entity.scale_x = -1.0
@@ -41,7 +41,7 @@ function char_control(object)
       end if
 
 		else if code = 5 ' right
-			if m.game.data.getFocus() = "char"
+			if m.game.data.getFocusGroup() = "char"
         if m.entity_wnd.entity.scale_x <> 1.0
           m.entity_wnd.entity.offset_x -= m.game.char.getEntityW()
           m.entity_wnd.entity.scale_x = 1.0

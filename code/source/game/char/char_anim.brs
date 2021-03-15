@@ -59,7 +59,7 @@ function char_anim(object)
 
 	object.playAnim = function(arr)
 
-		if m.game.data.getFocus() = "char"
+		if m.game.data.getFocusGroup() = "char"
 			if m.timer = invalid
 				m.timer = CreateObject("roTimeSpan")
 				m.timer.Mark()

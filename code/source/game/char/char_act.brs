@@ -19,8 +19,8 @@ function char_act(object)
     end function
 
     object.charSPDamage = function()
-        
-        if m.game.data.getFocus() = "char"
+
+        if m.game.data.getFocusGroup() = "char"
             if m.sp_damage_timer = invalid
                 m.game.char.setSP(m.game.char.getSP() - m.game.char.getSPDamage())
                 m.sp_damage_timer = CreateObject("roTimeSpan")
