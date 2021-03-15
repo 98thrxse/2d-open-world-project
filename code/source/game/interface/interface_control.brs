@@ -9,8 +9,10 @@ function interface_control(object)
         ' pressed
         if code = 10 ' info
             if m.game.interface.getMMToggle()
+                m.game.data.setFocus("char")
                 m.game.interface.setMMToggle(false)
             else
+                m.game.data.setFocus("interface")
                 m.game.interface.setMMToggle(true)
             end if
         end if

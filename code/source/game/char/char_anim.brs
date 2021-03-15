@@ -59,13 +59,16 @@ function char_anim(object)
 
 	object.playAnim = function(arr)
 
-		if m.timer = invalid
-			m.timer = CreateObject("roTimeSpan")
-			m.timer.Mark()
-		end if
+		if m.game.data.getFocus() = "char"
+			if m.timer = invalid
+				m.timer = CreateObject("roTimeSpan")
+				m.timer.Mark()
+			end if
 
-		if m.timer.TotalMilliseconds() + 1 >= arr.Count() * m.game.char.getAnimTime() then m.timer.Mark()
-		m.entity_wnd.entity.index = arr[int(m.timer.TotalMilliseconds() / m.game.char.getAnimTime())]
+			if m.timer.TotalMilliseconds() + 1 >= arr.Count() * m.game.char.getAnimTime() then m.timer.Mark()
+			m.entity_wnd.entity.index = arr[int(m.timer.TotalMilliseconds() / m.game.char.getAnimTime())]
+
+		end if
 
 	end function
 
