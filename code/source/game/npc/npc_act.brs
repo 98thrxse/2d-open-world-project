@@ -17,25 +17,27 @@ function npc_act(object)
     end function
     
     object.npcHPDamage = function()
-
-        if m.hp_damage_timer = invalid
-            if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage()
-                id = right(m.game.char.getNPCCol(), 1).toInt()
-                m.game.npc.setHP(id, m.game.npc.getHP(id) - m.game.char.getHPDamage())
+        if m.game.getFocusGroup() = "char"
+            if m.hp_damage_timer = invalid
+                if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage()
+                    id = right(m.game.char.getNPCCol(), 1).toInt()
+                    m.game.npc.setHP(id, m.game.npc.getHP(id) - m.game.char.getHPDamage())
+            
+                    print m.game.char.getNPCCol() + " was attacked"
+                    print m.game.npc.getHP(id)
+            
+                end if
         
-                print m.game.char.getNPCCol() + " was attacked"
-                print m.game.npc.getHP(id)
+                m.hp_damage_timer = CreateObject("roTimeSpan")
+                m.hp_damage_timer.Mark()
         
             end if
-    
-            m.hp_damage_timer = CreateObject("roTimeSpan")
-            m.hp_damage_timer.Mark()
-    
-        end if
+            
+            if m.hp_damage_timer.TotalMilliseconds() + 1 >= m.game.char.getSPDamageTime()
+                m.hp_damage_timer = invalid
         
-        if m.hp_damage_timer.TotalMilliseconds() + 1 >= m.game.char.getSPDamageTime()
-            m.hp_damage_timer = invalid
-    
+            end if
+
         end if
 
     end function

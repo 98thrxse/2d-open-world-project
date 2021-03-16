@@ -11,47 +11,73 @@ function char_anim(object)
 
 		' held
         if code = 1006 ' select
-			if m.game.char.getSP() >= m.game.char.getSPDamage()
-				m.playAnim([11,12,13,14,13,12,11,15,16,17,16,15,11,18,19,20,19,18,11])
-			else
-				m.playAnim([10])
+			if m.game.getFocusGroup() = "char"
+				if m.game.char.getSP() >= m.game.char.getSPDamage()
+					m.playAnim([11,12,13,14,13,12,11,15,16,17,16,15,11,18,19,20,19,18,11])
+				else
+					m.playAnim([10])
+				end if
 			end if
 
 		else if code = 1002 ' up
-			m.playAnim([3,0,4])
+			if m.game.getFocusGroup() = "char"
+				m.playAnim([3,0,4])
+			end if
 
 		else if code = 1003 ' down
-			m.playAnim([5,1,6])
+			if m.game.getFocusGroup() = "char"
+				m.playAnim([5,1,6])
+			end if
 
 		else if code = 1004 ' left
-			m.playAnim([7,2,8])
+			if m.game.getFocusGroup() = "char"
+				m.playAnim([7,2,8])
+			end if
 
 		else if code = 1005 ' right
-			m.playAnim([7,2,8])
+			if m.game.getFocusGroup() = "char"
+				m.playAnim([7,2,8])
+			end if
 
 		' released
 		else if code = 106 ' select
-			if m.game.char.getSP() >= m.game.char.getSPDamage()
-				m.playAnim([11])
-			else
-				m.playAnim([10])
+			if m.game.getFocusGroup() = "char"
+				if m.game.char.getSP() >= m.game.char.getSPDamage()
+					m.playAnim([11])
+				else
+					m.playAnim([10])
+
+				end if
+
 			end if
 
 		else if code = 102 ' up
-			m.timer = invalid
-			m.playAnim([0])
+			if m.game.getFocusGroup() = "char"
+				m.timer = invalid
+				m.playAnim([0])
+
+			end if
 			
 		else if code = 103 ' down
-			m.timer = invalid
-			m.playAnim([1])
+			if m.game.getFocusGroup() = "char"
+				m.timer = invalid
+				m.playAnim([1])
+			
+			end if
 
 		else if code = 104 ' left
-			m.timer = invalid
-			m.playAnim([2])
+			if m.game.getFocusGroup() = "char"
+				m.timer = invalid
+				m.playAnim([2])
+			
+			end if
 
 		else if code = 105 ' right
-			m.timer = invalid
-			m.playAnim([2])
+			if m.game.getFocusGroup() = "char"
+				m.timer = invalid
+				m.playAnim([2])
+
+			end if
 
 		end if
 

@@ -13,30 +13,43 @@ function char_control(object)
 
 		' pressed
     if code = 2 ' up
-      if m.entity_wnd.entity.scale_x <> 1.0
-        m.entity_wnd.entity.offset_x -= m.game.char.getEntityW()
+      if m.game.getFocusGroup() = "char"
+        if m.entity_wnd.entity.scale_x <> 1.0
+          m.entity_wnd.entity.offset_x -= m.game.char.getEntityW()
+          
+        end if
+      m.entity_wnd.entity.scale_x = 1.0
 
       end if
-      m.entity_wnd.entity.scale_x = 1.0
 
     else if code = 3 ' down
-      if m.entity_wnd.entity.scale_x <> 1.0
-        m.entity_wnd.entity.offset_x -= m.game.char.getEntityW()
+      if m.game.getFocusGroup() = "char"
 
+        if m.entity_wnd.entity.scale_x <> 1.0
+          m.entity_wnd.entity.offset_x -= m.game.char.getEntityW()
+
+        end if
+        m.entity_wnd.entity.scale_x = 1.0
+      
       end if
-      m.entity_wnd.entity.scale_x = 1.0
 
     else if code = 4 ' left
-      if m.entity_wnd.entity.scale_x <> -1.0
-        m.entity_wnd.entity.offset_x += m.game.char.getEntityW()
-        m.entity_wnd.entity.scale_x = -1.0
+      if m.game.getFocusGroup() = "char"
+        if m.entity_wnd.entity.scale_x <> -1.0
+          m.entity_wnd.entity.offset_x += m.game.char.getEntityW()
+          m.entity_wnd.entity.scale_x = -1.0
+
+        end if
 
       end if
 
 		else if code = 5 ' right
-      if m.entity_wnd.entity.scale_x <> 1.0
-        m.entity_wnd.entity.offset_x -= m.game.char.getEntityW()
-        m.entity_wnd.entity.scale_x = 1.0
+      if m.game.getFocusGroup() = "char"
+        if m.entity_wnd.entity.scale_x <> 1.0
+          m.entity_wnd.entity.offset_x -= m.game.char.getEntityW()
+          m.entity_wnd.entity.scale_x = 1.0
+
+        end if
 
       end if
       

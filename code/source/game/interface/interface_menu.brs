@@ -11,10 +11,13 @@ function interface_menu(object)
 
         ' getFont
         menu_font = m.game.getFont("VT323-36")
-        
-        DrawText(canvas, "<", canvas.GetWidth() / 2 - 100, 25, menu_font, "center", &hFF0000FF)
-        DrawText(canvas, "*", canvas.GetWidth() / 2, 25, menu_font, "center", &hFF0000FF)
-        DrawText(canvas, ">", canvas.GetWidth() / 2 + 100, 25, menu_font, "center", &hFF0000FF)
+        if m.game.getFocusGroup() = "interface"
+            if m.game.getFocusTarget() = "exit"
+                DrawText(canvas, "<", canvas.GetWidth() / 2 - 100, 25, menu_font, "center", &hFFFFFFFF)
+                DrawText(canvas, "EXIT", canvas.GetWidth() / 2, 25, menu_font, "center", &hFFFFFFFF)
+                DrawText(canvas, ">", canvas.GetWidth() / 2 + 100, 25, menu_font, "center", &hFFFFFFFF)
+            end if
+        end if
 
     end function
 
