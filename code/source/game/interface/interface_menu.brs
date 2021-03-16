@@ -9,16 +9,12 @@ function interface_menu(object)
 
     object.onDrawEnd = function(canvas)
 
-        if m.game.interface.getMMToggle()
-
-            ' getFont
-            menu_font = m.game.getFont("VT323-36")
-            
-            DrawText(canvas, "<", canvas.GetWidth() / 2 - 100, 25, menu_font, "center", &hFF0000FF)
-            DrawText(canvas, "*", canvas.GetWidth() / 2, 25, menu_font, "center", &hFF0000FF)
-            DrawText(canvas, ">", canvas.GetWidth() / 2 + 100, 25, menu_font, "center", &hFF0000FF)
-        else
-        end if
+        ' getFont
+        menu_font = m.game.getFont("VT323-36")
+        
+        DrawText(canvas, "<", canvas.GetWidth() / 2 - 100, 25, menu_font, "center", &hFF0000FF)
+        DrawText(canvas, "*", canvas.GetWidth() / 2, 25, menu_font, "center", &hFF0000FF)
+        DrawText(canvas, ">", canvas.GetWidth() / 2 + 100, 25, menu_font, "center", &hFF0000FF)
 
     end function
 
