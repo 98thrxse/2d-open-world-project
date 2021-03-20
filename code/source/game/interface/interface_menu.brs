@@ -12,11 +12,14 @@ function interface_menu(object)
         ' getFont
         menu_font = m.game.getFont("VT323-36")
         if m.game.getFocusGroup() = "interface"
-            if m.game.getFocusTarget() = "exit"
-                DrawText(canvas, "<", canvas.GetWidth() / 2 - 100, 25, menu_font, "center", &hFFFFFFFF)
-                DrawText(canvas, "EXIT", canvas.GetWidth() / 2, 25, menu_font, "center", &hFFFFFFFF)
-                DrawText(canvas, ">", canvas.GetWidth() / 2 + 100, 25, menu_font, "center", &hFFFFFFFF)
-            end if
+            for i = 0 to m.game.interface.config.focus.menu.Count() - 1
+                if m.game.getFocusTarget() = i
+                    DrawText(canvas, "<", canvas.GetWidth() / 2 - 100, 25, menu_font, "center", &hFFFFFFFF)
+                    DrawText(canvas, m.game.interface.getMenuItemName(i).ToStr(), canvas.GetWidth() / 2, 25, menu_font, "center", &hFFFFFFFF)
+                    DrawText(canvas, ">", canvas.GetWidth() / 2 + 100, 25, menu_font, "center", &hFFFFFFFF)
+                end if
+            end for
+
         end if
 
     end function
