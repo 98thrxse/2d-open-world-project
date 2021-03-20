@@ -12,10 +12,9 @@ function char_entity(object)
 
 
   object.createXY = function()
-    m.xy = m.addAnimatedImage("#", [m.media_wnd.stand_back_region], { index: 0
+    m.xy = m.addImage("XY", "", {
       offset_x: 0,
-      offset_y: 0,
-      alpha: 255
+      offset_y: 0
     })
   end function
 
