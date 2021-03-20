@@ -9,25 +9,6 @@ function terrain_control(object)
     end function
     
 
-    ' fix stas
-    object.charXY = function()
-
-        m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.entity_wnd.x)
-        m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.entity_wnd.y)
-
-        ' m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.col_wnd.x)
-        ' m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.col_wnd.y)
-
-    end function
-
-
-    object.onUpdate = function(dt as float)
-
-        m.charXY()
-
-    end function
-
-
     object.onButton = function(code as integer)
 
         ' held

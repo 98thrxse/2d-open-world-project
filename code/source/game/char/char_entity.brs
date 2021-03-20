@@ -5,8 +5,18 @@ function char_entity(object)
     ' getInstanceByName
     m.media_wnd = m.game.getInstanceByName("char_media")
     
+    m.createXY()
     m.onSpawn()
 
+  end function
+
+
+  object.createXY = function()
+    m.xy = m.addAnimatedImage("#", [m.media_wnd.stand_back_region], { index: 0
+      offset_x: 0,
+      offset_y: 0,
+      alpha: 255
+    })
   end function
 
   
