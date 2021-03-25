@@ -6,7 +6,6 @@ function obj_init(object)
 
         ' defineObject
         m.game.defineObject("obj_main", obj_main)
-		m.game.defineObject("obj_media", obj_media)
         m.game.defineObject("obj_entity", obj_entity)
         m.game.defineObject("obj_col", obj_col)
         m.game.defineObject("obj_control", obj_control)

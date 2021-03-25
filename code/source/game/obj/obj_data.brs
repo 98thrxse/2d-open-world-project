@@ -6,6 +6,8 @@ function obj_data() as object
         getAlpha: obj_getAlpha
         setAlpha: obj_setAlpha
 
+        getReg: obj_getReg
+        setReg: obj_setReg
 
         ' entity
         getEntityName: obj_getEntityName
@@ -62,6 +64,15 @@ end function
 
 sub obj_setAlpha(id as integer, alpha as integer)
     m.config[id].anim.alpha = alpha
+end sub
+
+
+function obj_getReg(id as integer) as string
+    return m.config[id].anim.reg
+end function
+
+sub obj_setReg(id as integer, reg as string)
+    m.config[id].anim.reg = reg
 end sub
 
 

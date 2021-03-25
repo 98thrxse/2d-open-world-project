@@ -109,6 +109,7 @@ function testOne_map(object)
 
             ' anim
             if m.map_obj_config[i].anim.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].anim.alpha)
+            if m.map_obj_config[i].anim.reg <> invalid then m.game.obj.setReg(i, m.map_obj_config[i].anim.reg)
 
         end for
     end function
