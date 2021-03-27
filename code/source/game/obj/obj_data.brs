@@ -2,13 +2,6 @@ function obj_data() as object
 
     m.obj = {
 
-        ' anim
-        getAlpha: obj_getAlpha
-        setAlpha: obj_setAlpha
-
-        getReg: obj_getReg
-        setReg: obj_setReg
-
         ' entity
         getEntityName: obj_getEntityName
         setEntityName: obj_setEntityName
@@ -24,6 +17,12 @@ function obj_data() as object
         
         getEntityW: obj_getEntityW
         setEntityW: obj_setEntityW
+
+        getAlpha: obj_getAlpha
+        setAlpha: obj_setAlpha
+
+        getReg: obj_getReg
+        setReg: obj_setReg
 
         ' col
         getColName: obj_getColName

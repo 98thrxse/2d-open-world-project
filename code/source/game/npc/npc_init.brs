@@ -6,7 +6,6 @@ function npc_init(object)
 
 		' defineObject
 		m.game.defineObject("npc_main", npc_main)
-		m.game.defineObject("npc_media", npc_media)
 		m.game.defineObject("npc_entity", npc_entity)
 		m.game.defineObject("npc_col", npc_col)
 		m.game.defineObject("npc_control", npc_control)

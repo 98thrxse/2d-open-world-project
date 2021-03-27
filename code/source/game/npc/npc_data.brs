@@ -6,7 +6,6 @@ function npc_data() as object
         getHP: npc_getHP
         setHP: npc_setHP
 
-
         ' entity
         getEntityName: npc_getEntityName
         setEntityName: npc_setEntityName
@@ -23,6 +22,12 @@ function npc_data() as object
         getEntityH: npc_getEntityH
         setEntityH: npc_setEntityH
 
+        getIndex: npc_getIndex
+        setIndex: npc_setIndex
+
+        getReg: npc_getReg
+        setReg: npc_setReg
+
         ' col
         getColName: npc_getColName
         setColName: npc_setColName
@@ -38,12 +43,6 @@ function npc_data() as object
         
         getColH: npc_getEntityH
         setColH: npc_setColH
-
-
-        ' anim
-        getIndex: npc_getIndex
-        setIndex: npc_setIndex
-
 
         config: invalid
 
@@ -167,9 +166,18 @@ end sub
 
 
 function npc_getIndex(id as integer) as integer
-    return m.config[id].anim.index
+    return m.config[id].entity.anim.index
 end function
 
 sub npc_setIndex(id as integer, index as integer)
-    m.config[id].anim.index = index
+    m.config[id].entity.anim.index = index
+end sub
+
+
+function npc_getReg(i as integer) as object
+    return m.config[i].entity.anim.reg
+end function
+
+sub npc_setReg(i as integer, reg as object)
+    m.config[i].entity.anim.reg = reg
 end sub

@@ -3,12 +3,12 @@ function testOne_npc_config() as object
 
         {
             id: 0,
-            anim: {
-                index: 1,
-            },
-
             entity: {
                 name: "npc_entity",
+                anim: {
+                    index: 0,
+                    reg: ["stand_front", "stand_back", "stand_side", "walk_front1", "walk_front2", "walk_back1", "walk_back2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "attack_side", "attack_fist1", "attack_fist2", "attack_fist3", "attack_fist4", "attack_fist5", "attack_fist6", "attack_leg1", "attack_leg2", "attack_leg3"]
+                },
                 x: 800,
                 y: 100,
                 width: 48,
@@ -31,12 +31,12 @@ function testOne_npc_config() as object
 
         {
             id: 1
-            anim: {
-                index: 1,
-            },
-
             entity: {
                 name: "npc_entity",
+                anim: {
+                    index: 0,
+                    reg: ["stand_front", "stand_back", "stand_side", "walk_front1", "walk_front2", "walk_back1", "walk_back2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "attack_side", "attack_fist1", "attack_fist2", "attack_fist3", "attack_fist4", "attack_fist5", "attack_fist6", "attack_leg1", "attack_leg2", "attack_leg3"]
+                },
                 x: 800,
                 y: 300,
                 width: 48,
@@ -58,12 +58,12 @@ function testOne_npc_config() as object
 
         {
             id: 2
-            anim: {
-                index: 1,
-            },
-
             entity: {
                 name: "npc_entity",
+                anim: {
+                    index: 0,
+                    reg: ["stand_front", "stand_back", "stand_side", "walk_front1", "walk_front2", "walk_back1", "walk_back2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "attack_side", "attack_fist1", "attack_fist2", "attack_fist3", "attack_fist4", "attack_fist5", "attack_fist6", "attack_leg1", "attack_leg2", "attack_leg3"]
+                },
                 x: 800,
                 y: 500,
                 width: 48,

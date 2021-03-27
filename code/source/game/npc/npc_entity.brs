@@ -2,9 +2,6 @@ function npc_entity(object)
 
   object.onCreate = function(args)
 
-    ' getInstanceByName
-    m.media_wnd = m.game.getInstanceByName("npc_media")
-
     m.entityXY()
 
   end function
@@ -21,9 +18,26 @@ function npc_entity(object)
 
     ' loading map config to create npc
     for i = 0 to m.game.npc.config.Count() - 1
+
+      npc_regions = []
+
       if m.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()) = invalid
+        for j = 0 to m.game.npc.config[i].entity.anim.reg.Count() - 1
+          ' loadBitmap
+          m.game.loadBitmap(m.game.npc.config[i].entity.anim.reg[j].toStr(), "pkg:/media/npc/sprites/" + m.game.npc.config[i].entity.anim.reg[j].toStr() + ".png")
+
+          ' getBitmap
+          npc_bitmap = m.game.getBitmap(m.game.npc.config[i].entity.anim.reg[j].toStr())
+      
+          ' roRegion
+          npc_region = CreateObject("roRegion", npc_bitmap, 0, 0, npc_bitmap.GetWidth(), npc_bitmap.GetHeight())
+
+          npc_regions.push(npc_region)
+
+        end for
+
         ' addAnimatedImage
-        m.addAnimatedImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr(), [m.media_wnd.stand_back_region, m.media_wnd.stand_front_region, m.media_wnd.stand_side_region, m.media_wnd.walk_back1_region, m.media_wnd.walk_back2_region, m.media_wnd.walk_front1_region, m.media_wnd.walk_front2_region, m.media_wnd.walk_side1_region, m.media_wnd.walk_side2_region, m.media_wnd.hp_zero_region, m.media_wnd.sp_zero_region, m.media_wnd.attack_side_region, m.media_wnd.attack_fist1_region, m.media_wnd.attack_fist2_region, m.media_wnd.attack_fist3_region, m.media_wnd.attack_fist4_region, m.media_wnd.attack_fist5_region, m.media_wnd.attack_fist6_region, m.media_wnd.attack_leg1_region, m.media_wnd.attack_leg2_region, m.media_wnd.attack_leg3_region], { index: m.game.npc.getIndex(i)
+        m.addAnimatedImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr(), npc_regions, { index: m.game.npc.getIndex(i)
           offset_x: m.game.npc.getEntityPosX(i),
           offset_y: m.game.npc.getEntityPosY(i)
         })
