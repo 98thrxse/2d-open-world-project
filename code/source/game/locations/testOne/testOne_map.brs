@@ -63,13 +63,13 @@ function testOne_map(object)
         if m.game.obj.config.Count() < m.map_obj_config.Count()
             for i = m.game.obj.config.Count() to m.map_obj_config.Count() - 1
                 m.game.obj.config.push({
-                    id: i,
-                    anim: {
-                        alpha: invalid
-                    },
-                    
+                    id: i,                   
                     entity: {
                         name: invalid,
+                        anim: {
+                            alpha: invalid,
+                            reg: invalid
+                        },
                         x: invalid,
                         y: invalid,
                         width: invalid,
@@ -108,8 +108,8 @@ function testOne_map(object)
             if m.map_obj_config[i].col.height <> invalid then m.game.obj.setColH(i, m.map_obj_config[i].col.height)
 
             ' anim
-            if m.map_obj_config[i].anim.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].anim.alpha)
-            if m.map_obj_config[i].anim.reg <> invalid then m.game.obj.setReg(i, m.map_obj_config[i].anim.reg)
+            if m.map_obj_config[i].entity.anim.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].entity.anim.alpha)
+            if m.map_obj_config[i].entity.anim.reg <> invalid then m.game.obj.setReg(i, m.map_obj_config[i].entity.anim.reg)
 
         end for
     end function

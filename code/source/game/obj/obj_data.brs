@@ -59,20 +59,20 @@ end function
 
 
 function obj_getAlpha(i as integer) as integer
-    return m.config[i].anim.alpha
+    return m.config[i].entity.anim.alpha
 end function
 
 sub obj_setAlpha(i as integer, alpha as integer)
-    m.config[i].anim.alpha = alpha
+    m.config[i].entity.anim.alpha = alpha
 end sub
 
 
 function obj_getReg(i as integer) as object
-    return m.config[i].anim.reg
+    return m.config[i].entity.anim.reg
 end function
 
 sub obj_setReg(i as integer, reg as object)
-    m.config[i].anim.reg = reg
+    m.config[i].entity.anim.reg = reg
 end sub
 
 
@@ -138,7 +138,6 @@ end function
 
 sub obj_setEntityH(i as integer, height as integer)
     m.config[i].entity.height = height
-    SaveGame(m._params)
 end sub
 
 
@@ -148,7 +147,6 @@ end function
 
 sub obj_setEntityW(i as integer, width as integer)
     m.config[i].entity.width = width
-    SaveGame(m._params)
 end sub
 
 
@@ -159,7 +157,6 @@ end function
 
 sub obj_setColH(i as integer, height as integer)
     m.config[i].col.height = height
-    SaveGame(m._params)
 end sub
 
 
@@ -169,5 +166,4 @@ end function
 
 sub obj_setColW(i as integer, width as integer)
     m.config[i].col.width = width
-    SaveGame(m._params)
 end sub

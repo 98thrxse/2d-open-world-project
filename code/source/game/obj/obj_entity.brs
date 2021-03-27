@@ -1,7 +1,5 @@
 function obj_entity(object)
 
-
-
     object.onCreate = function(args)
 
         m.entityXY()
@@ -23,14 +21,14 @@ function obj_entity(object)
         for i = 0 to m.game.obj.config.Count() - 1
 
             obj_regions = []
-            
+
             if m.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) = invalid
-                for j = 0 to m.game.obj.config[i].anim.reg.Count() - 1
+                for j = 0 to m.game.obj.config[i].entity.anim.reg.Count() - 1
                     ' loadBitmap
-                    m.game.loadBitmap(m.game.obj.config[i].anim.reg[j].toStr(), "pkg:/media/obj/sprites/" + m.game.obj.config[i].anim.reg[j].toStr() + ".png")
+                    m.game.loadBitmap(m.game.obj.config[i].entity.anim.reg[j].toStr(), "pkg:/media/obj/sprites/" + m.game.obj.config[i].entity.anim.reg[j].toStr() + ".png")
 
                     ' getBitmap
-                    obj_bitmap = m.game.getBitmap(m.game.obj.config[i].anim.reg[j].toStr())
+                    obj_bitmap = m.game.getBitmap(m.game.obj.config[i].entity.anim.reg[j].toStr())
                 
                     ' roRegion
                     obj_region = CreateObject("roRegion", obj_bitmap, 0, 0, obj_bitmap.GetWidth(), obj_bitmap.GetHeight())
