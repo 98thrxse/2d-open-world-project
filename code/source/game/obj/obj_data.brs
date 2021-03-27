@@ -58,116 +58,116 @@ end function
 
 
 
-function obj_getAlpha(id as integer) as integer
-    return m.config[id].anim.alpha
+function obj_getAlpha(i as integer) as integer
+    return m.config[i].anim.alpha
 end function
 
-sub obj_setAlpha(id as integer, alpha as integer)
-    m.config[id].anim.alpha = alpha
+sub obj_setAlpha(i as integer, alpha as integer)
+    m.config[i].anim.alpha = alpha
 end sub
 
 
-function obj_getReg(id as integer) as string
-    return m.config[id].anim.reg
+function obj_getReg(i as integer) as object
+    return m.config[i].anim.reg
 end function
 
-sub obj_setReg(id as integer, reg as string)
-    m.config[id].anim.reg = reg
+sub obj_setReg(i as integer, reg as object)
+    m.config[i].anim.reg = reg
 end sub
 
 
-function obj_getColName(id as integer) as integer
-    return m.config[id].col.name
+function obj_getColName(i as integer) as integer
+    return m.config[i].col.name
 end function
 
-sub obj_setColName(id as integer, name as string)
-    m.config[id].col.name = name
+sub obj_setColName(i as integer, name as string)
+    m.config[i].col.name = name
 end sub
 
 
-function obj_getEntityName(id as integer) as integer
-    return m.config[id].entity.name
+function obj_getEntityName(i as integer) as integer
+    return m.config[i].entity.name
 end function
 
-sub obj_setEntityName(id as integer, name as string)
-    m.config[id].entity.name = name
+sub obj_setEntityName(i as integer, name as string)
+    m.config[i].entity.name = name
 end sub
 
 
-function obj_getEntityPosX(id as integer) as integer
-    return m.config[id].entity.x
+function obj_getEntityPosX(i as integer) as integer
+    return m.config[i].entity.x
 end function
 
-sub obj_setEntityPosX(id as integer, x as integer)
-    m.config[id].entity.x = x
+sub obj_setEntityPosX(i as integer, x as integer)
+    m.config[i].entity.x = x
 end sub
 
 
-function obj_getEntityPosY(id as integer) as integer
-    return m.config[id].entity.y
+function obj_getEntityPosY(i as integer) as integer
+    return m.config[i].entity.y
 end function
 
-sub obj_setEntityPosY(id as integer, y as integer)
-    m.config[id].entity.y = y
-end sub
-
-
-
-function obj_getColPosX(id as integer) as integer
-    return m.config[id].col.x
-end function
-
-sub obj_setColPosX(id as integer, x as integer)
-    m.config[id].col.x = x
-end sub
-
-
-function obj_getColPosY(id as integer) as integer
-    return m.config[id].col.y
-end function
-
-sub obj_setColPosY(id as integer, y as integer)
-    m.config[id].col.y = y
+sub obj_setEntityPosY(i as integer, y as integer)
+    m.config[i].entity.y = y
 end sub
 
 
 
-function obj_getEntityH(id as integer) as integer
-    return m.config[id].entity.height
+function obj_getColPosX(i as integer) as integer
+    return m.config[i].col.x
 end function
 
-sub obj_setEntityH(id as integer, height as integer)
-    m.config[id].entity.height = height
+sub obj_setColPosX(i as integer, x as integer)
+    m.config[i].col.x = x
+end sub
+
+
+function obj_getColPosY(i as integer) as integer
+    return m.config[i].col.y
+end function
+
+sub obj_setColPosY(i as integer, y as integer)
+    m.config[i].col.y = y
+end sub
+
+
+
+function obj_getEntityH(i as integer) as integer
+    return m.config[i].entity.height
+end function
+
+sub obj_setEntityH(i as integer, height as integer)
+    m.config[i].entity.height = height
     SaveGame(m._params)
 end sub
 
 
-function obj_getEntityW(id as integer) as integer
-    return m.config[id].entity.width
+function obj_getEntityW(i as integer) as integer
+    return m.config[i].entity.width
 end function
 
-sub obj_setEntityW(id as integer, width as integer)
-    m.config[id].entity.width = width
+sub obj_setEntityW(i as integer, width as integer)
+    m.config[i].entity.width = width
     SaveGame(m._params)
 end sub
 
 
 
-function obj_getColH(id as integer) as integer
-    return m.config[id].col.height
+function obj_getColH(i as integer) as integer
+    return m.config[i].col.height
 end function
 
-sub obj_setColH(id as integer, height as integer)
-    m.config[id].col.height = height
+sub obj_setColH(i as integer, height as integer)
+    m.config[i].col.height = height
     SaveGame(m._params)
 end sub
 
 
-function obj_getColW(id as integer) as integer
-    return m.config[id].col.width
+function obj_getColW(i as integer) as integer
+    return m.config[i].col.width
 end function
 
-sub obj_setColW(id as integer, width as integer)
-    m.config[id].col.width = width
+sub obj_setColW(i as integer, width as integer)
+    m.config[i].col.width = width
     SaveGame(m._params)
 end sub

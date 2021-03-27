@@ -5,7 +5,7 @@ function testOne_obj_config() as object
             id: 0,
             anim: {
                 alpha: 255
-                reg: "obj_0"
+                reg: ["obj_0"]
             },
             
             entity: {
@@ -29,7 +29,7 @@ function testOne_obj_config() as object
             id: 1
             anim: {
                 alpha: 255
-                reg: "obj_1"
+                reg: ["obj_1"]
             },
 
             entity: {
@@ -52,7 +52,7 @@ function testOne_obj_config() as object
             id: 2,
             anim: {
                 alpha: 255
-                reg: "obj_0"
+                reg: ["obj_0"]
             },
 
             entity: {
