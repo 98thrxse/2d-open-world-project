@@ -5,9 +5,9 @@ function char_media(object)
     ' SPRITES
 
     ' loadBitmap
-    m.game.loadBitmap("stand_front", "pkg:/media/char/sprites/stand_front.png")
-    m.game.loadBitmap("stand_back", "pkg:/media/char/sprites/stand_back.png")
-    m.game.loadBitmap("stand_side", "pkg:/media/char/sprites/stand_side.png")
+    m.game.loadBitmap("stand_front1", "pkg:/media/char/sprites/stand_front1.png")
+    m.game.loadBitmap("stand_back1", "pkg:/media/char/sprites/stand_back1.png")
+    m.game.loadBitmap("stand_side1", "pkg:/media/char/sprites/stand_side1.png")
 
     m.game.loadBitmap("walk_front1", "pkg:/media/char/sprites/walk_front1.png")
     m.game.loadBitmap("walk_front2", "pkg:/media/char/sprites/walk_front2.png")
@@ -19,7 +19,7 @@ function char_media(object)
     m.game.loadBitmap("hp_zero", "pkg:/media/char/sprites/hp_zero.png")
     m.game.loadBitmap("sp_zero", "pkg:/media/char/sprites/sp_zero.png")
 
-    m.game.loadBitmap("attack_side", "pkg:/media/char/sprites/attack_side.png")
+    m.game.loadBitmap("stand_side2", "pkg:/media/char/sprites/stand_side2.png")
 
     m.game.loadBitmap("attack_fist1", "pkg:/media/char/sprites/attack_fist1.png")
     m.game.loadBitmap("attack_fist2", "pkg:/media/char/sprites/attack_fist2.png")
@@ -34,9 +34,9 @@ function char_media(object)
 
 
     ' getBitmap
-    stand_front_bitmap = m.game.getBitmap("stand_front")
-    stand_back_bitmap = m.game.getBitmap("stand_back")
-    stand_side_bitmap = m.game.getBitmap("stand_side")
+    stand_front1_bitmap = m.game.getBitmap("stand_front1")
+    stand_back1_bitmap = m.game.getBitmap("stand_back1")
+    stand_side1_bitmap = m.game.getBitmap("stand_side1")
 
     walk_front1_bitmap = m.game.getBitmap("walk_front1")
     walk_front2_bitmap = m.game.getBitmap("walk_front2")
@@ -48,7 +48,7 @@ function char_media(object)
     hp_zero_bitmap = m.game.getBitmap("hp_zero")
     sp_zero_bitmap = m.game.getBitmap("sp_zero")
 
-    attack_side_bitmap = m.game.getBitmap("attack_side")
+    stand_side2_bitmap = m.game.getBitmap("stand_side2")
 
     attack_fist1_bitmap = m.game.getBitmap("attack_fist1")
     attack_fist2_bitmap = m.game.getBitmap("attack_fist2")
@@ -63,9 +63,9 @@ function char_media(object)
 
 
     ' roRegion
-    m.stand_front_region = CreateObject("roRegion", stand_front_bitmap, 0, 0, stand_front_bitmap.GetWidth(), stand_front_bitmap.GetHeight())
-    m.stand_back_region = CreateObject("roRegion", stand_back_bitmap, 0, 0, stand_back_bitmap.GetWidth(), stand_back_bitmap.GetHeight())
-    m.stand_side_region = CreateObject("roRegion", stand_side_bitmap, 0, 0, stand_side_bitmap.GetWidth(), stand_side_bitmap.GetHeight())
+    m.stand_front1_region = CreateObject("roRegion", stand_front1_bitmap, 0, 0, stand_front1_bitmap.GetWidth(), stand_front1_bitmap.GetHeight())
+    m.stand_back1_region = CreateObject("roRegion", stand_back1_bitmap, 0, 0, stand_back1_bitmap.GetWidth(), stand_back1_bitmap.GetHeight())
+    m.stand_side1_region = CreateObject("roRegion", stand_side1_bitmap, 0, 0, stand_side1_bitmap.GetWidth(), stand_side1_bitmap.GetHeight())
     
     m.walk_front1_region = CreateObject("roRegion", walk_front1_bitmap, 0, 0, walk_front1_bitmap.GetWidth(), walk_front1_bitmap.GetHeight())
     m.walk_front2_region = CreateObject("roRegion", walk_front2_bitmap, 0, 0, walk_front2_bitmap.GetWidth(), walk_front2_bitmap.GetHeight())
@@ -77,7 +77,7 @@ function char_media(object)
     m.hp_zero_region = CreateObject("roRegion", hp_zero_bitmap, 0, 0, hp_zero_bitmap.GetWidth(), hp_zero_bitmap.GetHeight())
     m.sp_zero_region = CreateObject("roRegion", sp_zero_bitmap, 0, 0, sp_zero_bitmap.GetWidth(), sp_zero_bitmap.GetHeight())
 
-    m.attack_side_region = CreateObject("roRegion", attack_side_bitmap, 0, 0, attack_side_bitmap.GetWidth(), attack_side_bitmap.GetHeight())
+    m.stand_side2_region = CreateObject("roRegion", stand_side2_bitmap, 0, 0, stand_side2_bitmap.GetWidth(), stand_side2_bitmap.GetHeight())
 
     m.attack_fist1_region = CreateObject("roRegion", attack_fist1_bitmap, 0, 0, attack_fist1_bitmap.GetWidth(), attack_fist1_bitmap.GetHeight())
     m.attack_fist2_region = CreateObject("roRegion", attack_fist2_bitmap, 0, 0, attack_fist2_bitmap.GetWidth(), attack_fist2_bitmap.GetHeight())
