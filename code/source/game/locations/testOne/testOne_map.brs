@@ -26,6 +26,9 @@ function testOne_map(object)
                             id: [i, j],
                             entity: {
                                 name: invalid,
+                                anim: {
+                                    reg: invalid
+                                }
                                 x: invalid,
                                 y: invalid
                             }
@@ -52,6 +55,7 @@ function testOne_map(object)
                 if m.map_terrain_config[i][j].entity.name <> invalid then m.game.terrain.setEntityName(i, j, m.map_terrain_config[i][j].entity.name)
                 if m.map_terrain_config[i][j].entity.x <> invalid then m.game.terrain.setEntityPosX(i, j, m.map_terrain_config[i][j].entity.x)
                 if m.map_terrain_config[i][j].entity.y <> invalid then m.game.terrain.setEntityPosY(i, j, m.map_terrain_config[i][j].entity.y)
+                if m.map_terrain_config[i][j].entity.anim.reg <> invalid then m.game.terrain.setReg(i, j, m.map_terrain_config[i][j].entity.anim.reg)
             
             end for
         end for

@@ -6,6 +6,9 @@ function testOne_terrain_config() as object
                 id: [0, 0],
                 entity: {
                     name: "terrain_entity",
+                    anim: {
+                        reg: ["sand"]
+                    }
                     x: 0,
                     y: 0
                 }
@@ -16,6 +19,9 @@ function testOne_terrain_config() as object
                 id: [0, 1],
                 entity: {
                     name: "terrain_entity",
+                    anim: {
+                        reg: ["grass"]
+                    }
                     x: 1280,
                     y: 0
                 }
@@ -26,6 +32,9 @@ function testOne_terrain_config() as object
                 id: [0, 2],
                 entity: {
                     name: "terrain_entity",
+                    anim: {
+                        reg: ["grass"]
+                    }
                     x: 2560,
                     y: 0
                 }
@@ -37,6 +46,9 @@ function testOne_terrain_config() as object
                 id: [1, 0],
                 entity: {
                     name: "terrain_entity",
+                    anim: {
+                        reg: ["grass"]
+                    }
                     x: 0,
                     y: 720
                 }
@@ -46,6 +58,9 @@ function testOne_terrain_config() as object
                 id: [1, 1]
                 entity: {
                     name: "terrain_entity",
+                    anim: {
+                        reg: ["grass"]
+                    }
                     x: 1280,
                     y: 720
                 }
@@ -55,6 +70,9 @@ function testOne_terrain_config() as object
                 id: [1, 2]
                 entity: {
                     name: "terrain_entity",
+                    anim: {
+                        reg: ["grass"]
+                    }
                     x: 2560,
                     y: 720
                 }

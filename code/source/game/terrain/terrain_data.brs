@@ -12,6 +12,9 @@ function terrain_data() as object
         getEntityPosY: terrain_getEntityPosY
         setEntityPosY: terrain_setEntityPosY
 
+        getReg: terrain_getReg
+        setReg: terrain_setReg
+
 
         config: invalid
 
@@ -52,4 +55,13 @@ end function
 
 sub terrain_setEntityPosY(i as integer, j as integer, y as integer)
     m.config[i][j].entity.y = y
+end sub
+
+
+function terrain_getReg(i as integer, j as integer) as integer
+    return m.config[i][j].entity.anim.reg
+end function
+
+sub terrain_setReg(i as integer, j as integer, reg as object)
+    m.config[i][j].entity.anim.reg = reg
 end sub

@@ -38,10 +38,10 @@ function interface_data() as object
 end function
 
 
-function interface_getMenuItemName(id as integer) as string
-    return m.config.focus.menu[id].name
+function interface_getMenuItemName(i as integer) as string
+    return m.config.focus.menu[i].name
 end function
 
-sub interface_setMenuItemName(id as integer, name as string)
-    m.config.focus.menu[id].name = name
+sub interface_setMenuItemName(i as integer, name as string)
+    m.config.focus.menu[i].name = name
 end sub

@@ -354,8 +354,8 @@ function char_getObjIntersect() as object
     return m.config.intersect.obj
 end function
 
-sub char_setObjIntersect(id as object) 
-    m.config.intersect.obj = id
+sub char_setObjIntersect(i as object) 
+    m.config.intersect.obj = i
 end sub
 
 
@@ -364,8 +364,8 @@ function char_getNPCCol() as object
     return m.config.col.npc
 end function
 
-sub char_setNPCCol(id as object) 
-    m.config.col.npc = id
+sub char_setNPCCol(i as object) 
+    m.config.col.npc = i
     SaveGame(m.config)
 end sub
 
