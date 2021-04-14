@@ -104,21 +104,38 @@ function char_data() as object
     }
 
     m.char.config = LoadSavedGame()
-    m.char.build = "1.0.1"
+    m.char.build = "1.0.0"
 
     if m.char.config = invalid OR m.char.config.version <> m.char.build
         SaveGame(invalid)
 
         m.char.config = {
+            
+            entity: {
+                pos: {
+                    x: 0,
+                    y: 0
+                },
+    
+                size: {
+                    width: 48,
+                    height: 56,
+                },
 
-            pos: {
-                x: 0,
-                y: 0
-            },
+                anim: {
+                    index: 0,
+                    alpha: 255,
+                    time: 100
+                }
+            }
 
-            size: {
-                width: 48,
-                height: 56,
+            col: {
+                npc: invalid,
+
+                up: false,
+                down: false
+                left: false,
+                right: false
             },
 
             attributes: {
@@ -140,23 +157,8 @@ function char_data() as object
                 sp_time: 1000
             },
 
-            anim: {
-                index: 0,
-                alpha: 255,
-                time: 100
-            },
-
             intersect: {
                 obj: invalid
-            },
-        
-            col: {
-                npc: invalid,
-
-                up: false,
-                down: false
-                left: false,
-                right: false
             },
         
             speed: {
@@ -181,41 +183,41 @@ end function
 ' char data to save
 
 function char_getEntityPosX() as integer
-    return m.config.pos.x
+    return m.config.entity.pos.x
 end function
 
 sub char_setEntityPosX(x as integer)
-    m.config.pos.x = x
+    m.config.entity.pos.x = x
     SaveGame(m.config)
 end sub
 
 
 function char_getEntityPosY() as integer
-    return m.config.pos.y
+    return m.config.entity.pos.y
 end function
 
 sub char_setEntityPosY(y as integer)
-    m.config.pos.y = y
+    m.config.entity.pos.y = y
     SaveGame(m.config)
 end sub
 
 
 function char_getEntityH() as integer
-    return m.config.size.height
+    return m.config.entity.size.height
 end function
 
 sub char_setEntityH(height as integer)
-    m.config.size.height = height
+    m.config.entity.size.height = height
     SaveGame(m.config)
 end sub
 
 
 function char_getEntityW() as integer
-    return m.config.size.width
+    return m.config.entity.size.width
 end function
 
 sub char_setEntityW(width as integer)
-    m.config.size.width = width
+    m.config.entity.size.width = width
     SaveGame(m.config)
 end sub
 
@@ -321,31 +323,31 @@ end sub
 
 
 function char_getIndex() as integer
-    return m.config.anim.index
+    return m.config.entity.anim.index
 end function
 
 sub char_setIndex(index as integer)
-    m.config.anim.index = index
+    m.config.entity.anim.index = index
     SaveGame(m.config)
 end sub
 
 
 function char_getAnimTime() as integer
-    return m.config.anim.time
+    return m.config.entity.anim.time
 end function
 
 sub char_setAnimTime(time as integer)
-    m.config.anim.time = time
+    m.config.entity.anim.time = time
     SaveGame(m.config)
 end sub
 
 
 function char_getAlpha() as integer
-    return m.config.anim.alpha
+    return m.config.entity.anim.alpha
 end function
 
 sub char_setAlpha(alpha as integer)
-    m.config.anim.alpha = alpha
+    m.config.entity.anim.alpha = alpha
 end sub
 
 

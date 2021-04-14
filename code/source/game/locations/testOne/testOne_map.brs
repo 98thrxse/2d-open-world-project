@@ -182,15 +182,15 @@ function testOne_map(object)
 
         ' loading map config to player data
 
-        ' pos
-        if m.map_char_config.pos.x <> invalid then m.game.char.setEntityPosX(m.map_char_config.pos.x)
-        if m.map_char_config.pos.y <> invalid then m.game.char.setEntityPosY(m.map_char_config.pos.y)
-
-
-        ' size
-        if m.map_char_config.size.width <> invalid then m.game.char.setEntityW(m.map_char_config.size.width)
-        if m.map_char_config.size.height <> invalid then m.game.char.setEntityH(m.map_char_config.size.height)
-
+        ' entity
+        if m.map_char_config.entity.pos.x <> invalid then m.game.char.setEntityPosX(m.map_char_config.entity.pos.x)
+        if m.map_char_config.entity.pos.y <> invalid then m.game.char.setEntityPosY(m.map_char_config.entity.pos.y)
+        if m.map_char_config.entity.size.width <> invalid then m.game.char.setEntityW(m.map_char_config.entity.size.width)
+        if m.map_char_config.entity.size.height <> invalid then m.game.char.setEntityH(m.map_char_config.entity.size.height)
+        if m.map_char_config.entity.anim.index <> invalid then m.game.char.setIndex(m.map_char_config.entity.anim.index)
+        if m.map_char_config.entity.anim.alpha <> invalid then m.game.char.setAlpha(m.map_char_config.entity.anim.alpha)
+        if m.map_char_config.entity.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.entity.anim.time)
+        
 
         ' attributes
         if m.map_char_config.attributes.hp <> invalid then m.game.char.setHP(m.map_char_config.attributes.hp)
@@ -209,13 +209,6 @@ function testOne_map(object)
         if m.map_char_config.regen.sp <> invalid then m.game.char.setSPRegen(m.map_char_config.regen.sp)
         if m.map_char_config.regen.hp_time <> invalid then m.game.char.setHPRegenTime(m.map_char_config.regen.hp_time)
         if m.map_char_config.regen.sp_time <> invalid then m.game.char.setSPRegenTime(m.map_char_config.regen.sp_time)
-
-
-        ' anim
-        if m.map_char_config.anim.index <> invalid then m.game.char.setIndex(m.map_char_config.anim.index)
-        if m.map_char_config.anim.alpha <> invalid then m.game.char.setAlpha(m.map_char_config.anim.alpha)
-        if m.map_char_config.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.anim.time)
-        
 
         ' intersect
         if m.map_char_config.intersect.obj <> invalid then m.game.char.setObjIntersect(m.map_char_config.intersect.obj)
