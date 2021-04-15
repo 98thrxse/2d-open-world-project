@@ -41,20 +41,20 @@ end sub
 
 
 function terrain_getEntityPosX(i as integer, j as integer) as integer
-    return m.config[i][j].entity.x
+    return m.config[i][j].entity.pos.x
 end function
 
 sub terrain_setEntityPosX(i as integer, j as integer, x as integer)
-    m.config[i][j].entity.x = x
+    m.config[i][j].entity.pos.x = x
 end sub
 
 
 function terrain_getEntityPosY(i as integer, j as integer) as integer
-    return m.config[i][j].entity.y
+    return m.config[i][j].entity.pos.y
 end function
 
 sub terrain_setEntityPosY(i as integer, j as integer, y as integer)
-    m.config[i][j].entity.y = y
+    m.config[i][j].entity.pos.y = y
 end sub
 
 

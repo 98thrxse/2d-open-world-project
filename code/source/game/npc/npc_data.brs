@@ -79,77 +79,77 @@ end sub
 
 
 function npc_getEntityPosX(i as integer) as integer
-    return m.config[i].entity.x
+    return m.config[i].entity.pos.x
 end function
 
 sub npc_setEntityPosX(i as integer, x as integer)
-    m.config[i].entity.x = x
+    m.config[i].entity.pos.x = x
 end sub
 
 
 function npc_getEntityPosY(i as integer) as integer
-    return m.config[i].entity.y
+    return m.config[i].entity.pos.y
 end function
 
 sub npc_setEntityPosY(i as integer, y as integer)
-    m.config[i].entity.y = y
+    m.config[i].entity.pos.y = y
 end sub
 
 
 
 function npc_getColPosX(i as integer) as integer
-    return m.config[i].col.x
+    return m.config[i].col.pos.x
 end function
 
 sub npc_setColPosX(i as integer, x as integer)
-    m.config[i].col.x = x
+    m.config[i].col.pos.x = x
 end sub
 
 
 function npc_getColPosY(i as integer) as integer
-    return m.config[i].col.y
+    return m.config[i].col.pos.y
 end function
 
 sub npc_setColPosY(i as integer, y as integer)
-    m.config[i].col.y = y
+    m.config[i].col.pos.y = y
 end sub
 
 
 
 function npc_getEntityW(i as integer) as integer
-    return m.config[i].entity.width
+    return m.config[i].entity.size.width
 end function
 
 sub npc_setEntityW(i as integer, width as integer)
-    m.config[i].entity.width = width
+    m.config[i].entity.size.width = width
 end sub
 
 
 function npc_getEntityH(i as integer) as integer
-    return m.config[i].entity.height
+    return m.config[i].entity.size.height
 end function
 
 sub npc_setEntityH(i as integer, height as integer)
-    m.config[i].entity.height = height
+    m.config[i].entity.size.height = height
 end sub
 
 
 
 function npc_getColW(i as integer) as integer
-    return m.config[i].col.width
+    return m.config[i].col.size.width
 end function
 
 sub npc_setColW(i as integer, width as integer)
-    m.config[i].col.width = width
+    m.config[i].col.size.width = width
 end sub
 
 
 function npc_getColH(i as integer) as integer
-    return m.config[i].col.height
+    return m.config[i].col.size.height
 end function
 
 sub npc_setColH(i as integer, height as integer)
-    m.config[i].col.height = height
+    m.config[i].col.size.height = height
 end sub
 
 

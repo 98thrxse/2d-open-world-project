@@ -29,8 +29,10 @@ function testOne_map(object)
                                 anim: {
                                     reg: invalid
                                 }
-                                x: invalid,
-                                y: invalid
+                                pos: {
+                                    x: invalid,
+                                    y: invalid
+                                }
                             }
                         })
                     end for
@@ -53,8 +55,8 @@ function testOne_map(object)
 
                 ' entity
                 if m.map_terrain_config[i][j].entity.name <> invalid then m.game.terrain.setEntityName(i, j, m.map_terrain_config[i][j].entity.name)
-                if m.map_terrain_config[i][j].entity.x <> invalid then m.game.terrain.setEntityPosX(i, j, m.map_terrain_config[i][j].entity.x)
-                if m.map_terrain_config[i][j].entity.y <> invalid then m.game.terrain.setEntityPosY(i, j, m.map_terrain_config[i][j].entity.y)
+                if m.map_terrain_config[i][j].entity.pos.x <> invalid then m.game.terrain.setEntityPosX(i, j, m.map_terrain_config[i][j].entity.pos.x)
+                if m.map_terrain_config[i][j].entity.pos.y <> invalid then m.game.terrain.setEntityPosY(i, j, m.map_terrain_config[i][j].entity.pos.y)
                 if m.map_terrain_config[i][j].entity.anim.reg <> invalid then m.game.terrain.setReg(i, j, m.map_terrain_config[i][j].entity.anim.reg)
             
             end for
@@ -74,18 +76,26 @@ function testOne_map(object)
                             alpha: invalid,
                             reg: invalid
                         },
-                        x: invalid,
-                        y: invalid,
-                        width: invalid,
-                        height: invalid,
+                        pos: {
+                            x: invalid,
+                            y: invalid
+                        }
+                        size: {
+                            width: invalid,
+                            height: invalid
+                        }
                     },
         
                     col: {
                         name: invalid,
-                        x: invalid,
-                        y: invalid,
-                        width: invalid,
-                        height: invalid
+                        pos: {
+                            x: invalid,
+                            y: invalid
+                        }
+                        size: {
+                            width: invalid,
+                            height: invalid
+                        }
                     }
                 })
             end for
@@ -99,19 +109,19 @@ function testOne_map(object)
 
             ' entity
             if m.map_obj_config[i].entity.name <> invalid then m.game.obj.setEntityName(i, m.map_obj_config[i].entity.name)
-            if m.map_obj_config[i].entity.x <> invalid then m.game.obj.setEntityPosX(i, m.map_obj_config[i].entity.x)
-            if m.map_obj_config[i].entity.y <> invalid then m.game.obj.setEntityPosY(i, m.map_obj_config[i].entity.y)
-            if m.map_obj_config[i].entity.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.width)
-            if m.map_obj_config[i].entity.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.height)
+            if m.map_obj_config[i].entity.pos.x <> invalid then m.game.obj.setEntityPosX(i, m.map_obj_config[i].entity.pos.x)
+            if m.map_obj_config[i].entity.pos.y <> invalid then m.game.obj.setEntityPosY(i, m.map_obj_config[i].entity.pos.y)
+            if m.map_obj_config[i].entity.size.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.size.width)
+            if m.map_obj_config[i].entity.size.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.size.height)
             if m.map_obj_config[i].entity.anim.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].entity.anim.alpha)
             if m.map_obj_config[i].entity.anim.reg <> invalid then m.game.obj.setReg(i, m.map_obj_config[i].entity.anim.reg)
 
             ' col
             if m.map_obj_config[i].col.name <> invalid then m.game.obj.setColName(i, m.map_obj_config[i].col.name)
-            if m.map_obj_config[i].col.x <> invalid then m.game.obj.setColPosX(i, m.map_obj_config[i].col.x)
-            if m.map_obj_config[i].col.y <> invalid then m.game.obj.setColPosY(i, m.map_obj_config[i].col.y)
-            if m.map_obj_config[i].col.width <> invalid then m.game.obj.setColW(i, m.map_obj_config[i].col.width)
-            if m.map_obj_config[i].col.height <> invalid then m.game.obj.setColH(i, m.map_obj_config[i].col.height)
+            if m.map_obj_config[i].col.pos.x <> invalid then m.game.obj.setColPosX(i, m.map_obj_config[i].col.pos.x)
+            if m.map_obj_config[i].col.pos.y <> invalid then m.game.obj.setColPosY(i, m.map_obj_config[i].col.pos.y)
+            if m.map_obj_config[i].col.size.width <> invalid then m.game.obj.setColW(i, m.map_obj_config[i].col.size.width)
+            if m.map_obj_config[i].col.size.height <> invalid then m.game.obj.setColH(i, m.map_obj_config[i].col.size.height)
             
         end for
     end function
@@ -128,18 +138,26 @@ function testOne_map(object)
                             index: invalid,
                             reg: invalid
                         },
-                        x: invalid,
-                        y: invalid,
-                        width: invalid,
-                        height: invalid
+                        pos: {
+                            x: invalid,
+                            y: invalid
+                        },
+                        size: {
+                            width: invalid,
+                            height: invalid
+                        }
                     },
         
                     col: {
                         name: invalid,
-                        x: invalid,
-                        y: invalid,
-                        width: invalid,
-                        height: invalid
+                        pos: {
+                            x: invalid,
+                            y: invalid
+                        },
+                        size: {
+                            width: invalid,
+                            height: invalid
+                        }
                     },
         
                     attrs: {
@@ -160,19 +178,19 @@ function testOne_map(object)
 
             ' entity
             if m.map_npc_config[i].entity.name <> invalid then m.game.npc.setEntityName(i, m.map_npc_config[i].entity.name)
-            if m.map_npc_config[i].entity.x <> invalid then m.game.npc.setEntityPosX(i, m.map_npc_config[i].entity.x)
-            if m.map_npc_config[i].entity.y <> invalid then m.game.npc.setEntityPosY(i, m.map_npc_config[i].entity.y)
-            if m.map_npc_config[i].entity.width <> invalid then m.game.npc.setEntityW(i, m.map_npc_config[i].entity.width)
-            if m.map_npc_config[i].entity.height <> invalid then m.game.npc.setEntityH(i, m.map_npc_config[i].entity.height)
+            if m.map_npc_config[i].entity.pos.x <> invalid then m.game.npc.setEntityPosX(i, m.map_npc_config[i].entity.pos.x)
+            if m.map_npc_config[i].entity.pos.y <> invalid then m.game.npc.setEntityPosY(i, m.map_npc_config[i].entity.pos.y)
+            if m.map_npc_config[i].entity.size.width <> invalid then m.game.npc.setEntityW(i, m.map_npc_config[i].entity.size.width)
+            if m.map_npc_config[i].entity.size.height <> invalid then m.game.npc.setEntityH(i, m.map_npc_config[i].entity.size.height)
             if m.map_npc_config[i].entity.anim.index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].entity.anim.index)
             if m.map_npc_config[i].entity.anim.reg <> invalid then m.game.npc.setReg(i, m.map_npc_config[i].entity.anim.reg)
 
             ' col
             if m.map_npc_config[i].col.name <> invalid then m.game.npc.setColName(i, m.map_npc_config[i].col.name)
-            if m.map_npc_config[i].col.x <> invalid then m.game.npc.setColPosX(i, m.map_npc_config[i].col.x)
-            if m.map_npc_config[i].col.y <> invalid then m.game.npc.setColPosY(i, m.map_npc_config[i].col.y)
-            if m.map_npc_config[i].col.width <> invalid then m.game.npc.setColW(i, m.map_npc_config[i].col.width)
-            if m.map_npc_config[i].col.height <> invalid then m.game.npc.setColH(i, m.map_npc_config[i].col.height)
+            if m.map_npc_config[i].col.pos.x <> invalid then m.game.npc.setColPosX(i, m.map_npc_config[i].col.pos.x)
+            if m.map_npc_config[i].col.pos.y <> invalid then m.game.npc.setColPosY(i, m.map_npc_config[i].col.pos.y)
+            if m.map_npc_config[i].col.size.width <> invalid then m.game.npc.setColW(i, m.map_npc_config[i].col.size.width)
+            if m.map_npc_config[i].col.size.height <> invalid then m.game.npc.setColH(i, m.map_npc_config[i].col.size.height)
 
         end for
     end function

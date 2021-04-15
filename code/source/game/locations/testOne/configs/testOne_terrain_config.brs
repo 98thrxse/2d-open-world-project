@@ -9,8 +9,10 @@ function testOne_terrain_config() as object
                     anim: {
                         reg: ["sand"]
                     }
-                    x: 0,
-                    y: 0
+                    pos: {
+                        x: 0,
+                        y: 0
+                    }
                 }
 
             },
@@ -22,8 +24,10 @@ function testOne_terrain_config() as object
                     anim: {
                         reg: ["grass"]
                     }
-                    x: 1280,
-                    y: 0
+                    pos: {
+                        x: 1280,
+                        y: 0
+                    }
                 }
  
             },
@@ -35,8 +39,10 @@ function testOne_terrain_config() as object
                     anim: {
                         reg: ["grass"]
                     }
-                    x: 2560,
-                    y: 0
+                    pos: {
+                        x: 2560,
+                        y: 0
+                    }
                 }
             }
         ],
@@ -49,8 +55,10 @@ function testOne_terrain_config() as object
                     anim: {
                         reg: ["grass"]
                     }
-                    x: 0,
-                    y: 720
+                    pos: {
+                        x: 0,
+                        y: 720
+                    }
                 }
             },
 
@@ -61,8 +69,10 @@ function testOne_terrain_config() as object
                     anim: {
                         reg: ["grass"]
                     }
-                    x: 1280,
-                    y: 720
+                    pos: {
+                        x: 1280,
+                        y: 720
+                    }
                 }
             },
 
@@ -73,8 +83,10 @@ function testOne_terrain_config() as object
                     anim: {
                         reg: ["grass"]
                     }
-                    x: 2560,
-                    y: 720
+                    pos: {
+                        x: 2560,
+                        y: 720
+                    }
                 }
             }
         ]
