@@ -12,7 +12,7 @@ function interface_init(object)
         m.game.defineObject("interface_control", interface_control)
 
         ' registerFont
-        m.game.registerFont("pkg:/media/shared/fonts/VT323.ttf")
+        m.game.registerFont("pkg:/media/interface/fonts/VT323.ttf")
         
         ' createInstance
         m.game.createInstance("interface_main")
