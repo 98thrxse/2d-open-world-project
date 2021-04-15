@@ -28,36 +28,32 @@ function testOne_char_config() as object
             right: false
         },
 
-        attributes: {
+        attrs: {
             hp: invalid,
             sp: invalid
-        },
-
-        damage: {
-            hp: 10,
-            sp: 10
-            hp_time: 500,
-            sp_time: 500
-        },
-
-        regen: {
-            hp: 5,
-            sp: 5,
-            hp_time: 1000,
-            sp_time: 1000
-        },
-
-        speed: {
-            up: 3,
-            down: 3,
-            left: 3,
-            right: 3
+            damage: {
+                hp: 10,
+                sp: 10
+                hp_time: 500,
+                sp_time: 500
+            },
+            regen: {
+                hp: 5,
+                sp: 5,
+                hp_time: 1000,
+                sp_time: 1000
+            },
+            speed: {
+                up: 3,
+                down: 3,
+                left: 3,
+                right: 3
+            }
         }
 
         intersect: {
             obj: invalid
-        },  
-
+        }
     }
 
     return config

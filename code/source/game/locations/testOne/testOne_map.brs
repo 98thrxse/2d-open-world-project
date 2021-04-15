@@ -193,22 +193,20 @@ function testOne_map(object)
         
 
         ' attributes
-        if m.map_char_config.attributes.hp <> invalid then m.game.char.setHP(m.map_char_config.attributes.hp)
-        if m.map_char_config.attributes.sp <> invalid then m.game.char.setSP(m.map_char_config.attributes.sp)
-
-
-        ' damage
-        if m.map_char_config.damage.hp <> invalid then m.game.char.setHPDamage(m.map_char_config.damage.hp)
-        if m.map_char_config.damage.sp <> invalid then m.game.char.setSPDamage(m.map_char_config.damage.sp)
-        if m.map_char_config.damage.hp_time <> invalid then m.game.char.setHPDamageTime(m.map_char_config.damage.hp_time)
-        if m.map_char_config.damage.sp_time <> invalid then m.game.char.setSPDamageTime(m.map_char_config.damage.sp_time)
-
-
-        ' regen
-        if m.map_char_config.regen.hp <> invalid then m.game.char.setHPRegen(m.map_char_config.regen.hp)
-        if m.map_char_config.regen.sp <> invalid then m.game.char.setSPRegen(m.map_char_config.regen.sp)
-        if m.map_char_config.regen.hp_time <> invalid then m.game.char.setHPRegenTime(m.map_char_config.regen.hp_time)
-        if m.map_char_config.regen.sp_time <> invalid then m.game.char.setSPRegenTime(m.map_char_config.regen.sp_time)
+        if m.map_char_config.attrs.hp <> invalid then m.game.char.setHP(m.map_char_config.attrs.hp)
+        if m.map_char_config.attrs.sp <> invalid then m.game.char.setSP(m.map_char_config.attrs.sp)
+        if m.map_char_config.attrs.speed.up <> invalid then m.game.char.setUpSpeed(m.map_char_config.attrs.speed.up)
+        if m.map_char_config.attrs.speed.down <> invalid then m.game.char.setDownSpeed(m.map_char_config.attrs.speed.down)
+        if m.map_char_config.attrs.speed.left <> invalid then m.game.char.setLeftSpeed(m.map_char_config.attrs.speed.left)
+        if m.map_char_config.attrs.speed.right <> invalid then m.game.char.setRightSpeed(m.map_char_config.attrs.speed.right)
+        if m.map_char_config.attrs.damage.hp <> invalid then m.game.char.setHPDamage(m.map_char_config.attrs.damage.hp)
+        if m.map_char_config.attrs.damage.sp <> invalid then m.game.char.setSPDamage(m.map_char_config.attrs.damage.sp)
+        if m.map_char_config.attrs.damage.hp_time <> invalid then m.game.char.setHPDamageTime(m.map_char_config.attrs.damage.hp_time)
+        if m.map_char_config.attrs.damage.sp_time <> invalid then m.game.char.setSPDamageTime(m.map_char_config.attrs.damage.sp_time)
+        if m.map_char_config.attrs.regen.hp <> invalid then m.game.char.setHPRegen(m.map_char_config.attrs.regen.hp)
+        if m.map_char_config.attrs.regen.sp <> invalid then m.game.char.setSPRegen(m.map_char_config.attrs.regen.sp)
+        if m.map_char_config.attrs.regen.hp_time <> invalid then m.game.char.setHPRegenTime(m.map_char_config.attrs.regen.hp_time)
+        if m.map_char_config.attrs.regen.sp_time <> invalid then m.game.char.setSPRegenTime(m.map_char_config.attrs.regen.sp_time)
 
         ' intersect
         if m.map_char_config.intersect.obj <> invalid then m.game.char.setObjIntersect(m.map_char_config.intersect.obj)
@@ -222,11 +220,6 @@ function testOne_map(object)
         if m.map_char_config.col.right <> invalid then m.game.char.setRightCol(m.map_char_config.col.right)
 
 
-        ' speed
-        if m.map_char_config.speed.up <> invalid then m.game.char.setUpSpeed(m.map_char_config.speed.up)
-        if m.map_char_config.speed.down <> invalid then m.game.char.setDownSpeed(m.map_char_config.speed.down)
-        if m.map_char_config.speed.left <> invalid then m.game.char.setLeftSpeed(m.map_char_config.speed.left)
-        if m.map_char_config.speed.right <> invalid then m.game.char.setRightSpeed(m.map_char_config.speed.right)
     end function
 
 end function

@@ -2,31 +2,36 @@ function char_data() as object
 
     m.char = {
 
-        ' pos
+        ' entity
         getEntityPosX: char_getEntityPosX
         setEntityPosX: char_setEntityPosX
         
         getEntityPosY: char_getEntityPosY
         setEntityPosY: char_setEntityPosY  
 
-
-        ' size
         getEntityH: char_getEntityH
         setEntityH: char_setEntityH
         
         getEntityW: char_getEntityW
         setEntityW: char_setEntityW
 
+        getIndex: char_getIndex
+        setIndex: char_setIndex
 
-        ' attributes
+        getAnimTime: char_getAnimTime
+        setAnimTime: char_setAnimTime
+
+        getAlpha: char_getAlpha
+        setAlpha: char_setAlpha
+
+
+        ' attrs
         getHP: char_getHP
         setHP: char_setHP
 
         getSP: char_getSP
         setSP: char_setSP
 
-
-        ' damage
         getHPDamage: char_getHPDamage
         setHPDamage: char_setHPDamage
 
@@ -39,8 +44,6 @@ function char_data() as object
         getSPDamageTime: char_getSPDamageTime
         setSPDamageTime: char_setSPDamageTime
 
-
-        ' regen
         getHPRegen: char_getHPRegen
         setHPRegen: char_setHPRegen
 
@@ -53,16 +56,17 @@ function char_data() as object
         getSPRegenTime: char_getSPRegenTime
         setSPRegenTime: char_setSPRegenTime
 
+        getUpSpeed: char_getUpSpeed
+        setUpSpeed: char_setUpSpeed
 
-        ' anim
-        getIndex: char_getIndex
-        setIndex: char_setIndex
+        getDownSpeed: char_getDownSpeed
+        setDownSpeed: char_setDownSpeed
 
-        getAnimTime: char_getAnimTime
-        setAnimTime: char_setAnimTime
+        getLeftSpeed: char_getLeftSpeed
+        setLeftSpeed: char_setLeftSpeed
 
-        getAlpha: char_getAlpha
-        setAlpha: char_setAlpha
+        getRightSpeed: char_getRightSpeed
+        setRightSpeed: char_setRightSpeed
 
 
         ' intersect
@@ -87,24 +91,11 @@ function char_data() as object
         setRightCol: char_setRightCol
 
 
-        ' speed
-        getUpSpeed: char_getUpSpeed
-        setUpSpeed: char_setUpSpeed
-
-        getDownSpeed: char_getDownSpeed
-        setDownSpeed: char_setDownSpeed
-
-        getLeftSpeed: char_getLeftSpeed
-        setLeftSpeed: char_setLeftSpeed
-
-        getRightSpeed: char_getRightSpeed
-        setRightSpeed: char_setRightSpeed
-
         config: invalid
     }
 
     m.char.config = LoadSavedGame()
-    m.char.build = "1.0.0"
+    m.char.build = "1.0.1"
 
     if m.char.config = invalid OR m.char.config.version <> m.char.build
         SaveGame(invalid)
@@ -138,34 +129,31 @@ function char_data() as object
                 right: false
             },
 
-            attributes: {
+            attrs: {
                 hp: 100,
                 sp: 100
-            },
-
-            damage: {
-                hp: 10,
-                sp: 10,
-                hp_time: 500,
-                sp_time: 500
-            },
-
-            regen: {
-                hp: 5,
-                sp: 5,
-                hp_time: 1000,
-                sp_time: 1000
+                damage: {
+                    hp: 10,
+                    sp: 10,
+                    hp_time: 500,
+                    sp_time: 500
+                },
+                regen: {
+                    hp: 5,
+                    sp: 5,
+                    hp_time: 1000,
+                    sp_time: 1000
+                },
+                speed: {
+                    up: 3,
+                    down: 3,
+                    left: 3,
+                    right: 3
+                },
             },
 
             intersect: {
                 obj: invalid
-            },
-        
-            speed: {
-                up: 3,
-                down: 3,
-                left: 3,
-                right: 3
             },
 
             version: m.char.build
@@ -223,100 +211,100 @@ end sub
 
 
 function char_getHP() as integer
-    return m.config.attributes.hp
+    return m.config.attrs.hp
 end function
 
 sub char_setHP(hp as integer)
-    m.config.attributes.hp = hp
+    m.config.attrs.hp = hp
     SaveGame(m.config)
 end sub
 
 
 function char_getSP() as integer
-    return m.config.attributes.sp
+    return m.config.attrs.sp
 end function
 
 sub char_setSP(sp as integer)
-    m.config.attributes.sp = sp
+    m.config.attrs.sp = sp
     SaveGame(m.config)
 end sub
 
 
 function char_getHPDamage() as integer
-    return m.config.damage.hp
+    return m.config.attrs.damage.hp
 end function
 
 sub char_setHPDamage(hp as integer)
-    m.config.damage.hp = hp
+    m.config.attrs.damage.hp = hp
     SaveGame(m.config)
 end sub
 
 
 function char_getSPDamage() as integer
-    return m.config.damage.sp
+    return m.config.attrs.damage.sp
 end function
 
 sub char_setSPDamage(sp as integer)
-    m.config.damage.sp = sp
+    m.config.attrs.damage.sp = sp
     SaveGame(m.config)
 end sub
 
 
 function char_getHPDamageTime() as integer
-    return m.config.damage.hp_time
+    return m.config.attrs.damage.hp_time
 end function
 
 sub char_setHPDamageTime(time as integer)
-    m.config.damage.hp_time = time
+    m.config.attrs.damage.hp_time = time
     SaveGame(m.config)
 end sub
 
 function char_getSPDamageTime() as integer
-    return m.config.damage.sp_time
+    return m.config.attrs.damage.sp_time
 end function
 
 sub char_setSPDamageTime(time as integer)
-    m.config.damage.sp_time = time
+    m.config.attrs.damage.sp_time = time
     SaveGame(m.config)
 end sub
 
 
 
 function char_getHPRegen() as integer
-    return m.config.regen.hp
+    return m.config.attrs.regen.hp
 end function
 
 sub char_setHPRegen(hp as integer)
-    m.config.regen.hp = hp
+    m.config.attrs.regen.hp = hp
     SaveGame(m.config)
 end sub
 
 
 function char_getSPRegen() as integer
-    return m.config.regen.sp
+    return m.config.attrs.regen.sp
 end function
 
 sub char_setSPRegen(sp as integer)
-    m.config.regen.sp = sp
+    m.config.attrs.regen.sp = sp
     SaveGame(m.config)
 end sub
 
 
 function char_getHPRegenTime() as integer
-    return m.config.regen.hp_time
+    return m.config.attrs.regen.hp_time
 end function
 
 sub char_setHPRegenTime(time as integer)
-    m.config.regen.hp_time = time
+    m.config.attrs.regen.hp_time = time
     SaveGame(m.config)
 end sub
 
 function char_getSPRegenTime() as integer
-    return m.config.regen.sp_time
+    return m.config.attrs.regen.sp_time
 end function
 
 sub char_setSPRegenTime(time as integer)
-    m.config.regen.sp_time = time
+    m.config.attrs.regen.sp_time = time
     SaveGame(m.config)
 end sub
 
@@ -414,41 +402,41 @@ end sub
 
 
 function char_getUpSpeed() as integer
-    return m.config.speed.up
+    return m.config.attrs.speed.up
 end function
 
 sub char_setUpSpeed(speed as integer) 
-    m.config.speed.up = speed
+    m.config.attrs.speed.up = speed
     SaveGame(m.config)
 end sub
 
 
 function char_getDownSpeed() as integer
-    return m.config.speed.down
+    return m.config.attrs.speed.down
 end function
 
 sub char_setDownSpeed(speed as integer) 
-    m.config.speed.down = speed
+    m.config.attrs.speed.down = speed
     SaveGame(m.config)
 end sub
 
 
 function char_getLeftSpeed() as integer
-    return m.config.speed.left
+    return m.config.attrs.speed.left
 end function
 
 sub char_setLeftSpeed(speed as integer) 
-    m.config.speed.left = speed
+    m.config.attrs.speed.left = speed
     SaveGame(m.config)
 end sub
 
 
 function char_getRightSpeed() as integer
-    return m.config.speed.right
+    return m.config.attrs.speed.right
 end function
 
 sub char_setRightSpeed(speed as integer) 
-    m.config.speed.right = speed
+    m.config.attrs.speed.right = speed
     SaveGame(m.config)
 end sub
 
