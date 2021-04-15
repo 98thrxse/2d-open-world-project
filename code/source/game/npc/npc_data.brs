@@ -2,7 +2,7 @@ function npc_data() as object
 
     m.npc = {
 
-        ' attributes
+        ' attrs
         getHP: npc_getHP
         setHP: npc_setHP
 
@@ -155,12 +155,12 @@ end sub
 
 
 function npc_getHP(i as integer) as integer
-    return m.config[i].attributes.hp
+    return m.config[i].attrs.hp
 end function
 
 
 sub npc_setHP(i as integer, hp as integer)
-    m.config[i].attributes.hp = hp
+    m.config[i].attrs.hp = hp
 end sub
 
 

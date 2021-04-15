@@ -142,7 +142,7 @@ function testOne_map(object)
                         height: invalid
                     },
         
-                    attributes: {
+                    attrs: {
                         hp: invalid
                     }
                 })
@@ -155,8 +155,8 @@ function testOne_map(object)
 
         for i = 0 to m.map_npc_config.Count() - 1
 
-            ' attributes
-            if m.map_npc_config[i].attributes.hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].attributes.hp)
+            ' attrs
+            if m.map_npc_config[i].attrs.hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].attrs.hp)
 
             ' entity
             if m.map_npc_config[i].entity.name <> invalid then m.game.npc.setEntityName(i, m.map_npc_config[i].entity.name)
@@ -192,7 +192,7 @@ function testOne_map(object)
         if m.map_char_config.entity.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.entity.anim.time)
         
 
-        ' attributes
+        ' attrs
         if m.map_char_config.attrs.hp <> invalid then m.game.char.setHP(m.map_char_config.attrs.hp)
         if m.map_char_config.attrs.sp <> invalid then m.game.char.setSP(m.map_char_config.attrs.sp)
         if m.map_char_config.attrs.speed.up <> invalid then m.game.char.setUpSpeed(m.map_char_config.attrs.speed.up)

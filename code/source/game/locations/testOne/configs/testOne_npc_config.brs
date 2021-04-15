@@ -23,7 +23,7 @@ function testOne_npc_config() as object
                 height: 56
             },
 
-            attributes: {
+            attrs: {
                 hp: 100
             }
 
@@ -51,7 +51,7 @@ function testOne_npc_config() as object
                 height: 56
             },
 
-            attributes: {
+            attrs: {
                 hp: 100
             }
         },
@@ -78,7 +78,7 @@ function testOne_npc_config() as object
                 height: 56
             },
 
-            attributes: {
+            attrs: {
                 hp: 100
             }
         }
