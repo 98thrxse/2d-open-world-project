@@ -1,31 +1,60 @@
 function testOne_char_config() as object
     config = {
 
+        xy: {
+            name: "XY"
+            offset: {
+                x: invalid,
+                y: invalid
+            }
+        }
+
         entity: {
+            name: invalid
             size: {
                 width: invalid,
                 height: invalid,
             },
 
             anim: {
-                index: 9,
+                index: invalid,
                 alpha: 255,
+                scale: {
+                    x: invalid
+                    y: invalid
+                },
+    
+                offset: {
+                    x: invalid
+                    y: invalid
+                },
                 time: 100
             },
 
             pos: {
                 x: invalid,
                 y: invalid
-            }
+            },
+
         }
 
         col: {
-            npc: invalid,
+            name_up: invalid
+            name_down: invalid
+            name_left: invalid
+            name_right: invalid
+
+            offset: {
+                x: 616,
+                y: 332
+            }
             
             up: false,
             down: false,
             left: false,
             right: false
+
+            npc: invalid
         },
 
         attrs: {

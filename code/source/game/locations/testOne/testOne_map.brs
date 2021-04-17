@@ -200,7 +200,13 @@ function testOne_map(object)
 
         ' loading map config to player data
 
+        ' xy
+        if m.map_char_config.xy.name <> invalid then m.game.char.setZeroName(m.map_char_config.xy.name)
+        if m.map_char_config.xy.offset.x <> invalid then m.game.char.setZeroOffsetX(m.map_char_config.xy.offset.x)
+        if m.map_char_config.xy.offset.y <> invalid then m.game.char.setZeroOffsetY(m.map_char_config.xy.offset.y)
+
         ' entity
+        if m.map_char_config.entity.name <> invalid then m.game.char.setEntityName(m.map_char_config.entity.name)
         if m.map_char_config.entity.pos.x <> invalid then m.game.char.setEntityPosX(m.map_char_config.entity.pos.x)
         if m.map_char_config.entity.pos.y <> invalid then m.game.char.setEntityPosY(m.map_char_config.entity.pos.y)
         if m.map_char_config.entity.size.width <> invalid then m.game.char.setEntityW(m.map_char_config.entity.size.width)
@@ -208,7 +214,11 @@ function testOne_map(object)
         if m.map_char_config.entity.anim.index <> invalid then m.game.char.setIndex(m.map_char_config.entity.anim.index)
         if m.map_char_config.entity.anim.alpha <> invalid then m.game.char.setAlpha(m.map_char_config.entity.anim.alpha)
         if m.map_char_config.entity.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.entity.anim.time)
-        
+        if m.map_char_config.entity.anim.scale.x <> invalid then m.game.char.setScaleX(m.map_char_config.entity.anim.scale.x)
+        if m.map_char_config.entity.anim.scale.y <> invalid then m.game.char.setScaleY(m.map_char_config.entity.anim.scale.y)
+        if m.map_char_config.entity.anim.offset.x <> invalid then m.game.char.setEntityOffsetX(m.map_char_config.entity.anim.offset.x)
+        if m.map_char_config.entity.anim.offset.y <> invalid then m.game.char.setEntityOffsetY(m.map_char_config.entity.anim.offset.y)
+
 
         ' attrs
         if m.map_char_config.attrs.hp <> invalid then m.game.char.setHP(m.map_char_config.attrs.hp)
@@ -231,11 +241,17 @@ function testOne_map(object)
 
 
         ' col
-        if m.map_char_config.col.npc <> invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
+        if m.map_char_config.col.name_up <> invalid then m.game.char.setColUpName(m.map_char_config.col.name_up)
+        if m.map_char_config.col.name_down <> invalid then m.game.char.setColDownName(m.map_char_config.col.name_down)
+        if m.map_char_config.col.name_left <> invalid then m.game.char.setColLeftName(m.map_char_config.col.name_left)
+        if m.map_char_config.col.name_right <> invalid then m.game.char.setColRightName(m.map_char_config.col.name_right)
         if m.map_char_config.col.up <> invalid then m.game.char.setUpCol(m.map_char_config.col.up)
         if m.map_char_config.col.down <> invalid then m.game.char.setDownCol(m.map_char_config.col.down)
         if m.map_char_config.col.left <> invalid then m.game.char.setLeftCol(m.map_char_config.col.left)
         if m.map_char_config.col.right <> invalid then m.game.char.setRightCol(m.map_char_config.col.right)
+        if m.map_char_config.col.npc <> invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
+        if m.map_char_config.col.offset.x <> invalid then m.game.char.setColOffsetX(m.map_char_config.col.offset.x)
+        if m.map_char_config.col.offset.y <> invalid then m.game.char.setColOffsetY(m.map_char_config.col.offset.y)
 
 
     end function

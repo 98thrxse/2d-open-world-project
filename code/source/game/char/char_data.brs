@@ -2,7 +2,20 @@ function char_data() as object
 
     m.char = {
 
+        ' zero
+        getZeroName: char_getZeroName
+        setZeroName: char_setZeroName
+
+        getZeroOffsetX: char_getZeroOffsetX
+        setZeroOffsetX: char_setZeroOffsetX
+
+        getZeroOffsetY: char_getZeroOffsetY
+        setZeroOffsetY: char_setZeroOffsetY
+
         ' entity
+        getEntityName: char_getEntityName
+        setEntityName: char_setEntityName
+
         getEntityPosX: char_getEntityPosX
         setEntityPosX: char_setEntityPosX
         
@@ -14,6 +27,18 @@ function char_data() as object
         
         getEntityW: char_getEntityW
         setEntityW: char_setEntityW
+
+        getScaleX: char_getScaleX
+        setScaleX: char_setScaleX
+
+        getScaleY: char_getScaleY
+        setScaleY: char_setScaleY
+
+        getEntityOffsetX: char_getEntityOffsetX
+        setEntityOffsetX: char_setEntityOffsetX
+
+        getEntityOffsetY: char_getEntityOffsetY
+        setEntityOffsetY: char_setEntityOffsetY
 
         getIndex: char_getIndex
         setIndex: char_setIndex
@@ -75,6 +100,24 @@ function char_data() as object
 
 
         ' col
+        getColUpName: char_getColUpName
+        setColUpName: char_setColUpName
+
+        getColDownName: char_getColDownName
+        setColDownName: char_setColDownName
+
+        getColLeftName: char_getColLeftName
+        setColLeftName: char_setColLeftName
+
+        getColRightName: char_getColRightName
+        setColRightName: char_setColRightName
+
+        getColOffsetX: char_getColOffsetX
+        setColOffsetX: char_setColOffsetX
+
+        getColOffsetY: char_getColOffsetY
+        setColOffsetY: char_setColOffsetY
+
         getNPCCol: char_getNPCCol
         setNPCCol: char_setNPCCol
 
@@ -95,14 +138,23 @@ function char_data() as object
     }
 
     m.char.config = LoadSavedGame()
-    m.char.build = "1.0.7"
+    m.char.build = "1.0.0"
 
     if m.char.config = invalid OR m.char.config.version <> m.char.build
         SaveGame(invalid)
 
         m.char.config = {
+
+            xy: {
+                name: "XY"
+                offset: {
+                    x: 0,
+                    y: 0
+                }
+            }
             
             entity: {
+                name: "char_entity"
                 pos: {
                     x: 0,
                     y: 0
@@ -116,17 +168,38 @@ function char_data() as object
                 anim: {
                     index: 0,
                     alpha: 255,
+                    scale: {
+                        x: 1.0
+                        y: 1.0
+                    },
+    
+                    offset: {
+                        x: 616,
+                        y: 332
+                    },
                     time: 100
-                }
+                },
+
+
             }
 
             col: {
-                npc: invalid,
+                name_up: "char_col_up",
+                name_down: "char_col_down",
+                name_left: "char_col_left",
+                name_right: "char_col_right",
+
+                offset: {
+                    x: 616,
+                    y: 332
+                }
 
                 up: false,
                 down: false
                 left: false,
                 right: false
+
+                npc: invalid
             },
 
             attrs: {
@@ -168,7 +241,136 @@ function char_data() as object
 end function
 
 
-' char data to save
+function char_getColUpName() as object
+    return m.config.col.name_up
+end function
+
+sub char_setColUpName(name as string)
+    m.config.col.name_up = name
+end sub
+
+
+function char_getColDownName() as object
+    return m.config.col.name_down
+end function
+
+
+sub char_setColDownName(name as string)
+    m.config.col.name_down = name
+end sub
+
+
+function char_getColLeftName() as object
+    return m.config.col.name_left
+end function
+
+sub char_setColLeftName(name as string)
+    m.config.col.name_left = name
+end sub
+
+
+function char_getColRightName() as object
+    return m.config.col.name_right
+end function
+
+sub char_setColRightName(name as string)
+    m.config.col.name_right = name
+end sub
+
+
+function char_getScaleX() as integer
+    return m.config.entity.anim.scale.x
+end function
+
+sub char_setScaleX(x as integer)
+    m.config.entity.anim.scale.x = x
+    SaveGame(m.config)
+end sub
+
+function char_getScaleY() as integer
+    return m.config.entity.anim.scale.y
+end function
+
+sub char_setScaleY(y as integer)
+    m.config.entity.anim.scale.y = y
+    SaveGame(m.config)
+end sub
+
+
+function char_getEntityOffsetX() as integer
+    return m.config.entity.anim.offset.x
+end function
+
+sub char_setEntityOffsetX(x as integer)
+    m.config.entity.anim.offset.x = x
+    SaveGame(m.config)
+end sub
+
+function char_getEntityOffsetY() as integer
+    return m.config.entity.anim.offset.y
+end function
+
+sub char_setEntityOffsetY(y as integer)
+    m.config.entity.anim.offset.y = y
+    SaveGame(m.config)
+end sub
+
+
+function char_getColOffsetX() as integer
+    return m.config.col.offset.x
+end function
+
+sub char_setColOffsetX(x as integer)
+    m.config.col.offset.x = x
+    SaveGame(m.config)
+end sub
+
+function char_getColOffsetY() as integer
+    return m.config.col.offset.y
+end function
+
+sub char_setColOffsetY(y as integer)
+    m.config.col.offset.y = y
+    SaveGame(m.config)
+end sub
+
+
+function char_getZeroOffsetX() as integer
+    return m.config.xy.offset.x
+end function
+
+sub char_setZeroOffsetX(x as integer)
+    m.config.xy.offset.x = x
+    SaveGame(m.config)
+end sub
+
+function char_getZeroOffsetY() as integer
+    return m.config.xy.offset.y
+end function
+
+sub char_setZeroOffsetY(y as integer)
+    m.config.xy.offset.y = y
+    SaveGame(m.config)
+end sub
+
+
+function char_getZeroName() as object
+    return m.config.xy.name
+end function
+
+sub char_setZeroName(name as string)
+    m.config.xy.name = name
+end sub
+
+
+function char_getEntityName() as object
+    return m.config.entity.name
+end function
+
+sub char_setEntityName(name as string)
+    m.config.entity.name = name
+end sub
+
 
 function char_getEntityPosX() as integer
     return m.config.entity.pos.x
