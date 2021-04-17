@@ -49,6 +49,8 @@ function char_data() as object
         getAlpha: char_getAlpha
         setAlpha: char_setAlpha
 
+        getReg: char_getReg
+        setReg: char_setReg
 
         ' attrs
         getHP: char_getHP
@@ -168,6 +170,7 @@ function char_data() as object
                 anim: {
                     index: 0,
                     alpha: 255,
+                    reg: ["stand_back1", "stand_front1", "stand_side1", "walk_back1", "walk_back2", "walk_front1", "walk_front2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "stand_side2", "attack_fist1", "attack_fist2", "attack_fist3", "attack_fist4", "attack_fist5", "attack_fist6", "attack_leg1", "attack_leg2", "attack_leg3"]
                     scale: {
                         x: 1.0
                         y: 1.0
@@ -642,6 +645,13 @@ sub char_setRightSpeed(speed as integer)
     SaveGame(m.config)
 end sub
 
+function char_getReg() as object
+    return m.config.entity.anim.reg
+end function
+
+sub char_setReg(reg as object)
+    m.config.entity.anim.reg = reg
+end sub
 
 
 ' save & load functions - fix stas
