@@ -146,7 +146,7 @@ function char_data() as object
     }
 
     m.char.config = LoadSavedGame()
-    m.char.build = "1.0.5"
+    m.char.build = "1.0.2"
 
     if m.char.config = invalid OR m.char.config.version <> m.char.build
         SaveGame(invalid)
@@ -231,10 +231,10 @@ function char_data() as object
                     sp_time: 1000
                 },
                 speed: {
-                    up: 3,
-                    down: 3,
-                    left: 3,
-                    right: 3
+                    up: 5,
+                    down: 5,
+                    left: 5,
+                    right: 5
                 },
             },
 
