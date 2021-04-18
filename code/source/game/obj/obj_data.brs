@@ -6,11 +6,11 @@ function obj_data() as object
         getEntityName: obj_getEntityName
         setEntityName: obj_setEntityName
 
-        getEntityPosX: obj_getEntityPosX
-        setEntityPosX: obj_setEntityPosX
+        getEntityOffsetX: obj_getEntityOffsetX
+        setEntityOffsetX: obj_setEntityOffsetX
         
-        getEntityPosY: obj_getEntityPosY
-        setEntityPosY: obj_setEntityPosY
+        getEntityOffsetY: npc_getEntityOffsetY
+        setEntityOffsetY: npc_setEntityOffsetY
 
         getEntityH: obj_getEntityH
         setEntityH: obj_setEntityH
@@ -28,11 +28,11 @@ function obj_data() as object
         getColName: obj_getColName
         setColName: obj_setColName
 
-        getColPosX: obj_getColPosX
-        setColPosX: obj_setColPosX
+        getColOffsetX: obj_getColOffsetX
+        setColOffsetX: obj_setColOffsetX
         
-        getColPosY: obj_getColPosY
-        setColPosY: obj_setColPosY
+        getColOffsetY: obj_getColOffsetY
+        setColOffsetY: obj_setColOffsetY
 
         getColH: obj_getColH
         setColH: obj_setColH
@@ -75,7 +75,7 @@ sub obj_setReg(i as integer, j as integer, reg as object)
 end sub
 
 
-function obj_getColName(i as integer) as integer
+function obj_getColName(i as integer) as object
     return m.config[i].col.name
 end function
 
@@ -84,7 +84,7 @@ sub obj_setColName(i as integer, name as string)
 end sub
 
 
-function obj_getEntityName(i as integer) as integer
+function obj_getEntityName(i as integer) as object
     return m.config[i].entity.name
 end function
 
@@ -93,42 +93,40 @@ sub obj_setEntityName(i as integer, name as string)
 end sub
 
 
-function obj_getEntityPosX(i as integer) as integer
-    return m.config[i].entity.pos.x
+function obj_getEntityOffsetX(i as integer) as integer
+    return m.config[i].entity.anim.offset.x
 end function
 
-sub obj_setEntityPosX(i as integer, x as integer)
-    m.config[i].entity.pos.x = x
+sub obj_setEntityOffsetX(i as integer, x as integer)
+    m.config[i].entity.anim.offset.x = x
 end sub
 
 
-function obj_getEntityPosY(i as integer) as integer
-    return m.config[i].entity.pos.y
+function obj_getEntityOffsetY(i as integer) as integer
+    return m.config[i].entity.anim.offset.y
 end function
 
-sub obj_setEntityPosY(i as integer, y as integer)
-    m.config[i].entity.pos.y = y
+sub obj_setEntityOffsetY(i as integer, y as integer)
+    m.config[i].entity.anim.offset.y = y
 end sub
 
 
 
-function obj_getColPosX(i as integer) as integer
-    return m.config[i].col.pos.x
+function obj_getColOffsetX(i as integer) as integer
+    return m.config[i].col.offset.x
 end function
 
-sub obj_setColPosX(i as integer, x as integer)
-    m.config[i].col.pos.x = x
+sub obj_setColOffsetX(i as integer, x as integer)
+    m.config[i].col.offset.x = x
 end sub
 
-
-function obj_getColPosY(i as integer) as integer
-    return m.config[i].col.pos.y
+function obj_getColOffsetY(i as integer) as integer
+    return m.config[i].col.offset.y
 end function
 
-sub obj_setColPosY(i as integer, y as integer)
-    m.config[i].col.pos.y = y
+sub obj_setColOffsetY(i as integer, y as integer)
+    m.config[i].col.offset.y = y
 end sub
-
 
 
 function obj_getEntityH(i as integer) as integer

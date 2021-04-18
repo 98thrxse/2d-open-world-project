@@ -39,16 +39,16 @@ function npc_col(object)
 
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
-    if other_collider_name = "char_col_up"
+    if other_collider_name = m.game.char.getColUpName()
       m.game.char.setNPCCol(collider_name)
 
-    else if other_collider_name = "char_col_down"
+    else if other_collider_name = m.game.char.getColDownName()
       m.game.char.setNPCCol(collider_name)
 
-    else if other_collider_name = "char_col_left"
+    else if other_collider_name = m.game.char.getColLeftName()
       m.game.char.setNPCCol(collider_name)
 
-    else if other_collider_name = "char_col_right"
+    else if other_collider_name = m.game.char.getColRightName()
       m.game.char.setNPCCol(collider_name)
 
     end if

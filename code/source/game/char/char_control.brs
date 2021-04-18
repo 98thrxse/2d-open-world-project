@@ -78,7 +78,7 @@ function char_control(object)
     ' held
     else if code = 1002 ' up
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getUpCol() = false
+        if m.game.char.getColUp() = false
           m.game.char.setZeroOffsetY(m.game.char.getZeroOffsetY() + m.game.char.getUpSpeed())
 
         end if
@@ -87,7 +87,7 @@ function char_control(object)
                       
     else if code = 1003 ' down
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getDownCol() = false
+        if m.game.char.getColDown() = false
           m.game.char.setZeroOffsetY(m.game.char.getZeroOffsetY() - m.game.char.getDownSpeed())
 
         end if
@@ -96,7 +96,7 @@ function char_control(object)
         
     else if code = 1004 ' left
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getLeftCol() = false
+        if m.game.char.getColLeft() = false
           m.game.char.setZeroOffsetX(m.game.char.getZeroOffsetX() + m.game.char.getLeftSpeed())
 
         end if
@@ -105,7 +105,7 @@ function char_control(object)
             
     else if code = 1005 ' right
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getRightCol() = false
+        if m.game.char.getColRight() = false
           m.game.char.setZeroOffsetX(m.game.char.getZeroOffsetX() - m.game.char.getRightSpeed())
 
         end if

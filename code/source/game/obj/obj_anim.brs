@@ -21,7 +21,7 @@ function obj_anim(object)
         m.game.char.setObjIntersect(invalid)
 
         for i = 0 to m.game.obj.config.Count() - 1
-            if m.game.char.getEntityPosX() < m.game.obj.getEntityPosX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityPosX() > m.game.obj.getEntityPosX(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 < m.game.obj.getEntityPosY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 > m.game.obj.getEntityPosY(i)
+            if m.game.char.getEntityPosX() < m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityPosX() > m.game.obj.getEntityOffsetX(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 < m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 > m.game.obj.getEntityOffsetY(i)
                 if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
                 m.game.char.setObjIntersect(i)
 
@@ -45,10 +45,10 @@ function obj_anim(object)
     object.animUpdate = function()
 
         for i = 0 to m.game.obj.config.Count() - 1
-            if m.entity_wnd.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) <> invalid
+            if m.entity_wnd.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
                 
                 ' update obj alpha
-                m.entity_wnd.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()).alpha = m.game.obj.getAlpha(i)
+                m.entity_wnd.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()).alpha = m.game.obj.getAlpha(i)
 
             end if
         

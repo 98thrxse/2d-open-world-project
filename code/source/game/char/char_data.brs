@@ -123,17 +123,17 @@ function char_data() as object
         getNPCCol: char_getNPCCol
         setNPCCol: char_setNPCCol
 
-        getUpCol: char_getUpCol
-        setUpCol: char_setUpCol
+        getColUp: char_getColUp
+        setColUp: char_setColUp
 
-        getDownCol: char_getDownCol
-        setDownCol: char_setDownCol
+        getColDown: char_getColDown
+        setColDown: char_setColDown
 
-        getLeftCol: char_getLeftCol
-        setLeftCol: char_setLeftCol
+        getColLeft: char_getColLeft
+        setColLeft: char_setColLeft
 
-        getRightCol: char_getRightCol
-        setRightCol: char_setRightCol
+        getColRight: char_getColRight
+        setColRight: char_setColRight
 
         getColH: char_getColH
         setColH: char_setColH
@@ -595,41 +595,41 @@ sub char_setNPCCol(i as object)
 end sub
 
 
-function char_getUpCol() as boolean
+function char_getColUp() as boolean
     return m.config.col.up
 end function
 
-sub char_setUpCol(col as boolean) 
+sub char_setColUp(col as boolean) 
     m.config.col.up = col
     SaveGame(m.config)
 end sub
 
 
-function char_getDownCol() as boolean
+function char_getColDown() as boolean
     return m.config.col.down
 end function
 
-sub char_setDownCol(col as boolean) 
+sub char_setColDown(col as boolean) 
     m.config.col.down = col
     SaveGame(m.config)
 end sub
 
 
-function char_getLeftCol() as boolean
+function char_getColLeft() as boolean
     return m.config.col.left
 end function
 
-sub char_setLeftCol(col as boolean) 
+sub char_setColLeft(col as boolean) 
     m.config.col.left = col
     SaveGame(m.config)
 end sub
 
 
-function char_getRightCol() as boolean
+function char_getColRight() as boolean
     return m.config.col.right
 end function
 
-sub char_setRightCol(col as boolean) 
+sub char_setColRight(col as boolean) 
     m.config.col.right = col
     SaveGame(m.config)
 end sub

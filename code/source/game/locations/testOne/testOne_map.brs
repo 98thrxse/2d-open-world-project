@@ -88,11 +88,12 @@ function testOne_map(object)
                         anim: {
                             alpha: invalid,
                             reg: []
+                            offset: {
+                                x: invalid,
+                                y: invalid
+                            }
                         },
-                        pos: {
-                            x: invalid,
-                            y: invalid
-                        }
+
                         size: {
                             width: invalid,
                             height: invalid
@@ -101,7 +102,7 @@ function testOne_map(object)
         
                     col: {
                         name: invalid,
-                        pos: {
+                        offset: {
                             x: invalid,
                             y: invalid
                         }
@@ -122,8 +123,8 @@ function testOne_map(object)
 
             ' entity
             if m.map_obj_config[i].entity.name <> invalid then m.game.obj.setEntityName(i, m.map_obj_config[i].entity.name)
-            if m.map_obj_config[i].entity.pos.x <> invalid then m.game.obj.setEntityPosX(i, m.map_obj_config[i].entity.pos.x)
-            if m.map_obj_config[i].entity.pos.y <> invalid then m.game.obj.setEntityPosY(i, m.map_obj_config[i].entity.pos.y)
+            if m.map_obj_config[i].entity.anim.offset.x <> invalid then m.game.obj.setEntityOffsetX(i, m.map_obj_config[i].entity.anim.offset.x)
+            if m.map_obj_config[i].entity.anim.offset.y <> invalid then m.game.obj.setEntityOffsetY(i, m.map_obj_config[i].entity.anim.offset.y)
             if m.map_obj_config[i].entity.size.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.size.width)
             if m.map_obj_config[i].entity.size.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.size.height)
             if m.map_obj_config[i].entity.anim.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].entity.anim.alpha)
@@ -145,8 +146,8 @@ function testOne_map(object)
 
             ' col
             if m.map_obj_config[i].col.name <> invalid then m.game.obj.setColName(i, m.map_obj_config[i].col.name)
-            if m.map_obj_config[i].col.pos.x <> invalid then m.game.obj.setColPosX(i, m.map_obj_config[i].col.pos.x)
-            if m.map_obj_config[i].col.pos.y <> invalid then m.game.obj.setColPosY(i, m.map_obj_config[i].col.pos.y)
+            if m.map_obj_config[i].col.offset.x <> invalid then m.game.obj.setColOffsetX(i, m.map_obj_config[i].col.offset.x)
+            if m.map_obj_config[i].col.offset.y <> invalid then m.game.obj.setColOffsetY(i, m.map_obj_config[i].col.offset.y)
             if m.map_obj_config[i].col.size.width <> invalid then m.game.obj.setColW(i, m.map_obj_config[i].col.size.width)
             if m.map_obj_config[i].col.size.height <> invalid then m.game.obj.setColH(i, m.map_obj_config[i].col.size.height)
             
@@ -298,10 +299,10 @@ function testOne_map(object)
         if m.map_char_config.col.name_down <> invalid then m.game.char.setColDownName(m.map_char_config.col.name_down)
         if m.map_char_config.col.name_left <> invalid then m.game.char.setColLeftName(m.map_char_config.col.name_left)
         if m.map_char_config.col.name_right <> invalid then m.game.char.setColRightName(m.map_char_config.col.name_right)
-        if m.map_char_config.col.up <> invalid then m.game.char.setUpCol(m.map_char_config.col.up)
-        if m.map_char_config.col.down <> invalid then m.game.char.setDownCol(m.map_char_config.col.down)
-        if m.map_char_config.col.left <> invalid then m.game.char.setLeftCol(m.map_char_config.col.left)
-        if m.map_char_config.col.right <> invalid then m.game.char.setRightCol(m.map_char_config.col.right)
+        if m.map_char_config.col.up <> invalid then m.game.char.setColUp(m.map_char_config.col.up)
+        if m.map_char_config.col.down <> invalid then m.game.char.setColDown(m.map_char_config.col.down)
+        if m.map_char_config.col.left <> invalid then m.game.char.setColLeft(m.map_char_config.col.left)
+        if m.map_char_config.col.right <> invalid then m.game.char.setColRight(m.map_char_config.col.right)
         if m.map_char_config.col.npc <> invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
         if m.map_char_config.col.offset.x <> invalid then m.game.char.setColOffsetX(m.map_char_config.col.offset.x)
         if m.map_char_config.col.offset.y <> invalid then m.game.char.setColOffsetY(m.map_char_config.col.offset.y)

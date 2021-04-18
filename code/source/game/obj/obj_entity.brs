@@ -21,13 +21,13 @@ function obj_entity(object)
 
             obj_regions = []
 
-            if m.getImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr()) = invalid
+            if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
                 for j = 0 to m.game.obj.config[i].entity.anim.reg.Count() - 1
                     ' loadBitmap
-                    m.game.loadBitmap(m.game.obj.config[i].entity.anim.reg[j].toStr(), "pkg:/media/obj/sprites/" + m.game.obj.config[i].entity.anim.reg[j].toStr() + ".png")
+                    m.game.loadBitmap(m.game.obj.getReg(i, j).toStr(), "pkg:/media/obj/sprites/" + m.game.obj.getReg(i, j).toStr() + ".png")
 
                     ' getBitmap
-                    obj_bitmap = m.game.getBitmap(m.game.obj.config[i].entity.anim.reg[j].toStr())
+                    obj_bitmap = m.game.getBitmap(m.game.obj.getReg(i, j).toStr())
                 
                     ' roRegion
                     obj_region = CreateObject("roRegion", obj_bitmap, 0, 0, obj_bitmap.GetWidth(), obj_bitmap.GetHeight())
@@ -37,9 +37,9 @@ function obj_entity(object)
                 end for
 
                 ' addAnimatedImage
-                m.addAnimatedImage(m.game.obj.config[i].entity.name.toStr() + "_" + m.game.obj.config[i].id.toStr(), obj_regions, { index: 0
-                    offset_x: m.game.obj.getEntityPosX(i),
-                    offset_y: m.game.obj.getEntityPosY(i),
+                m.addAnimatedImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr(), obj_regions, { index: 0
+                    offset_x: m.game.obj.getEntityOffsetX(i),
+                    offset_y: m.game.obj.getEntityOffsetY(i),
                     alpha: m.game.obj.getAlpha(i)
                 })
                 

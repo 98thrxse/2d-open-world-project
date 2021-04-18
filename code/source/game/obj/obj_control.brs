@@ -11,33 +11,33 @@ function obj_control(object)
         ' released
         if code = 102
             if m.game.getFocusGroup() = "char"
-                if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
-                if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
-                if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
+                if m.game.char.getColDown() <> false then m.game.char.setColDown(false)
+                if m.game.char.getColLeft() <> false then m.game.char.setColLeft(false)
+                if m.game.char.getColRight() <> false then m.game.char.setColRight(false)
 
             end if
 
         else if code = 103
             if m.game.getFocusGroup() = "char"
-                if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
-                if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
-                if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
+                if m.game.char.getColUp() <> false then m.game.char.setColUp(false)
+                if m.game.char.getColLeft() <> false then m.game.char.setColLeft(false)
+                if m.game.char.getColRight() <> false then m.game.char.setColRight(false)
 
             end if
 
         else if code = 104
             if m.game.getFocusGroup() = "char"
-                if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
-                if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
-                if m.game.char.getRightCol() <> false then m.game.char.setRightCol(false)
+                if m.game.char.getColUp() <> false then m.game.char.setColUp(false)
+                if m.game.char.getColDown() <> false then m.game.char.setColDown(false)
+                if m.game.char.getColRight() <> false then m.game.char.setColRight(false)
 
             end if
 
         else if code = 105
             if m.game.getFocusGroup() = "char"
-                if m.game.char.getUpCol() <> false then m.game.char.setUpCol(false)
-                if m.game.char.getDownCol() <> false then m.game.char.setDownCol(false)
-                if m.game.char.getLeftCol() <> false then m.game.char.setLeftCol(false)
+                if m.game.char.getColUp() <> false then m.game.char.setColUp(false)
+                if m.game.char.getColDown() <> false then m.game.char.setColDown(false)
+                if m.game.char.getColLeft() <> false then m.game.char.setColLeft(false)
 
             end if
 

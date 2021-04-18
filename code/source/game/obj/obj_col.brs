@@ -16,9 +16,9 @@ function obj_col(object)
 
         ' loading map config to create obj
         for i = 0 to m.game.obj.config.Count() - 1   
-          if m.colliders[m.game.obj.config[i].col.name.toStr() + "_" + m.game.obj.config[i].id.toStr()] = invalid
+          if m.colliders[m.game.obj.getColName(i).toStr() + "_" + i.toStr()] = invalid
             ' addColliderRectangle
-            m.addColliderRectangle(m.game.obj.config[i].col.name.toStr() + "_" + m.game.obj.config[i].id.toStr(), m.game.obj.getColPosX(i), m.game.obj.getColPosY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
+            m.addColliderRectangle(m.game.obj.getColName(i).toStr() + "_" + i.toStr(), m.game.obj.getColOffsetX(i), m.game.obj.getColOffsetY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
           
           end if
           
@@ -36,17 +36,17 @@ function obj_col(object)
 
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
-        if other_collider_name = "char_col_up"
-            if m.game.char.getUpCol() <> true then m.game.char.setUpCol(true)
+        if other_collider_name = m.game.char.getColUpName()
+            if m.game.char.getColUp() <> true then m.game.char.setColUp(true)
 
-        else if other_collider_name = "char_col_down"
-            if m.game.char.getDownCol() <> true then m.game.char.setDownCol(true)
+        else if other_collider_name = m.game.char.getColDownName()
+            if m.game.char.getColDown() <> true then m.game.char.setColDown(true)
 
-        else if other_collider_name = "char_col_left"
-            if m.game.char.getLeftCol() <> true then m.game.char.setLeftCol(true)
+        else if other_collider_name = m.game.char.getColLeftName()
+            if m.game.char.getColLeft() <> true then m.game.char.setColLeft(true)
 
-        else if other_collider_name = "char_col_right"
-            if m.game.char.getRightCol() <> true then m.game.char.setRightCol(true)
+        else if other_collider_name = m.game.char.getColRightName()
+            if m.game.char.getColRight() <> true then m.game.char.setColRight(true)
 
         end if
 

@@ -8,10 +8,10 @@ function testOne_obj_config() as object
                 anim: {
                     alpha: 255
                     reg: ["obj_0"]
-                },
-                pos: {
-                    x: 100,
-                    y: 100,
+                    offset: {
+                        x: 100,
+                        y: 100,
+                    },
                 },
                 size: {
                     width: 128,
@@ -21,7 +21,7 @@ function testOne_obj_config() as object
 
             col: {
                 name: "obj_col",
-                pos: {
+                offset: {
                     x: 110,
                     y: 132,
                 },
@@ -39,11 +39,12 @@ function testOne_obj_config() as object
                 anim: {
                     alpha: 255
                     reg: ["obj_1"]
+                    offset: {
+                        x: 300,
+                        y: 100,
+                    },
                 },
-                pos: {
-                    x: 300,
-                    y: 100,
-                },
+
                 size: {
                     width: 128,
                     height: 72
@@ -51,7 +52,7 @@ function testOne_obj_config() as object
             },
             col: {
                 name: "obj_col",
-                pos: {
+                offset: {
                     x: 310,
                     y: 132,
                 },
@@ -69,11 +70,12 @@ function testOne_obj_config() as object
                 anim: {
                     alpha: 255
                     reg: ["obj_0"]
+                    offset: {
+                        x: 500,
+                        y: 100,
+                    },
                 },
-                pos: {
-                    x: 500,
-                    y: 100,
-                },
+
                 size: {
                     width: 128,
                     height: 72
@@ -81,7 +83,7 @@ function testOne_obj_config() as object
             },
             col: {
                 name: "obj_col",
-                pos: {
+                offset: {
                     x: 510,
                     y: 132,
                 }
