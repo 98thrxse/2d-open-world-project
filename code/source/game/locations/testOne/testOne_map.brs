@@ -55,8 +55,8 @@ function testOne_map(object)
 
                 ' entity
                 if m.map_terrain_config[i][j].entity.name <> invalid then m.game.terrain.setEntityName(i, j, m.map_terrain_config[i][j].entity.name)
-                if m.map_terrain_config[i][j].entity.pos.x <> invalid then m.game.terrain.setEntityPosX(i, j, m.map_terrain_config[i][j].entity.pos.x)
-                if m.map_terrain_config[i][j].entity.pos.y <> invalid then m.game.terrain.setEntityPosY(i, j, m.map_terrain_config[i][j].entity.pos.y)
+                if m.map_terrain_config[i][j].entity.anim.offset.x <> invalid then m.game.terrain.setEntityOffsetX(i, j, m.map_terrain_config[i][j].entity.anim.offset.x)
+                if m.map_terrain_config[i][j].entity.anim.offset.y <> invalid then m.game.terrain.setEntityOffsetY(i, j, m.map_terrain_config[i][j].entity.anim.offset.y)
                 if m.map_terrain_config[i][j].entity.anim.reg <> invalid
 
                     if m.game.terrain.config[i][j].entity.anim.reg.Count() < m.map_terrain_config[i][j].entity.anim.reg.Count()

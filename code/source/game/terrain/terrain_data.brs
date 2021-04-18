@@ -6,11 +6,11 @@ function terrain_data() as object
         getEntityName: terrain_getEntityName
         setEntityName: terrain_setEntityName
 
-        getEntityPosX: terrain_getEntityPosX
-        setEntityPosX: terrain_setEntityPosX
+        getEntityOffsetX: terrain_getEntityOffsetX
+        setEntityOffsetX: terrain_setEntityOffsetX
         
-        getEntityPosY: terrain_getEntityPosY
-        setEntityPosY: terrain_setEntityPosY
+        getEntityOffsetY: terrain_getEntityOffsetY
+        setEntityOffsetY: terrain_setEntityOffsetY
 
         getReg: terrain_getReg
         setReg: terrain_setReg
@@ -31,7 +31,7 @@ function terrain_data() as object
 end function
 
 
-function terrain_getEntityName(i as integer, j as integer) as integer
+function terrain_getEntityName(i as integer, j as integer) as object
     return m.config[i][j].entity.name
 end function
 
@@ -40,25 +40,25 @@ sub terrain_setEntityName(i as integer, j as integer, name as string)
 end sub
 
 
-function terrain_getEntityPosX(i as integer, j as integer) as integer
-    return m.config[i][j].entity.pos.x
+function terrain_getEntityOffsetX(i as integer, j as integer) as integer
+    return m.config[i][j].entity.anim.offset.x
 end function
 
-sub terrain_setEntityPosX(i as integer, j as integer, x as integer)
-    m.config[i][j].entity.pos.x = x
+sub terrain_setEntityOffsetX(i as integer, j as integer, x as integer)
+    m.config[i][j].entity.anim.offset.x = x
 end sub
 
 
-function terrain_getEntityPosY(i as integer, j as integer) as integer
-    return m.config[i][j].entity.pos.y
+function terrain_getEntityOffsetY(i as integer, j as integer) as integer
+    return m.config[i][j].entity.anim.offset.y
 end function
 
-sub terrain_setEntityPosY(i as integer, j as integer, y as integer)
-    m.config[i][j].entity.pos.y = y
+sub terrain_setEntityOffsetY(i as integer, j as integer, y as integer)
+    m.config[i][j].entity.anim.offset.y = y
 end sub
 
 
-function terrain_getReg(i as integer, j as integer, k as integer) as integer
+function terrain_getReg(i as integer, j as integer, k as integer) as object
     return m.config[i][j].entity.anim.reg[k]
 end function
 

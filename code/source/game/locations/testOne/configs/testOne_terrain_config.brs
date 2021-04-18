@@ -7,12 +7,13 @@ function testOne_terrain_config() as object
                 entity: {
                     name: "terrain_entity",
                     anim: {
-                        reg: ["grass"]
+                        reg: ["sand"]
+                        offset: {
+                            x: 0,
+                            y: 0
+                        }
                     }
-                    pos: {
-                        x: 0,
-                        y: 0
-                    }
+
                 }
 
             },
@@ -23,11 +24,12 @@ function testOne_terrain_config() as object
                     name: "terrain_entity",
                     anim: {
                         reg: ["grass"]
+                        offset: {
+                            x: 1280,
+                            y: 0
+                        }
                     }
-                    pos: {
-                        x: 1280,
-                        y: 0
-                    }
+
                 }
  
             },
@@ -38,11 +40,12 @@ function testOne_terrain_config() as object
                     name: "terrain_entity",
                     anim: {
                         reg: ["grass"]
+                        offset: {
+                            x: 2560,
+                            y: 0
+                        }
                     }
-                    pos: {
-                        x: 2560,
-                        y: 0
-                    }
+
                 }
             }
         ],
@@ -54,11 +57,12 @@ function testOne_terrain_config() as object
                     name: "terrain_entity",
                     anim: {
                         reg: ["grass"]
+                        offset: {
+                            x: 0,
+                            y: 720
+                        }
                     }
-                    pos: {
-                        x: 0,
-                        y: 720
-                    }
+
                 }
             },
 
@@ -68,11 +72,12 @@ function testOne_terrain_config() as object
                     name: "terrain_entity",
                     anim: {
                         reg: ["grass"]
+                        offset: {
+                            x: 1280,
+                            y: 720
+                        }
                     }
-                    pos: {
-                        x: 1280,
-                        y: 720
-                    }
+
                 }
             },
 
@@ -82,11 +87,12 @@ function testOne_terrain_config() as object
                     name: "terrain_entity",
                     anim: {
                         reg: ["grass"]
+                        offset: {
+                            x: 2560,
+                            y: 720
+                        }
                     }
-                    pos: {
-                        x: 2560,
-                        y: 720
-                    }
+
                 }
             }
         ]
