@@ -69,7 +69,7 @@ sub npc_setColName(i as integer, name as string)
 end sub
 
 
-function npc_getEntityName(i as integer) as integer
+function npc_getEntityName(i as integer) as object
     return m.config[i].entity.name
 end function
 
