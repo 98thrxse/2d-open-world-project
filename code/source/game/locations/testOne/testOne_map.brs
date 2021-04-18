@@ -27,7 +27,7 @@ function testOne_map(object)
                             entity: {
                                 name: invalid,
                                 anim: {
-                                    reg: invalid
+                                    reg: []
                                 }
                                 pos: {
                                     x: invalid,
