@@ -218,8 +218,20 @@ function testOne_map(object)
         if m.map_char_config.entity.anim.scale.y <> invalid then m.game.char.setScaleY(m.map_char_config.entity.anim.scale.y)
         if m.map_char_config.entity.anim.offset.x <> invalid then m.game.char.setEntityOffsetX(m.map_char_config.entity.anim.offset.x)
         if m.map_char_config.entity.anim.offset.y <> invalid then m.game.char.setEntityOffsetY(m.map_char_config.entity.anim.offset.y)
-        if m.map_char_config.entity.anim.reg <> invalid then m.game.char.setReg(m.map_char_config.entity.anim.reg)
+        if m.map_char_config.entity.anim.reg <> invalid
 
+            if m.game.char.config.entity.anim.reg.Count() < m.map_char_config.entity.anim.reg.Count()
+                for i = m.game.char.config.entity.anim.reg.Count() to m.map_char_config.entity.anim.reg.Count() - 1
+                    m.game.char.config.entity.anim.reg.push("")
+                end for
+
+            end if
+
+            for i = 0 to m.map_char_config.entity.anim.reg.Count() - 1
+                m.game.char.setReg(i, m.map_char_config.entity.anim.reg[i])
+            end for
+
+        end if
 
         ' attrs
         if m.map_char_config.attrs.hp <> invalid then m.game.char.setHP(m.map_char_config.attrs.hp)

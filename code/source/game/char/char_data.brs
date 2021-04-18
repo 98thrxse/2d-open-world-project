@@ -140,7 +140,7 @@ function char_data() as object
     }
 
     m.char.config = LoadSavedGame()
-    m.char.build = "1.0.0"
+    m.char.build = "1.0.3"
 
     if m.char.config = invalid OR m.char.config.version <> m.char.build
         SaveGame(invalid)
@@ -645,12 +645,12 @@ sub char_setRightSpeed(speed as integer)
     SaveGame(m.config)
 end sub
 
-function char_getReg() as object
-    return m.config.entity.anim.reg
+function char_getReg(i as integer) as object
+    return m.config.entity.anim.reg[i]
 end function
 
-sub char_setReg(reg as object)
-    m.config.entity.anim.reg = reg
+sub char_setReg(i as integer, reg as object)
+    m.config.entity.anim.reg[i] = reg
 end sub
 
 

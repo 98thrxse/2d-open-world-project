@@ -21,13 +21,13 @@ function char_col(object)
   end function
 
 
-  object.onDrawEnd = function(canvas)
+  ' object.onDrawEnd = function(canvas)
 
-    canvas.DrawRect(m.game.char.getColOffsetX() + 3, m.game.char.getColOffsetY(), m.game.char.getEntityW() - 6, 1, &hFFFFFFFF)
-    canvas.DrawRect(m.game.char.getColOffsetX() + 3, m.game.char.getColOffsetY() + m.game.char.getEntityH(), m.game.char.getEntityW() - 6, 1, &hFFFFFFFF)
-    canvas.DrawRect(m.game.char.getColOffsetX(), m.game.char.getColOffsetY() + 3, 1, m.game.char.getEntityH() - 6, &hFFFFFFFF)
-    canvas.DrawRect(m.game.char.getColOffsetX() + m.game.char.getEntityW() - 1, m.game.char.getColOffsetY() + 3, 1, m.game.char.getEntityH() - 6, &hFFFFFFFF)
+  '   canvas.DrawRect(m.game.char.getColOffsetX() + 3, m.game.char.getColOffsetY(), m.game.char.getEntityW() - 6, 1, &hFFFFFFFF)
+  '   canvas.DrawRect(m.game.char.getColOffsetX() + 3, m.game.char.getColOffsetY() + m.game.char.getEntityH(), m.game.char.getEntityW() - 6, 1, &hFFFFFFFF)
+  '   canvas.DrawRect(m.game.char.getColOffsetX(), m.game.char.getColOffsetY() + 3, 1, m.game.char.getEntityH() - 6, &hFFFFFFFF)
+  '   canvas.DrawRect(m.game.char.getColOffsetX() + m.game.char.getEntityW() - 1, m.game.char.getColOffsetY() + 3, 1, m.game.char.getEntityH() - 6, &hFFFFFFFF)
 
-  end function
+  ' end function
     
 end function

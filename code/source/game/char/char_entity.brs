@@ -20,12 +20,12 @@ function char_entity(object)
 
     char_regions = []
 
-    for j = 0 to m.game.char.config.entity.anim.reg.Count() - 1
+    for i = 0 to m.game.char.config.entity.anim.reg.Count() - 1
       ' loadBitmap
-      m.game.loadBitmap(m.game.char.config.entity.anim.reg[j].toStr(), "pkg:/media/char/sprites/" + m.game.char.config.entity.anim.reg[j].toStr() + ".png")
+      m.game.loadBitmap(m.game.char.getReg(i).toStr(), "pkg:/media/char/sprites/" + m.game.char.getReg(i).toStr() + ".png")
 
       ' getBitmap
-      char_bitmap = m.game.getBitmap(m.game.char.config.entity.anim.reg[j].toStr())
+      char_bitmap = m.game.getBitmap(m.game.char.getReg(i).toStr())
   
       ' roRegion
       char_region = CreateObject("roRegion", char_bitmap, 0, 0, char_bitmap.GetWidth(), char_bitmap.GetHeight())
