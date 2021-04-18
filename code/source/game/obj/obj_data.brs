@@ -66,12 +66,12 @@ sub obj_setAlpha(i as integer, alpha as integer)
 end sub
 
 
-function obj_getReg(i as integer) as object
-    return m.config[i].entity.anim.reg
+function obj_getReg(i as integer, j as integer) as object
+    return m.config[i].entity.anim.reg[j]
 end function
 
-sub obj_setReg(i as integer, reg as object)
-    m.config[i].entity.anim.reg = reg
+sub obj_setReg(i as integer, j as integer, reg as object)
+    m.config[i].entity.anim.reg[j] = reg
 end sub
 
 

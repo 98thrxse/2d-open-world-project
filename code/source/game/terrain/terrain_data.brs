@@ -58,10 +58,10 @@ sub terrain_setEntityPosY(i as integer, j as integer, y as integer)
 end sub
 
 
-function terrain_getReg(i as integer, j as integer) as integer
-    return m.config[i][j].entity.anim.reg
+function terrain_getReg(i as integer, j as integer, k as integer) as integer
+    return m.config[i][j].entity.anim.reg[k]
 end function
 
-sub terrain_setReg(i as integer, j as integer, reg as object)
-    m.config[i][j].entity.anim.reg = reg
+sub terrain_setReg(i as integer, j as integer, k as integer, reg as object)
+    m.config[i][j].entity.anim.reg[k] = reg
 end sub

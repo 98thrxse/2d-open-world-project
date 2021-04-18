@@ -174,10 +174,10 @@ sub npc_setIndex(i as integer, index as integer)
 end sub
 
 
-function npc_getReg(i as integer) as object
-    return m.config[i].entity.anim.reg
+function npc_getReg(i as integer, j as integer) as object
+    return m.config[i].entity.anim.reg[j]
 end function
 
-sub npc_setReg(i as integer, reg as object)
-    m.config[i].entity.anim.reg = reg
+sub npc_setReg(i as integer, j as integer, reg as object)
+    m.config[i].entity.anim.reg[j] = reg
 end sub

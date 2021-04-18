@@ -57,8 +57,21 @@ function testOne_map(object)
                 if m.map_terrain_config[i][j].entity.name <> invalid then m.game.terrain.setEntityName(i, j, m.map_terrain_config[i][j].entity.name)
                 if m.map_terrain_config[i][j].entity.pos.x <> invalid then m.game.terrain.setEntityPosX(i, j, m.map_terrain_config[i][j].entity.pos.x)
                 if m.map_terrain_config[i][j].entity.pos.y <> invalid then m.game.terrain.setEntityPosY(i, j, m.map_terrain_config[i][j].entity.pos.y)
-                if m.map_terrain_config[i][j].entity.anim.reg <> invalid then m.game.terrain.setReg(i, j, m.map_terrain_config[i][j].entity.anim.reg)
-            
+                if m.map_terrain_config[i][j].entity.anim.reg <> invalid
+
+                    if m.game.terrain.config[i][j].entity.anim.reg.Count() < m.map_terrain_config[i][j].entity.anim.reg.Count()
+                        for k = m.game.terrain.config[i][j].entity.anim.reg.Count() to m.map_terrain_config[i][j].entity.anim.reg.Count() - 1
+                            m.game.terrain.config[i][j].entity.anim.reg.push("")
+                        end for
+        
+                    end if
+        
+                    for k = 0 to m.map_terrain_config[i][j].entity.anim.reg.Count() - 1
+                        m.game.terrain.setReg(i, j, k, m.map_terrain_config[i][j].entity.anim.reg[k])
+                    end for
+        
+                end if
+
             end for
         end for
     end function
@@ -74,7 +87,7 @@ function testOne_map(object)
                         name: invalid,
                         anim: {
                             alpha: invalid,
-                            reg: invalid
+                            reg: []
                         },
                         pos: {
                             x: invalid,
@@ -114,7 +127,21 @@ function testOne_map(object)
             if m.map_obj_config[i].entity.size.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.size.width)
             if m.map_obj_config[i].entity.size.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.size.height)
             if m.map_obj_config[i].entity.anim.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].entity.anim.alpha)
-            if m.map_obj_config[i].entity.anim.reg <> invalid then m.game.obj.setReg(i, m.map_obj_config[i].entity.anim.reg)
+            if m.map_obj_config[i].entity.anim.reg <> invalid
+
+                if m.game.obj.config[i].entity.anim.reg.Count() < m.map_obj_config[i].entity.anim.reg.Count()
+                    for j = m.game.obj.config[i].entity.anim.reg.Count() to m.map_obj_config[i].entity.anim.reg.Count() - 1
+                        m.game.obj.config[i].entity.anim.reg.push("")
+                    end for
+    
+                end if
+    
+                for j = 0 to m.map_obj_config[i].entity.anim.reg.Count() - 1
+                    m.game.obj.setReg(i, j, m.map_obj_config[i].entity.anim.reg[j])
+                end for
+    
+            end if
+
 
             ' col
             if m.map_obj_config[i].col.name <> invalid then m.game.obj.setColName(i, m.map_obj_config[i].col.name)
@@ -136,7 +163,7 @@ function testOne_map(object)
                         name: invalid,
                         anim: {
                             index: invalid,
-                            reg: invalid
+                            reg: []
                         },
                         pos: {
                             x: invalid,
@@ -183,7 +210,20 @@ function testOne_map(object)
             if m.map_npc_config[i].entity.size.width <> invalid then m.game.npc.setEntityW(i, m.map_npc_config[i].entity.size.width)
             if m.map_npc_config[i].entity.size.height <> invalid then m.game.npc.setEntityH(i, m.map_npc_config[i].entity.size.height)
             if m.map_npc_config[i].entity.anim.index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].entity.anim.index)
-            if m.map_npc_config[i].entity.anim.reg <> invalid then m.game.npc.setReg(i, m.map_npc_config[i].entity.anim.reg)
+            if m.map_npc_config[i].entity.anim.reg <> invalid
+
+                if m.game.npc.config[i].entity.anim.reg.Count() < m.map_npc_config[i].entity.anim.reg.Count()
+                    for j = m.game.npc.config[i].entity.anim.reg.Count() to m.map_npc_config[i].entity.anim.reg.Count() - 1
+                        m.game.npc.config[i].entity.anim.reg.push("")
+                    end for
+    
+                end if
+    
+                for j = 0 to m.map_npc_config[i].entity.anim.reg.Count() - 1
+                    m.game.npc.setReg(i, j, m.map_npc_config[i].entity.anim.reg[j])
+                end for
+    
+            end if
 
             ' col
             if m.map_npc_config[i].col.name <> invalid then m.game.npc.setColName(i, m.map_npc_config[i].col.name)

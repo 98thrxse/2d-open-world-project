@@ -7,7 +7,7 @@ function testOne_terrain_config() as object
                 entity: {
                     name: "terrain_entity",
                     anim: {
-                        reg: ["sand"]
+                        reg: ["grass"]
                     }
                     pos: {
                         x: 0,
