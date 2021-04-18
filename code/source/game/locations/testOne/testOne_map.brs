@@ -4,6 +4,7 @@ function testOne_map(object)
     object.map_obj_config = testOne_obj_config()
     object.map_npc_config = testOne_npc_config()
     object.map_terrain_config = testOne_terrain_config()
+    object.map_interface_config = testOne_interface_config()
     
 
     object.onCreate = function(args)
@@ -11,6 +12,7 @@ function testOne_map(object)
         m.loadNPC()
         m.loadObj()
         m.loadTerrain()
+        m.loadInterface()
     end function
     
 
@@ -309,6 +311,27 @@ function testOne_map(object)
         if m.map_char_config.col.size.width <> invalid then m.game.char.setColW(m.map_char_config.col.size.width)
         if m.map_char_config.col.size.height <> invalid then m.game.char.setColH(m.map_char_config.col.size.height)
 
+
+    end function
+
+    object.loadInterface = function()
+
+        if m.map_interface_config.focus.menu <> invalid
+            if m.game.interface.config.focus.menu.Count() < m.map_interface_config.focus.menu.Count()
+                for i = m.game.interface.config.focus.menu.Count() to m.map_interface_config.focus.menu.Count() - 1
+                    m.game.interface.config.focus.menu.push("")
+                end for
+
+            else if m.game.interface.config.focus.menu.Count() > m.map_interface_config.focus.menu.Count()
+                for i = m.map_interface_config.focus.menu.Count() to m.game.interface.config.focus.menu.Count() - 1
+                    m.game.interface.config.focus.menu.pop()
+                end for
+            end if
+
+            for i = 0 to m.map_interface_config.focus.menu.Count() - 1
+                m.game.interface.setMenuItemName(i, m.map_interface_config.focus.menu[i].name)
+            end for
+        end if
 
     end function
 
