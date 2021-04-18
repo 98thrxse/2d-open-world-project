@@ -135,6 +135,12 @@ function char_data() as object
         getRightCol: char_getRightCol
         setRightCol: char_setRightCol
 
+        getColH: char_getColH
+        setColH: char_setColH
+        
+        getColW: char_getColW
+        setColW: char_setColW
+
 
         config: invalid
     }
@@ -195,7 +201,11 @@ function char_data() as object
                 offset: {
                     x: 616,
                     y: 332
-                }
+                },
+                size: {
+                    width: 48,
+                    height: 56,
+                },
 
                 up: false,
                 down: false
@@ -411,6 +421,26 @@ end function
 
 sub char_setEntityW(width as integer)
     m.config.entity.size.width = width
+    SaveGame(m.config)
+end sub
+
+
+function char_getColH() as integer
+    return m.config.col.size.height
+end function
+
+sub char_setColH(height as integer)
+    m.config.col.size.height = height
+    SaveGame(m.config)
+end sub
+
+
+function char_getColW() as integer
+    return m.config.col.size.width
+end function
+
+sub char_setColW(width as integer)
+    m.config.col.size.width = width
     SaveGame(m.config)
 end sub
 

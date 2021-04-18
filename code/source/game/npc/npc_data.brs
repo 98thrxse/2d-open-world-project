@@ -10,11 +10,11 @@ function npc_data() as object
         getEntityName: npc_getEntityName
         setEntityName: npc_setEntityName
 
-        getEntityPosX: npc_getEntityPosX
-        setEntityPosX: npc_setEntityPosX
+        getEntityOffsetX: npc_getEntityOffsetX
+        setEntityOffsetX: npc_setEntityOffsetX
         
-        getEntityPosY: npc_getEntityPosY
-        setEntityPosY: npc_setEntityPosY
+        getEntityOffsetY: npc_getEntityOffsetY
+        setEntityOffsetY: npc_setEntityOffsetY
 
         getEntityW: npc_getEntityW
         setEntityW: npc_setEntityW
@@ -32,11 +32,11 @@ function npc_data() as object
         getColName: npc_getColName
         setColName: npc_setColName
 
-        getColPosX: npc_getColPosX
-        setColPosX: npc_setColPosX
+        getColOffsetX: npc_getColOffsetX
+        setColOffsetX: npc_setColOffsetX
         
-        getColPosY: npc_getColPosY
-        setColPosY: npc_setColPosY
+        getColOffsetY: npc_getColOffsetY
+        setColOffsetY: npc_setColOffsetY
 
         getColW: npc_getColW
         setColW: npc_setColW
@@ -78,40 +78,40 @@ sub npc_setEntityName(i as integer, name as string)
 end sub
 
 
-function npc_getEntityPosX(i as integer) as integer
-    return m.config[i].entity.pos.x
+function npc_getEntityOffsetX(i as integer) as integer
+    return m.config[i].entity.anim.offset.x
 end function
 
-sub npc_setEntityPosX(i as integer, x as integer)
-    m.config[i].entity.pos.x = x
+sub npc_setEntityOffsetX(i as integer, x as integer)
+    m.config[i].entity.anim.offset.x = x
 end sub
 
 
-function npc_getEntityPosY(i as integer) as integer
-    return m.config[i].entity.pos.y
+function npc_getEntityOffsetY(i as integer) as integer
+    return m.config[i].entity.anim.offset.y
 end function
 
-sub npc_setEntityPosY(i as integer, y as integer)
-    m.config[i].entity.pos.y = y
+sub npc_setEntityOffsetY(i as integer, y as integer)
+    m.config[i].entity.anim.offset.y = y
 end sub
 
 
 
-function npc_getColPosX(i as integer) as integer
-    return m.config[i].col.pos.x
+function npc_getColOffsetX(i as integer) as integer
+    return m.config[i].col.offset.x
 end function
 
-sub npc_setColPosX(i as integer, x as integer)
-    m.config[i].col.pos.x = x
+sub npc_setColOffsetX(i as integer, x as integer)
+    m.config[i].col.offset.x = x
 end sub
 
 
-function npc_getColPosY(i as integer) as integer
-    return m.config[i].col.pos.y
+function npc_getColOffsetY(i as integer) as integer
+    return m.config[i].col.offset.y
 end function
 
-sub npc_setColPosY(i as integer, y as integer)
-    m.config[i].col.pos.y = y
+sub npc_setColOffsetY(i as integer, y as integer)
+    m.config[i].col.offset.y = y
 end sub
 
 

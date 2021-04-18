@@ -48,7 +48,11 @@ function testOne_char_config() as object
             offset: {
                 x: 616,
                 y: 332
-            }
+            },
+            size: {
+                width: 48,
+                height: 56,
+            },
             
             up: false,
             down: false,

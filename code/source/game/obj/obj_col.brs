@@ -1,15 +1,13 @@
 function obj_col(object)
 
     object.onCreate = function(args)
-
-        m.colXY()
         
     end function
 
     object.colXY = function()
         ' position
-        m.x = m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX()
-        m.y = m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY()
+        m.x = m.game.char.getZeroOffsetX()
+        m.y = m.game.char.getZeroOffsetY()
 
     end function
 
@@ -31,6 +29,7 @@ function obj_col(object)
 
     object.onUpdate = function(dt as float)
 
+        m.colXY()
         m.colGen()
 
     end function

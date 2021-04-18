@@ -2,19 +2,14 @@ function terrain_entity(object)
 
     object.onCreate = function(args)
 
-        ' getInstanceByName
-        ' m.media_wnd = m.game.getInstanceByName("terrain_media")
-
-        m.entityXY()
-
     end function
 
 
     object.entityXY = function()
 
         ' position
-        m.x = m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX()
-        m.y = m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY()
+        m.x = m.game.char.getZeroOffsetX()
+        m.y = m.game.char.getZeroOffsetY()
 
     end function
 
@@ -101,6 +96,7 @@ function terrain_entity(object)
 
     object.onUpdate = function(dt as float)
 
+        m.entityXY()
         m.entityGen()
 
     end function

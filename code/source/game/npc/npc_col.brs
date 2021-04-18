@@ -2,7 +2,6 @@ function npc_col(object)
 
   object.onCreate = function(args)
 
-    m.colXY()
 
   end function
 
@@ -10,8 +9,8 @@ function npc_col(object)
   object.colXY = function()
 
     ' position
-    m.x = m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX()
-    m.y = m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY()
+    m.x = m.game.char.getZeroOffsetX()
+    m.y = m.game.char.getZeroOffsetY()
 
   end function
 
@@ -21,9 +20,9 @@ function npc_col(object)
     ' loading map config to create npc
     for i = 0 to m.game.npc.config.Count() - 1
 
-      if m.colliders[m.game.npc.getEntityName(i).toStr() + "_" + m.game.npc.config[i].id.toStr()] = invalid
+      if m.colliders[m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()] = invalid
         ' addColliderRectangle
-        m.addColliderRectangle(m.game.npc.getEntityName(i).toStr() + "_" + m.game.npc.config[i].id.toStr(), m.game.npc.getColPosX(i), m.game.npc.getColPosY(i), m.game.npc.getColW(i), m.game.npc.getColH(i))
+        m.addColliderRectangle(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr(), m.game.npc.getColOffsetX(i), m.game.npc.getColOffsetY(i), m.game.npc.getColW(i), m.game.npc.getColH(i))
       end if
 
     end for
@@ -33,6 +32,7 @@ function npc_col(object)
 
   object.onUpdate = function(dt as float)
 
+    m.colXY()
     m.colGen()
 
   end function

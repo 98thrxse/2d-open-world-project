@@ -2,15 +2,14 @@ function npc_entity(object)
 
   object.onCreate = function(args)
 
-    m.entityXY()
 
   end function
 
 
   object.entityXY = function()
     ' position
-    m.x = m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX()
-    m.y = m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY()
+    m.x = m.game.char.getZeroOffsetX()
+    m.y = m.game.char.getZeroOffsetY()
   end function
 
 
@@ -21,7 +20,7 @@ function npc_entity(object)
 
       npc_regions = []
 
-      if m.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr()) = invalid
+      if m.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr()) = invalid
         for j = 0 to m.game.npc.config[i].entity.anim.reg.Count() - 1
           ' loadBitmap
           m.game.loadBitmap(m.game.npc.config[i].entity.anim.reg[j].toStr(), "pkg:/media/npc/sprites/" + m.game.npc.config[i].entity.anim.reg[j].toStr() + ".png")
@@ -37,9 +36,9 @@ function npc_entity(object)
         end for
 
         ' addAnimatedImage
-        m.addAnimatedImage(m.game.npc.config[i].entity.name.toStr() + "_" + m.game.npc.config[i].id.toStr(), npc_regions, { index: m.game.npc.getIndex(i)
-          offset_x: m.game.npc.getEntityPosX(i),
-          offset_y: m.game.npc.getEntityPosY(i)
+        m.addAnimatedImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr(), npc_regions, { index: m.game.npc.getIndex(i)
+          offset_x: m.game.npc.getEntityOffsetX(i),
+          offset_y: m.game.npc.getEntityOffsetY(i)
         })
 
       end if
@@ -51,6 +50,7 @@ function npc_entity(object)
 
   object.onUpdate = function(dt as float)
 
+    m.entityXY()
     m.entityGen()
 
   end function

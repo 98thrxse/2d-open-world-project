@@ -164,10 +164,10 @@ function testOne_map(object)
                         anim: {
                             index: invalid,
                             reg: []
-                        },
-                        pos: {
-                            x: invalid,
-                            y: invalid
+                            offset: {
+                                x: invalid,
+                                y: invalid
+                            },
                         },
                         size: {
                             width: invalid,
@@ -177,7 +177,7 @@ function testOne_map(object)
         
                     col: {
                         name: invalid,
-                        pos: {
+                        offset: {
                             x: invalid,
                             y: invalid
                         },
@@ -205,8 +205,8 @@ function testOne_map(object)
 
             ' entity
             if m.map_npc_config[i].entity.name <> invalid then m.game.npc.setEntityName(i, m.map_npc_config[i].entity.name)
-            if m.map_npc_config[i].entity.pos.x <> invalid then m.game.npc.setEntityPosX(i, m.map_npc_config[i].entity.pos.x)
-            if m.map_npc_config[i].entity.pos.y <> invalid then m.game.npc.setEntityPosY(i, m.map_npc_config[i].entity.pos.y)
+            if m.map_npc_config[i].entity.anim.offset.x <> invalid then m.game.npc.setEntityOffsetX(i, m.map_npc_config[i].entity.anim.offset.x)
+            if m.map_npc_config[i].entity.anim.offset.y <> invalid then m.game.npc.setEntityOffsetY(i, m.map_npc_config[i].entity.anim.offset.y)
             if m.map_npc_config[i].entity.size.width <> invalid then m.game.npc.setEntityW(i, m.map_npc_config[i].entity.size.width)
             if m.map_npc_config[i].entity.size.height <> invalid then m.game.npc.setEntityH(i, m.map_npc_config[i].entity.size.height)
             if m.map_npc_config[i].entity.anim.index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].entity.anim.index)
@@ -227,8 +227,8 @@ function testOne_map(object)
 
             ' col
             if m.map_npc_config[i].col.name <> invalid then m.game.npc.setColName(i, m.map_npc_config[i].col.name)
-            if m.map_npc_config[i].col.pos.x <> invalid then m.game.npc.setColPosX(i, m.map_npc_config[i].col.pos.x)
-            if m.map_npc_config[i].col.pos.y <> invalid then m.game.npc.setColPosY(i, m.map_npc_config[i].col.pos.y)
+            if m.map_npc_config[i].col.offset.x <> invalid then m.game.npc.setColOffsetX(i, m.map_npc_config[i].col.offset.x)
+            if m.map_npc_config[i].col.offset.y <> invalid then m.game.npc.setColOffsetY(i, m.map_npc_config[i].col.offset.y)
             if m.map_npc_config[i].col.size.width <> invalid then m.game.npc.setColW(i, m.map_npc_config[i].col.size.width)
             if m.map_npc_config[i].col.size.height <> invalid then m.game.npc.setColH(i, m.map_npc_config[i].col.size.height)
 
@@ -305,6 +305,8 @@ function testOne_map(object)
         if m.map_char_config.col.npc <> invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
         if m.map_char_config.col.offset.x <> invalid then m.game.char.setColOffsetX(m.map_char_config.col.offset.x)
         if m.map_char_config.col.offset.y <> invalid then m.game.char.setColOffsetY(m.map_char_config.col.offset.y)
+        if m.map_char_config.col.size.width <> invalid then m.game.char.setColW(m.map_char_config.col.size.width)
+        if m.map_char_config.col.size.height <> invalid then m.game.char.setColH(m.map_char_config.col.size.height)
 
 
     end function
