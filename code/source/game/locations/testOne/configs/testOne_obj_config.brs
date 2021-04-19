@@ -38,7 +38,7 @@ function testOne_obj_config() as object
                 name: "obj_entity",
                 anim: {
                     alpha: 255
-                    reg: ["obj_1"]
+                    reg: ["obj_0"]
                     offset: {
                         x: 300,
                         y: 100,
@@ -69,7 +69,7 @@ function testOne_obj_config() as object
                 name: "obj_entity",
                 anim: {
                     alpha: 255
-                    reg: ["obj_0"]
+                    reg: ["obj_1"]
                     offset: {
                         x: 500,
                         y: 100,

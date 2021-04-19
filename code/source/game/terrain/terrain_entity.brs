@@ -13,6 +13,33 @@ function terrain_entity(object)
 
     end function
 
+    object.entityLoad = function(id_y, id_x, i, j)
+
+        m.terrain_regions = []
+
+        for k = 0 to m.game.terrain.config[id_y[i]][id_x[j]].entity.anim.reg.Count() - 1
+
+            dupBitmap = false
+
+            for each bitmap in m.game.Bitmaps
+                if bitmap = m.game.terrain.getReg(id_y[i], id_x[j], k).toStr() then dupBitmap = true
+            end for
+
+            if not dupBitmap
+                ' loadBitmap
+                m.game.loadBitmap(m.game.terrain.getReg(id_y[i], id_x[j], k).toStr(), "pkg:/media/terrain/sprites/" + m.game.terrain.getReg(id_y[i], id_x[j], k).toStr() + ".png")
+            end if
+
+            ' getBitmap
+            terrain_bitmap = m.game.getBitmap(m.game.terrain.getReg(id_y[i], id_x[j], k).toStr())
+
+            ' roRegion
+            terrain_region = CreateObject("roRegion", terrain_bitmap, 0, 0, terrain_bitmap.GetWidth(), terrain_bitmap.GetHeight())
+
+            m.terrain_regions.push(terrain_region)
+        end for
+
+    end function
 
     object.entityGen = function()
 
@@ -60,25 +87,11 @@ function terrain_entity(object)
         for i = 0 to id_y.Count() - 1
             for j = 0 to id_x.Count() - 1
 
-                terrain_regions = []
-
                 if m.getImage(m.game.terrain.getEntityName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr()) = invalid
-                    for k = 0 to m.game.terrain.config[id_y[i]][id_x[j]].entity.anim.reg.Count() - 1
-
-                        ' loadBitmap
-                        m.game.loadBitmap(m.game.terrain.getReg(i, j, k).toStr(), "pkg:/media/terrain/sprites/" + m.game.terrain.getReg(i, j, k).toStr() + ".png")
-
-                        ' getBitmap
-                        terrain_bitmap = m.game.getBitmap(m.game.terrain.getReg(i, j, k).toStr())
-
-                        ' roRegion
-                        terrain_region = CreateObject("roRegion", terrain_bitmap, 0, 0, terrain_bitmap.GetWidth(), terrain_bitmap.GetHeight())
-
-                        terrain_regions.push(terrain_region)
-
-                    end for
                     
-                    m.addAnimatedImage(m.game.terrain.getEntityName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), terrain_regions, { index: 0
+                    m.entityLoad(id_y, id_x, i, j)
+
+                    m.addAnimatedImage(m.game.terrain.getEntityName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.terrain_regions, { index: 0
                         offset_x: m.game.terrain.getEntityOffsetX(id_y[i], id_x[j]) 
                         offset_y: m.game.terrain.getEntityOffsetY(id_y[i], id_x[j])
                     })
