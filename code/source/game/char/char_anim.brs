@@ -13,39 +13,39 @@ function char_anim(object)
         if code = 1006 ' select
 			if m.game.getFocusGroup() = "char"
 				if m.game.char.getSP() >= m.game.char.getSPDamage()
-					m.playAnim([11,12,13,14,13,12,11,15,16,17,16,15,11,18,19,20,19,18,11])
+					m.playAnim(["stand_side2", "attack_fist1", "attack_fist2", "attack_fist3", "attack_fist2", "attack_fist1", "stand_side2", "attack_fist4", "attack_fist5", "attack_fist6", "attack_fist5", "attack_fist4", "stand_side2", "attack_leg1", "attack_leg2", "attack_leg3", "attack_leg2", "attack_leg1", "stand_side2"])
 				else
-					m.playAnim([10])
+					m.playAnim(["sp_zero"])
 				end if
 			end if
 
 		else if code = 1002 ' up
 			if m.game.getFocusGroup() = "char"
-				m.playAnim([3,0,4])
+				m.playAnim(["walk_back1", "stand_back1", "walk_back2"])
 			end if
 
 		else if code = 1003 ' down
 			if m.game.getFocusGroup() = "char"
-				m.playAnim([5,1,6])
+				m.playAnim(["walk_front1", "stand_front1", "walk_front2"])
 			end if
 
 		else if code = 1004 ' left
 			if m.game.getFocusGroup() = "char"
-				m.playAnim([7,2,8])
+				m.playAnim(["walk_side1", "stand_side1", "walk_side2"])
 			end if
 
 		else if code = 1005 ' right
 			if m.game.getFocusGroup() = "char"
-				m.playAnim([7,2,8])
+				m.playAnim(["walk_side1", "stand_side1", "walk_side2"])
 			end if
 
 		' released
 		else if code = 106 ' select
 			if m.game.getFocusGroup() = "char"
 				if m.game.char.getSP() >= m.game.char.getSPDamage()
-					m.playAnim([11])
+					m.playAnim(["stand_side2"])
 				else
-					m.playAnim([10])
+					m.playAnim(["sp_zero"])
 
 				end if
 
@@ -54,28 +54,28 @@ function char_anim(object)
 		else if code = 102 ' up
 			if m.game.getFocusGroup() = "char"
 				m.timer = invalid
-				m.playAnim([0])
+				m.playAnim(["stand_back1"])
 
 			end if
 			
 		else if code = 103 ' down
 			if m.game.getFocusGroup() = "char"
 				m.timer = invalid
-				m.playAnim([1])
+				m.playAnim(["stand_front1"])
 			
 			end if
 
 		else if code = 104 ' left
 			if m.game.getFocusGroup() = "char"
 				m.timer = invalid
-				m.playAnim([2])
+				m.playAnim(["stand_side1"])
 			
 			end if
 
 		else if code = 105 ' right
 			if m.game.getFocusGroup() = "char"
 				m.timer = invalid
-				m.playAnim([2])
+				m.playAnim(["stand_side1"])
 
 			end if
 
@@ -90,8 +90,16 @@ function char_anim(object)
 			m.timer.Mark()
 		end if
 
-		if m.timer.TotalMilliseconds() + 1 >= arr.Count() * m.game.char.getAnimTime() then m.timer.Mark()
-		m.game.char.setIndex(arr[int(m.timer.TotalMilliseconds() / m.game.char.getAnimTime())])
+		arrAnim = []
+
+		for each element in arr
+			for i = 0 to m.game.char.config.entity.anim.reg.Count() - 1
+				if m.game.char.getReg(i) = element then arrAnim.push(i)
+			end for
+		end for
+		
+		if m.timer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.char.getAnimTime() then m.timer.Mark()
+		m.game.char.setIndex(arrAnim[int(m.timer.TotalMilliseconds() / m.game.char.getAnimTime())])
 
 
 	end function

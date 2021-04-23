@@ -78,10 +78,10 @@ function testOne_char_config() as object
                 sp_time: 1000
             },
             speed: {
-                up: 10,
-                down: 10,
-                left: 10,
-                right: 10
+                up: 5,
+                down: 5,
+                left: 5,
+                right: 5
             }
         }
 
