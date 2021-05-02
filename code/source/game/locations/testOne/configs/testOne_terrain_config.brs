@@ -86,7 +86,7 @@ function testOne_terrain_config() as object
                 entity: {
                     name: "terrain_entity",
                     anim: {
-                        reg: ["grass"]
+                        reg: ["sand"]
                         offset: {
                             x: 2560,
                             y: 720

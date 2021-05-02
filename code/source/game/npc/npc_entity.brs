@@ -1,5 +1,7 @@
 function npc_entity(object)
 
+  object.funcName = "npc_entity"
+
   object.onCreate = function(args)
 
 
@@ -18,19 +20,13 @@ function npc_entity(object)
 
     for j = 0 to m.game.npc.config[i].entity.anim.reg.Count() - 1
 
-      dupBitmap = false
-
-      for each bitmap in m.game.Bitmaps
-          if bitmap = m.game.obj.getReg(i, j).toStr() then dupBitmap = true
-      end for
-
-      if not dupBitmap
+      if m.game.getBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr()) = invalid
         ' loadBitmap
-        m.game.loadBitmap(m.game.npc.getReg(i, j).toStr(), "pkg:/media/npc/sprites/" + m.game.npc.getReg(i, j).toStr() + ".png")
+        m.game.loadBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr(), "pkg:/media/npc/sprites/" + m.game.npc.getReg(i, j).toStr() + ".png")
       end if
       
       ' getBitmap
-      npc_bitmap = m.game.getBitmap(m.game.npc.getReg(i, j).toStr())
+      npc_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr())
   
       ' roRegion
       npc_region = CreateObject("roRegion", npc_bitmap, 0, 0, npc_bitmap.GetWidth(), npc_bitmap.GetHeight())

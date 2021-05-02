@@ -1,5 +1,7 @@
 function obj_entity(object)
 
+    object.funcName = "obj_entity"
+
     object.onCreate = function(args)
 
 
@@ -19,19 +21,13 @@ function obj_entity(object)
 
         for j = 0 to m.game.obj.config[i].entity.anim.reg.Count() - 1
 
-            dupBitmap = false
-
-            for each bitmap in m.game.Bitmaps
-                if bitmap = m.game.obj.getReg(i, j).toStr() then dupBitmap = true
-            end for
-
-            if not dupBitmap
+             if m.game.getBitmap(m.funcName + "_" + m.game.obj.getReg(i, j).toStr()) = invalid
                 ' loadBitmap
-                m.game.loadBitmap(m.game.obj.getReg(i, j).toStr(), "pkg:/media/obj/sprites/" + m.game.obj.getReg(i, j).toStr() + ".png")
+                m.game.loadBitmap(m.funcName + "_" + m.game.obj.getReg(i, j).toStr(), "pkg:/media/obj/sprites/" + m.game.obj.getReg(i, j).toStr() + ".png")
             end if
 
             ' getBitmap
-            obj_bitmap = m.game.getBitmap(m.game.obj.getReg(i, j).toStr())
+            obj_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.obj.getReg(i, j).toStr())
         
             ' roRegion
             obj_region = CreateObject("roRegion", obj_bitmap, 0, 0, obj_bitmap.GetWidth(), obj_bitmap.GetHeight())
