@@ -2,7 +2,7 @@ sub Main()
 
 	game = new_game(1280, 720, true) ' This initializes the game engine
 	
-	doFocus(game)
+	gameFocus(game)
 
 	' defineRoom
 	game.defineRoom("game_init", game_init)

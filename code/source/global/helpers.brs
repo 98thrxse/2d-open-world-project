@@ -1,4 +1,4 @@
-function doFocus(game)
+function gameFocus(game)
 
     game.getFocusGroup = function()
 		return m.focusGroup
@@ -20,8 +20,8 @@ end function
 
 ' save & load functions - fix stas
 
-function doLoad() as dynamic
-	json = doGetRegistryString("char")
+function gameLoad() as dynamic
+	json = getRegistryString("char")
 	if json <> ""
 		data = parseJSON(json)
 		if data <> invalid and data.char <> invalid
@@ -31,17 +31,19 @@ function doLoad() as dynamic
 	return invalid
 end function
 
-sub doSave(config as object)
-	doSaveRegistryString("char", formatJSON({char: config}, 1))
+sub gameSave(config as object)
+	saveRegistryString("char", formatJSON({char: config}, 1))
 end Sub
 
-sub doSaveRegistryString(key As String, value As String)
+' registry functions
+
+sub saveRegistryString(key As String, value As String)
 	sec = createObject("roRegistrySection", "PoP")
 	sec.write(key, value)
 	sec.flush()
 end sub
 
-function doGetRegistryString(key as String, default = "") as string
+function getRegistryString(key as String, default = "") as string
 	sec = createObject("roRegistrySection", "PoP")
 	if sec.exists(key)
 		return sec.read(key)
