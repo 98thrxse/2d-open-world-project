@@ -145,11 +145,11 @@ function char_data() as object
         config: invalid
     }
 
-    m.char.config = LoadSavedGame()
+    m.char.config = doLoad()
     m.char.build = "1.0.1"
 
     if m.char.config = invalid OR m.char.config.version <> m.char.build
-        SaveGame(invalid)
+        doSave(invalid)
 
         m.char.config = {
 
@@ -245,7 +245,7 @@ function char_data() as object
             version: m.char.build
         }
 
-        SaveGame(m.config)
+        doSave(m.config)
 
     end if
 
@@ -297,7 +297,7 @@ end function
 
 sub char_setScaleX(x as integer)
     m.config.entity.anim.scale.x = x
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 function char_getScaleY() as integer
@@ -306,7 +306,7 @@ end function
 
 sub char_setScaleY(y as integer)
     m.config.entity.anim.scale.y = y
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -316,7 +316,7 @@ end function
 
 sub char_setEntityOffsetX(x as integer)
     m.config.entity.anim.offset.x = x
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 function char_getEntityOffsetY() as integer
@@ -325,7 +325,7 @@ end function
 
 sub char_setEntityOffsetY(y as integer)
     m.config.entity.anim.offset.y = y
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -335,7 +335,7 @@ end function
 
 sub char_setColOffsetX(x as integer)
     m.config.col.offset.x = x
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 function char_getColOffsetY() as integer
@@ -344,7 +344,7 @@ end function
 
 sub char_setColOffsetY(y as integer)
     m.config.col.offset.y = y
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -354,7 +354,7 @@ end function
 
 sub char_setZeroOffsetX(x as integer)
     m.config.xy.offset.x = x
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 function char_getZeroOffsetY() as integer
@@ -363,7 +363,7 @@ end function
 
 sub char_setZeroOffsetY(y as integer)
     m.config.xy.offset.y = y
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -391,7 +391,7 @@ end function
 
 sub char_setEntityPosX(x as integer)
     m.config.entity.pos.x = x
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -401,7 +401,7 @@ end function
 
 sub char_setEntityPosY(y as integer)
     m.config.entity.pos.y = y
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -411,7 +411,7 @@ end function
 
 sub char_setEntityH(height as integer)
     m.config.entity.size.height = height
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -421,7 +421,7 @@ end function
 
 sub char_setEntityW(width as integer)
     m.config.entity.size.width = width
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -431,7 +431,7 @@ end function
 
 sub char_setColH(height as integer)
     m.config.col.size.height = height
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -441,7 +441,7 @@ end function
 
 sub char_setColW(width as integer)
     m.config.col.size.width = width
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -451,7 +451,7 @@ end function
 
 sub char_setHP(hp as integer)
     m.config.attrs.hp = hp
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -461,7 +461,7 @@ end function
 
 sub char_setSP(sp as integer)
     m.config.attrs.sp = sp
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -471,7 +471,7 @@ end function
 
 sub char_setHPDamage(hp as integer)
     m.config.attrs.damage.hp = hp
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -481,7 +481,7 @@ end function
 
 sub char_setSPDamage(sp as integer)
     m.config.attrs.damage.sp = sp
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -491,7 +491,7 @@ end function
 
 sub char_setHPDamageTime(time as integer)
     m.config.attrs.damage.hp_time = time
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 function char_getSPDamageTime() as integer
@@ -500,7 +500,7 @@ end function
 
 sub char_setSPDamageTime(time as integer)
     m.config.attrs.damage.sp_time = time
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -511,7 +511,7 @@ end function
 
 sub char_setHPRegen(hp as integer)
     m.config.attrs.regen.hp = hp
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -521,7 +521,7 @@ end function
 
 sub char_setSPRegen(sp as integer)
     m.config.attrs.regen.sp = sp
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -531,7 +531,7 @@ end function
 
 sub char_setHPRegenTime(time as integer)
     m.config.attrs.regen.hp_time = time
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 function char_getSPRegenTime() as integer
@@ -540,7 +540,7 @@ end function
 
 sub char_setSPRegenTime(time as integer)
     m.config.attrs.regen.sp_time = time
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -551,7 +551,7 @@ end function
 
 sub char_setIndex(index as integer)
     m.config.entity.anim.index = index
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -561,7 +561,7 @@ end function
 
 sub char_setAnimTime(time as integer)
     m.config.entity.anim.time = time
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -591,7 +591,7 @@ end function
 
 sub char_setNPCCol(i as object) 
     m.config.col.npc = i
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -601,7 +601,7 @@ end function
 
 sub char_setColUp(col as boolean) 
     m.config.col.up = col
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -611,7 +611,7 @@ end function
 
 sub char_setColDown(col as boolean) 
     m.config.col.down = col
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -621,7 +621,7 @@ end function
 
 sub char_setColLeft(col as boolean) 
     m.config.col.left = col
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -631,7 +631,7 @@ end function
 
 sub char_setColRight(col as boolean) 
     m.config.col.right = col
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -642,7 +642,7 @@ end function
 
 sub char_setUpSpeed(speed as integer) 
     m.config.attrs.speed.up = speed
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -652,7 +652,7 @@ end function
 
 sub char_setDownSpeed(speed as integer) 
     m.config.attrs.speed.down = speed
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -662,7 +662,7 @@ end function
 
 sub char_setLeftSpeed(speed as integer) 
     m.config.attrs.speed.left = speed
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 
@@ -672,7 +672,7 @@ end function
 
 sub char_setRightSpeed(speed as integer) 
     m.config.attrs.speed.right = speed
-    SaveGame(m.config)
+    doSave(m.config)
 end sub
 
 function char_getReg(i as integer) as object
@@ -682,39 +682,3 @@ end function
 sub char_setReg(i as integer, reg as object)
     m.config.entity.anim.reg[i] = reg
 end sub
-
-
-' save & load functions - fix stas
-
-Function LoadSavedGame() as Dynamic
-json = GetRegistryString("SavedGame")
-if json <> ""
-    obj = ParseJSON(json)
-    if obj <> invalid and obj.savedGame <> invalid
-        return obj.savedGame
-    end if
-end if
-return invalid
-End Function
-
-Sub SaveGame(game as Object)
-SaveRegistryString("SavedGame", FormatJSON({savedGame: game}, 1))
-End Sub
-
-
-
-' registry functions
-
-Sub SaveRegistryString(key As String, value As String)
-sec = CreateObject("roRegistrySection", "PoP")
-sec.Write(key, value)
-sec.Flush()
-End Sub
-
-Function GetRegistryString(key as String, default = "") As String
-sec = CreateObject("roRegistrySection", "PoP")
-if sec.Exists(key)
-    return sec.Read(key)
-end if
-return default
-End Function
