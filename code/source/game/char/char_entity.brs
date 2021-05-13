@@ -4,17 +4,8 @@ function char_entity(object)
 
   object.onCreate = function(args)
     
-    m.createXY()
     m.entityGen()
 
-  end function
-
-
-  object.createXY = function()
-    m.xy = m.addImage(m.game.char.getZeroName(), "", {
-      offset_x: m.game.char.getZeroOffsetX(),
-      offset_y: m.game.char.getZeroOffsetY()
-    })
   end function
 
   object.entityLoad = function()

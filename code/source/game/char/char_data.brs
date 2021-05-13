@@ -146,7 +146,7 @@ function char_data() as object
     }
 
     m.char.config = gameLoad()
-    m.char.build = "1.0.1"
+    m.char.build = "1.0.0"
 
     if m.char.config = invalid OR m.char.config.version <> m.char.build
         gameSave(invalid)
