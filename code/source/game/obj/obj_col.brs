@@ -6,8 +6,8 @@ function obj_col(object)
 
     object.colXY = function()
         ' position
-        m.x = m.game.char.getZeroOffsetX()
-        m.y = m.game.char.getZeroOffsetY()
+        m.x = m.game.xy.get2DOffsetX()
+        m.y = m.game.xy.get2DOffsetY()
 
     end function
 

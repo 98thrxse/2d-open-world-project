@@ -9,8 +9,8 @@ function char_control(object)
 
   object.saveXY = function()
 
-    m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.game.char.getZeroOffsetX())
-    m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.game.char.getZeroOffsetY())
+    m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.game.xy.get2DOffsetX())
+    m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.game.xy.get2DOffsetY())
 
   end function
 
@@ -18,8 +18,8 @@ function char_control(object)
   object.loadXY = function()
 
     ' position
-    m.game.char.setZeroOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX())
-    m.game.char.setZeroOffsetY(m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY())
+    m.game.xy.set2DOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX())
+    m.game.xy.set2DOffsetY(m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY())
 
   end function
 
@@ -79,7 +79,7 @@ function char_control(object)
     else if code = 1002 ' up
       if m.game.getFocusGroup() = "char"
         if m.game.char.getColUp() = false
-          m.game.char.setZeroOffsetY(m.game.char.getZeroOffsetY() + m.game.char.getUpSpeed())
+          m.game.xy.set2DOffsetY(m.game.xy.get2DOffsetY() + m.game.char.getUpSpeed())
 
         end if
 
@@ -88,7 +88,7 @@ function char_control(object)
     else if code = 1003 ' down
       if m.game.getFocusGroup() = "char"
         if m.game.char.getColDown() = false
-          m.game.char.setZeroOffsetY(m.game.char.getZeroOffsetY() - m.game.char.getDownSpeed())
+          m.game.xy.set2DOffsetY(m.game.xy.get2DOffsetY() - m.game.char.getDownSpeed())
 
         end if
       
@@ -97,7 +97,7 @@ function char_control(object)
     else if code = 1004 ' left
       if m.game.getFocusGroup() = "char"
         if m.game.char.getColLeft() = false
-          m.game.char.setZeroOffsetX(m.game.char.getZeroOffsetX() + m.game.char.getLeftSpeed())
+          m.game.xy.set2DOffsetX(m.game.xy.get2DOffsetX() + m.game.char.getLeftSpeed())
 
         end if
 
@@ -106,7 +106,7 @@ function char_control(object)
     else if code = 1005 ' right
       if m.game.getFocusGroup() = "char"
         if m.game.char.getColRight() = false
-          m.game.char.setZeroOffsetX(m.game.char.getZeroOffsetX() - m.game.char.getRightSpeed())
+          m.game.xy.set2DOffsetX(m.game.xy.get2DOffsetX() - m.game.char.getRightSpeed())
 
         end if
 

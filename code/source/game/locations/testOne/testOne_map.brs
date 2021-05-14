@@ -244,9 +244,8 @@ function testOne_map(object)
         ' loading map config to player data
 
         ' xy
-        if m.map_char_config.xy.name <> invalid then m.game.char.setZeroName(m.map_char_config.xy.name)
-        if m.map_char_config.xy.offset.x <> invalid then m.game.char.setZeroOffsetX(m.map_char_config.xy.offset.x)
-        if m.map_char_config.xy.offset.y <> invalid then m.game.char.setZeroOffsetY(m.map_char_config.xy.offset.y)
+        if m.map_char_config.xy.offset.x <> invalid then m.game.xy.set2DOffsetX(m.map_char_config.xy.offset.x)
+        if m.map_char_config.xy.offset.y <> invalid then m.game.xy.set2DOffsetY(m.map_char_config.xy.offset.y)
 
         ' entity
         if m.map_char_config.entity.name <> invalid then m.game.char.setEntityName(m.map_char_config.entity.name)
