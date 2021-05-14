@@ -97,6 +97,7 @@ function terrain_entity(object)
 
         end for
 
+        ' fix stas - add entityUnload, remove testContainsArray
         for i = 0 to m.game.terrain.config.Count() - 1
             for j = 0 to m.game.terrain.config[i].Count() - 1
                 if m.getImage(m.game.terrain.getEntityName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not m.testContainsArray(id_x, j) or not m.testContainsArray(id_y, i))
