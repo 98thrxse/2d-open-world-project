@@ -97,10 +97,10 @@ function terrain_entity(object)
 
         end for
 
-        ' fix stas - add entityUnload, remove testContainsArray
+        ' fix stas - add entityUnload
         for i = 0 to m.game.terrain.config.Count() - 1
             for j = 0 to m.game.terrain.config[i].Count() - 1
-                if m.getImage(m.game.terrain.getEntityName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not m.testContainsArray(id_x, j) or not m.testContainsArray(id_y, i))
+                if m.getImage(m.game.terrain.getEntityName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not arrayUtils().contains(id_x, j) or not arrayUtils().contains(id_y, i))
                     ' remove    
                     m.removeImage(m.game.terrain.getEntityName(i, j).toStr() + "_" + i.toStr() + j.toStr())
                 end if
@@ -109,19 +109,6 @@ function terrain_entity(object)
         end for
 
     end function
-
-    object.testContainsArray = function(array, element)
-        isContains = false
-        for each item in array
-            if item = element
-                isContains = true
-                exit for
-            end if
-        end for
-
-        return isContains
-    end function
-
 
     object.onUpdate = function(dt as float)
 
