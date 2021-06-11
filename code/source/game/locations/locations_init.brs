@@ -2,7 +2,7 @@ function locations_init(object)
     
 	object.onCreate = function(args)
 
-		m.game.xy = gameXY(m.game.ver)
+		m.game.xy = globalXY(m.game.ver)
 
         ' defineObject
 	    m.game.defineObject("locations_main", locations_main)
