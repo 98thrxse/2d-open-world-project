@@ -37,11 +37,24 @@ function terrain_entity(object)
 
     end function
 
+    object.entityUnload = function(i, j)
+
+        for k = 0 to m.game.terrain.config[i][j].entity.anim.reg.Count() - 1
+
+            if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getReg(i, j, k).toStr()) <> invalid
+                ' loadBitmap
+                m.game.unloadBitmap(m.funcName + "_" + m.game.terrain.getReg(i, j, k).toStr())
+            end if
+
+        end for
+    end function
+
     object.entityGen = function()
 
         id_x = []
         id_y = []
 
+        ' load and add
         if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 <= m.game.terrain.getEntityOffsetX(0, 0)
             id_x.push(0)
 
@@ -84,6 +97,7 @@ function terrain_entity(object)
             for j = 0 to id_x.Count() - 1
                 if m.getImage(m.game.terrain.getEntityName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr()) = invalid
                     
+                    ' load
                     m.entityLoad(id_y, id_x, i, j)
 
                     ' add
@@ -97,12 +111,17 @@ function terrain_entity(object)
 
         end for
 
-        ' fix stas - add entityUnload
+        ' unload & remove
         for i = 0 to m.game.terrain.config.Count() - 1
             for j = 0 to m.game.terrain.config[i].Count() - 1
                 if m.getImage(m.game.terrain.getEntityName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not arrayUtils().contains(id_x, j) or not arrayUtils().contains(id_y, i))
+                    
+                    ' unload
+                    m.entityUnload(i, j)
+                                        
                     ' remove    
                     m.removeImage(m.game.terrain.getEntityName(i, j).toStr() + "_" + i.toStr() + j.toStr())
+
                 end if
             end for
 
