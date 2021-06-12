@@ -6,7 +6,6 @@ function obj_entity(object)
 
     end function
 
-
     object.entityLoad = function(i)
 
         m.obj_regions = []

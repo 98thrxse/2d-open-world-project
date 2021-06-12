@@ -13,7 +13,7 @@ function char_anim(object)
         if code = 1006 ' select
 			if m.game.getFocusGroup() = "char"
 				if m.game.char.getSP() >= m.game.char.getSPDamage()
-					m.playAnim(["stand_side2", "attack_fist1", "attack_fist2", "attack_fist3", "attack_fist2", "attack_fist1", "stand_side2", "attack_fist4", "attack_fist5", "attack_fist6", "attack_fist5", "attack_fist4", "stand_side2", "attack_leg1", "attack_leg2", "attack_leg3", "attack_leg2", "attack_leg1", "stand_side2"])
+					m.playAnim(["stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "stand_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "stand_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "stand_side2"])
 				else
 					m.playAnim(["sp_zero"])
 				end if
