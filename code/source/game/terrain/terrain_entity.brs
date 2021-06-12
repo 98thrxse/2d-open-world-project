@@ -6,15 +6,6 @@ function terrain_entity(object)
 
     end function
 
-
-    object.entityXY = function()
-
-        ' position
-        m.x = m.game.xy.get2DOffsetX()
-        m.y = m.game.xy.get2DOffsetY()
-
-    end function
-
     object.entityLoad = function(id_y, id_x, i, j)
 
         m.terrain_regions = []
@@ -55,15 +46,15 @@ function terrain_entity(object)
         id_y = []
 
         ' load and add
-        if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 <= m.game.terrain.getEntityOffsetX(0, 0)
+        if - m.game.xy.get2DOffsetX() <= m.game.terrain.getEntityOffsetX(0, 0)
             id_x.push(0)
 
-        else if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 > m.game.terrain.getEntityOffsetX(0, m.game.terrain.config[0].Count() - 1)
+        else if - m.game.xy.get2DOffsetX() > m.game.terrain.getEntityOffsetX(0, m.game.terrain.config[0].Count() - 1)
             id_x.push(m.game.terrain.config[0].Count() - 1)
 
         else
             for i = 0 to m.game.terrain.config[0].Count() - 2
-                if m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 >= m.game.terrain.getEntityOffsetX(0, i) and m.game.char.getEntityPosX() - m.game.screen.GetWidth() / 2 <= m.game.terrain.getEntityOffsetX(0, i + 1)
+                if - m.game.xy.get2DOffsetX() >= m.game.terrain.getEntityOffsetX(0, i) and - m.game.xy.get2DOffsetX() <= m.game.terrain.getEntityOffsetX(0, i + 1)
                     id_x.push(i)
                     id_x.push(i + 1) 
                     i = m.game.terrain.config[0].Count()
@@ -74,15 +65,15 @@ function terrain_entity(object)
 
         end if
 
-        if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 <= m.game.terrain.getEntityOffsetY(0, 0)
+        if - m.game.xy.get2DOffsetY() <= m.game.terrain.getEntityOffsetY(0, 0)
             id_y.push(0)
 
-        else if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 > m.game.terrain.getEntityOffsetY(m.game.terrain.config.Count() - 1, 0)
+        else if - m.game.xy.get2DOffsetY() > m.game.terrain.getEntityOffsetY(m.game.terrain.config.Count() - 1, 0)
             id_y.push(m.game.terrain.config.Count() - 1)
 
         else
             for i = 0 to m.game.terrain.config.Count() - 2
-                if m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 >= m.game.terrain.getEntityOffsetY(i, 0) and m.game.char.getEntityPosY() - m.game.screen.GetHeight() / 2 <= m.game.terrain.getEntityOffsetY(i + 1, 0)
+                if - m.game.xy.get2DOffsetY() >= m.game.terrain.getEntityOffsetY(i, 0) and - m.game.xy.get2DOffsetY() <= m.game.terrain.getEntityOffsetY(i + 1, 0)
                     id_y.push(i)
                     id_y.push(i + 1)  
                     i = m.game.terrain.config.Count()
@@ -131,7 +122,6 @@ function terrain_entity(object)
 
     object.onUpdate = function(dt as float)
 
-        m.entityXY()
         m.entityGen()
 
     end function

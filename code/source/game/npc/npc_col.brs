@@ -2,18 +2,7 @@ function npc_col(object)
 
   object.onCreate = function(args)
 
-
   end function
-
-
-  object.colXY = function()
-
-    ' position
-    m.x = m.game.xy.get2DOffsetX()
-    m.y = m.game.xy.get2DOffsetY()
-
-  end function
-
 
   object.colGen = function()
 
@@ -32,7 +21,6 @@ function npc_col(object)
 
   object.onUpdate = function(dt as float)
 
-    m.colXY()
     m.colGen()
 
   end function

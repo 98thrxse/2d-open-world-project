@@ -4,16 +4,8 @@ function obj_entity(object)
 
     object.onCreate = function(args)
 
-
     end function
 
-
-    object.entityXY = function()
-        ' position
-        m.x = m.game.xy.get2DOffsetX()
-        m.y = m.game.xy.get2DOffsetY()
-
-    end function
 
     object.entityLoad = function(i)
 
@@ -64,7 +56,6 @@ function obj_entity(object)
 
     object.onUpdate = function(dt as float)
 
-        m.entityXY()
         m.entityGen()
 
     end function
