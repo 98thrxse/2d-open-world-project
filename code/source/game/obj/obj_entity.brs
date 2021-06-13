@@ -29,23 +29,47 @@ function obj_entity(object)
 
     end function
 
+    object.entityUnload = function(i)
+
+        for j = 0 to m.game.obj.config[i].entity.anim.reg.Count() - 1
+    
+          if m.game.getBitmap(m.funcName + "_" + m.game.obj.getReg(i, j).toStr()) <> invalid
+            ' unloadBitmap
+            m.game.unloadBitmap(m.funcName + "_" + m.game.obj.getReg(i, j).toStr())
+          end if
+    
+        end for
+    
+    end function
 
     object.entityGen = function()
 
-        ' loading map config to create obj
+        ' load & add
         for i = 0 to m.game.obj.config.Count() - 1
+            if - m.game.xy.get2DOffsetX() <= m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and - m.game.xy.get2DOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getEntityOffsetX(i) and - m.game.xy.get2DOffsetY() <= m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and - m.game.xy.get2DOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getEntityOffsetY(i)
+                if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+                        
+                    ' load
+                    m.entityLoad(i)
 
-            if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+                    ' add
+                    m.addAnimatedImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr(), m.obj_regions, { index: 0
+                        offset_x: m.game.obj.getEntityOffsetX(i),
+                        offset_y: m.game.obj.getEntityOffsetY(i),
+                        alpha: m.game.obj.getAlpha(i)
+                    })
                     
-                m.entityLoad(i)
+                end if
 
-                ' addAnimatedImage
-                m.addAnimatedImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr(), m.obj_regions, { index: 0
-                    offset_x: m.game.obj.getEntityOffsetX(i),
-                    offset_y: m.game.obj.getEntityOffsetY(i),
-                    alpha: m.game.obj.getAlpha(i)
-                })
-                
+            ' unload & remove
+            else if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+
+                ' unload
+                m.entityUnload(i)
+
+                ' remove
+                m.removeImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr())
+
             end if
           
         end for
