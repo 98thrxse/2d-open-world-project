@@ -10,6 +10,7 @@ function arrayUtils()
             end for
             return contains
         end function
+
     }
 
     return func
