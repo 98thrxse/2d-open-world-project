@@ -16,10 +16,10 @@ function char_anim(object)
 					if m.checkAnim(["stand_side1", "stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"])
 						m.playAnim(["stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "stand_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "stand_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "stand_side2"])
 					
-					else if m.checkAnim(["stand_front1", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front"])
+					else if m.checkAnim(["stand_front1", "stand_front2", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front"])
 						m.playAnim(["stand_front1", "attack_fist1_front", "stand_front1", "attack_fist2_front", "stand_front1", "attack_leg1_front", "stand_front1"])
 
-					else if m.checkAnim(["stand_back1", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back"])
+					else if m.checkAnim(["stand_back1", "stand_back2", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back"])
 						m.playAnim(["stand_back1", "attack_fist1_back", "stand_back1", "attack_fist2_back", "stand_back1", "attack_leg1_back", "stand_back1"])
 
 					end if
@@ -52,7 +52,14 @@ function char_anim(object)
 		else if code = 106 ' select
 			if m.game.getFocusGroup() = "char"
 				if m.game.char.getSP() >= m.game.char.getSPDamage()
-					m.playAnim(["stand_side2"])
+					if m.checkAnim(["stand_side1", "stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"])
+						m.playAnim(["stand_side2"])
+					else if m.checkAnim(["stand_front1", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front"])
+						m.playAnim(["stand_front2"])
+
+					else if m.checkAnim(["stand_back1", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back"])
+						m.playAnim(["stand_back2"])
+					end if
 				else
 					m.playAnim(["sp_zero"])
 
