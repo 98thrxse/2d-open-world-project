@@ -13,7 +13,16 @@ function char_anim(object)
         if code = 1006 ' select
 			if m.game.getFocusGroup() = "char"
 				if m.game.char.getSP() >= m.game.char.getSPDamage()
-					m.playAnim(["stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "stand_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "stand_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "stand_side2"])
+					if m.checkAnim(["stand_side1", "stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"])
+						m.playAnim(["stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "stand_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "stand_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "stand_side2"])
+					
+					else if m.checkAnim(["stand_front1", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front"])
+						m.playAnim(["stand_front1", "attack_fist1_front", "stand_front1", "attack_fist2_front", "stand_front1", "attack_leg1_front", "stand_front1"])
+
+					else if m.checkAnim(["stand_back1", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back"])
+						m.playAnim(["stand_back1", "attack_fist1_back", "stand_back1", "attack_fist2_back", "stand_back1", "attack_leg1_back", "stand_back1"])
+
+					end if
 				else
 					m.playAnim(["sp_zero"])
 				end if
@@ -102,6 +111,20 @@ function char_anim(object)
 		m.game.char.setIndex(arrAnim[int(m.timer.TotalMilliseconds() / m.game.char.getAnimTime())])
 
 
+	end function
+
+	object.checkAnim = function(arr)
+
+		for each element in arr
+			for i = 0 to m.game.char.config.entity.anim.reg.Count() - 1
+				if i = m.game.char.getIndex() 
+					if m.game.char.getReg(i) = element then return true
+				end if
+			end for
+		end for
+
+		return false
+		
 	end function
 
 	object.onUpdate = function(dt as float)
