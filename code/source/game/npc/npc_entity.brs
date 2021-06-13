@@ -30,24 +30,43 @@ function npc_entity(object)
     
   end function
 
+  object.entityUnload = function(i)
+
+    for j = 0 to m.game.npc.config[i].entity.anim.reg.Count() - 1
+
+      if m.game.getBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr()) <> invalid
+        ' unloadBitmap
+        m.game.unloadBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr())
+      end if
+
+    end for
+
+  end function
+
 
   object.entityGen = function()
 
-    ' loading map config to create npc
+    ' load & add
     for i = 0 to m.game.npc.config.Count() - 1
       if - m.game.xy.get2DOffsetX() <= m.game.npc.getEntityOffsetX(i) + m.game.npc.getEntityW(i) and - m.game.xy.get2DOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getEntityOffsetX(i) and - m.game.xy.get2DOffsetY() <= m.game.npc.getEntityOffsetY(i) + m.game.npc.getEntityH(i) and - m.game.xy.get2DOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getEntityOffsetY(i)
         if m.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
 
+          ' load
           m.entityLoad(i)
 
-          ' addAnimatedImage
+          ' add
           m.addAnimatedImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr(), m.npc_regions, { index: m.game.npc.getIndex(i)
             offset_x: m.game.npc.getEntityOffsetX(i),
             offset_y: m.game.npc.getEntityOffsetY(i)
           })
   
         end if
+
+      ' unload & remove
       else if m.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+
+        ' unload
+        m.entityUnload(i)
 
         ' remove
         m.removeImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr())

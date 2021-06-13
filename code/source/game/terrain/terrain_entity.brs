@@ -33,7 +33,7 @@ function terrain_entity(object)
         for k = 0 to m.game.terrain.config[i][j].entity.anim.reg.Count() - 1
 
             if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getReg(i, j, k).toStr()) <> invalid
-                ' loadBitmap
+                ' unloadBitmap
                 m.game.unloadBitmap(m.funcName + "_" + m.game.terrain.getReg(i, j, k).toStr())
             end if
 
@@ -45,7 +45,7 @@ function terrain_entity(object)
         id_x = []
         id_y = []
 
-        ' load and add
+        ' load & add
         if - m.game.xy.get2DOffsetX() <= m.game.terrain.getEntityOffsetX(0, 0)
             id_x.push(0)
 
