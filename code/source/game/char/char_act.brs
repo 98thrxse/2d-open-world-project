@@ -11,7 +11,34 @@ function char_act(object)
         if code = 1006
             if m.game.char.getSP() >= m.game.char.getSPDamage()
                 m.charSPDamage()
+                m.npcHPDamage()
 
+            end if
+
+        end if
+
+    end function
+
+    object.npcHPDamage = function()
+        if m.game.getFocusGroup() = "char"
+            if m.hp_damage_timer = invalid
+                if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage()
+                    id = right(m.game.char.getNPCCol(), 1).toInt()
+                    m.game.npc.setHP(id, m.game.npc.getHP(id) - m.game.char.getHPDamage())
+            
+                    print m.game.char.getNPCCol() + " was attacked"
+                    print m.game.npc.getHP(id)
+            
+                end if
+        
+                m.hp_damage_timer = CreateObject("roTimeSpan")
+                m.hp_damage_timer.Mark()
+        
+            end if
+            
+            if m.hp_damage_timer.TotalMilliseconds() + 1 >= m.game.char.getSPDamageTime()
+                m.hp_damage_timer = invalid
+        
             end if
 
         end if

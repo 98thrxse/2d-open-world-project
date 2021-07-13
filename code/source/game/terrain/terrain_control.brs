@@ -21,9 +21,4 @@ function terrain_control(object)
 
     end function
     
-    object.onButton = function(code as integer)
-
-
-    end function
-    
 end function
