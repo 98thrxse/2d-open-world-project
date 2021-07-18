@@ -7,7 +7,7 @@ function game_main(object)
         m.game.setFocusTarget("")
 
         ' createInstance        
-        m.game.createInstance("locations_init")
+        m.game.createInstance("map_init")
 
     end function
     

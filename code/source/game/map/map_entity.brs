@@ -1,13 +1,21 @@
-function testOne_map(object)
-
-    object.map_char_config = testOne_char_config()
-    object.map_obj_config = testOne_obj_config()
-    object.map_npc_config = testOne_npc_config()
-    object.map_terrain_config = testOne_terrain_config()
-    object.map_interface_config = testOne_interface_config()
-    
+function map_entity(object)
 
     object.onCreate = function(args)
+
+        m.chooseMap()
+        m.loadConfigs()
+
+    end function
+
+    object.chooseMap = function()
+        m.map_char_config = testOne_char_config()
+        m.map_obj_config = testOne_obj_config()
+        m.map_npc_config = testOne_npc_config()
+        m.map_terrain_config = testOne_terrain_config()
+        m.map_interface_config = testOne_interface_config()
+    end function
+
+    object.loadConfigs = function()
         m.loadChar()
         m.loadNPC()
         m.loadObj()
@@ -15,7 +23,6 @@ function testOne_map(object)
         m.loadInterface()
     end function
     
-
     object.loadTerrain = function()
         ' loading map config to terrain data      
         for i = 0 to m.map_terrain_config.Count() - 1

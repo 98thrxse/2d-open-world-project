@@ -5,7 +5,7 @@ function game_init(object)
         ' defineObject
 	    m.game.defineObject("game_main", game_main)
         
-	    m.game.defineObject("locations_init", locations_init)
+	    m.game.defineObject("map_init", map_init)
 
         ' createInstance
         m.game.createInstance("game_main")
