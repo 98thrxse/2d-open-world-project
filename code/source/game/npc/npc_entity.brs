@@ -48,7 +48,7 @@ function npc_entity(object)
 
     ' load & add
     for i = 0 to m.game.npc.config.Count() - 1
-      if - m.game.xy.getZeroOffsetX() <= m.game.npc.getEntityOffsetX(i) + m.game.npc.getEntityW(i) and - m.game.xy.getZeroOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getEntityOffsetX(i) and - m.game.xy.getZeroOffsetY() <= m.game.npc.getEntityOffsetY(i) + m.game.npc.getEntityH(i) and - m.game.xy.getZeroOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getEntityOffsetY(i)
+      if - m.game.map.getEntityOffsetX() <= m.game.npc.getEntityOffsetX(i) + m.game.npc.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.npc.getEntityOffsetY(i) + m.game.npc.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getEntityOffsetY(i)
         if m.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
 
           ' load

@@ -251,8 +251,8 @@ function map_entity(object)
         ' loading map config to player data
 
         ' xy
-        if m.map_char_config.xy.offset.x <> invalid then m.game.xy.setZeroOffsetX(m.map_char_config.xy.offset.x)
-        if m.map_char_config.xy.offset.y <> invalid then m.game.xy.setZeroOffsetY(m.map_char_config.xy.offset.y)
+        if m.map_char_config.xy.offset.x <> invalid then m.game.map.setEntityOffsetX(m.map_char_config.xy.offset.x)
+        if m.map_char_config.xy.offset.y <> invalid then m.game.map.setEntityOffsetY(m.map_char_config.xy.offset.y)
 
         ' entity
         if m.map_char_config.entity.name <> invalid then m.game.char.setEntityName(m.map_char_config.entity.name)
