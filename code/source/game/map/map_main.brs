@@ -2,7 +2,7 @@ function map_main(object)
     
 	object.onCreate = function(args)
 
-		m.game.map = map_data(m.game.ver)
+		m.game.map = map_data()
 
         ' createInstance
         m.game.createInstance("char_init")

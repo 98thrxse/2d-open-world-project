@@ -1,4 +1,4 @@
-function map_data(ver) as object
+function map_data() as object
     m.map = {
 
         getEntityOffsetX: map_getEntityOffsetX
@@ -10,21 +10,14 @@ function map_data(ver) as object
 		config: invalid
 	}
 
-	m.map.config = globalLoad("map")
-
-	if m.map.config = invalid OR m.map.config.version <> ver
-        globalSave(invalid, "map")
+	if m.map.config = invalid
 
 		m.map.config = {
 			offset: {
 				x: 0,
 				y: 0
 			}
-
-			version: ver
 		}
-
-        globalSave(m.config, "map")
 
 	end if
 
@@ -38,7 +31,6 @@ end function
 
 sub map_setEntityOffsetX(x as integer)
     m.config.offset.x = x
-    globalSave(m.config, "map")
 end sub
 
 function map_getEntityOffsetY() as integer
@@ -47,5 +39,4 @@ end function
 
 sub map_setEntityOffsetY(y as integer)
     m.config.offset.y = y
-    globalSave(m.config, "map")
 end sub

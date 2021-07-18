@@ -9,12 +9,6 @@ function globalLoad(save as string) as dynamic
 			end if
 		end if
 
-		if save = "xy"
-			if data <> invalid and data.xy <> invalid
-				return data.xy
-			end if
-		end if
-
 	end if
 	return invalid
 end function
