@@ -1,4 +1,4 @@
-function globalFocus(game)
+function global_focus(game)
 
     game.getFocusGroup = function()
 		return m.focusGroup

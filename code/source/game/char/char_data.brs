@@ -135,10 +135,10 @@ function char_data(ver) as object
         config: invalid
     }
 
-    m.char.config = globalLoad("char")
+    m.char.config = global_load("char")
 
     if m.char.config = invalid OR m.char.config.version <> ver
-        globalSave(invalid, "char")
+        global_save(invalid, "char")
 
         m.char.config = {
             
@@ -226,7 +226,7 @@ function char_data(ver) as object
             version: ver
         }
 
-        globalSave(m.config, "char")
+        global_save(m.config, "char")
 
     end if
 
@@ -278,7 +278,7 @@ end function
 
 sub char_setScaleX(x as integer)
     m.config.entity.anim.scale.x = x
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 function char_getScaleY() as integer
@@ -287,7 +287,7 @@ end function
 
 sub char_setScaleY(y as integer)
     m.config.entity.anim.scale.y = y
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -297,7 +297,7 @@ end function
 
 sub char_setEntityOffsetX(x as integer)
     m.config.entity.anim.offset.x = x
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 function char_getEntityOffsetY() as integer
@@ -306,7 +306,7 @@ end function
 
 sub char_setEntityOffsetY(y as integer)
     m.config.entity.anim.offset.y = y
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -316,7 +316,7 @@ end function
 
 sub char_setColOffsetX(x as integer)
     m.config.col.offset.x = x
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 function char_getColOffsetY() as integer
@@ -325,7 +325,7 @@ end function
 
 sub char_setColOffsetY(y as integer)
     m.config.col.offset.y = y
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -344,7 +344,7 @@ end function
 
 sub char_setEntityPosX(x as integer)
     m.config.entity.pos.x = x
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -354,7 +354,7 @@ end function
 
 sub char_setEntityPosY(y as integer)
     m.config.entity.pos.y = y
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -364,7 +364,7 @@ end function
 
 sub char_setEntityH(height as integer)
     m.config.entity.size.height = height
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -374,7 +374,7 @@ end function
 
 sub char_setEntityW(width as integer)
     m.config.entity.size.width = width
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -384,7 +384,7 @@ end function
 
 sub char_setColH(height as integer)
     m.config.col.size.height = height
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -394,7 +394,7 @@ end function
 
 sub char_setColW(width as integer)
     m.config.col.size.width = width
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -404,7 +404,7 @@ end function
 
 sub char_setHP(hp as integer)
     m.config.attrs.hp = hp
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -414,7 +414,7 @@ end function
 
 sub char_setSP(sp as integer)
     m.config.attrs.sp = sp
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -424,7 +424,7 @@ end function
 
 sub char_setHPDamage(hp as integer)
     m.config.attrs.damage.hp = hp
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -434,7 +434,7 @@ end function
 
 sub char_setSPDamage(sp as integer)
     m.config.attrs.damage.sp = sp
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -444,7 +444,7 @@ end function
 
 sub char_setHPDamageTime(time as integer)
     m.config.attrs.damage.hp_time = time
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 function char_getSPDamageTime() as integer
@@ -453,7 +453,7 @@ end function
 
 sub char_setSPDamageTime(time as integer)
     m.config.attrs.damage.sp_time = time
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -464,7 +464,7 @@ end function
 
 sub char_setHPRegen(hp as integer)
     m.config.attrs.regen.hp = hp
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -474,7 +474,7 @@ end function
 
 sub char_setSPRegen(sp as integer)
     m.config.attrs.regen.sp = sp
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -484,7 +484,7 @@ end function
 
 sub char_setHPRegenTime(time as integer)
     m.config.attrs.regen.hp_time = time
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 function char_getSPRegenTime() as integer
@@ -493,7 +493,7 @@ end function
 
 sub char_setSPRegenTime(time as integer)
     m.config.attrs.regen.sp_time = time
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -504,7 +504,7 @@ end function
 
 sub char_setIndex(index as integer)
     m.config.entity.anim.index = index
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -514,7 +514,7 @@ end function
 
 sub char_setAnimTime(time as integer)
     m.config.entity.anim.time = time
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -544,7 +544,7 @@ end function
 
 sub char_setNPCCol(i as object) 
     m.config.col.npc = i
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -554,7 +554,7 @@ end function
 
 sub char_setColUp(col as boolean) 
     m.config.col.up = col
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -564,7 +564,7 @@ end function
 
 sub char_setColDown(col as boolean) 
     m.config.col.down = col
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -574,7 +574,7 @@ end function
 
 sub char_setColLeft(col as boolean) 
     m.config.col.left = col
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -584,7 +584,7 @@ end function
 
 sub char_setColRight(col as boolean) 
     m.config.col.right = col
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -595,7 +595,7 @@ end function
 
 sub char_setUpSpeed(speed as integer) 
     m.config.attrs.speed.up = speed
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -605,7 +605,7 @@ end function
 
 sub char_setDownSpeed(speed as integer) 
     m.config.attrs.speed.down = speed
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -615,7 +615,7 @@ end function
 
 sub char_setLeftSpeed(speed as integer) 
     m.config.attrs.speed.left = speed
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 
@@ -625,7 +625,7 @@ end function
 
 sub char_setRightSpeed(speed as integer) 
     m.config.attrs.speed.right = speed
-    globalSave(m.config, "char")
+    global_save(m.config, "char")
 end sub
 
 function char_getReg(i as integer) as object
