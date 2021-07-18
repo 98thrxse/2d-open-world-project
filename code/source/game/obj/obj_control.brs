@@ -11,12 +11,12 @@ function obj_control(object)
     object.controlXY = function()
 
         ' entity position
-        m.entity_wnd.x = m.game.xy.get2DOffsetX()
-        m.entity_wnd.y = m.game.xy.get2DOffsetY()
+        m.entity_wnd.x = m.game.xy.getZeroOffsetX()
+        m.entity_wnd.y = m.game.xy.getZeroOffsetY()
 
         ' col position
-        m.col_wnd.x = m.game.xy.get2DOffsetX()
-        m.col_wnd.y = m.game.xy.get2DOffsetY()
+        m.col_wnd.x = m.game.xy.getZeroOffsetX()
+        m.col_wnd.y = m.game.xy.getZeroOffsetY()
 
     end function
 

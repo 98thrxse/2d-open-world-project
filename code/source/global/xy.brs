@@ -1,11 +1,11 @@
 function globalXY(ver) as object
     m.xy = {
 
-        get2DOffsetX: xy_get2DOffsetX
-        set2DOffsetX: xy_set2DOffsetX
+        getZeroOffsetX: xy_getZeroOffsetX
+        setZeroOffsetX: xy_setZeroOffsetX
 
-        get2DOffsetY: xy_get2DOffsetY
-        set2DOffsetY: xy_set2DOffsetY
+        getZeroOffsetY: xy_getZeroOffsetY
+        setZeroOffsetY: xy_setZeroOffsetY
 
 		config: invalid
 	}
@@ -32,20 +32,20 @@ function globalXY(ver) as object
 
 end function
 
-function xy_get2DOffsetX() as integer
+function xy_getZeroOffsetX() as integer
     return m.config.offset.x
 end function
 
-sub xy_set2DOffsetX(x as integer)
+sub xy_setZeroOffsetX(x as integer)
     m.config.offset.x = x
     globalSave(m.config, "xy")
 end sub
 
-function xy_get2DOffsetY() as integer
+function xy_getZeroOffsetY() as integer
     return m.config.offset.y
 end function
 
-sub xy_set2DOffsetY(y as integer)
+sub xy_setZeroOffsetY(y as integer)
     m.config.offset.y = y
     globalSave(m.config, "xy")
 end sub

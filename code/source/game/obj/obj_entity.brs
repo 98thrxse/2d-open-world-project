@@ -46,7 +46,7 @@ function obj_entity(object)
 
         ' load & add
         for i = 0 to m.game.obj.config.Count() - 1
-            if - m.game.xy.get2DOffsetX() <= m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and - m.game.xy.get2DOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getEntityOffsetX(i) and - m.game.xy.get2DOffsetY() <= m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and - m.game.xy.get2DOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getEntityOffsetY(i)
+            if - m.game.xy.getZeroOffsetX() <= m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and - m.game.xy.getZeroOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getEntityOffsetX(i) and - m.game.xy.getZeroOffsetY() <= m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and - m.game.xy.getZeroOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getEntityOffsetY(i)
                 if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
                         
                     ' load
