@@ -25,18 +25,18 @@ function map_data() as object
 
 end function
 
-function map_getEntityOffsetX() as integer
+function map_getEntityOffsetX() as object
     return m.config.offset.x
 end function
 
-sub map_setEntityOffsetX(x as integer)
+sub map_setEntityOffsetX(x as object)
     m.config.offset.x = x
 end sub
 
-function map_getEntityOffsetY() as integer
+function map_getEntityOffsetY() as object
     return m.config.offset.y
 end function
 
-sub map_setEntityOffsetY(y as integer)
+sub map_setEntityOffsetY(y as object)
     m.config.offset.y = y
 end sub

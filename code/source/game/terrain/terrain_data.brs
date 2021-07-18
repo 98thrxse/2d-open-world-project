@@ -31,37 +31,37 @@ function terrain_data() as object
 end function
 
 
-function terrain_getEntityName(i as integer, j as integer) as object
+function terrain_getEntityName(i as object, j as object) as object
     return m.config[i][j].entity.name
 end function
 
-sub terrain_setEntityName(i as integer, j as integer, name as string)
+sub terrain_setEntityName(i as object, j as object, name as object)
     m.config[i][j].entity.name = name
 end sub
 
 
-function terrain_getEntityOffsetX(i as integer, j as integer) as integer
+function terrain_getEntityOffsetX(i as object, j as object) as object
     return m.config[i][j].entity.anim.offset.x
 end function
 
-sub terrain_setEntityOffsetX(i as integer, j as integer, x as integer)
+sub terrain_setEntityOffsetX(i as object, j as object, x as object)
     m.config[i][j].entity.anim.offset.x = x
 end sub
 
 
-function terrain_getEntityOffsetY(i as integer, j as integer) as integer
+function terrain_getEntityOffsetY(i as object, j as object) as object
     return m.config[i][j].entity.anim.offset.y
 end function
 
-sub terrain_setEntityOffsetY(i as integer, j as integer, y as integer)
+sub terrain_setEntityOffsetY(i as object, j as object, y as object)
     m.config[i][j].entity.anim.offset.y = y
 end sub
 
 
-function terrain_getReg(i as integer, j as integer, k as integer) as object
+function terrain_getReg(i as object, j as object, k as object) as object
     return m.config[i][j].entity.anim.reg[k]
 end function
 
-sub terrain_setReg(i as integer, j as integer, k as integer, reg as object)
+sub terrain_setReg(i as object, j as object, k as object, reg as object)
     m.config[i][j].entity.anim.reg[k] = reg
 end sub
