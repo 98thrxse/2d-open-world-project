@@ -1,6 +1,8 @@
 function interface_main(object)
 
     object.onCreate = function(args)
+        
+        m.game.interface = interface_data()
 
         'createInstance
         m.game.createInstance("interface_menu")

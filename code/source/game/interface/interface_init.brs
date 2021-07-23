@@ -1,8 +1,6 @@
 function interface_init(object)
 
     object.onCreate = function(args)
-
-        m.game.interface = interface_data()
         
         ' defineObject
 		m.game.defineObject("interface_main", interface_main)

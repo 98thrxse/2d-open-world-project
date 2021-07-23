@@ -2,6 +2,8 @@ function char_main(object)
 
     object.onCreate = function(args)
 
+		m.game.char = char_data(m.game.ver)
+
         ' createInstance
         m.game.createInstance("char_entity")
         m.game.createInstance("char_col")

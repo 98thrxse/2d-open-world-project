@@ -2,8 +2,6 @@ function char_init(object)
 
 	object.onCreate = function(args)
 
-		m.game.char = char_data(m.game.ver)
-
 		' defineObject
 		m.game.defineObject("char_main", char_main)
 		m.game.defineObject("char_entity", char_entity)
