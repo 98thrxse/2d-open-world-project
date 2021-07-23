@@ -132,12 +132,12 @@ function char_anim(object)
         if m.entity_wnd.getImage(m.game.char.getEntityName()) <> invalid
 
 			' update char alpha
-			if m.entity_wnd.getImage(m.game.char.getEntityName()).alpha <> m.game.char.getAlpha() then m.entity_wnd.getImage("char_entity").alpha = m.game.char.getAlpha()
-			if m.entity_wnd.getImage(m.game.char.getEntityName()).index <> m.game.char.getIndex() then m.entity_wnd.getImage("char_entity").index = m.game.char.getIndex()
-			if m.entity_wnd.getImage(m.game.char.getEntityName()).scale_x <> m.game.char.getScaleX() then m.entity_wnd.getImage("char_entity").scale_x = m.game.char.getScaleX()
-			if m.entity_wnd.getImage(m.game.char.getEntityName()).scale_y <> m.game.char.getScaleY() then m.entity_wnd.getImage("char_entity").scale_y = m.game.char.getScaleY()
-			if m.entity_wnd.getImage(m.game.char.getEntityName()).offset_x <> m.game.char.getEntityOffsetX() then m.entity_wnd.getImage("char_entity").offset_x = m.game.char.getEntityOffsetX()
-			if m.entity_wnd.getImage(m.game.char.getEntityName()).offset_y <> m.game.char.getEntityOffsetY() then m.entity_wnd.getImage("char_entity").offset_y = m.game.char.getEntityOffsetY()
+			m.entity_wnd.getImage(m.game.char.getEntityName()).alpha = m.game.char.getAlpha()
+			m.entity_wnd.getImage(m.game.char.getEntityName()).index = m.game.char.getIndex()
+			m.entity_wnd.getImage(m.game.char.getEntityName()).scale_x = m.game.char.getScaleX()
+			m.entity_wnd.getImage(m.game.char.getEntityName()).scale_y = m.game.char.getScaleY()
+			m.entity_wnd.getImage(m.game.char.getEntityName()).offset_x = m.game.char.getEntityOffsetX()
+			m.entity_wnd.getImage(m.game.char.getEntityName()).offset_y = m.game.char.getEntityOffsetY()
 
         end if
         
