@@ -29,16 +29,16 @@ function obj_col(object)
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
         if other_collider_name = m.game.char.getColUpName()
-            if m.game.char.getColUp() <> true then m.game.char.setColUp(true)
+            m.game.char.setColUp(true)
 
         else if other_collider_name = m.game.char.getColDownName()
-            if m.game.char.getColDown() <> true then m.game.char.setColDown(true)
+            m.game.char.setColDown(true)
 
         else if other_collider_name = m.game.char.getColLeftName()
-            if m.game.char.getColLeft() <> true then m.game.char.setColLeft(true)
+            m.game.char.setColLeft(true)
 
         else if other_collider_name = m.game.char.getColRightName()
-            if m.game.char.getColRight() <> true then m.game.char.setColRight(true)
+            m.game.char.setColRight(true)
 
         end if
 

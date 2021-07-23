@@ -28,6 +28,9 @@ function npc_data() as object
         getReg: npc_getReg
         setReg: npc_setReg
 
+        getAnimTime: npc_getAnimTime
+        setAnimTime: npc_setAnimTime
+
         ' col
         getColName: npc_getColName
         setColName: npc_setColName
@@ -180,4 +183,12 @@ end function
 
 sub npc_setReg(i as object, j as object, reg as object)
     m.config[i].entity.anim.reg[j] = reg
+end sub
+
+function npc_getAnimTime(i as object) as object
+    return m.config[i].entity.anim.time
+end function
+
+sub npc_setAnimTime(i as object, time as object)
+    m.config[i].entity.anim.time = time
 end sub

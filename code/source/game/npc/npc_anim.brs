@@ -34,8 +34,8 @@ function npc_anim(object)
 		end for
 		
 		' fix stas
-		if m.timer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.char.getAnimTime() then m.timer.Mark()
-		m.game.npc.setIndex(i, arrAnim[int(m.timer.TotalMilliseconds() / m.game.char.getAnimTime())])
+		if m.timer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.npc.getAnimTime(i) then m.timer.Mark()
+		m.game.npc.setIndex(i, arrAnim[int(m.timer.TotalMilliseconds() / m.game.npc.getAnimTime(i))])
 
 	end function
 

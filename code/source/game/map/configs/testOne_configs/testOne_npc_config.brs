@@ -12,6 +12,7 @@ function testOne_npc_config() as object
                         x: 800,
                         y: 100
                     },
+                    time: 100
                 },
                 size: {
                     width: 48,
@@ -48,6 +49,7 @@ function testOne_npc_config() as object
                         x: 800,
                         y: 300
                     },
+                    time: 100
                 },
 
                 size: {
@@ -84,6 +86,7 @@ function testOne_npc_config() as object
                         x: 800,
                         y: 500
                     },
+                    time: 100
                 },
 
                 size: {

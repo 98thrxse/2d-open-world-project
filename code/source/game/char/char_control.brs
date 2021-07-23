@@ -80,36 +80,36 @@ function char_control(object)
     else if code = 102
       if m.game.getFocusGroup() = "char"
         m.game.char.setNPCCol(invalid)
-        if m.game.char.getColDown() <> false then m.game.char.setColDown(false)
-        if m.game.char.getColLeft() <> false then m.game.char.setColLeft(false)
-        if m.game.char.getColRight() <> false then m.game.char.setColRight(false)
+        m.game.char.setColDown(false)
+        m.game.char.setColLeft(false)
+        m.game.char.setColRight(false)
       
       end if
 
     else if code = 103
       if m.game.getFocusGroup() = "char"
         m.game.char.setNPCCol(invalid)
-        if m.game.char.getColUp() <> false then m.game.char.setColUp(false)
-        if m.game.char.getColLeft() <> false then m.game.char.setColLeft(false)
-        if m.game.char.getColRight() <> false then m.game.char.setColRight(false)
+        m.game.char.setColUp(false)
+        m.game.char.setColLeft(false)
+        m.game.char.setColRight(false)
         
       end if
 
     else if code = 104
       if m.game.getFocusGroup() = "char"
         m.game.char.setNPCCol(invalid)
-        if m.game.char.getColUp() <> false then m.game.char.setColUp(false)
-        if m.game.char.getColDown() <> false then m.game.char.setColDown(false)
-        if m.game.char.getColRight() <> false then m.game.char.setColRight(false)
+        m.game.char.setColUp(false)
+        m.game.char.setColDown(false)
+        m.game.char.setColRight(false)
         
       end if
 
     else if code = 105
       if m.game.getFocusGroup() = "char"
         m.game.char.setNPCCol(invalid)
-        if m.game.char.getColUp() <> false then m.game.char.setColUp(false)
-        if m.game.char.getColDown() <> false then m.game.char.setColDown(false)
-        if m.game.char.getColLeft() <> false then m.game.char.setColLeft(false)
+        m.game.char.setColUp(false)
+        m.game.char.setColDown(false)
+        m.game.char.setColLeft(false)
         
       end if
 
