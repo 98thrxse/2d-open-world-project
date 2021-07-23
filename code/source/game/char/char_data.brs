@@ -132,6 +132,9 @@ function char_data(ver) as object
         setColW: char_setColW
 
 
+        save: char_save
+
+
         config: invalid
     }
 
@@ -278,7 +281,6 @@ end function
 
 sub char_setScaleX(x as object)
     m.config.entity.anim.scale.x = x
-    global_save(m.config, "char")
 end sub
 
 function char_getScaleY() as object
@@ -287,7 +289,6 @@ end function
 
 sub char_setScaleY(y as object)
     m.config.entity.anim.scale.y = y
-    global_save(m.config, "char")
 end sub
 
 
@@ -297,7 +298,6 @@ end function
 
 sub char_setEntityOffsetX(x as object)
     m.config.entity.anim.offset.x = x
-    global_save(m.config, "char")
 end sub
 
 function char_getEntityOffsetY() as object
@@ -306,7 +306,6 @@ end function
 
 sub char_setEntityOffsetY(y as object)
     m.config.entity.anim.offset.y = y
-    global_save(m.config, "char")
 end sub
 
 
@@ -316,7 +315,6 @@ end function
 
 sub char_setColOffsetX(x as object)
     m.config.col.offset.x = x
-    global_save(m.config, "char")
 end sub
 
 function char_getColOffsetY() as object
@@ -325,7 +323,6 @@ end function
 
 sub char_setColOffsetY(y as object)
     m.config.col.offset.y = y
-    global_save(m.config, "char")
 end sub
 
 
@@ -344,7 +341,6 @@ end function
 
 sub char_setEntityPosX(x as object)
     m.config.entity.pos.x = x
-    global_save(m.config, "char")
 end sub
 
 
@@ -354,7 +350,6 @@ end function
 
 sub char_setEntityPosY(y as object)
     m.config.entity.pos.y = y
-    global_save(m.config, "char")
 end sub
 
 
@@ -364,7 +359,6 @@ end function
 
 sub char_setEntityH(height as object)
     m.config.entity.size.height = height
-    global_save(m.config, "char")
 end sub
 
 
@@ -374,7 +368,6 @@ end function
 
 sub char_setEntityW(width as object)
     m.config.entity.size.width = width
-    global_save(m.config, "char")
 end sub
 
 
@@ -384,7 +377,6 @@ end function
 
 sub char_setColH(height as object)
     m.config.col.size.height = height
-    global_save(m.config, "char")
 end sub
 
 
@@ -394,7 +386,6 @@ end function
 
 sub char_setColW(width as object)
     m.config.col.size.width = width
-    global_save(m.config, "char")
 end sub
 
 
@@ -404,7 +395,6 @@ end function
 
 sub char_setHP(hp as object)
     m.config.attrs.hp = hp
-    global_save(m.config, "char")
 end sub
 
 
@@ -414,7 +404,6 @@ end function
 
 sub char_setSP(sp as object)
     m.config.attrs.sp = sp
-    global_save(m.config, "char")
 end sub
 
 
@@ -424,7 +413,6 @@ end function
 
 sub char_setHPDamage(hp as object)
     m.config.attrs.damage.hp = hp
-    global_save(m.config, "char")
 end sub
 
 
@@ -434,7 +422,6 @@ end function
 
 sub char_setSPDamage(sp as object)
     m.config.attrs.damage.sp = sp
-    global_save(m.config, "char")
 end sub
 
 
@@ -444,7 +431,6 @@ end function
 
 sub char_setHPDamageTime(time as object)
     m.config.attrs.damage.hp_time = time
-    global_save(m.config, "char")
 end sub
 
 function char_getSPDamageTime() as object
@@ -453,7 +439,6 @@ end function
 
 sub char_setSPDamageTime(time as object)
     m.config.attrs.damage.sp_time = time
-    global_save(m.config, "char")
 end sub
 
 
@@ -464,7 +449,6 @@ end function
 
 sub char_setHPRegen(hp as object)
     m.config.attrs.regen.hp = hp
-    global_save(m.config, "char")
 end sub
 
 
@@ -474,7 +458,6 @@ end function
 
 sub char_setSPRegen(sp as object)
     m.config.attrs.regen.sp = sp
-    global_save(m.config, "char")
 end sub
 
 
@@ -484,7 +467,6 @@ end function
 
 sub char_setHPRegenTime(time as object)
     m.config.attrs.regen.hp_time = time
-    global_save(m.config, "char")
 end sub
 
 function char_getSPRegenTime() as object
@@ -493,7 +475,6 @@ end function
 
 sub char_setSPRegenTime(time as object)
     m.config.attrs.regen.sp_time = time
-    global_save(m.config, "char")
 end sub
 
 
@@ -504,7 +485,6 @@ end function
 
 sub char_setIndex(index as object)
     m.config.entity.anim.index = index
-    global_save(m.config, "char")
 end sub
 
 
@@ -514,7 +494,6 @@ end function
 
 sub char_setAnimTime(time as object)
     m.config.entity.anim.time = time
-    global_save(m.config, "char")
 end sub
 
 
@@ -544,7 +523,6 @@ end function
 
 sub char_setNPCCol(i as object) 
     m.config.col.npc = i
-    global_save(m.config, "char")
 end sub
 
 
@@ -554,7 +532,6 @@ end function
 
 sub char_setColUp(col as object) 
     m.config.col.up = col
-    global_save(m.config, "char")
 end sub
 
 
@@ -564,7 +541,6 @@ end function
 
 sub char_setColDown(col as object) 
     m.config.col.down = col
-    global_save(m.config, "char")
 end sub
 
 
@@ -574,7 +550,6 @@ end function
 
 sub char_setColLeft(col as object) 
     m.config.col.left = col
-    global_save(m.config, "char")
 end sub
 
 
@@ -584,7 +559,6 @@ end function
 
 sub char_setColRight(col as object) 
     m.config.col.right = col
-    global_save(m.config, "char")
 end sub
 
 
@@ -595,7 +569,6 @@ end function
 
 sub char_setUpSpeed(speed as object) 
     m.config.attrs.speed.up = speed
-    global_save(m.config, "char")
 end sub
 
 
@@ -605,7 +578,6 @@ end function
 
 sub char_setDownSpeed(speed as object) 
     m.config.attrs.speed.down = speed
-    global_save(m.config, "char")
 end sub
 
 
@@ -615,7 +587,6 @@ end function
 
 sub char_setLeftSpeed(speed as object) 
     m.config.attrs.speed.left = speed
-    global_save(m.config, "char")
 end sub
 
 
@@ -625,7 +596,6 @@ end function
 
 sub char_setRightSpeed(speed as object) 
     m.config.attrs.speed.right = speed
-    global_save(m.config, "char")
 end sub
 
 function char_getReg(i as object) as object
@@ -634,4 +604,8 @@ end function
 
 sub char_setReg(i as object, reg as object)
     m.config.entity.anim.reg[i] = reg
+end sub
+
+sub char_save()
+    global_save(m.config, "char")
 end sub

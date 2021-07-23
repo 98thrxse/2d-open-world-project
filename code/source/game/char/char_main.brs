@@ -12,5 +12,11 @@ function char_main(object)
         m.game.createInstance("char_act") 
 
     end function
+
+    object.onUpdate = function(dt as float)
+
+        m.game.char.save()
+
+    end function
     
 end function
