@@ -12,98 +12,64 @@ function char_anim(object)
 		' held
         if code = 1006 ' select
 			if m.game.getFocusGroup() = "char"
-				if m.game.char.getSP() >= m.game.char.getSPDamage()
-					if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "side")
-						m.playAnim(["stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "stand_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "stand_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "stand_side2"])
-					
-					else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "front")
-						m.playAnim(["stand_front1", "attack_fist1_front", "stand_front1", "attack_fist2_front", "stand_front1", "attack_leg1_front", "stand_front1"])
-
-					else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "back")
-						m.playAnim(["stand_back1", "attack_fist1_back", "stand_back1", "attack_fist2_back", "stand_back1", "attack_leg1_back", "stand_back1"])
-
-					end if
-				else
-					m.playAnim(["sp_zero"])
-				end if
+				m.animAttack()
 			end if
 
 		else if code = 1002 ' up
 			if m.game.getFocusGroup() = "char"
-				m.playAnim(["walk_back1", "stand_back1", "walk_back2"])
+				m.animWalkUp()
 			end if
 
 		else if code = 1003 ' down
 			if m.game.getFocusGroup() = "char"
-				m.playAnim(["walk_front1", "stand_front1", "walk_front2"])
+				m.animWalkDown()
 			end if
 
 		else if code = 1004 ' left
 			if m.game.getFocusGroup() = "char"
-				m.playAnim(["walk_side1", "stand_side1", "walk_side2"])
+				m.animWalkSide()
 			end if
 
 		else if code = 1005 ' right
 			if m.game.getFocusGroup() = "char"
-				m.playAnim(["walk_side1", "stand_side1", "walk_side2"])
+				m.animWalkSide()
 			end if
 
 		' released
 		else if code = 106 ' select
 			if m.game.getFocusGroup() = "char"
-				if m.game.char.getSP() >= m.game.char.getSPDamage()
-					if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "side")
-						m.playAnim(["stand_side2"])
-					else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "front")
-						m.playAnim(["stand_front2"])
-
-					else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "back")
-						m.playAnim(["stand_back2"])
-					end if
-				else
-					m.playAnim(["sp_zero"])
-
-				end if
-
+				m.animAfterAttack()
 			end if
 
 		else if code = 102 ' up
 			if m.game.getFocusGroup() = "char"
-				m.timer = invalid
-				m.playAnim(["stand_back1"])
-
+				m.animIdleUp()
 			end if
 			
 		else if code = 103 ' down
 			if m.game.getFocusGroup() = "char"
-				m.timer = invalid
-				m.playAnim(["stand_front1"])
-			
+				m.animIdleDown()
 			end if
 
 		else if code = 104 ' left
 			if m.game.getFocusGroup() = "char"
-				m.timer = invalid
-				m.playAnim(["stand_side1"])
-			
+				m.animIdleLeft()
 			end if
 
 		else if code = 105 ' right
 			if m.game.getFocusGroup() = "char"
-				m.timer = invalid
-				m.playAnim(["stand_side1"])
-
+				m.animIdleRight()
 			end if
 
 		end if
 
 	end function
 
-	object.playAnim = function(arr)
+	object.animPlay = function(arr)
 
-		if m.timer = invalid
-			m.timer = CreateObject("roTimeSpan")
-			m.timer.Mark()
+		if m.animTimer = invalid
+			m.animTimer = CreateObject("roTimeSpan")
+			m.animTimer.Mark()
 		end if
 
 		arrAnim = []
@@ -114,8 +80,8 @@ function char_anim(object)
 			end for
 		end for
 		
-		if m.timer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.char.getAnimTime() then m.timer.Mark()
-		m.game.char.setIndex(arrAnim[int(m.timer.TotalMilliseconds() / m.game.char.getAnimTime())])
+		if m.animTimer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.char.getAnimTime() then m.animTimer.Mark()
+		m.game.char.setIndex(arrAnim[int(m.animTimer.TotalMilliseconds() / m.game.char.getAnimTime())])
 
 
 	end function
@@ -126,6 +92,70 @@ function char_anim(object)
 
     end function
 
+
+	object.animAttack = function()
+		if m.game.char.getSP() >= m.game.char.getSPDamage()
+			if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "side")
+				m.animPlay(["stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "stand_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "stand_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "stand_side2"])
+			
+			else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "front")
+				m.animPlay(["stand_front1", "attack_fist1_front", "stand_front1", "attack_fist2_front", "stand_front1", "attack_leg1_front", "stand_front1"])
+
+			else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "back")
+				m.animPlay(["stand_back1", "attack_fist1_back", "stand_back1", "attack_fist2_back", "stand_back1", "attack_leg1_back", "stand_back1"])
+
+			end if
+		else
+			m.animPlay(["sp_zero"])
+		end if
+	end function
+
+	object.animWalkUp = function()
+		m.animPlay(["walk_back1", "stand_back1", "walk_back2"])
+	end function
+
+	object.animWalkDown = function()
+		m.animPlay(["walk_front1", "stand_front1", "walk_front2"])
+	end function
+
+	object.animWalkSide = function()
+		m.animPlay(["walk_side1", "stand_side1", "walk_side2"])
+	end function
+
+	object.animAfterAttack = function()
+		if m.game.char.getSP() >= m.game.char.getSPDamage()
+			if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "side")
+				m.animPlay(["stand_side2"])
+			else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "front")
+				m.animPlay(["stand_front2"])
+
+			else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "back")
+				m.animPlay(["stand_back2"])
+			end if
+		else
+			m.animPlay(["sp_zero"])
+		end if
+	end function
+
+	object.animIdleUp = function()
+		m.animTimer = invalid
+		m.animPlay(["stand_back1"])
+	end function
+
+	object.animIdleDown = function()
+		m.animTimer = invalid
+		m.animPlay(["stand_front1"])
+	end function
+
+	object.animIdleLeft = function()
+		m.animTimer = invalid
+		m.animPlay(["stand_side1"])
+	end function
+
+	object.animIdleRight = function()
+		m.animTimer = invalid
+		m.animPlay(["stand_side1"])
+	end function
 
     object.animUpdate = function()
 

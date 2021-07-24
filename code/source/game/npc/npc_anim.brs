@@ -12,13 +12,13 @@ function npc_anim(object)
 
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) <= 0
-				if m.game.npc.getReg(i, m.game.npc.getIndex(i)) <> "hp_zero" then m.playAnim(i, ["hp_zero"])
+				if m.game.npc.getReg(i, m.game.npc.getIndex(i)) <> "hp_zero" then m.animPlay(i, ["hp_zero"])
 			end if
 		end for
 
 	end function
 
-	object.playAnim = function(i, arr)
+	object.animPlay = function(i, arr)
 
 		if m.timer = invalid
 			m.timer = CreateObject("roTimeSpan")
