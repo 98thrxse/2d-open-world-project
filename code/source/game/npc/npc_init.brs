@@ -8,7 +8,6 @@ function npc_init(object)
 		m.game.defineObject("npc_col", npc_col)
 		m.game.defineObject("npc_control", npc_control)
 		m.game.defineObject("npc_anim", npc_anim)
-		m.game.defineObject("npc_act", npc_act)
 
 		' createInstance
         m.game.createInstance("npc_main")

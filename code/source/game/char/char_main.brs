@@ -9,7 +9,6 @@ function char_main(object)
         m.game.createInstance("char_col")
         m.game.createInstance("char_control")
         m.game.createInstance("char_anim")
-        m.game.createInstance("char_act") 
 
     end function
 
