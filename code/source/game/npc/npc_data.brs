@@ -5,6 +5,18 @@ function npc_data() as object
         ' attrs
         getHP: npc_getHP
         setHP: npc_setHP
+
+        getPath: npc_getPath
+        setPath: npc_setPath
+
+        getPathX: npc_getPathX
+        setPathX: npc_setPathX
+
+        getPathY: npc_getPathY
+        setPathY: npc_setPathY
+        
+        getPathCycle: npc_getPathCycle
+        setPathCycle: npc_setPathCycle
  
         ' entity
         getEntityName: npc_getEntityName
@@ -191,4 +203,36 @@ end function
 
 sub npc_setAnimTime(i as object, time as object)
     m.config[i].entity.anim.time = time
+end sub
+
+function npc_getPath(i as object) as object
+    return m.config[i].attrs.path.position
+end function
+
+sub npc_setPath(i as object, position as object)
+    m.config[i].attrs.path.position = position
+end sub
+
+function npc_getPathX(i as object, j as object) as object
+    return m.config[i].attrs.path.position[j][0]
+end function
+
+sub npc_setPathX(i as object, j as object, x as object)
+    m.config[i].attrs.path.position[j][0] = x
+end sub
+
+function npc_getPathY(i as object, j as object) as object
+    return m.config[i].attrs.path.position[j][1]
+end function
+
+sub npc_setPathY(i as object, j as object, y as object)
+    m.config[i].attrs.path.position[j][1] = y
+end sub
+
+function npc_getPathCycle(i as object) as object
+    return m.config[i].attrs.path.cycle
+end function
+
+sub npc_setPathCycle(i as object, cycle as object)
+    m.config[i].attrs.path.cycle = cycle
 end sub

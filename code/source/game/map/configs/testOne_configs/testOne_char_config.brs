@@ -1,14 +1,6 @@
 function testOne_char_config() as object
     config = {
 
-        xy: {
-            name: "XY"
-            offset: {
-                x: invalid,
-                y: invalid
-            }
-        }
-
         entity: {
             name: invalid
             size: {

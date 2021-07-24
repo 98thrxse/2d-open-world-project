@@ -148,8 +148,8 @@ function char_data(ver) as object
             entity: {
                 name: "char_entity"
                 pos: {
-                    x: 0,
-                    y: 0
+                    x: 9676,
+                    y: 1899
                 },
     
                 size: {

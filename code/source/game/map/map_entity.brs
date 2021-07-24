@@ -199,6 +199,10 @@ function map_entity(object)
                     },
         
                     attrs: {
+                        path: {
+                            cycle: invalid,
+                            position: []
+                        },
                         hp: invalid
                     }
                 })
@@ -213,6 +217,8 @@ function map_entity(object)
 
             ' attrs
             if m.map_npc_config[i].attrs.hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].attrs.hp)
+            if m.map_npc_config[i].attrs.path.position <> invalid then m.game.npc.setPath(i, m.map_npc_config[i].attrs.path.position)
+            if m.map_npc_config[i].attrs.path.cycle <> invalid then m.game.npc.setPathCycle(i, m.map_npc_config[i].attrs.path.cycle)
 
             ' entity
             if m.map_npc_config[i].entity.name <> invalid then m.game.npc.setEntityName(i, m.map_npc_config[i].entity.name)
@@ -252,10 +258,6 @@ function map_entity(object)
     object.loadChar = function()
 
         ' loading map config to player data
-
-        ' xy
-        if m.map_char_config.xy.offset.x <> invalid then m.game.map.setEntityOffsetX(m.map_char_config.xy.offset.x)
-        if m.map_char_config.xy.offset.y <> invalid then m.game.map.setEntityOffsetY(m.map_char_config.xy.offset.y)
 
         ' entity
         if m.map_char_config.entity.name <> invalid then m.game.char.setEntityName(m.map_char_config.entity.name)
