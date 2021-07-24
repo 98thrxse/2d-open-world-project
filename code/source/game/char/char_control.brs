@@ -37,132 +37,158 @@ function char_control(object)
 		' pressed
     if code = 2 ' up
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getScaleX() <> 1.0
-          m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
-          
-        end if
-      m.game.char.setScaleX(1.0)
-
+        m.charTurnUp()
       end if
 
     else if code = 3 ' down
       if m.game.getFocusGroup() = "char"
-
-        if m.game.char.getScaleX() <> 1.0
-          m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
-
-        end if
-        m.game.char.setScaleX(1.0)
-      
+        m.charTurnDown()
       end if
 
     else if code = 4 ' left
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getScaleX() <> -1.0
-          m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() + m.game.char.getEntityW())
-          m.game.char.setScaleX(-1.0)
-
-        end if
-
+        m.charTurnLeft()
       end if
 
 		else if code = 5 ' right
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getScaleX() <> 1.0
-          m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
-          m.game.char.setScaleX(1.0)
-
-        end if
-
+        m.charTurnRight()
       end if
 
 
     ' released
-    else if code = 102
+    else if code = 102 ' up
       if m.game.getFocusGroup() = "char"
-        m.game.char.setNPCCol(invalid)
-        m.game.char.setColDown(false)
-        m.game.char.setColLeft(false)
-        m.game.char.setColRight(false)
-      
+        m.charIdleUp()      
       end if
 
-    else if code = 103
+    else if code = 103 ' down
       if m.game.getFocusGroup() = "char"
-        m.game.char.setNPCCol(invalid)
-        m.game.char.setColUp(false)
-        m.game.char.setColLeft(false)
-        m.game.char.setColRight(false)
-        
+        m.charIdleDown()        
       end if
 
-    else if code = 104
+    else if code = 104 ' left
       if m.game.getFocusGroup() = "char"
-        m.game.char.setNPCCol(invalid)
-        m.game.char.setColUp(false)
-        m.game.char.setColDown(false)
-        m.game.char.setColRight(false)
-        
+        m.charIdleLeft()        
       end if
 
-    else if code = 105
+    else if code = 105 ' right
       if m.game.getFocusGroup() = "char"
-        m.game.char.setNPCCol(invalid)
-        m.game.char.setColUp(false)
-        m.game.char.setColDown(false)
-        m.game.char.setColLeft(false)
-        
+        m.charIdleRight()        
       end if
 
       
     ' held
     else if code = 1002 ' up
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getColUp() = false
-          m.game.map.setEntityOffsetY(m.game.map.getEntityOffsetY() + m.game.char.getUpSpeed())
-
-        end if
-
+        m.charWalkUp()
       end if
                       
     else if code = 1003 ' down
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getColDown() = false
-          m.game.map.setEntityOffsetY(m.game.map.getEntityOffsetY() - m.game.char.getDownSpeed())
-
-        end if
-      
+        m.charWalkDown()      
       end if
         
     else if code = 1004 ' left
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getColLeft() = false
-          m.game.map.setEntityOffsetX(m.game.map.getEntityOffsetX() + m.game.char.getLeftSpeed())
-
-        end if
-
+        m.charWalkLeft()
       end if
             
     else if code = 1005 ' right
       if m.game.getFocusGroup() = "char"
-        if m.game.char.getColRight() = false
-          m.game.map.setEntityOffsetX(m.game.map.getEntityOffsetX() - m.game.char.getRightSpeed())
-
-        end if
-
+        m.charWalkRight()
       end if
 
     else if code = 1006 ' select
       if m.game.getFocusGroup() = "char"
         m.charSPDamage()
         m.npcHPDamage()
-
       end if
       
 		end if
 
 	end function
 
+  object.charTurnUp = function()
+    if m.game.char.getScaleX() <> 1.0
+      m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
+    end if
+    m.game.char.setScaleX(1.0)
+  end function
+
+  object.charTurnDown = function()
+    if m.game.char.getScaleX() <> 1.0
+      m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
+    end if
+    m.game.char.setScaleX(1.0)
+  end function
+
+  object.charTurnLeft = function()
+    if m.game.char.getScaleX() <> -1.0
+      m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() + m.game.char.getEntityW())
+      m.game.char.setScaleX(-1.0)
+    end if
+  end function
+
+  object.charTurnRight = function()
+    if m.game.char.getScaleX() <> 1.0
+      m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
+      m.game.char.setScaleX(1.0)
+    end if
+  end function
+
+  object.charIdleUp = function()
+    m.game.char.setNPCCol(invalid)
+    m.game.char.setColDown(false)
+    m.game.char.setColLeft(false)
+    m.game.char.setColRight(false)
+  end function
+
+  object.charIdleDown = function()
+    m.game.char.setNPCCol(invalid)
+    m.game.char.setColUp(false)
+    m.game.char.setColLeft(false)
+    m.game.char.setColRight(false)
+  end function
+
+  object.charIdleLeft = function()
+    m.game.char.setNPCCol(invalid)
+    m.game.char.setColUp(false)
+    m.game.char.setColDown(false)
+    m.game.char.setColRight(false)
+  end function
+
+  object.charIdleRight = function()
+    m.game.char.setNPCCol(invalid)
+    m.game.char.setColUp(false)
+    m.game.char.setColDown(false)
+    m.game.char.setColLeft(false)
+  end function
+
+  object.charWalkUp = function()
+    if m.game.char.getColUp() = false
+      m.game.map.setEntityOffsetY(m.game.map.getEntityOffsetY() + m.game.char.getUpSpeed())
+    end if
+  end function
+
+  object.charWalkDown = function()
+    if m.game.char.getColDown() = false
+      m.game.map.setEntityOffsetY(m.game.map.getEntityOffsetY() - m.game.char.getDownSpeed())
+    end if
+  end function
+
+  object.charWalkLeft = function()
+    if m.game.char.getColLeft() = false
+      m.game.map.setEntityOffsetX(m.game.map.getEntityOffsetX() + m.game.char.getLeftSpeed())
+    end if
+  end function
+
+  object.charWalkRight = function()
+    if m.game.char.getColRight() = false
+      m.game.map.setEntityOffsetX(m.game.map.getEntityOffsetX() - m.game.char.getRightSpeed())
+    end if
+  end function
+  
   object.npcHPDamage = function()
     if m.game.char.getSP() >= m.game.char.getSPDamage()
       if m.hp_damage_timer = invalid
