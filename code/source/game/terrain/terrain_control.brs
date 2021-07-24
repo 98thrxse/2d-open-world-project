@@ -7,7 +7,7 @@ function terrain_control(object)
 
     end function
 
-    object.controlXY = function()
+    object.controlPos = function()
 
         ' position
         m.entity_wnd.x = m.game.map.getEntityOffsetX()
@@ -17,7 +17,7 @@ function terrain_control(object)
 
     object.onUpdate = function(dt as float)
 
-        m.controlXY()
+        m.controlPos()
 
     end function
     

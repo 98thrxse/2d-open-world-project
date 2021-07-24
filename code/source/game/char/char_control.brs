@@ -55,7 +55,6 @@ function char_control(object)
         m.charTurnRight()
       end if
 
-
     ' released
     else if code = 102 ' up
       if m.game.getFocusGroup() = "char"

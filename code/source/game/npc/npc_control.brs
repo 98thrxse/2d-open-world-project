@@ -8,7 +8,7 @@ function npc_control(object)
 
   end function
 
-  object.controlXY = function()
+  object.controlPos = function()
 
     ' entity position
     m.entity_wnd.x = m.game.map.getEntityOffsetX()
@@ -22,7 +22,7 @@ function npc_control(object)
 
   object.onUpdate = function(dt as float)
 
-      m.controlXY()
+      m.controlPos()
       m.npcPath()
       m.dataUpdate()
 
