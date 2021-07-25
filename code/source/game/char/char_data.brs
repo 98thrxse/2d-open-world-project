@@ -215,10 +215,10 @@ function char_data(ver) as object
                     sp_time: 1000
                 },
                 speed: {
-                    up: 3,
-                    down: 3,
-                    left: 3,
-                    right: 3
+                    up: 2,
+                    down: 2,
+                    left: 2,
+                    right: 2
                 },
             },
 

@@ -40,11 +40,8 @@ function npc_control(object)
         else if m.game.npc.getEntityOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
           m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) - 1)
           m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) - 1)
-
-        end if
-
-
-        if m.game.npc.getEntityOffsetY(i) < m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+        
+        else if m.game.npc.getEntityOffsetY(i) < m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
             m.game.npc.setEntityOffsetY(i, m.game.npc.getEntityOffsetY(i) + 1)
             m.game.npc.setColOffsetY(i, m.game.npc.getColOffsetY(i) + 1)
 
