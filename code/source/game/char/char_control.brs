@@ -111,15 +111,15 @@ function char_control(object)
   object.charTurnUp = function()
     if m.game.char.getScaleX() <> 1.0
       m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
+      m.game.char.setScaleX(1.0)
     end if
-    m.game.char.setScaleX(1.0)
   end function
 
   object.charTurnDown = function()
     if m.game.char.getScaleX() <> 1.0
       m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
+      m.game.char.setScaleX(1.0)
     end if
-    m.game.char.setScaleX(1.0)
   end function
 
   object.charTurnLeft = function()

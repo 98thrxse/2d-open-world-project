@@ -161,7 +161,7 @@ function char_anim(object)
 
         if m.entity_wnd.getImage(m.game.char.getEntityName()) <> invalid
 
-			' update char alpha
+			' update char data
 			m.entity_wnd.getImage(m.game.char.getEntityName()).alpha = m.game.char.getAlpha()
 			m.entity_wnd.getImage(m.game.char.getEntityName()).index = m.game.char.getIndex()
 			m.entity_wnd.getImage(m.game.char.getEntityName()).scale_x = m.game.char.getScaleX()

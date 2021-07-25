@@ -58,6 +58,8 @@ function npc_entity(object)
           m.addAnimatedImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr(), m.npc_regions, { index: m.game.npc.getIndex(i)
             offset_x: m.game.npc.getEntityOffsetX(i),
             offset_y: m.game.npc.getEntityOffsetY(i)
+            scale_x: m.game.npc.getScaleX(i)
+            scale_y: m.game.npc.getScaleY(i)
           })
   
         end if

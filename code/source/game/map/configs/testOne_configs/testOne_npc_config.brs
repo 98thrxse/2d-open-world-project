@@ -12,6 +12,10 @@ function testOne_npc_config() as object
                         x: 9400,
                         y: 1800
                     },
+                    scale: {
+                        x: 1.0,
+                        y: 1.0
+                    },
                     time: 100
                 },
                 size: {
@@ -53,6 +57,10 @@ function testOne_npc_config() as object
                         x: 9800,
                         y: 2000
                     },
+                    scale: {
+                        x: 1.0,
+                        y: 1.0
+                    },
                     time: 100
                 },
 
@@ -76,8 +84,8 @@ function testOne_npc_config() as object
 
             attrs: {
                 path: {
-                    cycle: 0,
-                    position: [ [9800, 2000] ]
+                    cycle: invalid,
+                    position: []
                 },
                 hp: 100
             }

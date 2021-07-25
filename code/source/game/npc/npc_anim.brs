@@ -4,6 +4,7 @@ function npc_anim(object)
 
 		' getInstanceByName
 		m.entity_wnd = m.game.getInstanceByName("npc_entity")
+		m.col_wnd = m.game.getInstanceByName("npc_col")
 
 	end function
 
@@ -24,7 +25,7 @@ function npc_anim(object)
 
 	object.npcWalk = function()
 		for i = 0 to m.game.npc.config.Count() - 1
-			if m.game.npc.getHP(i) > 0
+			if m.game.npc.getHP(i) > 0 and m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
 
 				if m.game.npc.getEntityOffsetX(i) < m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 					m.npcWalkSide(i)
@@ -32,10 +33,10 @@ function npc_anim(object)
 				else if m.game.npc.getEntityOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 					m.npcWalkSide(i)
 				
-				else if m.game.npc.getEntityOffsetY(i) < m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+				else if m.game.npc.getEntityOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 					m.npcWalkDown(i)
 		
-				else if m.game.npc.getEntityOffsetY(i) > m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+				else if m.game.npc.getEntityOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 					m.npcWalkUp(i)
 		
 				end if
@@ -84,8 +85,15 @@ function npc_anim(object)
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr()) <> invalid
 				
-				' update npc anim
+				' update npc data
 				m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr()).index = m.game.npc.getIndex(i)
+				m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr()).scale_x = m.game.npc.getScaleX(i)
+				m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr()).scale_y = m.game.npc.getScaleY(i)
+				m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr()).offset_x = m.game.npc.getEntityOffsetX(i)
+				m.entity_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr()).offset_y = m.game.npc.getEntityOffsetY(i)
+
+				m.col_wnd.getCollider(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()).offset_x = m.game.npc.getColOffsetX(i)
+				m.col_wnd.getCollider(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()).offset_y = m.game.npc.getColOffsetY(i)
 
 			end if
 		

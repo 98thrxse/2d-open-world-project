@@ -178,6 +178,10 @@ function map_entity(object)
                                 x: invalid,
                                 y: invalid
                             },
+                            scale: {
+                                x: invalid,
+                                y: invalid
+                            },
                             time: invalid
                         },
                         size: {
@@ -228,6 +232,8 @@ function map_entity(object)
             if m.map_npc_config[i].entity.size.height <> invalid then m.game.npc.setEntityH(i, m.map_npc_config[i].entity.size.height)
             if m.map_npc_config[i].entity.anim.index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].entity.anim.index)
             if m.map_npc_config[i].entity.anim.time <> invalid then m.game.npc.setAnimTime(i, m.map_npc_config[i].entity.anim.time)
+            if m.map_npc_config[i].entity.anim.scale.x <> invalid then m.game.npc.setScaleX(i, m.map_npc_config[i].entity.anim.scale.x)
+            if m.map_npc_config[i].entity.anim.scale.y <> invalid then m.game.npc.setScaleY(i, m.map_npc_config[i].entity.anim.scale.y)
 
             if m.map_npc_config[i].entity.anim.reg <> invalid
 

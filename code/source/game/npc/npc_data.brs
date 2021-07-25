@@ -43,6 +43,12 @@ function npc_data() as object
         getAnimTime: npc_getAnimTime
         setAnimTime: npc_setAnimTime
 
+        getScaleX: npc_getScaleX
+        setScaleX: npc_setScaleX
+
+        getScaleY: npc_getScaleY
+        setScaleY: npc_setScaleY
+
         ' col
         getColName: npc_getColName
         setColName: npc_setColName
@@ -235,4 +241,20 @@ end function
 
 sub npc_setPathCycle(i as object, cycle as object)
     m.config[i].attrs.path.cycle = cycle
+end sub
+
+function npc_getScaleX(i as object) as object
+    return m.config[i].entity.anim.scale.x
+end function
+
+sub npc_setScaleX(i as object, x as object)
+    m.config[i].entity.anim.scale.x = x
+end sub
+
+function npc_getScaleY(i as object) as object
+    return m.config[i].entity.anim.scale.y
+end function
+
+sub npc_setScaleY(i as object, y as object)
+    m.config[i].entity.anim.scale.y = y
 end sub
