@@ -35,7 +35,7 @@ function testOne_npc_config() as object
             attrs: {
                 path: {
                     cycle: 0,
-                    position: [ [9400, 1800], [9500, 2000]]
+                    position: [ [9400, 1800], [9500, 2000] ]
                 },
                 hp: 100
             }

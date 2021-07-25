@@ -8,15 +8,55 @@ function npc_anim(object)
 	end function
 
 	
-	object.animDeath = function()
+	object.npcDeath = function()
 
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) <= 0
-				if m.game.npc.getReg(i, m.game.npc.getIndex(i)) <> "hp_zero" then m.animPlay(i, ["hp_zero"])
+				if m.game.npc.getReg(i, m.game.npc.getIndex(i)) <> "hp_zero" 
+					m.animPlay(i, ["hp_zero"])
+					m.game.npc.setPathCycle(i, 0)
+					m.game.npc.setPath(i, [ [m.game.npc.getEntityOffsetX(i), m.game.npc.getEntityOffsetY(i)] ])
+				end if
 			end if
 		end for
 
 	end function
+
+	object.npcWalk = function()
+		for i = 0 to m.game.npc.config.Count() - 1
+			if m.game.npc.getHP(i) > 0
+
+				if m.game.npc.getEntityOffsetX(i) < m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
+					m.npcWalkSide(i)
+				
+				else if m.game.npc.getEntityOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
+					m.npcWalkSide(i)
+				
+				else if m.game.npc.getEntityOffsetY(i) < m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+					m.npcWalkDown(i)
+		
+				else if m.game.npc.getEntityOffsetY(i) > m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+					m.npcWalkUp(i)
+		
+				end if
+	
+			end if
+	
+		end for
+	end function
+
+	object.npcWalkUp = function(i)
+		m.animPlay(i, ["walk_back1", "stand_back1", "walk_back2"])
+	end function
+
+	object.npcWalkDown = function(i)
+		m.animPlay(i, ["walk_front1", "stand_front1", "walk_front2"])
+	end function
+
+	object.npcWalkSide = function(i)
+		m.animPlay(i, ["walk_side1", "stand_side1", "walk_side2"])
+	end function
+
 
 	object.animPlay = function(i, arr)
 
@@ -38,6 +78,7 @@ function npc_anim(object)
 
 	end function
 
+
 	object.animUpdate = function()
 
 		for i = 0 to m.game.npc.config.Count() - 1
@@ -55,7 +96,8 @@ function npc_anim(object)
 
 	object.onUpdate = function(dt as float)
 
-		m.animDeath()
+		m.npcDeath()
+		m.npcWalk()
 		m.animUpdate()
 
 	end function
