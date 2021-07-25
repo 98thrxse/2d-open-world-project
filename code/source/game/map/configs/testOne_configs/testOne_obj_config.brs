@@ -7,89 +7,27 @@ function testOne_obj_config() as object
                 name: "obj_entity",
                 anim: {
                     alpha: 255
-                    reg: ["obj_0"]
+                    reg: ["obj_house1_front", "obj_house1_back", "obj_house1_side1", "obj_house1_side2"]
                     offset: {
-                        x: 100,
-                        y: 100,
+                        x: 9600,
+                        y: 2200,
                     },
                 },
                 size: {
-                    width: 128,
-                    height: 72
+                    width: 250,
+                    height: 250
                 }
             },
 
             col: {
                 name: "obj_col",
                 offset: {
-                    x: 110,
-                    y: 132,
+                    x: 9625,
+                    y: 2300,
                 },
                 size: {
-                    width: 110,
-                    height: 8
-                }
-            }
-        },
-
-        {
-            id: 1
-            entity: {
-                name: "obj_entity",
-                anim: {
-                    alpha: 255
-                    reg: ["obj_0"]
-                    offset: {
-                        x: 300,
-                        y: 100,
-                    },
-                },
-
-                size: {
-                    width: 128,
-                    height: 72
-                }
-            },
-            col: {
-                name: "obj_col",
-                offset: {
-                    x: 310,
-                    y: 132,
-                },
-                size: {
-                    width: 110,
-                    height: 8
-                }
-            }
-        },
-
-        {
-            id: 2,
-            entity: {
-                name: "obj_entity",
-                anim: {
-                    alpha: 255
-                    reg: ["obj_1"]
-                    offset: {
-                        x: 500,
-                        y: 100,
-                    },
-                },
-
-                size: {
-                    width: 128,
-                    height: 72
-                }
-            },
-            col: {
-                name: "obj_col",
-                offset: {
-                    x: 510,
-                    y: 132,
-                }
-                size: {
-                    width: 110,
-                    height: 8
+                    width: 200,
+                    height: 100
                 }
             }
         }
