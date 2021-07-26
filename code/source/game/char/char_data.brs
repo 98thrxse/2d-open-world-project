@@ -42,6 +42,9 @@ function char_data(ver) as object
         getRegElement: char_getRegElement
         setRegElement: char_setRegElement
 
+        getReg: char_getReg
+        setReg: char_setReg
+
         ' attrs
         getHP: char_getHP
         setHP: char_setHP
@@ -601,6 +604,14 @@ end function
 
 sub char_setRegElement(i as object, reg as object)
     m.config.entity.reg[i] = reg
+end sub
+
+function char_getReg() as object
+    return m.config.entity.reg
+end function
+
+sub char_setReg(reg as object)
+    m.config.entity.reg = reg
 end sub
 
 sub char_save()

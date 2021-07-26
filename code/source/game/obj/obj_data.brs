@@ -24,6 +24,9 @@ function obj_data() as object
         getRegElement: obj_getRegElement
         setRegElement: obj_setRegElement
 
+        getReg: obj_getReg
+        setReg: obj_setReg
+
         ' col
         getColName: obj_getColName
         setColName: obj_setColName
@@ -72,6 +75,15 @@ end function
 
 sub obj_setRegElement(i as object, j as object, reg as object)
     m.config[i].entity.reg[j] = reg
+end sub
+
+
+function obj_getReg(i as object) as object
+    return m.config[i].entity.reg
+end function
+
+sub obj_setReg(i as object, reg as object)
+    m.config[i].entity.reg = reg
 end sub
 
 

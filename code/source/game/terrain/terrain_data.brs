@@ -15,6 +15,9 @@ function terrain_data() as object
         getRegElement: terrain_getRegElement
         setRegElement: terrain_setRegElement
 
+        getReg: terrain_getReg
+        setReg: terrain_setReg
+
 
         config: invalid
 
@@ -64,4 +67,12 @@ end function
 
 sub terrain_setRegElement(i as object, j as object, k as object, reg as object)
     m.config[i][j].entity.reg[k] = reg
+end sub
+
+function terrain_getReg(i as object, j as object) as object
+    return m.config[i][j].entity.reg
+end function
+
+sub terrain_setReg(i as object, j as object, reg as object)
+    m.config[i][j].entity.reg = reg
 end sub

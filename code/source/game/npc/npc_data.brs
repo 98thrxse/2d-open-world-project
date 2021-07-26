@@ -40,6 +40,9 @@ function npc_data() as object
         getRegElement: npc_getRegElement
         setRegElement: npc_setRegElement
 
+        getReg: npc_getReg
+        setReg: npc_setReg
+
         getAnimTime: npc_getAnimTime
         setAnimTime: npc_setAnimTime
 
@@ -201,6 +204,14 @@ end function
 
 sub npc_setRegElement(i as object, j as object, reg as object)
     m.config[i].entity.reg[j] = reg
+end sub
+
+function npc_getReg(i as object) as object
+    return m.config[i].entity.reg
+end function
+
+sub npc_setReg(i as object, reg as object)
+    m.config[i].entity.reg = reg
 end sub
 
 function npc_getAnimTime(i as object) as object
