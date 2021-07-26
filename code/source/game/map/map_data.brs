@@ -7,6 +7,9 @@ function map_data() as object
         getEntityOffsetY: map_getEntityOffsetY
         setEntityOffsetY: map_setEntityOffsetY
 
+		getMap: map_getMap
+        setMap: map_setMap
+
 		config: invalid
 	}
 
@@ -16,7 +19,9 @@ function map_data() as object
 			offset: {
 				x: 0,
 				y: 0
-			}
+			},
+			
+			map: "testOne"
 		}
 
 	end if
@@ -39,4 +44,12 @@ end function
 
 sub map_setEntityOffsetY(y as object)
     m.config.offset.y = y
+end sub
+
+function map_getMap() as object
+    return m.config.map
+end function
+
+sub map_setMap(map as object)
+    m.config.map = map
 end sub

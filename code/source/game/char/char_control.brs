@@ -5,12 +5,10 @@ function char_control(object)
     ' getInstanceByName
 		m.view_wnd = m.game.getInstanceByName("char_view")
 
-    m.loadXY()
-
   end function
 
 
-  object.saveXY = function()
+  object.savePos = function()
 
     m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.game.map.getEntityOffsetX())
     m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.game.map.getEntityOffsetY())
@@ -18,18 +16,9 @@ function char_control(object)
   end function
 
 
-  object.loadXY = function()
-
-    ' position
-    m.game.map.setEntityOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX())
-    m.game.map.setEntityOffsetY(m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY())
-
-  end function
-
-
   object.onUpdate = function(dt as float)
 
-    m.saveXY()
+    m.savePos()
     m.charSPRegen()
     m.animUpdate()
 

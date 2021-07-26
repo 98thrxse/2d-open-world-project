@@ -8,11 +8,23 @@ function map_control(object)
     end function
 
     object.chooseMap = function()
-        m.map_char_config = testOne_char_config()
-        m.map_obj_config = testOne_obj_config()
-        m.map_npc_config = testOne_npc_config()
-        m.map_terrain_config = testOne_terrain_config()
-        m.map_interface_config = testOne_interface_config()
+        if m.game.char.getMap() = invalid then m.game.char.setMap(m.game.map.getMap())
+        
+        if m.game.char.getMap() = "testOne"
+            m.map_char_config = testOne_char_config()
+            m.map_obj_config = testOne_obj_config()
+            m.map_npc_config = testOne_npc_config()
+            m.map_terrain_config = testOne_terrain_config()
+            m.map_interface_config = testOne_interface_config()
+
+        else if m.game.char.getMap() = "testTwo"
+            m.map_char_config = testTwo_char_config()
+            m.map_obj_config = testTwo_obj_config()
+            m.map_npc_config = testTwo_npc_config()
+            m.map_terrain_config = testTwo_terrain_config()
+            m.map_interface_config = testTwo_interface_config()
+        end if
+
     end function
 
     object.loadConfigs = function()
@@ -21,6 +33,8 @@ function map_control(object)
         m.loadObj()
         m.loadTerrain()
         m.loadInterface()
+
+        m.loadMap()
     end function
     
     object.loadTerrain = function()
@@ -223,18 +237,18 @@ function map_control(object)
 
         ' entity
         if m.map_char_config.entity.name <> invalid then m.game.char.setEntityName(m.map_char_config.entity.name)
-        if m.map_char_config.entity.pos.x <> invalid then m.game.char.setEntityPosX(m.map_char_config.entity.pos.x)
-        if m.map_char_config.entity.pos.y <> invalid then m.game.char.setEntityPosY(m.map_char_config.entity.pos.y)
-        if m.map_char_config.entity.size.width <> invalid then m.game.char.setEntityW(m.map_char_config.entity.size.width)
-        if m.map_char_config.entity.size.height <> invalid then m.game.char.setEntityH(m.map_char_config.entity.size.height)
-        if m.map_char_config.entity.index <> invalid then m.game.char.setIndex(m.map_char_config.entity.index)
-        if m.map_char_config.entity.alpha <> invalid then m.game.char.setAlpha(m.map_char_config.entity.alpha)
+        if m.map_char_config.entity.pos.x <> invalid and m.game.char.getEntityPosX() = invalid then m.game.char.setEntityPosX(m.map_char_config.entity.pos.x)
+        if m.map_char_config.entity.pos.y <> invalid and m.game.char.getEntityPosY() = invalid then m.game.char.setEntityPosY(m.map_char_config.entity.pos.y)
+        if m.map_char_config.entity.size.width <> invalid and m.game.char.getEntityW() = invalid then m.game.char.setEntityW(m.map_char_config.entity.size.width)
+        if m.map_char_config.entity.size.height <> invalid and m.game.char.getEntityH() = invalid then m.game.char.setEntityH(m.map_char_config.entity.size.height)
+        if m.map_char_config.entity.index <> invalid and m.game.char.getIndex() = invalid then m.game.char.setIndex(m.map_char_config.entity.index)
+        if m.map_char_config.entity.alpha <> invalid and m.game.char.getAlpha() = invalid then m.game.char.setAlpha(m.map_char_config.entity.alpha)
         if m.map_char_config.entity.time <> invalid then m.game.char.setAnimTime(m.map_char_config.entity.time)
-        if m.map_char_config.entity.scale.x <> invalid then m.game.char.setScaleX(m.map_char_config.entity.scale.x)
-        if m.map_char_config.entity.scale.y <> invalid then m.game.char.setScaleY(m.map_char_config.entity.scale.y)
-        if m.map_char_config.entity.offset.x <> invalid then m.game.char.setEntityOffsetX(m.map_char_config.entity.offset.x)
-        if m.map_char_config.entity.offset.y <> invalid then m.game.char.setEntityOffsetY(m.map_char_config.entity.offset.y)
-        if m.map_char_config.entity.reg <> invalid then m.game.char.setReg(m.map_char_config.entity.reg)
+        if m.map_char_config.entity.scale.x <> invalid and m.game.char.getScaleX() = invalid then m.game.char.setScaleX(m.map_char_config.entity.scale.x)
+        if m.map_char_config.entity.scale.y <> invalid and m.game.char.getScaleY() = invalid then m.game.char.setScaleY(m.map_char_config.entity.scale.y)
+        if m.map_char_config.entity.offset.x <> invalid and m.game.char.getEntityOffsetX() = invalid then m.game.char.setEntityOffsetX(m.map_char_config.entity.offset.x)
+        if m.map_char_config.entity.offset.y <> invalid and m.game.char.getEntityOffsetY() = invalid then m.game.char.setEntityOffsetY(m.map_char_config.entity.offset.y)
+        if m.map_char_config.entity.reg <> invalid and m.game.char.getReg() = invalid then m.game.char.setReg(m.map_char_config.entity.reg)
 
         ' attrs
         if m.map_char_config.attrs.hp <> invalid then m.game.char.setHP(m.map_char_config.attrs.hp)
@@ -293,6 +307,15 @@ function map_control(object)
             end for
         end if
 
+    end function
+
+
+    object.loadMap = function()
+
+        ' position
+        m.game.map.setEntityOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX())
+        m.game.map.setEntityOffsetY(m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY())
+    
     end function
 
 end function

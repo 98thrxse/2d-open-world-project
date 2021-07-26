@@ -88,6 +88,9 @@ function char_data(ver) as object
         getRightSpeed: char_getRightSpeed
         setRightSpeed: char_setRightSpeed
 
+        getMap: char_getMap
+        setMap: char_setMap
+
 
         ' intersect
         getObjIntersect: char_getObjIntersect
@@ -151,18 +154,18 @@ function char_data(ver) as object
             entity: {
                 name: "char_entity"
                 pos: {
-                    x: 9676,
-                    y: 1899
+                    x: invalid,
+                    y: invalid
                 },
     
                 size: {
                     width: 48,
-                    height: 56,
+                    height: 56
                 },
 
                 index: 0,
                 alpha: 255,
-                reg: ["stand_back1", "stand_front1", "stand_side1", "walk_back1", "walk_back2", "walk_front1", "walk_front2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "stand_back2", "stand_front2", "stand_side2", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"]
+                reg: ["stand_back1", "stand_front1", "stand_side1", "walk_back1", "walk_back2", "walk_front1", "walk_front2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "stand_back2", "stand_front2", "stand_side2", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"],
                 scale: {
                     x: 1.0
                     y: 1.0
@@ -172,7 +175,7 @@ function char_data(ver) as object
                     x: 616,
                     y: 332
                 },
-                time: 100
+                time: invalid
 
             }
 
@@ -191,35 +194,36 @@ function char_data(ver) as object
                     height: 56,
                 },
 
-                up: false,
-                down: false
-                left: false,
-                right: false
+                up: invalid,
+                down: invalid
+                left: invalid,
+                right: invalid
 
                 npc: invalid
             },
 
             attrs: {
-                hp: 100,
-                sp: 100
+                hp: invalid,
+                sp: invalid
                 damage: {
-                    hp: 10,
-                    sp: 10,
-                    hp_time: 500,
-                    sp_time: 500
+                    hp: invalid,
+                    sp: invalid,
+                    hp_time: invalid,
+                    sp_time: invalid
                 },
                 regen: {
-                    hp: 5,
-                    sp: 5,
-                    hp_time: 1000,
-                    sp_time: 1000
+                    hp: invalid,
+                    sp: invalid,
+                    hp_time: invalid,
+                    sp_time: invalid
                 },
                 speed: {
-                    up: 2,
-                    down: 2,
-                    left: 2,
-                    right: 2
+                    up: invalid,
+                    down: invalid,
+                    left: invalid,
+                    right: invalid
                 },
+                map: invalid
             },
 
             intersect: {
@@ -612,6 +616,14 @@ end function
 
 sub char_setReg(reg as object)
     m.config.entity.reg = reg
+end sub
+
+function char_getMap() as object
+    return m.config.attrs.map
+end function
+
+sub char_setMap(map as object)
+    m.config.attrs.map = map
 end sub
 
 sub char_save()

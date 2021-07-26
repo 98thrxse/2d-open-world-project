@@ -1,4 +1,4 @@
-function testOne_char_config() as object
+function testTwo_char_config() as object
     config = {
 
         entity: {
@@ -23,8 +23,8 @@ function testOne_char_config() as object
             time: 100
 
             pos: {
-                x: 9676,
-                y: 1899
+                x: 0,
+                y: 0
             },
 
         }
@@ -73,7 +73,7 @@ function testOne_char_config() as object
                 left: 2,
                 right: 2
             },
-            map: "testOne"
+            map: "testTwo"
         },
 
         intersect: {
