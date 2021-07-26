@@ -35,10 +35,8 @@ function map_entity(object)
                             id: [i, j],
                             entity: {
                                 name: invalid,
-                                anim: {
-                                    reg: []
-                                }
-                                pos: {
+                                reg: [],
+                                offset: {
                                     x: invalid,
                                     y: invalid
                                 }
@@ -64,19 +62,19 @@ function map_entity(object)
 
                 ' entity
                 if m.map_terrain_config[i][j].entity.name <> invalid then m.game.terrain.setEntityName(i, j, m.map_terrain_config[i][j].entity.name)
-                if m.map_terrain_config[i][j].entity.anim.offset.x <> invalid then m.game.terrain.setEntityOffsetX(i, j, m.map_terrain_config[i][j].entity.anim.offset.x)
-                if m.map_terrain_config[i][j].entity.anim.offset.y <> invalid then m.game.terrain.setEntityOffsetY(i, j, m.map_terrain_config[i][j].entity.anim.offset.y)
-                if m.map_terrain_config[i][j].entity.anim.reg <> invalid
+                if m.map_terrain_config[i][j].entity.offset.x <> invalid then m.game.terrain.setEntityOffsetX(i, j, m.map_terrain_config[i][j].entity.offset.x)
+                if m.map_terrain_config[i][j].entity.offset.y <> invalid then m.game.terrain.setEntityOffsetY(i, j, m.map_terrain_config[i][j].entity.offset.y)
+                if m.map_terrain_config[i][j].entity.reg <> invalid
 
-                    if m.game.terrain.config[i][j].entity.anim.reg.Count() < m.map_terrain_config[i][j].entity.anim.reg.Count()
-                        for k = m.game.terrain.config[i][j].entity.anim.reg.Count() to m.map_terrain_config[i][j].entity.anim.reg.Count() - 1
-                            m.game.terrain.config[i][j].entity.anim.reg.push("")
+                    if m.game.terrain.config[i][j].entity.reg.Count() < m.map_terrain_config[i][j].entity.reg.Count()
+                        for k = m.game.terrain.config[i][j].entity.reg.Count() to m.map_terrain_config[i][j].entity.reg.Count() - 1
+                            m.game.terrain.config[i][j].entity.reg.push("")
                         end for
         
                     end if
         
-                    for k = 0 to m.map_terrain_config[i][j].entity.anim.reg.Count() - 1
-                        m.game.terrain.setReg(i, j, k, m.map_terrain_config[i][j].entity.anim.reg[k])
+                    for k = 0 to m.map_terrain_config[i][j].entity.reg.Count() - 1
+                        m.game.terrain.setReg(i, j, k, m.map_terrain_config[i][j].entity.reg[k])
                     end for
         
                 end if
@@ -94,13 +92,11 @@ function map_entity(object)
                     id: i,                   
                     entity: {
                         name: invalid,
-                        anim: {
-                            alpha: invalid,
-                            reg: []
-                            offset: {
-                                x: invalid,
-                                y: invalid
-                            }
+                        alpha: invalid,
+                        reg: []
+                        offset: {
+                            x: invalid,
+                            y: invalid
                         },
 
                         size: {
@@ -132,22 +128,22 @@ function map_entity(object)
 
             ' entity
             if m.map_obj_config[i].entity.name <> invalid then m.game.obj.setEntityName(i, m.map_obj_config[i].entity.name)
-            if m.map_obj_config[i].entity.anim.offset.x <> invalid then m.game.obj.setEntityOffsetX(i, m.map_obj_config[i].entity.anim.offset.x)
-            if m.map_obj_config[i].entity.anim.offset.y <> invalid then m.game.obj.setEntityOffsetY(i, m.map_obj_config[i].entity.anim.offset.y)
+            if m.map_obj_config[i].entity.offset.x <> invalid then m.game.obj.setEntityOffsetX(i, m.map_obj_config[i].entity.offset.x)
+            if m.map_obj_config[i].entity.offset.y <> invalid then m.game.obj.setEntityOffsetY(i, m.map_obj_config[i].entity.offset.y)
             if m.map_obj_config[i].entity.size.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.size.width)
             if m.map_obj_config[i].entity.size.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.size.height)
-            if m.map_obj_config[i].entity.anim.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].entity.anim.alpha)
-            if m.map_obj_config[i].entity.anim.reg <> invalid
+            if m.map_obj_config[i].entity.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].entity.alpha)
+            if m.map_obj_config[i].entity.reg <> invalid
 
-                if m.game.obj.config[i].entity.anim.reg.Count() < m.map_obj_config[i].entity.anim.reg.Count()
-                    for j = m.game.obj.config[i].entity.anim.reg.Count() to m.map_obj_config[i].entity.anim.reg.Count() - 1
-                        m.game.obj.config[i].entity.anim.reg.push("")
+                if m.game.obj.config[i].entity.reg.Count() < m.map_obj_config[i].entity.reg.Count()
+                    for j = m.game.obj.config[i].entity.reg.Count() to m.map_obj_config[i].entity.reg.Count() - 1
+                        m.game.obj.config[i].entity.reg.push("")
                     end for
     
                 end if
     
-                for j = 0 to m.map_obj_config[i].entity.anim.reg.Count() - 1
-                    m.game.obj.setReg(i, j, m.map_obj_config[i].entity.anim.reg[j])
+                for j = 0 to m.map_obj_config[i].entity.reg.Count() - 1
+                    m.game.obj.setReg(i, j, m.map_obj_config[i].entity.reg[j])
                 end for
     
             end if
@@ -171,19 +167,19 @@ function map_entity(object)
                     id: i,       
                     entity: {
                         name: invalid,
-                        anim: {
-                            index: invalid,
-                            reg: []
-                            offset: {
-                                x: invalid,
-                                y: invalid
-                            },
-                            scale: {
-                                x: invalid,
-                                y: invalid
-                            },
-                            time: invalid
+                        index: invalid,
+                        reg: []
+                        offset: {
+                            x: invalid,
+                            y: invalid
                         },
+
+                        scale: {
+                            x: invalid,
+                            y: invalid
+                        },
+
+                        time: invalid,
                         size: {
                             width: invalid,
                             height: invalid
@@ -226,26 +222,26 @@ function map_entity(object)
 
             ' entity
             if m.map_npc_config[i].entity.name <> invalid then m.game.npc.setEntityName(i, m.map_npc_config[i].entity.name)
-            if m.map_npc_config[i].entity.anim.offset.x <> invalid then m.game.npc.setEntityOffsetX(i, m.map_npc_config[i].entity.anim.offset.x)
-            if m.map_npc_config[i].entity.anim.offset.y <> invalid then m.game.npc.setEntityOffsetY(i, m.map_npc_config[i].entity.anim.offset.y)
+            if m.map_npc_config[i].entity.offset.x <> invalid then m.game.npc.setEntityOffsetX(i, m.map_npc_config[i].entity.offset.x)
+            if m.map_npc_config[i].entity.offset.y <> invalid then m.game.npc.setEntityOffsetY(i, m.map_npc_config[i].entity.offset.y)
             if m.map_npc_config[i].entity.size.width <> invalid then m.game.npc.setEntityW(i, m.map_npc_config[i].entity.size.width)
             if m.map_npc_config[i].entity.size.height <> invalid then m.game.npc.setEntityH(i, m.map_npc_config[i].entity.size.height)
-            if m.map_npc_config[i].entity.anim.index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].entity.anim.index)
-            if m.map_npc_config[i].entity.anim.time <> invalid then m.game.npc.setAnimTime(i, m.map_npc_config[i].entity.anim.time)
-            if m.map_npc_config[i].entity.anim.scale.x <> invalid then m.game.npc.setScaleX(i, m.map_npc_config[i].entity.anim.scale.x)
-            if m.map_npc_config[i].entity.anim.scale.y <> invalid then m.game.npc.setScaleY(i, m.map_npc_config[i].entity.anim.scale.y)
+            if m.map_npc_config[i].entity.index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].entity.index)
+            if m.map_npc_config[i].entity.time <> invalid then m.game.npc.setAnimTime(i, m.map_npc_config[i].entity.time)
+            if m.map_npc_config[i].entity.scale.x <> invalid then m.game.npc.setScaleX(i, m.map_npc_config[i].entity.scale.x)
+            if m.map_npc_config[i].entity.scale.y <> invalid then m.game.npc.setScaleY(i, m.map_npc_config[i].entity.scale.y)
 
-            if m.map_npc_config[i].entity.anim.reg <> invalid
+            if m.map_npc_config[i].entity.reg <> invalid
 
-                if m.game.npc.config[i].entity.anim.reg.Count() < m.map_npc_config[i].entity.anim.reg.Count()
-                    for j = m.game.npc.config[i].entity.anim.reg.Count() to m.map_npc_config[i].entity.anim.reg.Count() - 1
-                        m.game.npc.config[i].entity.anim.reg.push("")
+                if m.game.npc.config[i].entity.reg.Count() < m.map_npc_config[i].entity.reg.Count()
+                    for j = m.game.npc.config[i].entity.reg.Count() to m.map_npc_config[i].entity.reg.Count() - 1
+                        m.game.npc.config[i].entity.reg.push("")
                     end for
     
                 end if
     
-                for j = 0 to m.map_npc_config[i].entity.anim.reg.Count() - 1
-                    m.game.npc.setReg(i, j, m.map_npc_config[i].entity.anim.reg[j])
+                for j = 0 to m.map_npc_config[i].entity.reg.Count() - 1
+                    m.game.npc.setReg(i, j, m.map_npc_config[i].entity.reg[j])
                 end for
     
             end if
@@ -271,24 +267,24 @@ function map_entity(object)
         if m.map_char_config.entity.pos.y <> invalid then m.game.char.setEntityPosY(m.map_char_config.entity.pos.y)
         if m.map_char_config.entity.size.width <> invalid then m.game.char.setEntityW(m.map_char_config.entity.size.width)
         if m.map_char_config.entity.size.height <> invalid then m.game.char.setEntityH(m.map_char_config.entity.size.height)
-        if m.map_char_config.entity.anim.index <> invalid then m.game.char.setIndex(m.map_char_config.entity.anim.index)
-        if m.map_char_config.entity.anim.alpha <> invalid then m.game.char.setAlpha(m.map_char_config.entity.anim.alpha)
-        if m.map_char_config.entity.anim.time <> invalid then m.game.char.setAnimTime(m.map_char_config.entity.anim.time)
-        if m.map_char_config.entity.anim.scale.x <> invalid then m.game.char.setScaleX(m.map_char_config.entity.anim.scale.x)
-        if m.map_char_config.entity.anim.scale.y <> invalid then m.game.char.setScaleY(m.map_char_config.entity.anim.scale.y)
-        if m.map_char_config.entity.anim.offset.x <> invalid then m.game.char.setEntityOffsetX(m.map_char_config.entity.anim.offset.x)
-        if m.map_char_config.entity.anim.offset.y <> invalid then m.game.char.setEntityOffsetY(m.map_char_config.entity.anim.offset.y)
-        if m.map_char_config.entity.anim.reg <> invalid
+        if m.map_char_config.entity.index <> invalid then m.game.char.setIndex(m.map_char_config.entity.index)
+        if m.map_char_config.entity.alpha <> invalid then m.game.char.setAlpha(m.map_char_config.entity.alpha)
+        if m.map_char_config.entity.time <> invalid then m.game.char.setAnimTime(m.map_char_config.entity.time)
+        if m.map_char_config.entity.scale.x <> invalid then m.game.char.setScaleX(m.map_char_config.entity.scale.x)
+        if m.map_char_config.entity.scale.y <> invalid then m.game.char.setScaleY(m.map_char_config.entity.scale.y)
+        if m.map_char_config.entity.offset.x <> invalid then m.game.char.setEntityOffsetX(m.map_char_config.entity.offset.x)
+        if m.map_char_config.entity.offset.y <> invalid then m.game.char.setEntityOffsetY(m.map_char_config.entity.offset.y)
+        if m.map_char_config.entity.reg <> invalid
 
-            if m.game.char.config.entity.anim.reg.Count() < m.map_char_config.entity.anim.reg.Count()
-                for i = m.game.char.config.entity.anim.reg.Count() to m.map_char_config.entity.anim.reg.Count() - 1
-                    m.game.char.config.entity.anim.reg.push("")
+            if m.game.char.config.entity.reg.Count() < m.map_char_config.entity.reg.Count()
+                for i = m.game.char.config.entity.reg.Count() to m.map_char_config.entity.reg.Count() - 1
+                    m.game.char.config.entity.reg.push("")
                 end for
 
             end if
 
-            for i = 0 to m.map_char_config.entity.anim.reg.Count() - 1
-                m.game.char.setReg(i, m.map_char_config.entity.anim.reg[i])
+            for i = 0 to m.map_char_config.entity.reg.Count() - 1
+                m.game.char.setReg(i, m.map_char_config.entity.reg[i])
             end for
 
         end if

@@ -100,20 +100,20 @@ end sub
 
 
 function npc_getEntityOffsetX(i as object) as object
-    return m.config[i].entity.anim.offset.x
+    return m.config[i].entity.offset.x
 end function
 
 sub npc_setEntityOffsetX(i as object, x as object)
-    m.config[i].entity.anim.offset.x = x
+    m.config[i].entity.offset.x = x
 end sub
 
 
 function npc_getEntityOffsetY(i as object) as object
-    return m.config[i].entity.anim.offset.y
+    return m.config[i].entity.offset.y
 end function
 
 sub npc_setEntityOffsetY(i as object, y as object)
-    m.config[i].entity.anim.offset.y = y
+    m.config[i].entity.offset.y = y
 end sub
 
 
@@ -187,28 +187,28 @@ end sub
 
 
 function npc_getIndex(i as object) as object
-    return m.config[i].entity.anim.index
+    return m.config[i].entity.index
 end function
 
 sub npc_setIndex(i as object, index as object)
-    m.config[i].entity.anim.index = index
+    m.config[i].entity.index = index
 end sub
 
 
 function npc_getReg(i as object, j as object) as object
-    return m.config[i].entity.anim.reg[j]
+    return m.config[i].entity.reg[j]
 end function
 
 sub npc_setReg(i as object, j as object, reg as object)
-    m.config[i].entity.anim.reg[j] = reg
+    m.config[i].entity.reg[j] = reg
 end sub
 
 function npc_getAnimTime(i as object) as object
-    return m.config[i].entity.anim.time
+    return m.config[i].entity.time
 end function
 
 sub npc_setAnimTime(i as object, time as object)
-    m.config[i].entity.anim.time = time
+    m.config[i].entity.time = time
 end sub
 
 function npc_getPath(i as object) as object
@@ -244,17 +244,17 @@ sub npc_setPathCycle(i as object, cycle as object)
 end sub
 
 function npc_getScaleX(i as object) as object
-    return m.config[i].entity.anim.scale.x
+    return m.config[i].entity.scale.x
 end function
 
 sub npc_setScaleX(i as object, x as object)
-    m.config[i].entity.anim.scale.x = x
+    m.config[i].entity.scale.x = x
 end sub
 
 function npc_getScaleY(i as object) as object
-    return m.config[i].entity.anim.scale.y
+    return m.config[i].entity.scale.y
 end function
 
 sub npc_setScaleY(i as object, y as object)
-    m.config[i].entity.anim.scale.y = y
+    m.config[i].entity.scale.y = y
 end sub

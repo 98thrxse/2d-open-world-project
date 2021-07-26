@@ -12,7 +12,7 @@ function char_entity(object)
 
     m.char_regions = []
 
-    for i = 0 to m.game.char.config.entity.anim.reg.Count() - 1
+    for i = 0 to m.game.char.config.entity.reg.Count() - 1
 
       if m.game.getBitmap(m.funcName + "_" + m.game.char.getReg(i).toStr()) = invalid
         ' loadBitmap

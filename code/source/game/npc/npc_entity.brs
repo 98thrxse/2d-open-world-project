@@ -11,7 +11,7 @@ function npc_entity(object)
 
     m.npc_regions = []
 
-    for j = 0 to m.game.npc.config[i].entity.anim.reg.Count() - 1
+    for j = 0 to m.game.npc.config[i].entity.reg.Count() - 1
 
       if m.game.getBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr()) = invalid
         ' loadBitmap
@@ -32,7 +32,7 @@ function npc_entity(object)
 
   object.entityUnload = function(i)
 
-    for j = 0 to m.game.npc.config[i].entity.anim.reg.Count() - 1
+    for j = 0 to m.game.npc.config[i].entity.reg.Count() - 1
 
       if m.game.getBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr()) <> invalid
         ' unloadBitmap

@@ -69,7 +69,7 @@ function npc_anim(object)
 		arrAnim = []
 
 		for each element in arr
-			for j = 0 to m.game.npc.config[i].entity.anim.reg.Count() - 1
+			for j = 0 to m.game.npc.config[i].entity.reg.Count() - 1
 				if m.game.npc.getReg(i, j) = element then arrAnim.push(j)
 			end for
 		end for

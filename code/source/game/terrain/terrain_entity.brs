@@ -10,7 +10,7 @@ function terrain_entity(object)
 
         m.terrain_regions = []
 
-        for k = 0 to m.game.terrain.config[id_y[i]][id_x[j]].entity.anim.reg.Count() - 1
+        for k = 0 to m.game.terrain.config[id_y[i]][id_x[j]].entity.reg.Count() - 1
 
             if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getReg(id_y[i], id_x[j], k).toStr()) = invalid
                 ' loadBitmap
@@ -30,7 +30,7 @@ function terrain_entity(object)
 
     object.entityUnload = function(i, j)
 
-        for k = 0 to m.game.terrain.config[i][j].entity.anim.reg.Count() - 1
+        for k = 0 to m.game.terrain.config[i][j].entity.reg.Count() - 1
 
             if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getReg(i, j, k).toStr()) <> invalid
                 ' unloadBitmap

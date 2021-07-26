@@ -75,7 +75,7 @@ function char_anim(object)
 		arrAnim = []
 
 		for each element in arr
-			for i = 0 to m.game.char.config.entity.anim.reg.Count() - 1
+			for i = 0 to m.game.char.config.entity.reg.Count() - 1
 				if m.game.char.getReg(i) = element then arrAnim.push(i)
 			end for
 		end for

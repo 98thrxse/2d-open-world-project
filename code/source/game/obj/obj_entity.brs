@@ -10,7 +10,7 @@ function obj_entity(object)
 
         m.obj_regions = []
 
-        for j = 0 to m.game.obj.config[i].entity.anim.reg.Count() - 1
+        for j = 0 to m.game.obj.config[i].entity.reg.Count() - 1
 
              if m.game.getBitmap(m.funcName + "_" + m.game.obj.getReg(i, j).toStr()) = invalid
                 ' loadBitmap
@@ -31,7 +31,7 @@ function obj_entity(object)
 
     object.entityUnload = function(i)
 
-        for j = 0 to m.game.obj.config[i].entity.anim.reg.Count() - 1
+        for j = 0 to m.game.obj.config[i].entity.reg.Count() - 1
     
           if m.game.getBitmap(m.funcName + "_" + m.game.obj.getReg(i, j).toStr()) <> invalid
             ' unloadBitmap

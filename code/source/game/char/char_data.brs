@@ -157,22 +157,19 @@ function char_data(ver) as object
                     height: 56,
                 },
 
-                anim: {
-                    index: 0,
-                    alpha: 255,
-                    reg: ["stand_back1", "stand_front1", "stand_side1", "walk_back1", "walk_back2", "walk_front1", "walk_front2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "stand_back2", "stand_front2", "stand_side2", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"]
-                    scale: {
-                        x: 1.0
-                        y: 1.0
-                    },
-    
-                    offset: {
-                        x: 616,
-                        y: 332
-                    },
-                    time: 100
+                index: 0,
+                alpha: 255,
+                reg: ["stand_back1", "stand_front1", "stand_side1", "walk_back1", "walk_back2", "walk_front1", "walk_front2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "stand_back2", "stand_front2", "stand_side2", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"]
+                scale: {
+                    x: 1.0
+                    y: 1.0
                 },
 
+                offset: {
+                    x: 616,
+                    y: 332
+                },
+                time: 100
 
             }
 
@@ -276,36 +273,36 @@ end sub
 
 
 function char_getScaleX() as object
-    return m.config.entity.anim.scale.x
+    return m.config.entity.scale.x
 end function
 
 sub char_setScaleX(x as object)
-    m.config.entity.anim.scale.x = x
+    m.config.entity.scale.x = x
 end sub
 
 function char_getScaleY() as object
-    return m.config.entity.anim.scale.y
+    return m.config.entity.scale.y
 end function
 
 sub char_setScaleY(y as object)
-    m.config.entity.anim.scale.y = y
+    m.config.entity.scale.y = y
 end sub
 
 
 function char_getEntityOffsetX() as object
-    return m.config.entity.anim.offset.x
+    return m.config.entity.offset.x
 end function
 
 sub char_setEntityOffsetX(x as object)
-    m.config.entity.anim.offset.x = x
+    m.config.entity.offset.x = x
 end sub
 
 function char_getEntityOffsetY() as object
-    return m.config.entity.anim.offset.y
+    return m.config.entity.offset.y
 end function
 
 sub char_setEntityOffsetY(y as object)
-    m.config.entity.anim.offset.y = y
+    m.config.entity.offset.y = y
 end sub
 
 
@@ -480,29 +477,29 @@ end sub
 
 
 function char_getIndex() as object
-    return m.config.entity.anim.index
+    return m.config.entity.index
 end function
 
 sub char_setIndex(index as object)
-    m.config.entity.anim.index = index
+    m.config.entity.index = index
 end sub
 
 
 function char_getAnimTime() as object
-    return m.config.entity.anim.time
+    return m.config.entity.time
 end function
 
 sub char_setAnimTime(time as object)
-    m.config.entity.anim.time = time
+    m.config.entity.time = time
 end sub
 
 
 function char_getAlpha() as object
-    return m.config.entity.anim.alpha
+    return m.config.entity.alpha
 end function
 
 sub char_setAlpha(alpha as object)
-    m.config.entity.anim.alpha = alpha
+    m.config.entity.alpha = alpha
 end sub
 
 
@@ -599,11 +596,11 @@ sub char_setRightSpeed(speed as object)
 end sub
 
 function char_getReg(i as object) as object
-    return m.config.entity.anim.reg[i]
+    return m.config.entity.reg[i]
 end function
 
 sub char_setReg(i as object, reg as object)
-    m.config.entity.anim.reg[i] = reg
+    m.config.entity.reg[i] = reg
 end sub
 
 sub char_save()

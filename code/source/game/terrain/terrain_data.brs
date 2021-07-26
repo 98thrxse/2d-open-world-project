@@ -41,27 +41,27 @@ end sub
 
 
 function terrain_getEntityOffsetX(i as object, j as object) as object
-    return m.config[i][j].entity.anim.offset.x
+    return m.config[i][j].entity.offset.x
 end function
 
 sub terrain_setEntityOffsetX(i as object, j as object, x as object)
-    m.config[i][j].entity.anim.offset.x = x
+    m.config[i][j].entity.offset.x = x
 end sub
 
 
 function terrain_getEntityOffsetY(i as object, j as object) as object
-    return m.config[i][j].entity.anim.offset.y
+    return m.config[i][j].entity.offset.y
 end function
 
 sub terrain_setEntityOffsetY(i as object, j as object, y as object)
-    m.config[i][j].entity.anim.offset.y = y
+    m.config[i][j].entity.offset.y = y
 end sub
 
 
 function terrain_getReg(i as object, j as object, k as object) as object
-    return m.config[i][j].entity.anim.reg[k]
+    return m.config[i][j].entity.reg[k]
 end function
 
 sub terrain_setReg(i as object, j as object, k as object, reg as object)
-    m.config[i][j].entity.anim.reg[k] = reg
+    m.config[i][j].entity.reg[k] = reg
 end sub

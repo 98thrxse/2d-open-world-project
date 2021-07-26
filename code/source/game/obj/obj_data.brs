@@ -58,20 +58,20 @@ end function
 
 
 function obj_getAlpha(i as object) as object
-    return m.config[i].entity.anim.alpha
+    return m.config[i].entity.alpha
 end function
 
 sub obj_setAlpha(i as object, alpha as object)
-    m.config[i].entity.anim.alpha = alpha
+    m.config[i].entity.alpha = alpha
 end sub
 
 
 function obj_getReg(i as object, j as object) as object
-    return m.config[i].entity.anim.reg[j]
+    return m.config[i].entity.reg[j]
 end function
 
 sub obj_setReg(i as object, j as object, reg as object)
-    m.config[i].entity.anim.reg[j] = reg
+    m.config[i].entity.reg[j] = reg
 end sub
 
 
@@ -94,20 +94,20 @@ end sub
 
 
 function obj_getEntityOffsetX(i as object) as object
-    return m.config[i].entity.anim.offset.x
+    return m.config[i].entity.offset.x
 end function
 
 sub obj_setEntityOffsetX(i as object, x as object)
-    m.config[i].entity.anim.offset.x = x
+    m.config[i].entity.offset.x = x
 end sub
 
 
 function obj_getEntityOffsetY(i as object) as object
-    return m.config[i].entity.anim.offset.y
+    return m.config[i].entity.offset.y
 end function
 
 sub obj_setEntityOffsetY(i as object, y as object)
-    m.config[i].entity.anim.offset.y = y
+    m.config[i].entity.offset.y = y
 end sub
 
 
