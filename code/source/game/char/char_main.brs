@@ -5,10 +5,8 @@ function char_main(object)
 		m.game.char = char_data(m.game.ver)
 
         ' createInstance
-        m.game.createInstance("char_entity")
-        m.game.createInstance("char_col")
+        m.game.createInstance("char_view")
         m.game.createInstance("char_control")
-        m.game.createInstance("char_anim")
 
     end function
 

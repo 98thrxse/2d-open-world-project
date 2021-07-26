@@ -3,15 +3,15 @@ function terrain_control(object)
     object.onCreate = function(args)
 
         ' getInstanceByName
-        m.entity_wnd = m.game.getInstanceByName("terrain_entity")
+        m.view_wnd = m.game.getInstanceByName("terrain_view")
 
     end function
 
     object.controlPos = function()
 
         ' position
-        m.entity_wnd.x = m.game.map.getEntityOffsetX()
-        m.entity_wnd.y = m.game.map.getEntityOffsetY()
+        m.view_wnd.x = m.game.map.getEntityOffsetX()
+        m.view_wnd.y = m.game.map.getEntityOffsetY()
 
     end function
 

@@ -1,4 +1,4 @@
-function map_entity(object)
+function map_control(object)
 
     object.onCreate = function(args)
 

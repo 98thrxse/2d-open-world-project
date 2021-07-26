@@ -11,7 +11,7 @@ function map_main(object)
         m.game.createInstance("npc_init")
         m.game.createInstance("terrain_init")
         
-        m.game.createInstance("map_entity")
+        m.game.createInstance("map_control")
 
     end function
 

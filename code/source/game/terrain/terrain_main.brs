@@ -5,7 +5,7 @@ function terrain_main(object)
 		m.game.terrain = terrain_data()
         
         ' createInstance
-        m.game.createInstance("terrain_entity")
+        m.game.createInstance("terrain_view")
         m.game.createInstance("terrain_control")
 
     end function

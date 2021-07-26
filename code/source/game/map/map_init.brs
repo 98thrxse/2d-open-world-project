@@ -4,7 +4,7 @@ function map_init(object)
 
         ' defineObject
 	    m.game.defineObject("map_main", map_main)
-	    m.game.defineObject("map_entity", map_entity)
+	    m.game.defineObject("map_control", map_control)
         
 	    m.game.defineObject("char_init", char_init)
         m.game.defineObject("interface_init", interface_init)

@@ -1,6 +1,6 @@
-function terrain_entity(object)
+function terrain_view(object)
 
-    object.funcName = "terrain_entity"
+    object.funcName = "terrain_view"
 
     object.onCreate = function(args)
 

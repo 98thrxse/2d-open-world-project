@@ -1,6 +1,6 @@
-function obj_entity(object)
+function obj_view(object)
 
-    object.funcName = "obj_entity"
+    object.funcName = "obj_view"
 
     object.onCreate = function(args)
 
@@ -76,10 +76,42 @@ function obj_entity(object)
     
     end function
 
+    object.colGen = function()
+
+        ' loading map config to create obj
+        for i = 0 to m.game.obj.config.Count() - 1   
+          if m.colliders[m.game.obj.getColName(i).toStr() + "_" + i.toStr()] = invalid
+            ' addColliderRectangle
+            m.addColliderRectangle(m.game.obj.getColName(i).toStr() + "_" + i.toStr(), m.game.obj.getColOffsetX(i), m.game.obj.getColOffsetY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
+          
+          end if
+          
+        end for
+    
+    end function
+
+    object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
+
+        if other_collider_name = m.game.char.getColUpName()
+            m.game.char.setColUp(true)
+
+        else if other_collider_name = m.game.char.getColDownName()
+            m.game.char.setColDown(true)
+
+        else if other_collider_name = m.game.char.getColLeftName()
+            m.game.char.setColLeft(true)
+
+        else if other_collider_name = m.game.char.getColRightName()
+            m.game.char.setColRight(true)
+
+        end if
+
+    end function
 
     object.onUpdate = function(dt as float)
 
         m.entityGen()
+        m.colGen()
 
     end function
 
