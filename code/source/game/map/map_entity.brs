@@ -74,7 +74,7 @@ function map_entity(object)
                     end if
         
                     for k = 0 to m.map_terrain_config[i][j].entity.reg.Count() - 1
-                        m.game.terrain.setReg(i, j, k, m.map_terrain_config[i][j].entity.reg[k])
+                        m.game.terrain.setRegElement(i, j, k, m.map_terrain_config[i][j].entity.reg[k])
                     end for
         
                 end if
@@ -143,7 +143,7 @@ function map_entity(object)
                 end if
     
                 for j = 0 to m.map_obj_config[i].entity.reg.Count() - 1
-                    m.game.obj.setReg(i, j, m.map_obj_config[i].entity.reg[j])
+                    m.game.obj.setRegElement(i, j, m.map_obj_config[i].entity.reg[j])
                 end for
     
             end if
@@ -241,7 +241,7 @@ function map_entity(object)
                 end if
     
                 for j = 0 to m.map_npc_config[i].entity.reg.Count() - 1
-                    m.game.npc.setReg(i, j, m.map_npc_config[i].entity.reg[j])
+                    m.game.npc.setRegElement(i, j, m.map_npc_config[i].entity.reg[j])
                 end for
     
             end if
@@ -284,7 +284,7 @@ function map_entity(object)
             end if
 
             for i = 0 to m.map_char_config.entity.reg.Count() - 1
-                m.game.char.setReg(i, m.map_char_config.entity.reg[i])
+                m.game.char.setRegElement(i, m.map_char_config.entity.reg[i])
             end for
 
         end if

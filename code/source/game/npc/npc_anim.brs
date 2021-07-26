@@ -13,7 +13,7 @@ function npc_anim(object)
 
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) <= 0
-				if m.game.npc.getReg(i, m.game.npc.getIndex(i)) <> "hp_zero" 
+				if m.game.npc.getRegElement(i, m.game.npc.getIndex(i)) <> "hp_zero" 
 					m.animPlay(i, ["hp_zero"])
 					m.game.npc.setPathCycle(i, 0)
 					m.game.npc.setPath(i, [ [m.game.npc.getEntityOffsetX(i), m.game.npc.getEntityOffsetY(i)] ])
@@ -70,7 +70,7 @@ function npc_anim(object)
 
 		for each element in arr
 			for j = 0 to m.game.npc.config[i].entity.reg.Count() - 1
-				if m.game.npc.getReg(i, j) = element then arrAnim.push(j)
+				if m.game.npc.getRegElement(i, j) = element then arrAnim.push(j)
 			end for
 		end for
 		

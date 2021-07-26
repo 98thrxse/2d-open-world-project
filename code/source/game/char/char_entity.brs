@@ -14,14 +14,14 @@ function char_entity(object)
 
     for i = 0 to m.game.char.config.entity.reg.Count() - 1
 
-      if m.game.getBitmap(m.funcName + "_" + m.game.char.getReg(i).toStr()) = invalid
+      if m.game.getBitmap(m.funcName + "_" + m.game.char.getRegElement(i).toStr()) = invalid
         ' loadBitmap
-        m.game.loadBitmap(m.funcName + "_" + m.game.char.getReg(i).toStr(), "pkg:/media/char/sprites/" + m.game.char.getReg(i).toStr() + ".png")
+        m.game.loadBitmap(m.funcName + "_" + m.game.char.getRegElement(i).toStr(), "pkg:/media/char/sprites/" + m.game.char.getRegElement(i).toStr() + ".png")
       
       end if
 
       ' getBitmap
-      char_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.char.getReg(i).toStr())
+      char_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.char.getRegElement(i).toStr())
   
       ' roRegion
       char_region = CreateObject("roRegion", char_bitmap, 0, 0, char_bitmap.GetWidth(), char_bitmap.GetHeight())

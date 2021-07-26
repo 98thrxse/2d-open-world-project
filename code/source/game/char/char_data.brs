@@ -39,8 +39,8 @@ function char_data(ver) as object
         getAlpha: char_getAlpha
         setAlpha: char_setAlpha
 
-        getReg: char_getReg
-        setReg: char_setReg
+        getRegElement: char_getRegElement
+        setRegElement: char_setRegElement
 
         ' attrs
         getHP: char_getHP
@@ -595,11 +595,11 @@ sub char_setRightSpeed(speed as object)
     m.config.attrs.speed.right = speed
 end sub
 
-function char_getReg(i as object) as object
+function char_getRegElement(i as object) as object
     return m.config.entity.reg[i]
 end function
 
-sub char_setReg(i as object, reg as object)
+sub char_setRegElement(i as object, reg as object)
     m.config.entity.reg[i] = reg
 end sub
 

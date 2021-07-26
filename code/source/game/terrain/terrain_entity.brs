@@ -12,13 +12,13 @@ function terrain_entity(object)
 
         for k = 0 to m.game.terrain.config[id_y[i]][id_x[j]].entity.reg.Count() - 1
 
-            if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getReg(id_y[i], id_x[j], k).toStr()) = invalid
+            if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getRegElement(id_y[i], id_x[j], k).toStr()) = invalid
                 ' loadBitmap
-                m.game.loadBitmap(m.funcName + "_" + m.game.terrain.getReg(id_y[i], id_x[j], k).toStr(), "pkg:/media/terrain/sprites/" + m.game.terrain.getReg(id_y[i], id_x[j], k).toStr() + ".png")
+                m.game.loadBitmap(m.funcName + "_" + m.game.terrain.getRegElement(id_y[i], id_x[j], k).toStr(), "pkg:/media/terrain/sprites/" + m.game.terrain.getRegElement(id_y[i], id_x[j], k).toStr() + ".png")
             end if
 
             ' getBitmap
-            terrain_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.terrain.getReg(id_y[i], id_x[j], k).toStr())
+            terrain_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.terrain.getRegElement(id_y[i], id_x[j], k).toStr())
 
             ' roRegion
             terrain_region = CreateObject("roRegion", terrain_bitmap, 0, 0, terrain_bitmap.GetWidth(), terrain_bitmap.GetHeight())
@@ -32,9 +32,9 @@ function terrain_entity(object)
 
         for k = 0 to m.game.terrain.config[i][j].entity.reg.Count() - 1
 
-            if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getReg(i, j, k).toStr()) <> invalid
+            if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getRegElement(i, j, k).toStr()) <> invalid
                 ' unloadBitmap
-                m.game.unloadBitmap(m.funcName + "_" + m.game.terrain.getReg(i, j, k).toStr())
+                m.game.unloadBitmap(m.funcName + "_" + m.game.terrain.getRegElement(i, j, k).toStr())
             end if
 
         end for

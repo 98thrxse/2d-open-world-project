@@ -13,13 +13,13 @@ function npc_entity(object)
 
     for j = 0 to m.game.npc.config[i].entity.reg.Count() - 1
 
-      if m.game.getBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr()) = invalid
+      if m.game.getBitmap(m.funcName + "_" + m.game.npc.getRegElement(i, j).toStr()) = invalid
         ' loadBitmap
-        m.game.loadBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr(), "pkg:/media/npc/sprites/" + m.game.npc.getReg(i, j).toStr() + ".png")
+        m.game.loadBitmap(m.funcName + "_" + m.game.npc.getRegElement(i, j).toStr(), "pkg:/media/npc/sprites/" + m.game.npc.getRegElement(i, j).toStr() + ".png")
       end if
       
       ' getBitmap
-      npc_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr())
+      npc_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.npc.getRegElement(i, j).toStr())
   
       ' roRegion
       npc_region = CreateObject("roRegion", npc_bitmap, 0, 0, npc_bitmap.GetWidth(), npc_bitmap.GetHeight())
@@ -34,9 +34,9 @@ function npc_entity(object)
 
     for j = 0 to m.game.npc.config[i].entity.reg.Count() - 1
 
-      if m.game.getBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr()) <> invalid
+      if m.game.getBitmap(m.funcName + "_" + m.game.npc.getRegElement(i, j).toStr()) <> invalid
         ' unloadBitmap
-        m.game.unloadBitmap(m.funcName + "_" + m.game.npc.getReg(i, j).toStr())
+        m.game.unloadBitmap(m.funcName + "_" + m.game.npc.getRegElement(i, j).toStr())
       end if
 
     end for

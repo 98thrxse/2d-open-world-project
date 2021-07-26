@@ -76,7 +76,7 @@ function char_anim(object)
 
 		for each element in arr
 			for i = 0 to m.game.char.config.entity.reg.Count() - 1
-				if m.game.char.getReg(i) = element then arrAnim.push(i)
+				if m.game.char.getRegElement(i) = element then arrAnim.push(i)
 			end for
 		end for
 		
@@ -95,13 +95,13 @@ function char_anim(object)
 
 	object.charAttack = function()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
-			if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "side")
+			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
 				m.animPlay(["stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "stand_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "stand_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "stand_side2"])
 			
-			else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "front")
+			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "front")
 				m.animPlay(["stand_front1", "attack_fist1_front", "stand_front1", "attack_fist2_front", "stand_front1", "attack_leg1_front", "stand_front1"])
 
-			else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "back")
+			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "back")
 				m.animPlay(["stand_back1", "attack_fist1_back", "stand_back1", "attack_fist2_back", "stand_back1", "attack_leg1_back", "stand_back1"])
 
 			end if
@@ -124,12 +124,12 @@ function char_anim(object)
 
 	object.charAfterAttack = function()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
-			if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "side")
+			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
 				m.animPlay(["stand_side2"])
-			else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "front")
+			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "front")
 				m.animPlay(["stand_front2"])
 
-			else if stringUtils().include(m.game.char.getReg(m.game.char.getIndex()), "back")
+			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "back")
 				m.animPlay(["stand_back2"])
 			end if
 		else

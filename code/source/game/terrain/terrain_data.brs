@@ -12,8 +12,8 @@ function terrain_data() as object
         getEntityOffsetY: terrain_getEntityOffsetY
         setEntityOffsetY: terrain_setEntityOffsetY
 
-        getReg: terrain_getReg
-        setReg: terrain_setReg
+        getRegElement: terrain_getRegElement
+        setRegElement: terrain_setRegElement
 
 
         config: invalid
@@ -58,10 +58,10 @@ sub terrain_setEntityOffsetY(i as object, j as object, y as object)
 end sub
 
 
-function terrain_getReg(i as object, j as object, k as object) as object
+function terrain_getRegElement(i as object, j as object, k as object) as object
     return m.config[i][j].entity.reg[k]
 end function
 
-sub terrain_setReg(i as object, j as object, k as object, reg as object)
+sub terrain_setRegElement(i as object, j as object, k as object, reg as object)
     m.config[i][j].entity.reg[k] = reg
 end sub
