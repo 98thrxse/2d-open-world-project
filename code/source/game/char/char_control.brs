@@ -20,6 +20,7 @@ function char_control(object)
 
     m.savePos()
     m.charSPRegen()
+    m.objAlpha()
     m.animUpdate()
 
   end function
@@ -299,18 +300,40 @@ function char_control(object)
       m.game.map.setEntityOffsetX(m.game.map.getEntityOffsetX() - m.game.char.getRightSpeed())
     end if
   end function
+
+  object.objAlpha = function()
+
+    m.game.char.setObjIntersect(invalid)
+
+    for i = 0 to m.game.obj.config.Count() - 1
+        if m.game.char.getEntityPosX() < m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityPosX() > m.game.obj.getEntityOffsetX(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 < m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 > m.game.obj.getEntityOffsetY(i)
+            if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
+            m.game.char.setObjIntersect(i)
+
+        else
+            if m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
+
+        end if
+    end for
+
+    if m.game.char.getObjIntersect() = invalid
+        if m.game.char.getAlpha() <> 255 then m.game.char.setAlpha(255)
+
+    else
+        if m.game.char.getAlpha() <> 125 then m.game.char.setAlpha(125)
+
+    end if
+
+  end function
   
   object.npcHPDamage = function()
-    if m.game.char.getSP() >= m.game.char.getSPDamage()
+    if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage()
       if m.hp_damage_timer = invalid
-        if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage()
-          id = right(m.game.char.getNPCCol(), 1).toInt()
-          m.game.npc.setHP(id, m.game.npc.getHP(id) - m.game.char.getHPDamage())
-  
-          print m.game.char.getNPCCol() + " was attacked"
-          print m.game.npc.getHP(id)
-    
-        end if
+
+        m.game.npc.setHP(m.game.char.getNPCCol().split("_").peek().toInt(), m.game.npc.getHP(m.game.char.getNPCCol().split("_").peek().toInt()) - m.game.char.getHPDamage())
+
+        print m.game.char.getNPCCol() + " was attacked"
+        print m.game.npc.getHP(m.game.char.getNPCCol().split("_").peek().toInt())
     
         m.hp_damage_timer = CreateObject("roTimeSpan")
         m.hp_damage_timer.Mark()
