@@ -27,6 +27,9 @@ function obj_data() as object
         getReg: obj_getReg
         setReg: obj_setReg
 
+        getIndex: obj_getIndex
+        setIndex: obj_setIndex
+
         ' col
         getColName: obj_getColName
         setColName: obj_setColName
@@ -175,4 +178,12 @@ end function
 
 sub obj_setColW(i as object, width as object)
     m.config[i].col.size.width = width
+end sub
+
+function obj_getIndex(i as object) as object
+    return m.config[i].entity.index
+end function
+
+sub obj_setIndex(i as object, index as object)
+    m.config[i].entity.index = index
 end sub

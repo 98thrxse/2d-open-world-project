@@ -18,6 +18,8 @@ function terrain_data() as object
         getReg: terrain_getReg
         setReg: terrain_setReg
 
+        getIndex: terrain_getIndex
+        setIndex: terrain_setIndex
 
         config: invalid
 
@@ -75,4 +77,12 @@ end function
 
 sub terrain_setReg(i as object, j as object, reg as object)
     m.config[i][j].entity.reg = reg
+end sub
+
+function terrain_getIndex(i as object, j as object) as object
+    return m.config[i][j].entity.index
+end function
+
+sub terrain_setIndex(i as object, j as object, index as object)
+    m.config[i][j].entity.index = index
 end sub

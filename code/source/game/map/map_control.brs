@@ -81,6 +81,7 @@ function map_control(object)
                 if m.map_terrain_config[i][j].entity.offset.x <> invalid then m.game.terrain.setEntityOffsetX(i, j, m.map_terrain_config[i][j].entity.offset.x)
                 if m.map_terrain_config[i][j].entity.offset.y <> invalid then m.game.terrain.setEntityOffsetY(i, j, m.map_terrain_config[i][j].entity.offset.y)
                 if m.map_terrain_config[i][j].entity.reg <> invalid then m.game.terrain.setReg(i, j, m.map_terrain_config[i][j].entity.reg)
+                if m.map_terrain_config[i][j].entity.index <> invalid then m.game.terrain.setIndex(i, j, m.map_terrain_config[i][j].entity.index)
 
             end for
         end for
@@ -131,6 +132,7 @@ function map_control(object)
 
             ' entity
             if m.map_obj_config[i].entity.name <> invalid then m.game.obj.setEntityName(i, m.map_obj_config[i].entity.name)
+            if m.map_obj_config[i].entity.index <> invalid then m.game.obj.setIndex(i, m.map_obj_config[i].entity.index)
             if m.map_obj_config[i].entity.offset.x <> invalid then m.game.obj.setEntityOffsetX(i, m.map_obj_config[i].entity.offset.x)
             if m.map_obj_config[i].entity.offset.y <> invalid then m.game.obj.setEntityOffsetY(i, m.map_obj_config[i].entity.offset.y)
             if m.map_obj_config[i].entity.size.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.size.width)
@@ -187,6 +189,7 @@ function map_control(object)
             if m.map_marker_config[i].entity.size.height <> invalid then m.game.marker.setEntityH(i, m.map_marker_config[i].entity.size.height)
             if m.map_marker_config[i].entity.alpha <> invalid then m.game.marker.setAlpha(i, m.map_marker_config[i].entity.alpha)
             if m.map_marker_config[i].entity.reg <> invalid then m.game.marker.setReg(i, m.map_marker_config[i].entity.reg)
+            if m.map_marker_config[i].entity.index <> invalid then m.game.marker.setIndex(i, m.map_marker_config[i].entity.index)
             
         end for
     end function

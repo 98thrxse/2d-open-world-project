@@ -92,7 +92,7 @@ function terrain_view(object)
                     m.entityLoad(id_y, id_x, i, j)
 
                     ' add
-                    m.addAnimatedImage(m.game.terrain.getEntityName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.terrain_regions, { index: 0
+                    m.addAnimatedImage(m.game.terrain.getEntityName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.terrain_regions, { index: m.game.terrain.getIndex(i, j)
                         offset_x: m.game.terrain.getEntityOffsetX(id_y[i], id_x[j]) 
                         offset_y: m.game.terrain.getEntityOffsetY(id_y[i], id_x[j])
                     })

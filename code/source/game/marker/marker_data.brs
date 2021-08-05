@@ -27,6 +27,9 @@ function marker_data() as object
         getEntityW: marker_getEntityW
         setEntityW: marker_setEntityW
 
+        getIndex: marker_getIndex
+        setIndex: marker_setIndex
+
         config: invalid
 
     }
@@ -108,5 +111,13 @@ end function
 
 sub marker_setEntityW(i as object, width as object)
     m.config[i].entity.size.width = width
+end sub
+
+function marker_getIndex(i as object) as object
+    return m.config[i].entity.index
+end function
+
+sub marker_setIndex(i as object, index as object)
+    m.config[i].entity.index = index
 end sub
 

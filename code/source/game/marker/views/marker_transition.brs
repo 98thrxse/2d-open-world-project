@@ -53,7 +53,7 @@ function marker_transition(object)
                     m.entityLoad(i)
 
                     ' add
-                    m.addAnimatedImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr(), m.marker_regions, { index: 0
+                    m.addAnimatedImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr(), m.marker_regions, { index: m.game.marker.getIndex(i)
                         offset_x: m.game.marker.getEntityOffsetX(i),
                         offset_y: m.game.marker.getEntityOffsetY(i),
                         alpha: m.game.marker.getAlpha(i)

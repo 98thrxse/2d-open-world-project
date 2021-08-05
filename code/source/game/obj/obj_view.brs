@@ -53,7 +53,7 @@ function obj_view(object)
                     m.entityLoad(i)
 
                     ' add
-                    m.addAnimatedImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr(), m.obj_regions, { index: 0
+                    m.addAnimatedImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr(), m.obj_regions, { index: m.game.obj.getIndex(i)
                         offset_x: m.game.obj.getEntityOffsetX(i),
                         offset_y: m.game.obj.getEntityOffsetY(i),
                         alpha: m.game.obj.getAlpha(i)
