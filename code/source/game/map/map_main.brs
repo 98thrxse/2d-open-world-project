@@ -7,6 +7,7 @@ function map_main(object)
         ' createInstance
         m.game.createInstance("char_init")
         m.game.createInstance("interface_init")
+        m.game.createInstance("marker_init")
         m.game.createInstance("obj_init")
         m.game.createInstance("npc_init")
         m.game.createInstance("terrain_init")

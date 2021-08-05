@@ -9,8 +9,8 @@ function obj_data() as object
         getEntityOffsetX: obj_getEntityOffsetX
         setEntityOffsetX: obj_setEntityOffsetX
         
-        getEntityOffsetY: npc_getEntityOffsetY
-        setEntityOffsetY: npc_setEntityOffsetY
+        getEntityOffsetY: obj_getEntityOffsetY
+        setEntityOffsetY: obj_setEntityOffsetY
 
         getEntityH: obj_getEntityH
         setEntityH: obj_setEntityH

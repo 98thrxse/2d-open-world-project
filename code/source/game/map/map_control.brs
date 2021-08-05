@@ -16,6 +16,7 @@ function map_control(object)
             m.map_npc_config = testOne_npc_config()
             m.map_terrain_config = testOne_terrain_config()
             m.map_interface_config = testOne_interface_config()
+            m.map_marker_config = testOne_marker_config()
 
         else if m.game.char.getMap() = "testTwo"
             m.map_char_config = testTwo_char_config()
@@ -33,6 +34,7 @@ function map_control(object)
         m.loadObj()
         m.loadTerrain()
         m.loadInterface()
+        m.loadMarker()
 
         m.loadMap()
     end function
@@ -143,6 +145,48 @@ function map_control(object)
             if m.map_obj_config[i].col.offset.y <> invalid then m.game.obj.setColOffsetY(i, m.map_obj_config[i].col.offset.y)
             if m.map_obj_config[i].col.size.width <> invalid then m.game.obj.setColW(i, m.map_obj_config[i].col.size.width)
             if m.map_obj_config[i].col.size.height <> invalid then m.game.obj.setColH(i, m.map_obj_config[i].col.size.height)
+            
+        end for
+    end function
+
+    object.loadMarker = function()
+        ' loading map config to marker data
+        if m.game.marker.config.Count() < m.map_marker_config.Count()
+            for i = m.game.marker.config.Count() to m.map_marker_config.Count() - 1
+                m.game.marker.config.push({
+                    id: i,                   
+                    entity: {
+                        name: invalid,
+                        alpha: invalid,
+                        reg: []
+                        offset: {
+                            x: invalid,
+                            y: invalid
+                        },
+
+                        size: {
+                            width: invalid,
+                            height: invalid
+                        }
+                    }
+                })
+            end for
+        else if m.game.marker.config.Count() > m.map_marker_config.Count()
+            for i = m.map_marker_config.Count() to m.game.marker.config.Count() - 1
+                m.game.marker.config.pop()
+            end for
+        end if
+
+        for i = 0 to m.map_marker_config.Count() - 1
+
+            ' entity
+            if m.map_marker_config[i].entity.name <> invalid then m.game.marker.setEntityName(i, m.map_marker_config[i].entity.name)
+            if m.map_marker_config[i].entity.offset.x <> invalid then m.game.marker.setEntityOffsetX(i, m.map_marker_config[i].entity.offset.x)
+            if m.map_marker_config[i].entity.offset.y <> invalid then m.game.marker.setEntityOffsetY(i, m.map_marker_config[i].entity.offset.y)
+            if m.map_marker_config[i].entity.size.width <> invalid then m.game.marker.setEntityW(i, m.map_marker_config[i].entity.size.width)
+            if m.map_marker_config[i].entity.size.height <> invalid then m.game.marker.setEntityH(i, m.map_marker_config[i].entity.size.height)
+            if m.map_marker_config[i].entity.alpha <> invalid then m.game.marker.setAlpha(i, m.map_marker_config[i].entity.alpha)
+            if m.map_marker_config[i].entity.reg <> invalid then m.game.marker.setReg(i, m.map_marker_config[i].entity.reg)
             
         end for
     end function
