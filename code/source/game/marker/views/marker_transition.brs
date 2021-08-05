@@ -76,9 +76,42 @@ function marker_transition(object)
     
     end function
 
+    object.colGen = function()
+
+        ' loading map config to create marker
+        for i = 0 to m.game.marker.config.Count() - 1
+    
+          if m.colliders[m.game.marker.getEntityName(i).toStr() + "_" + i.toStr()] = invalid
+            ' addColliderRectangle
+            m.addColliderRectangle(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr(), m.game.marker.getColOffsetX(i), m.game.marker.getColOffsetY(i), m.game.marker.getColW(i), m.game.marker.getColH(i))
+          end if
+    
+        end for
+    
+    end function
+    
+    object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
+    
+        if other_collider_name = m.game.char.getColUpName()
+          m.game.char.setMarkerCol(collider_name)
+    
+        else if other_collider_name = m.game.char.getColDownName()
+          m.game.char.setMarkerCol(collider_name)
+    
+        else if other_collider_name = m.game.char.getColLeftName()
+          m.game.char.setMarkerCol(collider_name)
+    
+        else if other_collider_name = m.game.char.getColRightName()
+          m.game.char.setMarkerCol(collider_name)
+    
+        end if
+    
+    end function
+
     object.onUpdate = function(dt as float)
 
         m.entityGen()
+        m.colGen()
 
     end function
 

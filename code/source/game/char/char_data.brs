@@ -119,6 +119,9 @@ function char_data(ver) as object
         getNPCCol: char_getNPCCol
         setNPCCol: char_setNPCCol
 
+        getMarkerCol: char_getMarkerCol
+        setMarkerCol: char_setMarkerCol
+
         getColUp: char_getColUp
         setColUp: char_setColUp
 
@@ -199,7 +202,8 @@ function char_data(ver) as object
                 left: invalid,
                 right: invalid
 
-                npc: invalid
+                npc: invalid,
+                marker: invalid
             },
 
             attrs: {
@@ -527,6 +531,14 @@ end function
 
 sub char_setNPCCol(i as object) 
     m.config.col.npc = i
+end sub
+
+function char_getMarkerCol() as object
+    return m.config.col.marker
+end function
+
+sub char_setMarkerCol(i as object) 
+    m.config.col.marker = i
 end sub
 
 

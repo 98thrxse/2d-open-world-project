@@ -30,6 +30,22 @@ function marker_data() as object
         getIndex: marker_getIndex
         setIndex: marker_setIndex
 
+        ' col
+        getColName: marker_getColName
+        setColName: marker_setColName
+
+        getColOffsetX: marker_getColOffsetX
+        setColOffsetX: marker_setColOffsetX
+        
+        getColOffsetY: marker_getColOffsetY
+        setColOffsetY: marker_setColOffsetY
+
+        getColW: marker_getColW
+        setColW: marker_setColW
+        
+        getColH: marker_getEntityH
+        setColH: marker_setColH
+
         config: invalid
 
     }
@@ -121,3 +137,43 @@ sub marker_setIndex(i as object, index as object)
     m.config[i].entity.index = index
 end sub
 
+
+function marker_getColOffsetX(i as object) as object
+    return m.config[i].col.offset.x
+end function
+
+sub marker_setColOffsetX(i as object, x as object)
+    m.config[i].col.offset.x = x
+end sub
+
+function marker_getColOffsetY(i as object) as object
+    return m.config[i].col.offset.y
+end function
+
+sub marker_setColOffsetY(i as object, y as object)
+    m.config[i].col.offset.y = y
+end sub
+
+function marker_getColW(i as object) as object
+    return m.config[i].col.size.width
+end function
+
+sub marker_setColW(i as object, width as object)
+    m.config[i].col.size.width = width
+end sub
+
+function marker_getColH(i as object) as object
+    return m.config[i].col.size.height
+end function
+
+sub marker_setColH(i as object, height as object)
+    m.config[i].col.size.height = height
+end sub
+
+function marker_getColName(i as object) as object
+    return m.config[i].col.name
+end function
+
+sub marker_setColName(i as object, name as object)
+    m.config[i].col.name = name
+end sub

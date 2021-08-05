@@ -170,6 +170,17 @@ function map_control(object)
                             width: invalid,
                             height: invalid
                         }
+                    },
+                    col: {
+                        name: invalid,
+                        offset: {
+                            x: invalid,
+                            y: invalid
+                        },
+                        size: {
+                            width: invalid,
+                            height: invalid
+                        }
                     }
                 })
             end for
@@ -190,6 +201,13 @@ function map_control(object)
             if m.map_marker_config[i].entity.alpha <> invalid then m.game.marker.setAlpha(i, m.map_marker_config[i].entity.alpha)
             if m.map_marker_config[i].entity.reg <> invalid then m.game.marker.setReg(i, m.map_marker_config[i].entity.reg)
             if m.map_marker_config[i].entity.index <> invalid then m.game.marker.setIndex(i, m.map_marker_config[i].entity.index)
+
+            ' col
+            if m.map_marker_config[i].col.name <> invalid then m.game.marker.setColName(i, m.map_marker_config[i].col.name)
+            if m.map_marker_config[i].col.offset.x <> invalid then m.game.marker.setColOffsetX(i, m.map_marker_config[i].col.offset.x)
+            if m.map_marker_config[i].col.offset.y <> invalid then m.game.marker.setColOffsetY(i, m.map_marker_config[i].col.offset.y)
+            if m.map_marker_config[i].col.size.width <> invalid then m.game.marker.setColW(i, m.map_marker_config[i].col.size.width)
+            if m.map_marker_config[i].col.size.height <> invalid then m.game.marker.setColH(i, m.map_marker_config[i].col.size.height)
             
         end for
     end function
@@ -203,7 +221,7 @@ function map_control(object)
                     entity: {
                         name: invalid,
                         index: invalid,
-                        reg: []
+                        reg: [],
                         offset: {
                             x: invalid,
                             y: invalid
@@ -337,6 +355,7 @@ function map_control(object)
         if m.map_char_config.col.left <> invalid then m.game.char.setColLeft(m.map_char_config.col.left)
         if m.map_char_config.col.right <> invalid then m.game.char.setColRight(m.map_char_config.col.right)
         if m.map_char_config.col.npc <> invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
+        if m.map_char_config.col.marker <> invalid then m.game.char.setMarkerCol(m.map_char_config.col.marker)
         if m.map_char_config.col.offset.x <> invalid then m.game.char.setColOffsetX(m.map_char_config.col.offset.x)
         if m.map_char_config.col.offset.y <> invalid then m.game.char.setColOffsetY(m.map_char_config.col.offset.y)
         if m.map_char_config.col.size.width <> invalid then m.game.char.setColW(m.map_char_config.col.size.width)

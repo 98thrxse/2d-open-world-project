@@ -1,4 +1,4 @@
-function testOne_marker_config() as object
+function testTwo_marker_config() as object
     config = [
 
         {
@@ -8,17 +8,6 @@ function testOne_marker_config() as object
                 index: 0,
                 alpha: 255,
                 reg: ["marker_transition"],
-                offset: {
-                    x: 9695,
-                    y: 2415
-                },
-                size: {
-                    width: 60,
-                    height: 52
-                }
-            },
-            col: {
-                name: "marker_col",
                 offset: {
                     x: 9695,
                     y: 2415
