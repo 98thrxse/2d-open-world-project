@@ -20,7 +20,6 @@ function char_control(object)
 
     m.savePos()
     m.charSPRegen()
-    m.objAlpha()
     m.animUpdate()
 
   end function
@@ -299,31 +298,6 @@ function char_control(object)
     if m.game.char.getColRight() = false
       m.game.map.setEntityOffsetX(m.game.map.getEntityOffsetX() - m.game.char.getRightSpeed())
     end if
-  end function
-
-  object.objAlpha = function()
-
-    m.game.char.setObjIntersect(invalid)
-
-    for i = 0 to m.game.obj.config.Count() - 1
-        if m.game.char.getEntityPosX() < m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityPosX() > m.game.obj.getEntityOffsetX(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 < m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 > m.game.obj.getEntityOffsetY(i)
-            if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
-            m.game.char.setObjIntersect(i)
-
-        else
-            if m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
-
-        end if
-    end for
-
-    if m.game.char.getObjIntersect() = invalid
-        if m.game.char.getAlpha() <> 255 then m.game.char.setAlpha(255)
-
-    else
-        if m.game.char.getAlpha() <> 125 then m.game.char.setAlpha(125)
-
-    end if
-
   end function
   
   object.npcHPDamage = function()

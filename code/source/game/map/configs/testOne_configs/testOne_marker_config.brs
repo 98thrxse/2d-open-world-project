@@ -14,7 +14,7 @@ function testOne_marker_config() as object
                 },
                 size: {
                     width: 60,
-                    height: 52
+                    height: 60
                 }
             },
             col: {
@@ -25,7 +25,7 @@ function testOne_marker_config() as object
                 },
                 size: {
                     width: 60,
-                    height: 52
+                    height: 60
                 }
             }
         }

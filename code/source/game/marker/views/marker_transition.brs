@@ -4,6 +4,9 @@ function marker_transition(object)
 
     object.onCreate = function(args)
 
+        ' loadFont
+        m.game.loadFont("VT323-21", "VT323", 21, false, false)
+
     end function
 
     object.entityLoad = function(i)
@@ -114,5 +117,16 @@ function marker_transition(object)
         m.colGen()
 
     end function
+
+    object.onDrawEnd = function(canvas)
+
+      ' getFont
+      transition_font = m.game.getFont("VT323-21")
+      
+      if m.game.char.getMarkerCol() <> invalid
+        DrawText(canvas, "ENTER?", m.game.marker.getEntityOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetX() + m.game.marker.getEntityW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2, m.game.marker.getEntityOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetY() + m.game.marker.getEntityH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3, transition_font, "center", &hFF0000FF)
+      end if
+
+  end function
 
 end function
