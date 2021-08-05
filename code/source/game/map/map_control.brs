@@ -238,7 +238,13 @@ function map_control(object)
                             cycle: invalid,
                             position: []
                         },
-                        hp: invalid
+                        hp: invalid,
+                        speed: {
+                            up: invalid,
+                            down: invalid,
+                            left: invalid,
+                            right: invalid
+                        }
                     }
                 })
             end for
@@ -254,6 +260,10 @@ function map_control(object)
             if m.map_npc_config[i].attrs.hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].attrs.hp)
             if m.map_npc_config[i].attrs.path.position <> invalid then m.game.npc.setPath(i, m.map_npc_config[i].attrs.path.position)
             if m.map_npc_config[i].attrs.path.cycle <> invalid then m.game.npc.setPathCycle(i, m.map_npc_config[i].attrs.path.cycle)
+            if m.map_npc_config[i].attrs.speed.up <> invalid then m.game.npc.setUpSpeed(i, m.map_npc_config[i].attrs.speed.up)
+            if m.map_npc_config[i].attrs.speed.down <> invalid then m.game.npc.setDownSpeed(i, m.map_npc_config[i].attrs.speed.down)
+            if m.map_npc_config[i].attrs.speed.left <> invalid then m.game.npc.setLeftSpeed(i, m.map_npc_config[i].attrs.speed.left)
+            if m.map_npc_config[i].attrs.speed.right <> invalid then m.game.npc.setRightSpeed(i, m.map_npc_config[i].attrs.speed.right)
 
             ' entity
             if m.map_npc_config[i].entity.name <> invalid then m.game.npc.setEntityName(i, m.map_npc_config[i].entity.name)

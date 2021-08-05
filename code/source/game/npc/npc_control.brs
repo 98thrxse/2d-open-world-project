@@ -43,8 +43,8 @@ function npc_control(object)
           end if
 
 
-          m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) + 1)
-          m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) + 1)
+          m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) + m.game.npc.getRightSpeed(i))
+          m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) + m.game.npc.getRightSpeed(i))
 
         else if m.game.npc.getEntityOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 
@@ -56,8 +56,8 @@ function npc_control(object)
 
 					end if
 
-          m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) - 1)
-          m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) - 1)
+          m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) - m.game.npc.getLeftSpeed(i))
+          m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) - m.game.npc.getLeftSpeed(i))
         
         else if m.game.npc.getEntityOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 
@@ -69,8 +69,8 @@ function npc_control(object)
 
           end if
 
-          m.game.npc.setEntityOffsetY(i, m.game.npc.getEntityOffsetY(i) + 1)
-          m.game.npc.setColOffsetY(i, m.game.npc.getColOffsetY(i) + 1)
+          m.game.npc.setEntityOffsetY(i, m.game.npc.getEntityOffsetY(i) + m.game.npc.getDownSpeed(i))
+          m.game.npc.setColOffsetY(i, m.game.npc.getColOffsetY(i) + m.game.npc.getDownSpeed(i))
 
         else if m.game.npc.getEntityOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 
@@ -82,8 +82,8 @@ function npc_control(object)
 
           end if
 
-          m.game.npc.setEntityOffsetY(i, m.game.npc.getEntityOffsetY(i) - 1)
-          m.game.npc.setColOffsetY(i, m.game.npc.getColOffsetY(i) - 1)
+          m.game.npc.setEntityOffsetY(i, m.game.npc.getEntityOffsetY(i) - m.game.npc.getUpSpeed(i))
+          m.game.npc.setColOffsetY(i, m.game.npc.getColOffsetY(i) - m.game.npc.getUpSpeed(i))
 
         end if
 

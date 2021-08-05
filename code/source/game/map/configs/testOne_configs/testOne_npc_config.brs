@@ -39,7 +39,13 @@ function testOne_npc_config() as object
                     cycle: 0,
                     position: [ [9400, 1800], [9500, 2000] ]
                 },
-                hp: 100
+                hp: 100,
+                speed: {
+                    up: 1,
+                    down: 1,
+                    left: 1,
+                    right: 1
+                }
             }
 
         },
@@ -83,7 +89,13 @@ function testOne_npc_config() as object
                     cycle: invalid,
                     position: []
                 },
-                hp: 100
+                hp: 100,
+                speed: {
+                    up: 1,
+                    down: 1,
+                    left: 1,
+                    right: 1
+                }
             }
         }
     ]

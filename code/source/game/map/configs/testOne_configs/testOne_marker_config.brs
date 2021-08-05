@@ -7,7 +7,7 @@ function testOne_marker_config() as object
                 name: "marker_entity",
                 index: 0,
                 alpha: 255,
-                reg: ["marker"],
+                reg: ["marker_transition"],
                 offset: {
                     x: 9695,
                     y: 2415

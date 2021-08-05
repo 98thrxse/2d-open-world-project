@@ -17,6 +17,18 @@ function npc_data() as object
         
         getPathCycle: npc_getPathCycle
         setPathCycle: npc_setPathCycle
+
+        getUpSpeed: npc_getUpSpeed
+        setUpSpeed: npc_setUpSpeed
+
+        getDownSpeed: npc_getDownSpeed
+        setDownSpeed: npc_setDownSpeed
+
+        getLeftSpeed: npc_getLeftSpeed
+        setLeftSpeed: npc_setLeftSpeed
+
+        getRightSpeed: npc_getRightSpeed
+        setRightSpeed: npc_setRightSpeed
  
         ' entity
         getEntityName: npc_getEntityName
@@ -268,4 +280,39 @@ end function
 
 sub npc_setScaleY(i as object, y as object)
     m.config[i].entity.scale.y = y
+end sub
+
+function npc_getUpSpeed(i as object) as object
+    return m.config[i].attrs.speed.up
+end function
+
+sub npc_setUpSpeed(i as object, speed as object) 
+    m.config[i].attrs.speed.up = speed
+end sub
+
+
+function npc_getDownSpeed(i as object) as object
+    return m.config[i].attrs.speed.down
+end function
+
+sub npc_setDownSpeed(i as object, speed as object) 
+    m.config[i].attrs.speed.down = speed
+end sub
+
+
+function npc_getLeftSpeed(i as object) as object
+    return m.config[i].attrs.speed.left
+end function
+
+sub npc_setLeftSpeed(i as object, speed as object) 
+    m.config[i].attrs.speed.left = speed
+end sub
+
+
+function npc_getRightSpeed(i as object) as object
+    return m.config[i].attrs.speed.right
+end function
+
+sub npc_setRightSpeed(i as object, speed as object) 
+    m.config[i].attrs.speed.right = speed
 end sub
