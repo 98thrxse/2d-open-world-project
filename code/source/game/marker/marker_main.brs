@@ -9,5 +9,10 @@ function marker_main(object)
         m.game.createInstance("marker_control")
 
     end function
+
+    object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("marker_transition"))
+        m.game.destroyInstance(m.game.getInstanceByName("marker_control"))
+    end function
     
 end function

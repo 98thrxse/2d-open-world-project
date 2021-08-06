@@ -27,6 +27,9 @@ function testOne_marker_config() as object
                     width: 60,
                     height: 60
                 }
+            },
+            attrs: {
+                map: "testTwo"
             }
         }
     ]

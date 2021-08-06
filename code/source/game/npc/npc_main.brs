@@ -9,5 +9,10 @@ function npc_main(object)
         m.game.createInstance("npc_control")
 
     end function
+
+    object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("npc_view"))
+        m.game.destroyInstance(m.game.getInstanceByName("npc_control"))
+    end function
     
 end function

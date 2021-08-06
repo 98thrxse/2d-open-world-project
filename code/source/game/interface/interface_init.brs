@@ -17,4 +17,8 @@ function interface_init(object)
 
     end function
 
+    object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("interface_main"))
+    end function
+
 end function

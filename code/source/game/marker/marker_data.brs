@@ -46,6 +46,11 @@ function marker_data() as object
         getColH: marker_getEntityH
         setColH: marker_setColH
 
+        ' attrs
+        getMap: marker_getMap
+        setMap: marker_setMap
+
+
         config: invalid
 
     }
@@ -176,4 +181,12 @@ end function
 
 sub marker_setColName(i as object, name as object)
     m.config[i].col.name = name
+end sub
+
+function marker_getMap(i as object) as object
+    return m.config[i].attrs.map
+end function
+
+sub marker_setMap(i as object, map as object)
+    m.config[i].attrs.map = map
 end sub

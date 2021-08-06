@@ -17,5 +17,9 @@ function map_init(object)
         m.game.createInstance("map_main")
 
     end function
+
+    object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("map_main"))
+    end function
     
 end function

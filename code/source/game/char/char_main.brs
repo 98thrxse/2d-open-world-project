@@ -15,5 +15,10 @@ function char_main(object)
         m.game.char.save()
 
     end function
+
+    object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("char_view"))
+        m.game.destroyInstance(m.game.getInstanceByName("char_control"))
+    end function
     
 end function

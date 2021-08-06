@@ -16,6 +16,15 @@ function map_main(object)
 
     end function
 
+    object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("char_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("interface_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("marker_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("obj_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("npc_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("terrain_init"))
 
+        m.game.destroyInstance(m.game.getInstanceByName("map_control"))
+    end function
     
 end function

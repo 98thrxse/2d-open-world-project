@@ -24,6 +24,7 @@ function map_control(object)
             m.map_npc_config = testTwo_npc_config()
             m.map_terrain_config = testTwo_terrain_config()
             m.map_interface_config = testTwo_interface_config()
+            m.map_marker_config = testTwo_marker_config()
         end if
 
     end function
@@ -181,6 +182,9 @@ function map_control(object)
                             width: invalid,
                             height: invalid
                         }
+                    },
+                    attrs: {
+                        map: invalid
                     }
                 })
             end for
@@ -208,6 +212,9 @@ function map_control(object)
             if m.map_marker_config[i].col.offset.y <> invalid then m.game.marker.setColOffsetY(i, m.map_marker_config[i].col.offset.y)
             if m.map_marker_config[i].col.size.width <> invalid then m.game.marker.setColW(i, m.map_marker_config[i].col.size.width)
             if m.map_marker_config[i].col.size.height <> invalid then m.game.marker.setColH(i, m.map_marker_config[i].col.size.height)
+
+            'attrs
+            if m.map_marker_config[i].attrs.map <> invalid then m.game.marker.setMap(i, m.map_marker_config[i].attrs.map)
             
         end for
     end function

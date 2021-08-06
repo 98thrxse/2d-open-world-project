@@ -12,4 +12,8 @@ function char_init(object)
 
 	end function
 
+	object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("char_main"))
+    end function
+
 end function

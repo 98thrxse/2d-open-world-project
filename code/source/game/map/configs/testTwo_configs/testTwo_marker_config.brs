@@ -14,8 +14,22 @@ function testTwo_marker_config() as object
                 },
                 size: {
                     width: 60,
-                    height: 52
+                    height: 60
                 }
+            },
+            col: {
+                name: "marker_col",
+                offset: {
+                    x: 9695,
+                    y: 2415
+                },
+                size: {
+                    width: 60,
+                    height: 60
+                }
+            },
+            attrs: {
+                map: "testOne"
             }
         }
     ]

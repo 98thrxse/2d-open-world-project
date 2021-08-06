@@ -48,6 +48,11 @@ function char_control(object)
         m.charTurnRight()
       end if
 
+    else if code = 13 ' play
+      if m.game.getFocusGroup() = "char"
+        m.markerTransition()
+      end if
+
     ' released
     else if code = 102 ' up
       if m.game.getFocusGroup() = "char"
@@ -114,6 +119,39 @@ function char_control(object)
 		end if
 
 	end function
+
+  object.markerTransition = function()
+
+    if m.game.char.getMarkerCol() <> invalid
+
+      ' destroyInstance
+      m.game.destroyInstance(m.game.getInstanceByName("interface_init"))
+      m.game.destroyInstance(m.game.getInstanceByName("marker_init"))
+      m.game.destroyInstance(m.game.getInstanceByName("obj_init"))
+      m.game.destroyInstance(m.game.getInstanceByName("npc_init"))
+      m.game.destroyInstance(m.game.getInstanceByName("terrain_init"))
+
+      m.game.destroyInstance(m.game.getInstanceByName("map_control"))
+
+      ' set char pos
+      m.game.char.setEntityPosX(invalid)
+      m.game.char.setEntityPosY(invalid)
+      
+      ' set char map
+      m.game.char.setMap(m.game.marker.getMap(m.game.char.getMarkerCol().split("_").peek().toInt()))
+
+      ' createInstance        
+      m.game.createInstance("interface_init")
+      m.game.createInstance("marker_init")
+      m.game.createInstance("obj_init")
+      m.game.createInstance("npc_init")
+      m.game.createInstance("terrain_init")
+
+      m.game.createInstance("map_control")
+
+    end if
+
+  end function
 
 	object.animPlay = function(arr)
 

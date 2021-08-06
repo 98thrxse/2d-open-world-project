@@ -12,4 +12,8 @@ function npc_init(object)
 
 	end function
 
+	object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("npc_main"))
+    end function
+
 end function

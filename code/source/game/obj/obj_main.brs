@@ -9,5 +9,10 @@ function obj_main(object)
         m.game.createInstance("obj_control")
 
     end function
+
+    object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("obj_view"))
+        m.game.destroyInstance(m.game.getInstanceByName("obj_control"))
+    end function
     
 end function

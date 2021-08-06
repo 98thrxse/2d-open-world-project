@@ -11,5 +11,9 @@ function marker_init(object)
         m.game.createInstance("marker_main")
 
     end function
+
+    object.onDestroy = function()
+        m.game.destroyInstance(m.game.getInstanceByName("marker_main"))
+    end function
     
 end function
