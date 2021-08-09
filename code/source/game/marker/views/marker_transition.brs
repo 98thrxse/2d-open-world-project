@@ -4,8 +4,11 @@ function marker_transition(object)
 
     object.onCreate = function(args)
 
-        ' loadFont
-        m.game.loadFont("VT323-21", "VT323", 21, false, false)
+      ' loadFont
+      m.game.loadFont("VT323-21", "VT323", 21, false, false)
+      
+      ' getFont
+      m.transition_font = m.game.getFont("VT323-21")
 
     end function
 
@@ -46,6 +49,7 @@ function marker_transition(object)
     end function
 
     object.entityGen = function()
+      if m.game.marker.config.Count() <> 0
 
         ' load & add
         for i = 0 to m.game.marker.config.Count() - 1
@@ -76,7 +80,7 @@ function marker_transition(object)
             end if
           
         end for
-    
+      end if
     end function
 
     object.colGen = function()
@@ -119,12 +123,11 @@ function marker_transition(object)
     end function
 
     object.onDrawEnd = function(canvas)
-
-      ' getFont
-      transition_font = m.game.getFont("VT323-21")
       
-      if m.game.char.getMarkerCol() <> invalid
-        DrawText(canvas, "ENTER?", m.game.marker.getEntityOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetX() + m.game.marker.getEntityW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2, m.game.marker.getEntityOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetY() + m.game.marker.getEntityH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3, transition_font, "center", &hFF0000FF)
+      if m.game.marker.config.Count() <> 0
+        if m.game.char.getMarkerCol() <> invalid
+          DrawText(canvas, "ENTER?", m.game.marker.getEntityOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetX() + m.game.marker.getEntityW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2, m.game.marker.getEntityOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetY() + m.game.marker.getEntityH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3, m.transition_font, "center", &hFF0000FF)
+        end if
       end if
 
   end function

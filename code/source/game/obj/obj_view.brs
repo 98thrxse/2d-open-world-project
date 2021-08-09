@@ -44,36 +44,37 @@ function obj_view(object)
 
     object.entityGen = function()
 
-        ' load & add
-        for i = 0 to m.game.obj.config.Count() - 1
-            if - m.game.map.getEntityOffsetX() <= m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getEntityOffsetY(i)
-                if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+        if m.game.obj.config.Count() <> 0
+            ' load & add
+            for i = 0 to m.game.obj.config.Count() - 1
+                if - m.game.map.getEntityOffsetX() <= m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getEntityOffsetY(i)
+                    if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+                            
+                        ' load
+                        m.entityLoad(i)
+
+                        ' add
+                        m.addAnimatedImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr(), m.obj_regions, { index: m.game.obj.getIndex(i)
+                            offset_x: m.game.obj.getEntityOffsetX(i),
+                            offset_y: m.game.obj.getEntityOffsetY(i),
+                            alpha: m.game.obj.getAlpha(i)
+                        })
                         
-                    ' load
-                    m.entityLoad(i)
+                    end if
 
-                    ' add
-                    m.addAnimatedImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr(), m.obj_regions, { index: m.game.obj.getIndex(i)
-                        offset_x: m.game.obj.getEntityOffsetX(i),
-                        offset_y: m.game.obj.getEntityOffsetY(i),
-                        alpha: m.game.obj.getAlpha(i)
-                    })
-                    
+                ' unload & remove
+                else if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+
+                    ' unload
+                    m.entityUnload(i)
+
+                    ' remove
+                    m.removeImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr())
+
                 end if
-
-            ' unload & remove
-            else if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
-
-                ' unload
-                m.entityUnload(i)
-
-                ' remove
-                m.removeImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr())
-
-            end if
-          
-        end for
-    
+            
+            end for
+        end if
     end function
 
     object.colGen = function()

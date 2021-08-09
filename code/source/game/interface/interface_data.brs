@@ -13,22 +13,8 @@ function interface_data() as object
     if m.interface.config = invalid
 
         m.interface.config = {
-            focus: {
-                menu: [
-                    {
-                        id: 0,
-                        name: "0",
-                    },
-                    {
-                        id: 1,
-                        name: "1",
-                    },
-                    {
-                        id: 2,
-                        name: "2",
-                    }
-                ]
-            }
+            menu: [
+            ]
         }
 
     end if
@@ -39,9 +25,9 @@ end function
 
 
 function interface_getMenuItemName(i as object) as object
-    return m.config.focus.menu[i].name
+    return m.config.menu[i].name
 end function
 
 sub interface_setMenuItemName(i as object, name as object)
-    m.config.focus.menu[i].name = name
+    m.config.menu[i].name = name
 end sub

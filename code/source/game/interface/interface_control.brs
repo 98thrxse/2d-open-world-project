@@ -23,14 +23,14 @@ function interface_control(object)
 
     object.interfaceLeftTarget = function()
         if m.game.getFocusTarget() <= 0
-            m.game.setFocusTarget(m.game.interface.config.focus.menu.Count() - 1)
+            m.game.setFocusTarget(m.game.interface.config.menu.Count() - 1)
         else
             m.game.setFocusTarget(m.game.getFocusTarget() - 1)
         end if
     end function
 
     object.interfaceRightTarget = function()
-        if m.game.getFocusTarget() >= m.game.interface.config.focus.menu.Count() - 1
+        if m.game.getFocusTarget() >= m.game.interface.config.menu.Count() - 1
             m.game.setFocusTarget(0)
         else
             m.game.setFocusTarget(m.game.getFocusTarget() + 1)

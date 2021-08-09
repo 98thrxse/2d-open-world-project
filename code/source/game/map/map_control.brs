@@ -373,20 +373,20 @@ function map_control(object)
 
     object.loadInterface = function()
 
-        if m.map_interface_config.focus.menu <> invalid
-            if m.game.interface.config.focus.menu.Count() < m.map_interface_config.focus.menu.Count()
-                for i = m.game.interface.config.focus.menu.Count() to m.map_interface_config.focus.menu.Count() - 1
-                    m.game.interface.config.focus.menu.push("")
+        if m.map_interface_config.menu <> invalid or m.game.interface.config.menu.Count() <> 0
+            if m.game.interface.config.menu.Count() < m.map_interface_config.menu.Count()
+                for i = m.game.interface.config.menu.Count() to m.map_interface_config.menu.Count() - 1
+                    m.game.interface.config.menu.push("")
                 end for
 
-            else if m.game.interface.config.focus.menu.Count() > m.map_interface_config.focus.menu.Count()
-                for i = m.map_interface_config.focus.menu.Count() to m.game.interface.config.focus.menu.Count() - 1
-                    m.game.interface.config.focus.menu.pop()
+            else if m.game.interface.config.menu.Count() > m.map_interface_config.menu.Count()
+                for i = m.map_interface_config.menu.Count() to m.game.interface.config.menu.Count() - 1
+                    m.game.interface.config.menu.pop()
                 end for
             end if
 
-            for i = 0 to m.map_interface_config.focus.menu.Count() - 1
-                m.game.interface.setMenuItemName(i, m.map_interface_config.focus.menu[i].name)
+            for i = 0 to m.map_interface_config.menu.Count() - 1
+                m.game.interface.setMenuItemName(i, m.map_interface_config.menu[i].name)
             end for
         end if
 

@@ -45,37 +45,39 @@ function npc_view(object)
 
 
   object.entityGen = function()
+    if m.game.npc.config.Count() <> 0
 
-    ' load & add
-    for i = 0 to m.game.npc.config.Count() - 1
-      if - m.game.map.getEntityOffsetX() <= m.game.npc.getEntityOffsetX(i) + m.game.npc.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.npc.getEntityOffsetY(i) + m.game.npc.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getEntityOffsetY(i)
-        if m.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+      ' load & add
+      for i = 0 to m.game.npc.config.Count() - 1
+        if - m.game.map.getEntityOffsetX() <= m.game.npc.getEntityOffsetX(i) + m.game.npc.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.npc.getEntityOffsetY(i) + m.game.npc.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getEntityOffsetY(i)
+          if m.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
 
-          ' load
-          m.entityLoad(i)
+            ' load
+            m.entityLoad(i)
 
-          ' add
-          m.addAnimatedImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr(), m.npc_regions, { index: m.game.npc.getIndex(i)
-            offset_x: m.game.npc.getEntityOffsetX(i),
-            offset_y: m.game.npc.getEntityOffsetY(i)
-            scale_x: m.game.npc.getScaleX(i)
-            scale_y: m.game.npc.getScaleY(i)
-          })
-  
+            ' add
+            m.addAnimatedImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr(), m.npc_regions, { index: m.game.npc.getIndex(i)
+              offset_x: m.game.npc.getEntityOffsetX(i),
+              offset_y: m.game.npc.getEntityOffsetY(i)
+              scale_x: m.game.npc.getScaleX(i)
+              scale_y: m.game.npc.getScaleY(i)
+            })
+    
+          end if
+
+        ' unload & remove
+        else if m.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+
+          ' unload
+          m.entityUnload(i)
+
+          ' remove
+          m.removeImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr())
+
         end if
-
-      ' unload & remove
-      else if m.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
-
-        ' unload
-        m.entityUnload(i)
-
-        ' remove
-        m.removeImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr())
-
-      end if
-      
-    end for
+        
+      end for
+    end if
 
   end function
 
