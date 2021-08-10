@@ -29,7 +29,9 @@ function testOne_marker_config() as object
                 }
             },
             attrs: {
-                map: "testTwo"
+                map: "testTwo",
+                x: 155,
+                y: 270
             }
         }
     ]

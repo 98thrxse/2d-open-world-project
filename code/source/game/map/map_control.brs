@@ -215,6 +215,8 @@ function map_control(object)
 
             'attrs
             if m.map_marker_config[i].attrs.map <> invalid then m.game.marker.setMap(i, m.map_marker_config[i].attrs.map)
+            if m.map_marker_config[i].attrs.x <> invalid then m.game.marker.setTransitionX(i, m.map_marker_config[i].attrs.x)
+            if m.map_marker_config[i].attrs.y <> invalid then m.game.marker.setTransitionY(i, m.map_marker_config[i].attrs.y)
             
         end for
     end function

@@ -23,8 +23,8 @@ function testTwo_char_config() as object
             time: 100
 
             pos: {
-                x: 150,
-                y: 270
+                x: invalid,
+                y: invalid
             },
 
         }

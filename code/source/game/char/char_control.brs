@@ -133,12 +133,12 @@ function char_control(object)
 
       m.game.destroyInstance(m.game.getInstanceByName("map_control"))
 
-      ' set char pos
-      m.game.char.setEntityPosX(invalid)
-      m.game.char.setEntityPosY(invalid)
-      
       ' set char map
       m.game.char.setMap(m.game.marker.getMap(m.game.char.getMarkerCol().split("_").peek().toInt()))
+
+      ' set char pos
+      m.game.char.setEntityPosX(m.game.marker.getTransitionX(m.game.char.getMarkerCol().split("_").peek().toInt()))
+      m.game.char.setEntityPosY(m.game.marker.getTransitionY(m.game.char.getMarkerCol().split("_").peek().toInt()))
 
       ' createInstance        
       m.game.createInstance("interface_init")

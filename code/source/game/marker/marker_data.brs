@@ -50,6 +50,11 @@ function marker_data() as object
         getMap: marker_getMap
         setMap: marker_setMap
 
+        getTransitionX: marker_getTransitionX
+        setTransitionX: marker_setTransitionX
+
+        getTransitionY: marker_getTransitionY
+        setTransitionY: marker_setTransitionY
 
         config: invalid
 
@@ -189,4 +194,20 @@ end function
 
 sub marker_setMap(i as object, map as object)
     m.config[i].attrs.map = map
+end sub
+
+function marker_getTransitionX(i as object) as object
+    return m.config[i].attrs.x
+end function
+
+sub marker_setTransitionX(i as object, x as object)
+    m.config[i].attrs.x = x
+end sub
+
+function marker_getTransitionY(i as object) as object
+    return m.config[i].attrs.y
+end function
+
+sub marker_setTransitionY(i as object, y as object)
+    m.config[i].attrs.y = y
 end sub
