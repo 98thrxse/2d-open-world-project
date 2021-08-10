@@ -320,7 +320,7 @@ function map_control(object)
         ' loading map config to player data
 
         ' entity
-        if m.map_char_config.entity.name <> invalid then m.game.char.setEntityName(m.map_char_config.entity.name)
+        if m.map_char_config.entity.name <> invalid and m.game.char.getEntityName() = invalid then m.game.char.setEntityName(m.map_char_config.entity.name)
         if m.map_char_config.entity.pos.x <> invalid and m.game.char.getEntityPosX() = invalid then m.game.char.setEntityPosX(m.map_char_config.entity.pos.x)
         if m.map_char_config.entity.pos.y <> invalid and m.game.char.getEntityPosY() = invalid then m.game.char.setEntityPosY(m.map_char_config.entity.pos.y)
         if m.map_char_config.entity.size.width <> invalid and m.game.char.getEntityW() = invalid then m.game.char.setEntityW(m.map_char_config.entity.size.width)
