@@ -133,6 +133,7 @@ function marker_transition(object)
       
       if m.game.marker.config.Count() <> 0
         if m.game.char.getMarkerCol() <> invalid
+          DrawText(canvas, "ENTER?", m.game.marker.getEntityOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetX() + m.game.marker.getEntityW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2 + 3, m.game.marker.getEntityOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetY() + m.game.marker.getEntityH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3 + 3, m.transition_font, "center", &h000000FF)
           DrawText(canvas, "ENTER?", m.game.marker.getEntityOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetX() + m.game.marker.getEntityW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2, m.game.marker.getEntityOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetY() + m.game.marker.getEntityH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3, m.transition_font, "center", &hFF0000FF)
         end if
       end if

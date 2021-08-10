@@ -12,6 +12,7 @@ function interface_hp(object)
 
     object.onDrawEnd = function(canvas)
 
+        DrawText(canvas, m.game.char.getHP().toStr() + "%", canvas.GetWidth() / 2 + 3, canvas.GetWidth() / 2 + 3, m.hp_font, "center", &h000000FF)
         DrawText(canvas, m.game.char.getHP().toStr() + "%", canvas.GetWidth() / 2, canvas.GetWidth() / 2, m.hp_font, "center", &hFF0000FF)
 
     end function
