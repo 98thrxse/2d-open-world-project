@@ -79,16 +79,26 @@ function obj_view(object)
 
     object.colGen = function()
 
-        ' loading map config to create obj
-        for i = 0 to m.game.obj.config.Count() - 1   
-          if m.colliders[m.game.obj.getColName(i).toStr() + "_" + i.toStr()] = invalid
-            ' addColliderRectangle
-            m.addColliderRectangle(m.game.obj.getColName(i).toStr() + "_" + i.toStr(), m.game.obj.getColOffsetX(i), m.game.obj.getColOffsetY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
-          
-          end if
-          
-        end for
-    
+        if m.game.obj.config.Count() <> 0
+            ' load & add
+            for i = 0 to m.game.obj.config.Count() - 1
+                if - m.game.map.getEntityOffsetX() <= m.game.obj.getColOffsetX(i) + m.game.obj.getColW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getColOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.obj.getColOffsetY(i) + m.game.obj.getColH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getColOffsetY(i)
+
+                    if m.colliders[m.game.obj.getColName(i).toStr() + "_" + i.toStr()] = invalid
+                        ' addColliderRectangle
+                        m.addColliderRectangle(m.game.obj.getColName(i).toStr() + "_" + i.toStr(), m.game.obj.getColOffsetX(i), m.game.obj.getColOffsetY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
+                      
+                    end if
+
+                ' unload & remove
+                else if m.getCollider(m.game.obj.getColName(i).toStr() + "_" + i.toStr()) <> invalid
+
+                    m.removeCollider(m.game.obj.getColName(i).toStr() + "_" + i.toStr())
+
+                end if
+            
+            end for
+        end if
     end function
 
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)

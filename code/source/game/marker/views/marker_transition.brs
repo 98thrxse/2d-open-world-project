@@ -53,48 +53,55 @@ function marker_transition(object)
 
         ' load & add
         for i = 0 to m.game.marker.config.Count() - 1
-            if - m.game.map.getEntityOffsetX() <= m.game.marker.getEntityOffsetX(i) + m.game.marker.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.marker.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.marker.getEntityOffsetY(i) + m.game.marker.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.marker.getEntityOffsetY(i)
-                if m.getImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
-                        
-                    ' load
-                    m.entityLoad(i)
-
-                    ' add
-                    m.addAnimatedImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr(), m.marker_regions, { index: m.game.marker.getIndex(i)
-                        offset_x: m.game.marker.getEntityOffsetX(i),
-                        offset_y: m.game.marker.getEntityOffsetY(i),
-                        alpha: m.game.marker.getAlpha(i)
-                    })
+          if - m.game.map.getEntityOffsetX() <= m.game.marker.getEntityOffsetX(i) + m.game.marker.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.marker.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.marker.getEntityOffsetY(i) + m.game.marker.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.marker.getEntityOffsetY(i)
+            if m.getImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
                     
-                end if
+              ' load
+              m.entityLoad(i)
 
-            ' unload & remove
-            else if m.getImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
-
-                ' unload
-                m.entityUnload(i)
-
-                ' remove
-                m.removeImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr())
-
+              ' add
+              m.addAnimatedImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr(), m.marker_regions, { index: m.game.marker.getIndex(i)
+                  offset_x: m.game.marker.getEntityOffsetX(i),
+                  offset_y: m.game.marker.getEntityOffsetY(i),
+                  alpha: m.game.marker.getAlpha(i)
+              })
+                
             end if
-          
+
+          ' unload & remove
+          else if m.getImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+
+            ' unload
+            m.entityUnload(i)
+
+            ' remove
+            m.removeImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr())
+
+          end if
         end for
       end if
     end function
 
     object.colGen = function()
+      if m.game.marker.config.Count() <> 0
 
-        ' loading map config to create marker
+        ' load & add
         for i = 0 to m.game.marker.config.Count() - 1
-    
-          if m.colliders[m.game.marker.getEntityName(i).toStr() + "_" + i.toStr()] = invalid
-            ' addColliderRectangle
-            m.addColliderRectangle(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr(), m.game.marker.getColOffsetX(i), m.game.marker.getColOffsetY(i), m.game.marker.getColW(i), m.game.marker.getColH(i))
+          if - m.game.map.getEntityOffsetX() <= m.game.marker.getColOffsetX(i) + m.game.marker.getColW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.marker.getColOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.marker.getColOffsetY(i) + m.game.marker.getColH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.marker.getColOffsetY(i)
+
+            if m.colliders[m.game.marker.getColName(i).toStr() + "_" + i.toStr()] = invalid
+              ' addColliderRectangle
+              m.addColliderRectangle(m.game.marker.getColName(i).toStr() + "_" + i.toStr(), m.game.marker.getColOffsetX(i), m.game.marker.getColOffsetY(i), m.game.marker.getColW(i), m.game.marker.getColH(i))
+            end if
+
+          ' unload & remove
+          else if m.getCollider(m.game.marker.getColName(i).toStr() + "_" + i.toStr()) <> invalid
+
+            m.removeCollider(m.game.marker.getColName(i).toStr() + "_" + i.toStr())
+
           end if
-    
         end for
-    
+      end if
     end function
     
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)

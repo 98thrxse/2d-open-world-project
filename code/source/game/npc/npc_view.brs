@@ -43,7 +43,6 @@ function npc_view(object)
 
   end function
 
-
   object.entityGen = function()
     if m.game.npc.config.Count() <> 0
 
@@ -81,17 +80,28 @@ function npc_view(object)
 
   end function
 
+
   object.colGen = function()
+    if m.game.npc.config.Count() <> 0
 
-    ' loading map config to create npc
-    for i = 0 to m.game.npc.config.Count() - 1
+      ' add
+      for i = 0 to m.game.npc.config.Count() - 1
+        if - m.game.map.getEntityOffsetX() <= m.game.npc.getColOffsetX(i) + m.game.npc.getColW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getColOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.npc.getColOffsetY(i) + m.game.npc.getColH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getColOffsetY(i)
 
-      if m.colliders[m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()] = invalid
-        ' addColliderRectangle
-        m.addColliderRectangle(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr(), m.game.npc.getColOffsetX(i), m.game.npc.getColOffsetY(i), m.game.npc.getColW(i), m.game.npc.getColH(i))
-      end if
+          if m.colliders[m.game.npc.getColName(i).toStr() + "_" + i.toStr()] = invalid
+            ' addColliderRectangle
+            m.addColliderRectangle(m.game.npc.getColName(i).toStr() + "_" + i.toStr(), m.game.npc.getColOffsetX(i), m.game.npc.getColOffsetY(i), m.game.npc.getColW(i), m.game.npc.getColH(i))
+          end if
 
-    end for
+        ' remove
+        else if m.getCollider(m.game.npc.getColName(i).toStr() + "_" + i.toStr()) <> invalid
+
+          m.removeCollider(m.game.npc.getColName(i).toStr() + "_" + i.toStr())
+
+        end if
+        
+      end for
+    end if
 
   end function
 

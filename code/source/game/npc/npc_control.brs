@@ -187,8 +187,8 @@ function npc_control(object)
 				m.view_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr()).offset_x = m.game.npc.getEntityOffsetX(i)
 				m.view_wnd.getImage(m.game.npc.config[i].entity.name.toStr() + "_" + i.toStr()).offset_y = m.game.npc.getEntityOffsetY(i)
 
-				m.view_wnd.getCollider(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()).offset_x = m.game.npc.getColOffsetX(i)
-				m.view_wnd.getCollider(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()).offset_y = m.game.npc.getColOffsetY(i)
+				m.view_wnd.getCollider(m.game.npc.getColName(i).toStr() + "_" + i.toStr()).offset_x = m.game.npc.getColOffsetX(i)
+				m.view_wnd.getCollider(m.game.npc.getColName(i).toStr() + "_" + i.toStr()).offset_y = m.game.npc.getColOffsetY(i)
 
 			end if
 		
