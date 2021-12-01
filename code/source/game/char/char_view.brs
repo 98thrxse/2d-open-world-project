@@ -13,7 +13,7 @@ function char_view(object)
 
     m.char_regions = []
 
-    for i = 0 to m.game.char.config.entity.reg.Count() - 1
+    for i = 0 to m.game.char.config.reg.Count() - 1
 
       if m.game.getBitmap(m.funcName + "_" + m.game.char.getRegElement(i).toStr()) = invalid
         ' loadBitmap
@@ -40,8 +40,8 @@ function char_view(object)
 
     ' addAnimatedImage
     m.addAnimatedImage(m.game.char.getEntityName(), m.char_regions, { index: m.game.char.getIndex()
-      offset_x: m.game.char.getEntityOffsetX(),
-      offset_y: m.game.char.getEntityOffsetY(),
+      offset_x: m.game.char.getOffsetX(),
+      offset_y: m.game.char.getOffsetY(),
       alpha: m.game.char.getAlpha()
       scale_x: m.game.char.getScaleX()
       scale_y: m.game.char.getScaleY()
@@ -52,10 +52,10 @@ function char_view(object)
   object.colGen = function()
 
     ' addColliderRectangle
-    m.addColliderRectangle(m.game.char.getColUpName(), m.game.char.getColOffsetX() + 3, m.game.char.getColOffsetY(), m.game.char.getColW() - 6, 1)
-    m.addColliderRectangle(m.game.char.getColDownName(), m.game.char.getColOffsetX() + 3, m.game.char.getColOffsetY() + m.game.char.getColH(), m.game.char.getColW() - 6, 1)
-    m.addColliderRectangle(m.game.char.getColLeftName(), m.game.char.getColOffsetX(), m.game.char.getColOffsetY() + 3, 1, m.game.char.getColH() - 6)
-    m.addColliderRectangle(m.game.char.getColRightName(), m.game.char.getColOffsetX() + m.game.char.getColW() - 1, m.game.char.getColOffsetY() + 3, 1, m.game.char.getColH() - 6)
+    m.addColliderRectangle(m.game.char.getColUpName(), m.game.char.getOffsetX() + 3, m.game.char.getOffsetY(), m.game.char.getSizeW() - 6, 1)
+    m.addColliderRectangle(m.game.char.getColDownName(), m.game.char.getOffsetX() + 3, m.game.char.getOffsetY() + m.game.char.getSizeH(), m.game.char.getSizeW() - 6, 1)
+    m.addColliderRectangle(m.game.char.getColLeftName(), m.game.char.getOffsetX(), m.game.char.getOffsetY() + 3, 1, m.game.char.getSizeH() - 6)
+    m.addColliderRectangle(m.game.char.getColRightName(), m.game.char.getOffsetX() + m.game.char.getSizeW() - 1, m.game.char.getOffsetY() + 3, 1, m.game.char.getSizeH() - 6)
   
   end function
     

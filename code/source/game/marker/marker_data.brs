@@ -2,9 +2,8 @@ function marker_data() as object
 
     m.marker = {
 
-        ' entity
-        getEntityName: marker_getEntityName
-        setEntityName: marker_setEntityName
+        getName: marker_getName
+        setName: marker_setName
 
         getAlpha: marker_getAlpha
         setAlpha: marker_setAlpha
@@ -15,38 +14,21 @@ function marker_data() as object
         getReg: marker_getReg
         setReg: marker_setReg
 
-        getEntityOffsetX: marker_getEntityOffsetX
-        setEntityOffsetX: marker_setEntityOffsetX
+        getOffsetX: marker_getOffsetX
+        setOffsetX: marker_setOffsetX
         
-        getEntityOffsetY: marker_getEntityOffsetY
-        setEntityOffsetY: marker_setEntityOffsetY
+        getOffsetY: marker_getOffsetY
+        setOffsetY: marker_setOffsetY
 
-        getEntityH: marker_getEntityH
-        setEntityH: marker_setEntityH
+        getSizeH: marker_getSizeH
+        setSizeH: marker_setSizeH
         
-        getEntityW: marker_getEntityW
-        setEntityW: marker_setEntityW
+        getSizeW: marker_getSizeW
+        setSizeW: marker_setSizeW
 
         getIndex: marker_getIndex
         setIndex: marker_setIndex
 
-        ' col
-        getColName: marker_getColName
-        setColName: marker_setColName
-
-        getColOffsetX: marker_getColOffsetX
-        setColOffsetX: marker_setColOffsetX
-        
-        getColOffsetY: marker_getColOffsetY
-        setColOffsetY: marker_setColOffsetY
-
-        getColW: marker_getColW
-        setColW: marker_setColW
-        
-        getColH: marker_getEntityH
-        setColH: marker_setColH
-
-        ' attrs
         getMap: marker_getMap
         setMap: marker_setMap
 
@@ -70,144 +52,103 @@ function marker_data() as object
 
 end function
 
-function marker_getEntityName(i as object) as object
-    return m.config[i].entity.name
+function marker_getName(i as object) as object
+    return m.config[i].name
 end function
 
-sub marker_setEntityName(i as object, name as object)
-    m.config[i].entity.name = name
+sub marker_setName(i as object, name as object)
+    m.config[i].name = name
 end sub
 
 
 function marker_getAlpha(i as object) as object
-    return m.config[i].entity.alpha
+    return m.config[i].alpha
 end function
 
 sub marker_setAlpha(i as object, alpha as object)
-    m.config[i].entity.alpha = alpha
+    m.config[i].alpha = alpha
 end sub
 
 
 function marker_getRegElement(i as object, j as object) as object
-    return m.config[i].entity.reg[j]
+    return m.config[i].reg[j]
 end function
 
 sub marker_setRegElement(i as object, j as object, reg as object)
-    m.config[i].entity.reg[j] = reg
+    m.config[i].reg[j] = reg
 end sub
 
 
 function marker_getReg(i as object) as object
-    return m.config[i].entity.reg
+    return m.config[i].reg
 end function
 
 sub marker_setReg(i as object, reg as object)
-    m.config[i].entity.reg = reg
+    m.config[i].reg = reg
 end sub
 
-function marker_getEntityOffsetX(i as object) as object
-    return m.config[i].entity.offset.x
+function marker_getOffsetX(i as object) as object
+    return m.config[i].offset.x
 end function
 
-sub marker_setEntityOffsetX(i as object, x as object)
-    m.config[i].entity.offset.x = x
-end sub
-
-
-function marker_getEntityOffsetY(i as object) as object
-    return m.config[i].entity.offset.y
-end function
-
-sub marker_setEntityOffsetY(i as object, y as object)
-    m.config[i].entity.offset.y = y
+sub marker_setOffsetX(i as object, x as object)
+    m.config[i].offset.x = x
 end sub
 
 
-function marker_getEntityH(i as object) as object
-    return m.config[i].entity.size.height
+function marker_getOffsetY(i as object) as object
+    return m.config[i].offset.y
 end function
 
-sub marker_setEntityH(i as object, height as object)
-    m.config[i].entity.size.height = height
+sub marker_setOffsetY(i as object, y as object)
+    m.config[i].offset.y = y
 end sub
 
-function marker_getEntityW(i as object) as object
-    return m.config[i].entity.size.width
+
+function marker_getSizeH(i as object) as object
+    return m.config[i].size.height
 end function
 
-sub marker_setEntityW(i as object, width as object)
-    m.config[i].entity.size.width = width
+sub marker_setSizeH(i as object, height as object)
+    m.config[i].size.height = height
+end sub
+
+function marker_getSizeW(i as object) as object
+    return m.config[i].size.width
+end function
+
+sub marker_setSizeW(i as object, width as object)
+    m.config[i].size.width = width
 end sub
 
 function marker_getIndex(i as object) as object
-    return m.config[i].entity.index
+    return m.config[i].index
 end function
 
 sub marker_setIndex(i as object, index as object)
-    m.config[i].entity.index = index
-end sub
-
-
-function marker_getColOffsetX(i as object) as object
-    return m.config[i].col.offset.x
-end function
-
-sub marker_setColOffsetX(i as object, x as object)
-    m.config[i].col.offset.x = x
-end sub
-
-function marker_getColOffsetY(i as object) as object
-    return m.config[i].col.offset.y
-end function
-
-sub marker_setColOffsetY(i as object, y as object)
-    m.config[i].col.offset.y = y
-end sub
-
-function marker_getColW(i as object) as object
-    return m.config[i].col.size.width
-end function
-
-sub marker_setColW(i as object, width as object)
-    m.config[i].col.size.width = width
-end sub
-
-function marker_getColH(i as object) as object
-    return m.config[i].col.size.height
-end function
-
-sub marker_setColH(i as object, height as object)
-    m.config[i].col.size.height = height
-end sub
-
-function marker_getColName(i as object) as object
-    return m.config[i].col.name
-end function
-
-sub marker_setColName(i as object, name as object)
-    m.config[i].col.name = name
+    m.config[i].index = index
 end sub
 
 function marker_getMap(i as object) as object
-    return m.config[i].attrs.map
+    return m.config[i].transition.name
 end function
 
-sub marker_setMap(i as object, map as object)
-    m.config[i].attrs.map = map
+sub marker_setMap(i as object, name as object)
+    m.config[i].transition.name = name
 end sub
 
 function marker_getTransitionX(i as object) as object
-    return m.config[i].attrs.x
+    return m.config[i].transition.x
 end function
 
 sub marker_setTransitionX(i as object, x as object)
-    m.config[i].attrs.x = x
+    m.config[i].transition.x = x
 end sub
 
 function marker_getTransitionY(i as object) as object
-    return m.config[i].attrs.y
+    return m.config[i].transition.y
 end function
 
 sub marker_setTransitionY(i as object, y as object)
-    m.config[i].attrs.y = y
+    m.config[i].transition.y = y
 end sub

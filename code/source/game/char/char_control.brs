@@ -10,8 +10,8 @@ function char_control(object)
 
   object.savePos = function()
 
-    m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.game.map.getEntityOffsetX())
-    m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.game.map.getEntityOffsetY())
+    m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.game.map.getOffsetX())
+    m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.game.map.getOffsetY())
 
   end function
 
@@ -20,7 +20,7 @@ function char_control(object)
 
     m.savePos()
     m.charSPRegen()
-    m.animUpdate()
+    m.controlUpdate()
 
   end function
 
@@ -163,7 +163,7 @@ function char_control(object)
 		arrAnim = []
 
 		for each element in arr
-			for i = 0 to m.game.char.config.entity.reg.Count() - 1
+			for i = 0 to m.game.char.config.reg.Count() - 1
 				if m.game.char.getRegElement(i) = element then arrAnim.push(i)
 			end for
 		end for
@@ -238,7 +238,7 @@ function char_control(object)
 		m.animPlay(["stand_side1"])
 	end function
 
-  object.animUpdate = function()
+  object.controlUpdate = function()
 
     if m.view_wnd.getImage(m.game.char.getEntityName()) <> invalid
 
@@ -247,8 +247,8 @@ function char_control(object)
       m.view_wnd.getImage(m.game.char.getEntityName()).index = m.game.char.getIndex()
       m.view_wnd.getImage(m.game.char.getEntityName()).scale_x = m.game.char.getScaleX()
       m.view_wnd.getImage(m.game.char.getEntityName()).scale_y = m.game.char.getScaleY()
-      m.view_wnd.getImage(m.game.char.getEntityName()).offset_x = m.game.char.getEntityOffsetX()
-      m.view_wnd.getImage(m.game.char.getEntityName()).offset_y = m.game.char.getEntityOffsetY()
+      m.view_wnd.getImage(m.game.char.getEntityName()).offset_x = m.game.char.getOffsetX()
+      m.view_wnd.getImage(m.game.char.getEntityName()).offset_y = m.game.char.getOffsetY()
 
     end if
       
@@ -256,28 +256,28 @@ function char_control(object)
 
   object.charTurnUp = function()
     if m.game.char.getScaleX() <> 1.0
-      m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
+      m.game.char.setOffsetX(m.game.char.getOffsetX() - m.game.char.getSizeW())
       m.game.char.setScaleX(1.0)
     end if
   end function
 
   object.charTurnDown = function()
     if m.game.char.getScaleX() <> 1.0
-      m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
+      m.game.char.setOffsetX(m.game.char.getOffsetX() - m.game.char.getSizeW())
       m.game.char.setScaleX(1.0)
     end if
   end function
 
   object.charTurnLeft = function()
     if m.game.char.getScaleX() <> -1.0
-      m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() + m.game.char.getEntityW())
+      m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW())
       m.game.char.setScaleX(-1.0)
     end if
   end function
 
   object.charTurnRight = function()
     if m.game.char.getScaleX() <> 1.0
-      m.game.char.setEntityOffsetX(m.game.char.getEntityOffsetX() - m.game.char.getEntityW())
+      m.game.char.setOffsetX(m.game.char.getOffsetX() - m.game.char.getSizeW())
       m.game.char.setScaleX(1.0)
     end if
   end function
@@ -316,25 +316,25 @@ function char_control(object)
 
   object.charWalkUp = function()
     if m.game.char.getColUp() = false
-      m.game.map.setEntityOffsetY(m.game.map.getEntityOffsetY() + m.game.char.getUpSpeed())
+      m.game.map.setOffsetY(m.game.map.getOffsetY() + m.game.char.getUpSpeed())
     end if
   end function
 
   object.charWalkDown = function()
     if m.game.char.getColDown() = false
-      m.game.map.setEntityOffsetY(m.game.map.getEntityOffsetY() - m.game.char.getDownSpeed())
+      m.game.map.setOffsetY(m.game.map.getOffsetY() - m.game.char.getDownSpeed())
     end if
   end function
 
   object.charWalkLeft = function()
     if m.game.char.getColLeft() = false
-      m.game.map.setEntityOffsetX(m.game.map.getEntityOffsetX() + m.game.char.getLeftSpeed())
+      m.game.map.setOffsetX(m.game.map.getOffsetX() + m.game.char.getLeftSpeed())
     end if
   end function
 
   object.charWalkRight = function()
     if m.game.char.getColRight() = false
-      m.game.map.setEntityOffsetX(m.game.map.getEntityOffsetX() - m.game.char.getRightSpeed())
+      m.game.map.setOffsetX(m.game.map.getOffsetX() - m.game.char.getRightSpeed())
     end if
   end function
   

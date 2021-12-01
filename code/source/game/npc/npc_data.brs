@@ -2,7 +2,6 @@ function npc_data() as object
 
     m.npc = {
 
-        ' attrs
         getHP: npc_getHP
         setHP: npc_setHP
 
@@ -30,21 +29,20 @@ function npc_data() as object
         getRightSpeed: npc_getRightSpeed
         setRightSpeed: npc_setRightSpeed
  
-        ' entity
-        getEntityName: npc_getEntityName
-        setEntityName: npc_setEntityName
+        getName: npc_getName
+        setName: npc_setName
 
-        getEntityOffsetX: npc_getEntityOffsetX
-        setEntityOffsetX: npc_setEntityOffsetX
+        getOffsetX: npc_getOffsetX
+        setOffsetX: npc_setOffsetX
         
-        getEntityOffsetY: npc_getEntityOffsetY
-        setEntityOffsetY: npc_setEntityOffsetY
+        getOffsetY: npc_getOffsetY
+        setOffsetY: npc_setOffsetY
 
-        getEntityW: npc_getEntityW
-        setEntityW: npc_setEntityW
+        getSizeW: npc_getSizeW
+        setSizeW: npc_setSizeW
         
-        getEntityH: npc_getEntityH
-        setEntityH: npc_setEntityH
+        getSizeH: npc_getSizeH
+        setSizeH: npc_setSizeH
 
         getIndex: npc_getIndex
         setIndex: npc_setIndex
@@ -64,22 +62,6 @@ function npc_data() as object
         getScaleY: npc_getScaleY
         setScaleY: npc_setScaleY
 
-        ' col
-        getColName: npc_getColName
-        setColName: npc_setColName
-
-        getColOffsetX: npc_getColOffsetX
-        setColOffsetX: npc_setColOffsetX
-        
-        getColOffsetY: npc_getColOffsetY
-        setColOffsetY: npc_setColOffsetY
-
-        getColW: npc_getColW
-        setColW: npc_setColW
-        
-        getColH: npc_getEntityH
-        setColH: npc_setColH
-
         config: invalid
 
     }
@@ -95,224 +77,175 @@ function npc_data() as object
 end function
 
 
-
-function npc_getColName(i as object) as object
-    return m.config[i].col.name
+function npc_getName(i as object) as object
+    return m.config[i].name
 end function
 
-sub npc_setColName(i as object, name as object)
-    m.config[i].col.name = name
+sub npc_setName(i as object, name as object)
+    m.config[i].name = name
 end sub
 
 
-function npc_getEntityName(i as object) as object
-    return m.config[i].entity.name
+function npc_getOffsetX(i as object) as object
+    return m.config[i].offset.x
 end function
 
-sub npc_setEntityName(i as object, name as object)
-    m.config[i].entity.name = name
+sub npc_setOffsetX(i as object, x as object)
+    m.config[i].offset.x = x
 end sub
 
 
-function npc_getEntityOffsetX(i as object) as object
-    return m.config[i].entity.offset.x
+function npc_getOffsetY(i as object) as object
+    return m.config[i].offset.y
 end function
 
-sub npc_setEntityOffsetX(i as object, x as object)
-    m.config[i].entity.offset.x = x
-end sub
-
-
-function npc_getEntityOffsetY(i as object) as object
-    return m.config[i].entity.offset.y
-end function
-
-sub npc_setEntityOffsetY(i as object, y as object)
-    m.config[i].entity.offset.y = y
+sub npc_setOffsetY(i as object, y as object)
+    m.config[i].offset.y = y
 end sub
 
 
 
-function npc_getColOffsetX(i as object) as object
-    return m.config[i].col.offset.x
+function npc_getSizeW(i as object) as object
+    return m.config[i].size.width
 end function
 
-sub npc_setColOffsetX(i as object, x as object)
-    m.config[i].col.offset.x = x
+sub npc_setSizeW(i as object, width as object)
+    m.config[i].size.width = width
 end sub
 
 
-function npc_getColOffsetY(i as object) as object
-    return m.config[i].col.offset.y
+function npc_getSizeH(i as object) as object
+    return m.config[i].size.height
 end function
 
-sub npc_setColOffsetY(i as object, y as object)
-    m.config[i].col.offset.y = y
+sub npc_setSizeH(i as object, height as object)
+    m.config[i].size.height = height
 end sub
-
-
-
-function npc_getEntityW(i as object) as object
-    return m.config[i].entity.size.width
-end function
-
-sub npc_setEntityW(i as object, width as object)
-    m.config[i].entity.size.width = width
-end sub
-
-
-function npc_getEntityH(i as object) as object
-    return m.config[i].entity.size.height
-end function
-
-sub npc_setEntityH(i as object, height as object)
-    m.config[i].entity.size.height = height
-end sub
-
-
-
-function npc_getColW(i as object) as object
-    return m.config[i].col.size.width
-end function
-
-sub npc_setColW(i as object, width as object)
-    m.config[i].col.size.width = width
-end sub
-
-
-function npc_getColH(i as object) as object
-    return m.config[i].col.size.height
-end function
-
-sub npc_setColH(i as object, height as object)
-    m.config[i].col.size.height = height
-end sub
-
 
 
 function npc_getHP(i as object) as object
-    return m.config[i].attrs.hp
+    return m.config[i].hp
 end function
 
 
 sub npc_setHP(i as object, hp as object)
-    m.config[i].attrs.hp = hp
+    m.config[i].hp = hp
 end sub
 
 
 
 function npc_getIndex(i as object) as object
-    return m.config[i].entity.index
+    return m.config[i].index
 end function
 
 sub npc_setIndex(i as object, index as object)
-    m.config[i].entity.index = index
+    m.config[i].index = index
 end sub
 
 
 function npc_getRegElement(i as object, j as object) as object
-    return m.config[i].entity.reg[j]
+    return m.config[i].reg[j]
 end function
 
 sub npc_setRegElement(i as object, j as object, reg as object)
-    m.config[i].entity.reg[j] = reg
+    m.config[i].reg[j] = reg
 end sub
 
 function npc_getReg(i as object) as object
-    return m.config[i].entity.reg
+    return m.config[i].reg
 end function
 
 sub npc_setReg(i as object, reg as object)
-    m.config[i].entity.reg = reg
+    m.config[i].reg = reg
 end sub
 
 function npc_getAnimTime(i as object) as object
-    return m.config[i].entity.time
+    return m.config[i].time
 end function
 
 sub npc_setAnimTime(i as object, time as object)
-    m.config[i].entity.time = time
+    m.config[i].time = time
 end sub
 
 function npc_getPath(i as object) as object
-    return m.config[i].attrs.path.position
+    return m.config[i].path.position
 end function
 
 sub npc_setPath(i as object, position as object)
-    m.config[i].attrs.path.position = position
+    m.config[i].path.position = position
 end sub
 
 function npc_getPathX(i as object, j as object) as object
-    return m.config[i].attrs.path.position[j][0]
+    return m.config[i].path.position[j][0]
 end function
 
 sub npc_setPathX(i as object, j as object, x as object)
-    m.config[i].attrs.path.position[j][0] = x
+    m.config[i].path.position[j][0] = x
 end sub
 
 function npc_getPathY(i as object, j as object) as object
-    return m.config[i].attrs.path.position[j][1]
+    return m.config[i].path.position[j][1]
 end function
 
 sub npc_setPathY(i as object, j as object, y as object)
-    m.config[i].attrs.path.position[j][1] = y
+    m.config[i].path.position[j][1] = y
 end sub
 
 function npc_getPathCycle(i as object) as object
-    return m.config[i].attrs.path.cycle
+    return m.config[i].path.cycle
 end function
 
 sub npc_setPathCycle(i as object, cycle as object)
-    m.config[i].attrs.path.cycle = cycle
+    m.config[i].path.cycle = cycle
 end sub
 
 function npc_getScaleX(i as object) as object
-    return m.config[i].entity.scale.x
+    return m.config[i].scale.x
 end function
 
 sub npc_setScaleX(i as object, x as object)
-    m.config[i].entity.scale.x = x
+    m.config[i].scale.x = x
 end sub
 
 function npc_getScaleY(i as object) as object
-    return m.config[i].entity.scale.y
+    return m.config[i].scale.y
 end function
 
 sub npc_setScaleY(i as object, y as object)
-    m.config[i].entity.scale.y = y
+    m.config[i].scale.y = y
 end sub
 
 function npc_getUpSpeed(i as object) as object
-    return m.config[i].attrs.speed.up
+    return m.config[i].speed.up
 end function
 
 sub npc_setUpSpeed(i as object, speed as object) 
-    m.config[i].attrs.speed.up = speed
+    m.config[i].speed.up = speed
 end sub
 
 
 function npc_getDownSpeed(i as object) as object
-    return m.config[i].attrs.speed.down
+    return m.config[i].speed.down
 end function
 
 sub npc_setDownSpeed(i as object, speed as object) 
-    m.config[i].attrs.speed.down = speed
+    m.config[i].speed.down = speed
 end sub
 
 
 function npc_getLeftSpeed(i as object) as object
-    return m.config[i].attrs.speed.left
+    return m.config[i].speed.left
 end function
 
 sub npc_setLeftSpeed(i as object, speed as object) 
-    m.config[i].attrs.speed.left = speed
+    m.config[i].speed.left = speed
 end sub
 
 
 function npc_getRightSpeed(i as object) as object
-    return m.config[i].attrs.speed.right
+    return m.config[i].speed.right
 end function
 
 sub npc_setRightSpeed(i as object, speed as object) 
-    m.config[i].attrs.speed.right = speed
+    m.config[i].speed.right = speed
 end sub

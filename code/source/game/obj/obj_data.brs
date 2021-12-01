@@ -2,15 +2,26 @@ function obj_data() as object
 
     m.obj = {
 
-        ' entity
-        getEntityName: obj_getEntityName
-        setEntityName: obj_setEntityName
+        getName: obj_getName
+        setName: obj_setName
 
-        getEntityOffsetX: obj_getEntityOffsetX
-        setEntityOffsetX: obj_setEntityOffsetX
+        getColX: obj_getColX
+        setColX: obj_setColX
         
-        getEntityOffsetY: obj_getEntityOffsetY
-        setEntityOffsetY: obj_setEntityOffsetY
+        getColY: obj_getColY
+        setColY: obj_setColY
+
+        getColH: obj_getColH
+        setColH: obj_setColH
+        
+        getColW: obj_getColW
+        setColW: obj_setColW
+
+        getEntityX: obj_getEntityX
+        setEntityX: obj_setEntityX
+        
+        getEntityY: obj_getEntityY
+        setEntityY: obj_setEntityY
 
         getEntityH: obj_getEntityH
         setEntityH: obj_setEntityH
@@ -30,23 +41,6 @@ function obj_data() as object
         getIndex: obj_getIndex
         setIndex: obj_setIndex
 
-        ' col
-        getColName: obj_getColName
-        setColName: obj_setColName
-
-        getColOffsetX: obj_getColOffsetX
-        setColOffsetX: obj_setColOffsetX
-        
-        getColOffsetY: obj_getColOffsetY
-        setColOffsetY: obj_setColOffsetY
-
-        getColH: obj_getColH
-        setColH: obj_setColH
-        
-        getColW: obj_getColW
-        setColW: obj_setColW
-
-
         config: invalid
 
     }
@@ -64,126 +58,116 @@ end function
 
 
 function obj_getAlpha(i as object) as object
-    return m.config[i].entity.alpha
+    return m.config[i].alpha
 end function
 
 sub obj_setAlpha(i as object, alpha as object)
-    m.config[i].entity.alpha = alpha
+    m.config[i].alpha = alpha
 end sub
 
 
 function obj_getRegElement(i as object, j as object) as object
-    return m.config[i].entity.reg[j]
+    return m.config[i].reg[j]
 end function
 
 sub obj_setRegElement(i as object, j as object, reg as object)
-    m.config[i].entity.reg[j] = reg
+    m.config[i].reg[j] = reg
 end sub
 
 
 function obj_getReg(i as object) as object
-    return m.config[i].entity.reg
+    return m.config[i].reg
 end function
 
 sub obj_setReg(i as object, reg as object)
-    m.config[i].entity.reg = reg
+    m.config[i].reg = reg
 end sub
 
 
-function obj_getColName(i as object) as object
-    return m.config[i].col.name
+function obj_getName(i as object) as object
+    return m.config[i].name
 end function
 
-sub obj_setColName(i as object, name as object)
-    m.config[i].col.name = name
+sub obj_setName(i as object, name as object)
+    m.config[i].name = name
 end sub
 
 
-function obj_getEntityName(i as object) as object
-    return m.config[i].entity.name
+function obj_getColX(i as object) as object
+    return m.config[i].col.x
 end function
 
-sub obj_setEntityName(i as object, name as object)
-    m.config[i].entity.name = name
+sub obj_setColX(i as object, x as object)
+    m.config[i].col.x = x
 end sub
 
 
-function obj_getEntityOffsetX(i as object) as object
-    return m.config[i].entity.offset.x
+function obj_getColY(i as object) as object
+    return m.config[i].col.y
 end function
 
-sub obj_setEntityOffsetX(i as object, x as object)
-    m.config[i].entity.offset.x = x
+sub obj_setColY(i as object, y as object)
+    m.config[i].col.y = y
 end sub
-
-
-function obj_getEntityOffsetY(i as object) as object
-    return m.config[i].entity.offset.y
-end function
-
-sub obj_setEntityOffsetY(i as object, y as object)
-    m.config[i].entity.offset.y = y
-end sub
-
-
-
-function obj_getColOffsetX(i as object) as object
-    return m.config[i].col.offset.x
-end function
-
-sub obj_setColOffsetX(i as object, x as object)
-    m.config[i].col.offset.x = x
-end sub
-
-function obj_getColOffsetY(i as object) as object
-    return m.config[i].col.offset.y
-end function
-
-sub obj_setColOffsetY(i as object, y as object)
-    m.config[i].col.offset.y = y
-end sub
-
-
-function obj_getEntityH(i as object) as object
-    return m.config[i].entity.size.height
-end function
-
-sub obj_setEntityH(i as object, height as object)
-    m.config[i].entity.size.height = height
-end sub
-
-
-function obj_getEntityW(i as object) as object
-    return m.config[i].entity.size.width
-end function
-
-sub obj_setEntityW(i as object, width as object)
-    m.config[i].entity.size.width = width
-end sub
-
 
 
 function obj_getColH(i as object) as object
-    return m.config[i].col.size.height
+    return m.config[i].col.height
 end function
 
 sub obj_setColH(i as object, height as object)
-    m.config[i].col.size.height = height
+    m.config[i].col.height = height
 end sub
 
 
 function obj_getColW(i as object) as object
-    return m.config[i].col.size.width
+    return m.config[i].col.width
 end function
 
 sub obj_setColW(i as object, width as object)
-    m.config[i].col.size.width = width
+    m.config[i].col.width = width
 end sub
 
+function obj_getEntityX(i as object) as object
+    return m.config[i].entity.x
+end function
+
+sub obj_setEntityX(i as object, x as object)
+    m.config[i].entity.x = x
+end sub
+
+
+function obj_getEntityY(i as object) as object
+    return m.config[i].entity.y
+end function
+
+sub obj_setEntityY(i as object, y as object)
+    m.config[i].entity.y = y
+end sub
+
+
+function obj_getEntityH(i as object) as object
+    return m.config[i].entity.height
+end function
+
+sub obj_setEntityH(i as object, height as object)
+    m.config[i].entity.height = height
+end sub
+
+
+function obj_getEntityW(i as object) as object
+    return m.config[i].entity.width
+end function
+
+sub obj_setEntityW(i as object, width as object)
+    m.config[i].entity.width = width
+end sub
+
+
 function obj_getIndex(i as object) as object
-    return m.config[i].entity.index
+    return m.config[i].index
 end function
 
 sub obj_setIndex(i as object, index as object)
-    m.config[i].entity.index = index
+    m.config[i].index = index
 end sub

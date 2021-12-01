@@ -10,8 +10,8 @@ function obj_control(object)
     object.controlPos = function()
 
         ' entity position
-        m.view_wnd.x = m.game.map.getEntityOffsetX()
-        m.view_wnd.y = m.game.map.getEntityOffsetY()
+        m.view_wnd.x = m.game.map.getOffsetX()
+        m.view_wnd.y = m.game.map.getOffsetY()
 
     end function
 
@@ -19,7 +19,7 @@ function obj_control(object)
 
         m.controlPos()
         m.objAlpha()
-        m.animUpdate()
+        m.controlUpdate()
 
     end function
 
@@ -29,7 +29,7 @@ function obj_control(object)
         m.game.char.setObjIntersect(invalid)
 
         for i = 0 to m.game.obj.config.Count() - 1
-            if m.game.char.getEntityPosX() < m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityPosX() > m.game.obj.getEntityOffsetX(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 < m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityPosY() + m.game.char.getEntityH() / 2 > m.game.obj.getEntityOffsetY(i)
+            if m.game.char.getEntityPosX() < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityPosX() > m.game.obj.getEntityX(i) and m.game.char.getEntityPosY() + m.game.char.getSizeH() / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityPosY() + m.game.char.getSizeH() / 2 > m.game.obj.getEntityY(i)
                 if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
                 m.game.char.setObjIntersect(i)
 
@@ -49,13 +49,13 @@ function obj_control(object)
 
     end function
 
-    object.animUpdate = function()
+    object.controlUpdate = function()
 
         for i = 0 to m.game.obj.config.Count() - 1
-            if m.view_wnd.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+            if m.view_wnd.getImage(m.game.obj.getName(i).toStr() + "_" + i.toStr()) <> invalid
                 
                 ' update obj data
-                m.view_wnd.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()).alpha = m.game.obj.getAlpha(i)
+                m.view_wnd.getImage(m.game.obj.getName(i).toStr() + "_" + i.toStr()).alpha = m.game.obj.getAlpha(i)
 
             end if
         

@@ -3,14 +3,12 @@ function testTwo_terrain_config() as object
         [
             {
                 id: [0, 0],
-                entity: {
-                    name: "terrain_entity",
-                    index: 0,
-                    reg: ["house_interior_01"]
-                    offset: {
-                        x: 0,
-                        y: 0
-                    }
+                name: "terrain",
+                index: 0,
+                reg: ["house_interior_01"]
+                offset: {
+                    x: 0,
+                    y: 0
                 }
             }
         ]

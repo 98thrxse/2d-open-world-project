@@ -1,11 +1,11 @@
 function map_data() as object
     m.map = {
 
-        getEntityOffsetX: map_getEntityOffsetX
-        setEntityOffsetX: map_setEntityOffsetX
+        getOffsetX: map_getOffsetX
+        setOffsetX: map_setOffsetX
 
-        getEntityOffsetY: map_getEntityOffsetY
-        setEntityOffsetY: map_setEntityOffsetY
+        getOffsetY: map_getOffsetY
+        setOffsetY: map_setOffsetY
 
 		getMap: map_getMap
         setMap: map_setMap
@@ -21,7 +21,7 @@ function map_data() as object
 				y: 0
 			},
 			
-			map: "testOne"
+			name: "testOne"
 		}
 
 	end if
@@ -30,26 +30,26 @@ function map_data() as object
 
 end function
 
-function map_getEntityOffsetX() as object
+function map_getOffsetX() as object
     return m.config.offset.x
 end function
 
-sub map_setEntityOffsetX(x as object)
+sub map_setOffsetX(x as object)
     m.config.offset.x = x
 end sub
 
-function map_getEntityOffsetY() as object
+function map_getOffsetY() as object
     return m.config.offset.y
 end function
 
-sub map_setEntityOffsetY(y as object)
+sub map_setOffsetY(y as object)
     m.config.offset.y = y
 end sub
 
 function map_getMap() as object
-    return m.config.map
+    return m.config.name
 end function
 
-sub map_setMap(map as object)
-    m.config.map = map
+sub map_setMap(name as object)
+    m.config.name = name
 end sub

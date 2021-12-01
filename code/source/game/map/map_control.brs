@@ -50,13 +50,11 @@ function map_control(object)
                     for j = m.game.terrain.config[i].Count() to m.map_terrain_config[i].Count() - 1
                         m.game.terrain.config[i].push({
                             id: [i, j],
-                            entity: {
-                                name: invalid,
-                                reg: [],
-                                offset: {
-                                    x: invalid,
-                                    y: invalid
-                                }
+                            name: invalid,
+                            reg: [],
+                            offset: {
+                                x: invalid,
+                                y: invalid
                             }
                         })
                     end for
@@ -77,12 +75,11 @@ function map_control(object)
         for i = 0 to m.map_terrain_config.Count() - 1
             for j = 0 to m.map_terrain_config[i].Count() - 1
 
-                ' entity
-                if m.map_terrain_config[i][j].entity.name <> invalid then m.game.terrain.setEntityName(i, j, m.map_terrain_config[i][j].entity.name)
-                if m.map_terrain_config[i][j].entity.offset.x <> invalid then m.game.terrain.setEntityOffsetX(i, j, m.map_terrain_config[i][j].entity.offset.x)
-                if m.map_terrain_config[i][j].entity.offset.y <> invalid then m.game.terrain.setEntityOffsetY(i, j, m.map_terrain_config[i][j].entity.offset.y)
-                if m.map_terrain_config[i][j].entity.reg <> invalid then m.game.terrain.setReg(i, j, m.map_terrain_config[i][j].entity.reg)
-                if m.map_terrain_config[i][j].entity.index <> invalid then m.game.terrain.setIndex(i, j, m.map_terrain_config[i][j].entity.index)
+                if m.map_terrain_config[i][j].name <> invalid then m.game.terrain.setName(i, j, m.map_terrain_config[i][j].name)
+                if m.map_terrain_config[i][j].offset.x <> invalid then m.game.terrain.setOffsetX(i, j, m.map_terrain_config[i][j].offset.x)
+                if m.map_terrain_config[i][j].offset.y <> invalid then m.game.terrain.setOffsetY(i, j, m.map_terrain_config[i][j].offset.y)
+                if m.map_terrain_config[i][j].reg <> invalid then m.game.terrain.setReg(i, j, m.map_terrain_config[i][j].reg)
+                if m.map_terrain_config[i][j].index <> invalid then m.game.terrain.setIndex(i, j, m.map_terrain_config[i][j].index)
 
             end for
         end for
@@ -90,36 +87,27 @@ function map_control(object)
 
 
     object.loadObj = function()
+
         ' loading map config to obj data
         if m.game.obj.config.Count() < m.map_obj_config.Count()
             for i = m.game.obj.config.Count() to m.map_obj_config.Count() - 1
                 m.game.obj.config.push({
                     id: i,                   
-                    entity: {
-                        name: invalid,
-                        alpha: invalid,
-                        reg: []
-                        offset: {
-                            x: invalid,
-                            y: invalid
-                        },
-
-                        size: {
-                            width: invalid,
-                            height: invalid
-                        }
-                    },
-        
+                    name: invalid,
+                    index: invalid,
+                    alpha: invalid,
+                    reg: []
                     col: {
-                        name: invalid,
-                        offset: {
-                            x: invalid,
-                            y: invalid
-                        }
-                        size: {
-                            width: invalid,
-                            height: invalid
-                        }
+                        x: invalid,
+                        y: invalid,
+                        width: invalid,
+                        height: invalid
+                    },
+                    entity: {
+                        x: invalid,
+                        y: invalid,
+                        width: invalid,
+                        height: invalid
                     }
                 })
             end for
@@ -131,24 +119,19 @@ function map_control(object)
 
         for i = 0 to m.map_obj_config.Count() - 1
 
-            ' entity
-            if m.map_obj_config[i].entity.name <> invalid then m.game.obj.setEntityName(i, m.map_obj_config[i].entity.name)
-            if m.map_obj_config[i].entity.index <> invalid then m.game.obj.setIndex(i, m.map_obj_config[i].entity.index)
-            if m.map_obj_config[i].entity.offset.x <> invalid then m.game.obj.setEntityOffsetX(i, m.map_obj_config[i].entity.offset.x)
-            if m.map_obj_config[i].entity.offset.y <> invalid then m.game.obj.setEntityOffsetY(i, m.map_obj_config[i].entity.offset.y)
-            if m.map_obj_config[i].entity.size.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.size.width)
-            if m.map_obj_config[i].entity.size.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.size.height)
-            if m.map_obj_config[i].entity.alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].entity.alpha)
-            if m.map_obj_config[i].entity.reg <> invalid then m.game.obj.setReg(i, m.map_obj_config[i].entity.reg)
+            if m.map_obj_config[i].name <> invalid then m.game.obj.setName(i, m.map_obj_config[i].name)
+            if m.map_obj_config[i].index <> invalid then m.game.obj.setIndex(i, m.map_obj_config[i].index)
+            if m.map_obj_config[i].col.x <> invalid then m.game.obj.setColX(i, m.map_obj_config[i].col.x)
+            if m.map_obj_config[i].col.y <> invalid then m.game.obj.setColY(i, m.map_obj_config[i].col.y)
+            if m.map_obj_config[i].col.width <> invalid then m.game.obj.setColW(i, m.map_obj_config[i].col.width)
+            if m.map_obj_config[i].col.height <> invalid then m.game.obj.setColH(i, m.map_obj_config[i].col.height)
+            if m.map_obj_config[i].entity.x <> invalid then m.game.obj.setEntityX(i, m.map_obj_config[i].entity.x)
+            if m.map_obj_config[i].entity.y <> invalid then m.game.obj.setEntityY(i, m.map_obj_config[i].entity.y)
+            if m.map_obj_config[i].entity.width <> invalid then m.game.obj.setEntityW(i, m.map_obj_config[i].entity.width)
+            if m.map_obj_config[i].entity.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.height)
+            if m.map_obj_config[i].alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].alpha)
+            if m.map_obj_config[i].reg <> invalid then m.game.obj.setReg(i, m.map_obj_config[i].reg)
 
-
-            ' col
-            if m.map_obj_config[i].col.name <> invalid then m.game.obj.setColName(i, m.map_obj_config[i].col.name)
-            if m.map_obj_config[i].col.offset.x <> invalid then m.game.obj.setColOffsetX(i, m.map_obj_config[i].col.offset.x)
-            if m.map_obj_config[i].col.offset.y <> invalid then m.game.obj.setColOffsetY(i, m.map_obj_config[i].col.offset.y)
-            if m.map_obj_config[i].col.size.width <> invalid then m.game.obj.setColW(i, m.map_obj_config[i].col.size.width)
-            if m.map_obj_config[i].col.size.height <> invalid then m.game.obj.setColH(i, m.map_obj_config[i].col.size.height)
-            
         end for
     end function
 
@@ -158,33 +141,22 @@ function map_control(object)
             for i = m.game.marker.config.Count() to m.map_marker_config.Count() - 1
                 m.game.marker.config.push({
                     id: i,                   
-                    entity: {
-                        name: invalid,
-                        alpha: invalid,
-                        reg: []
-                        offset: {
-                            x: invalid,
-                            y: invalid
-                        },
-
-                        size: {
-                            width: invalid,
-                            height: invalid
-                        }
+                    name: invalid,
+                    index: invalid,
+                    alpha: invalid,
+                    reg: []
+                    offset: {
+                        x: invalid,
+                        y: invalid
                     },
-                    col: {
+                    size: {
+                        width: invalid,
+                        height: invalid
+                    }
+                    transition: {
                         name: invalid,
-                        offset: {
-                            x: invalid,
-                            y: invalid
-                        },
-                        size: {
-                            width: invalid,
-                            height: invalid
-                        }
-                    },
-                    attrs: {
-                        map: invalid
+                        x: invalid,
+                        y: invalid
                     }
                 })
             end for
@@ -196,82 +168,57 @@ function map_control(object)
 
         for i = 0 to m.map_marker_config.Count() - 1
 
-            ' entity
-            if m.map_marker_config[i].entity.name <> invalid then m.game.marker.setEntityName(i, m.map_marker_config[i].entity.name)
-            if m.map_marker_config[i].entity.offset.x <> invalid then m.game.marker.setEntityOffsetX(i, m.map_marker_config[i].entity.offset.x)
-            if m.map_marker_config[i].entity.offset.y <> invalid then m.game.marker.setEntityOffsetY(i, m.map_marker_config[i].entity.offset.y)
-            if m.map_marker_config[i].entity.size.width <> invalid then m.game.marker.setEntityW(i, m.map_marker_config[i].entity.size.width)
-            if m.map_marker_config[i].entity.size.height <> invalid then m.game.marker.setEntityH(i, m.map_marker_config[i].entity.size.height)
-            if m.map_marker_config[i].entity.alpha <> invalid then m.game.marker.setAlpha(i, m.map_marker_config[i].entity.alpha)
-            if m.map_marker_config[i].entity.reg <> invalid then m.game.marker.setReg(i, m.map_marker_config[i].entity.reg)
-            if m.map_marker_config[i].entity.index <> invalid then m.game.marker.setIndex(i, m.map_marker_config[i].entity.index)
-
-            ' col
-            if m.map_marker_config[i].col.name <> invalid then m.game.marker.setColName(i, m.map_marker_config[i].col.name)
-            if m.map_marker_config[i].col.offset.x <> invalid then m.game.marker.setColOffsetX(i, m.map_marker_config[i].col.offset.x)
-            if m.map_marker_config[i].col.offset.y <> invalid then m.game.marker.setColOffsetY(i, m.map_marker_config[i].col.offset.y)
-            if m.map_marker_config[i].col.size.width <> invalid then m.game.marker.setColW(i, m.map_marker_config[i].col.size.width)
-            if m.map_marker_config[i].col.size.height <> invalid then m.game.marker.setColH(i, m.map_marker_config[i].col.size.height)
-
-            'attrs
-            if m.map_marker_config[i].attrs.map <> invalid then m.game.marker.setMap(i, m.map_marker_config[i].attrs.map)
-            if m.map_marker_config[i].attrs.x <> invalid then m.game.marker.setTransitionX(i, m.map_marker_config[i].attrs.x)
-            if m.map_marker_config[i].attrs.y <> invalid then m.game.marker.setTransitionY(i, m.map_marker_config[i].attrs.y)
+            if m.map_marker_config[i].name <> invalid then m.game.marker.setName(i, m.map_marker_config[i].name)
+            if m.map_marker_config[i].offset.x <> invalid then m.game.marker.setOffsetX(i, m.map_marker_config[i].offset.x)
+            if m.map_marker_config[i].offset.y <> invalid then m.game.marker.setOffsetY(i, m.map_marker_config[i].offset.y)
+            if m.map_marker_config[i].size.width <> invalid then m.game.marker.setSizeW(i, m.map_marker_config[i].size.width)
+            if m.map_marker_config[i].size.height <> invalid then m.game.marker.setSizeH(i, m.map_marker_config[i].size.height)
+            if m.map_marker_config[i].alpha <> invalid then m.game.marker.setAlpha(i, m.map_marker_config[i].alpha)
+            if m.map_marker_config[i].reg <> invalid then m.game.marker.setReg(i, m.map_marker_config[i].reg)
+            if m.map_marker_config[i].index <> invalid then m.game.marker.setIndex(i, m.map_marker_config[i].index)
+            if m.map_marker_config[i].transition.name <> invalid then m.game.marker.setMap(i, m.map_marker_config[i].transition.name)
+            if m.map_marker_config[i].transition.x <> invalid then m.game.marker.setTransitionX(i, m.map_marker_config[i].transition.x)
+            if m.map_marker_config[i].transition.y <> invalid then m.game.marker.setTransitionY(i, m.map_marker_config[i].transition.y)
 
         end for
     end function
 
     object.loadNPC = function()
+
         ' loading map config to npc data
         if m.game.npc.config.Count() < m.map_npc_config.Count()
             for i = m.game.npc.config.Count() to m.map_npc_config.Count() - 1
                 m.game.npc.config.push({
                     id: i,       
-                    entity: {
-                        name: invalid,
-                        index: invalid,
-                        reg: [],
-                        offset: {
-                            x: invalid,
-                            y: invalid
-                        },
-
-                        scale: {
-                            x: invalid,
-                            y: invalid
-                        },
-
-                        time: invalid,
-                        size: {
-                            width: invalid,
-                            height: invalid
-                        }
+                    name: invalid,
+                    index: invalid,
+                    reg: [],
+                    offset: {
+                        x: invalid,
+                        y: invalid
                     },
-        
-                    col: {
-                        name: invalid,
-                        offset: {
-                            x: invalid,
-                            y: invalid
-                        },
-                        size: {
-                            width: invalid,
-                            height: invalid
-                        }
+
+                    scale: {
+                        x: invalid,
+                        y: invalid
                     },
-        
-                    attrs: {
-                        path: {
-                            cycle: invalid,
-                            position: []
-                        },
-                        hp: invalid,
-                        speed: {
-                            up: invalid,
-                            down: invalid,
-                            left: invalid,
-                            right: invalid
-                        }
+
+                    time: invalid,
+                    size: {
+                        width: invalid,
+                        height: invalid
+                    }
+    
+                    path: {
+                        cycle: invalid,
+                        position: []
+                    },
+                    hp: invalid,
+                    speed: {
+                        up: invalid,
+                        down: invalid,
+                        left: invalid,
+                        right: invalid
                     }
                 })
             end for
@@ -283,92 +230,70 @@ function map_control(object)
 
         for i = 0 to m.map_npc_config.Count() - 1
 
-            ' attrs
-            if m.map_npc_config[i].attrs.hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].attrs.hp)
-            if m.map_npc_config[i].attrs.path.position <> invalid then m.game.npc.setPath(i, m.map_npc_config[i].attrs.path.position)
-            if m.map_npc_config[i].attrs.path.cycle <> invalid then m.game.npc.setPathCycle(i, m.map_npc_config[i].attrs.path.cycle)
-            if m.map_npc_config[i].attrs.speed.up <> invalid then m.game.npc.setUpSpeed(i, m.map_npc_config[i].attrs.speed.up)
-            if m.map_npc_config[i].attrs.speed.down <> invalid then m.game.npc.setDownSpeed(i, m.map_npc_config[i].attrs.speed.down)
-            if m.map_npc_config[i].attrs.speed.left <> invalid then m.game.npc.setLeftSpeed(i, m.map_npc_config[i].attrs.speed.left)
-            if m.map_npc_config[i].attrs.speed.right <> invalid then m.game.npc.setRightSpeed(i, m.map_npc_config[i].attrs.speed.right)
-
-            ' entity
-            if m.map_npc_config[i].entity.name <> invalid then m.game.npc.setEntityName(i, m.map_npc_config[i].entity.name)
-            if m.map_npc_config[i].entity.offset.x <> invalid then m.game.npc.setEntityOffsetX(i, m.map_npc_config[i].entity.offset.x)
-            if m.map_npc_config[i].entity.offset.y <> invalid then m.game.npc.setEntityOffsetY(i, m.map_npc_config[i].entity.offset.y)
-            if m.map_npc_config[i].entity.size.width <> invalid then m.game.npc.setEntityW(i, m.map_npc_config[i].entity.size.width)
-            if m.map_npc_config[i].entity.size.height <> invalid then m.game.npc.setEntityH(i, m.map_npc_config[i].entity.size.height)
-            if m.map_npc_config[i].entity.index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].entity.index)
-            if m.map_npc_config[i].entity.time <> invalid then m.game.npc.setAnimTime(i, m.map_npc_config[i].entity.time)
-            if m.map_npc_config[i].entity.scale.x <> invalid then m.game.npc.setScaleX(i, m.map_npc_config[i].entity.scale.x)
-            if m.map_npc_config[i].entity.scale.y <> invalid then m.game.npc.setScaleY(i, m.map_npc_config[i].entity.scale.y)
-            if m.map_npc_config[i].entity.reg <> invalid then m.game.npc.setReg(i, m.map_npc_config[i].entity.reg)
-
-            ' col
-            if m.map_npc_config[i].col.name <> invalid then m.game.npc.setColName(i, m.map_npc_config[i].col.name)
-            if m.map_npc_config[i].col.offset.x <> invalid then m.game.npc.setColOffsetX(i, m.map_npc_config[i].col.offset.x)
-            if m.map_npc_config[i].col.offset.y <> invalid then m.game.npc.setColOffsetY(i, m.map_npc_config[i].col.offset.y)
-            if m.map_npc_config[i].col.size.width <> invalid then m.game.npc.setColW(i, m.map_npc_config[i].col.size.width)
-            if m.map_npc_config[i].col.size.height <> invalid then m.game.npc.setColH(i, m.map_npc_config[i].col.size.height)
+            if m.map_npc_config[i].hp <> invalid then m.game.npc.setHP(i, m.map_npc_config[i].hp)
+            if m.map_npc_config[i].path.position <> invalid then m.game.npc.setPath(i, m.map_npc_config[i].path.position)
+            if m.map_npc_config[i].path.cycle <> invalid then m.game.npc.setPathCycle(i, m.map_npc_config[i].path.cycle)
+            if m.map_npc_config[i].speed.up <> invalid then m.game.npc.setUpSpeed(i, m.map_npc_config[i].speed.up)
+            if m.map_npc_config[i].speed.down <> invalid then m.game.npc.setDownSpeed(i, m.map_npc_config[i].speed.down)
+            if m.map_npc_config[i].speed.left <> invalid then m.game.npc.setLeftSpeed(i, m.map_npc_config[i].speed.left)
+            if m.map_npc_config[i].speed.right <> invalid then m.game.npc.setRightSpeed(i, m.map_npc_config[i].speed.right)
+            if m.map_npc_config[i].name <> invalid then m.game.npc.setName(i, m.map_npc_config[i].name)
+            if m.map_npc_config[i].offset.x <> invalid then m.game.npc.setOffsetX(i, m.map_npc_config[i].offset.x)
+            if m.map_npc_config[i].offset.y <> invalid then m.game.npc.setOffsetY(i, m.map_npc_config[i].offset.y)
+            if m.map_npc_config[i].size.width <> invalid then m.game.npc.setSizeW(i, m.map_npc_config[i].size.width)
+            if m.map_npc_config[i].size.height <> invalid then m.game.npc.setSizeH(i, m.map_npc_config[i].size.height)
+            if m.map_npc_config[i].index <> invalid then m.game.npc.setIndex(i, m.map_npc_config[i].index)
+            if m.map_npc_config[i].time <> invalid then m.game.npc.setAnimTime(i, m.map_npc_config[i].time)
+            if m.map_npc_config[i].scale.x <> invalid then m.game.npc.setScaleX(i, m.map_npc_config[i].scale.x)
+            if m.map_npc_config[i].scale.y <> invalid then m.game.npc.setScaleY(i, m.map_npc_config[i].scale.y)
+            if m.map_npc_config[i].reg <> invalid then m.game.npc.setReg(i, m.map_npc_config[i].reg)
 
         end for
+
     end function
 
 
     object.loadChar = function()
 
         ' loading map config to player data
-
-        ' entity
-        if m.map_char_config.entity.name <> invalid and m.game.char.getEntityName() = invalid then m.game.char.setEntityName(m.map_char_config.entity.name)
-        if m.map_char_config.entity.pos.x <> invalid and m.game.char.getEntityPosX() = invalid then m.game.char.setEntityPosX(m.map_char_config.entity.pos.x)
-        if m.map_char_config.entity.pos.y <> invalid and m.game.char.getEntityPosY() = invalid then m.game.char.setEntityPosY(m.map_char_config.entity.pos.y)
-        if m.map_char_config.entity.size.width <> invalid and m.game.char.getEntityW() = invalid then m.game.char.setEntityW(m.map_char_config.entity.size.width)
-        if m.map_char_config.entity.size.height <> invalid and m.game.char.getEntityH() = invalid then m.game.char.setEntityH(m.map_char_config.entity.size.height)
-        if m.map_char_config.entity.index <> invalid and m.game.char.getIndex() = invalid then m.game.char.setIndex(m.map_char_config.entity.index)
-        if m.map_char_config.entity.alpha <> invalid and m.game.char.getAlpha() = invalid then m.game.char.setAlpha(m.map_char_config.entity.alpha)
-        if m.map_char_config.entity.time <> invalid and m.game.char.getAnimTime() = invalid then m.game.char.setAnimTime(m.map_char_config.entity.time)
-        if m.map_char_config.entity.scale.x <> invalid and m.game.char.getScaleX() = invalid then m.game.char.setScaleX(m.map_char_config.entity.scale.x)
-        if m.map_char_config.entity.scale.y <> invalid and m.game.char.getScaleY() = invalid then m.game.char.setScaleY(m.map_char_config.entity.scale.y)
-        if m.map_char_config.entity.offset.x <> invalid and m.game.char.getEntityOffsetX() = invalid then m.game.char.setEntityOffsetX(m.map_char_config.entity.offset.x)
-        if m.map_char_config.entity.offset.y <> invalid and m.game.char.getEntityOffsetY() = invalid then m.game.char.setEntityOffsetY(m.map_char_config.entity.offset.y)
-        if m.map_char_config.entity.reg <> invalid and m.game.char.getReg() = invalid then m.game.char.setReg(m.map_char_config.entity.reg)
-
-        ' attrs
-        if m.map_char_config.attrs.hp <> invalid and m.game.char.getHP() = invalid then m.game.char.setHP(m.map_char_config.attrs.hp)
-        if m.map_char_config.attrs.sp <> invalid and m.game.char.getSP() = invalid then m.game.char.setSP(m.map_char_config.attrs.sp)
-        if m.map_char_config.attrs.speed.up <> invalid and m.game.char.getUpSpeed() = invalid then m.game.char.setUpSpeed(m.map_char_config.attrs.speed.up)
-        if m.map_char_config.attrs.speed.down <> invalid and m.game.char.getDownSpeed() = invalid then m.game.char.setDownSpeed(m.map_char_config.attrs.speed.down)
-        if m.map_char_config.attrs.speed.left <> invalid and m.game.char.getLeftSpeed() = invalid then m.game.char.setLeftSpeed(m.map_char_config.attrs.speed.left)
-        if m.map_char_config.attrs.speed.right <> invalid and m.game.char.getRightSpeed() = invalid then m.game.char.setRightSpeed(m.map_char_config.attrs.speed.right)
-        if m.map_char_config.attrs.damage.hp <> invalid and m.game.char.getHPDamage() = invalid then m.game.char.setHPDamage(m.map_char_config.attrs.damage.hp)
-        if m.map_char_config.attrs.damage.sp <> invalid and m.game.char.getSPDamage() = invalid then m.game.char.setSPDamage(m.map_char_config.attrs.damage.sp)
-        if m.map_char_config.attrs.damage.hp_time <> invalid and m.game.char.getHPDamageTime() = invalid then m.game.char.setHPDamageTime(m.map_char_config.attrs.damage.hp_time)
-        if m.map_char_config.attrs.damage.sp_time <> invalid and m.game.char.getSPDamageTime() = invalid then m.game.char.setSPDamageTime(m.map_char_config.attrs.damage.sp_time)
-        if m.map_char_config.attrs.regen.hp <> invalid and m.game.char.getHPRegen() = invalid then m.game.char.setHPRegen(m.map_char_config.attrs.regen.hp)
-        if m.map_char_config.attrs.regen.sp <> invalid and m.game.char.getSPRegen() = invalid then m.game.char.setSPRegen(m.map_char_config.attrs.regen.sp)
-        if m.map_char_config.attrs.regen.hp_time <> invalid and m.game.char.getHPRegenTime() = invalid then m.game.char.setHPRegenTime(m.map_char_config.attrs.regen.hp_time)
-        if m.map_char_config.attrs.regen.sp_time <> invalid and m.game.char.getSPRegenTime() = invalid then m.game.char.setSPRegenTime(m.map_char_config.attrs.regen.sp_time)
-
-        ' intersect
+        if m.map_char_config.name <> invalid and m.game.char.getEntityName() = invalid then m.game.char.setEntityName(m.map_char_config.name)
+        if m.map_char_config.pos.x <> invalid and m.game.char.getEntityPosX() = invalid then m.game.char.setEntityPosX(m.map_char_config.pos.x)
+        if m.map_char_config.pos.y <> invalid and m.game.char.getEntityPosY() = invalid then m.game.char.setEntityPosY(m.map_char_config.pos.y)
+        if m.map_char_config.size.width <> invalid and m.game.char.getSizeW() = invalid then m.game.char.setSizeW(m.map_char_config.size.width)
+        if m.map_char_config.size.height <> invalid and m.game.char.getSizeH() = invalid then m.game.char.setSizeH(m.map_char_config.size.height)
+        if m.map_char_config.index <> invalid and m.game.char.getIndex() = invalid then m.game.char.setIndex(m.map_char_config.index)
+        if m.map_char_config.alpha <> invalid and m.game.char.getAlpha() = invalid then m.game.char.setAlpha(m.map_char_config.alpha)
+        if m.map_char_config.time <> invalid and m.game.char.getAnimTime() = invalid then m.game.char.setAnimTime(m.map_char_config.time)
+        if m.map_char_config.scale.x <> invalid and m.game.char.getScaleX() = invalid then m.game.char.setScaleX(m.map_char_config.scale.x)
+        if m.map_char_config.scale.y <> invalid and m.game.char.getScaleY() = invalid then m.game.char.setScaleY(m.map_char_config.scale.y)
+        if m.map_char_config.offset.x <> invalid and m.game.char.getOffsetX() = invalid then m.game.char.setOffsetX(m.map_char_config.offset.x)
+        if m.map_char_config.offset.y <> invalid and m.game.char.getOffsetY() = invalid then m.game.char.setOffsetY(m.map_char_config.offset.y)
+        if m.map_char_config.reg <> invalid and m.game.char.getReg() = invalid then m.game.char.setReg(m.map_char_config.reg)
+        if m.map_char_config.name_up <> invalid and m.game.char.getColUpName() = invalid then m.game.char.setColUpName(m.map_char_config.name_up)
+        if m.map_char_config.name_down <> invalid and m.game.char.getColDownName() = invalid then m.game.char.setColDownName(m.map_char_config.name_down)
+        if m.map_char_config.name_left <> invalid and m.game.char.getColLeftName() = invalid then m.game.char.setColLeftName(m.map_char_config.name_left)
+        if m.map_char_config.name_right <> invalid and m.game.char.getColRightName() = invalid then m.game.char.setColRightName(m.map_char_config.name_right)
+        if m.map_char_config.up <> invalid and m.game.char.getColUp() = invalid then m.game.char.setColUp(m.map_char_config.up)
+        if m.map_char_config.down <> invalid and m.game.char.getColDown() = invalid then m.game.char.setColDown(m.map_char_config.down)
+        if m.map_char_config.left <> invalid and m.game.char.getColLeft() = invalid then m.game.char.setColLeft(m.map_char_config.left)
+        if m.map_char_config.right <> invalid and m.game.char.getColRight() = invalid then m.game.char.setColRight(m.map_char_config.right)
+        if m.map_char_config.npc <> invalid and m.game.char.getNPCCol() = invalid then m.game.char.setNPCCol(m.map_char_config.npc)
+        if m.map_char_config.marker <> invalid and m.game.char.getMarkerCol() = invalid then m.game.char.setMarkerCol(m.map_char_config.marker)
+        if m.map_char_config.hp <> invalid and m.game.char.getHP() = invalid then m.game.char.setHP(m.map_char_config.hp)
+        if m.map_char_config.sp <> invalid and m.game.char.getSP() = invalid then m.game.char.setSP(m.map_char_config.sp)
+        if m.map_char_config.speed.up <> invalid and m.game.char.getUpSpeed() = invalid then m.game.char.setUpSpeed(m.map_char_config.speed.up)
+        if m.map_char_config.speed.down <> invalid and m.game.char.getDownSpeed() = invalid then m.game.char.setDownSpeed(m.map_char_config.speed.down)
+        if m.map_char_config.speed.left <> invalid and m.game.char.getLeftSpeed() = invalid then m.game.char.setLeftSpeed(m.map_char_config.speed.left)
+        if m.map_char_config.speed.right <> invalid and m.game.char.getRightSpeed() = invalid then m.game.char.setRightSpeed(m.map_char_config.speed.right)
+        if m.map_char_config.damage.hp <> invalid and m.game.char.getHPDamage() = invalid then m.game.char.setHPDamage(m.map_char_config.damage.hp)
+        if m.map_char_config.damage.sp <> invalid and m.game.char.getSPDamage() = invalid then m.game.char.setSPDamage(m.map_char_config.damage.sp)
+        if m.map_char_config.damage.hp_time <> invalid and m.game.char.getHPDamageTime() = invalid then m.game.char.setHPDamageTime(m.map_char_config.damage.hp_time)
+        if m.map_char_config.damage.sp_time <> invalid and m.game.char.getSPDamageTime() = invalid then m.game.char.setSPDamageTime(m.map_char_config.damage.sp_time)
+        if m.map_char_config.regen.hp <> invalid and m.game.char.getHPRegen() = invalid then m.game.char.setHPRegen(m.map_char_config.regen.hp)
+        if m.map_char_config.regen.sp <> invalid and m.game.char.getSPRegen() = invalid then m.game.char.setSPRegen(m.map_char_config.regen.sp)
+        if m.map_char_config.regen.hp_time <> invalid and m.game.char.getHPRegenTime() = invalid then m.game.char.setHPRegenTime(m.map_char_config.regen.hp_time)
+        if m.map_char_config.regen.sp_time <> invalid and m.game.char.getSPRegenTime() = invalid then m.game.char.setSPRegenTime(m.map_char_config.regen.sp_time)
         if m.map_char_config.intersect.obj <> invalid and m.game.char.getObjIntersect() = invalid then m.game.char.setObjIntersect(m.map_char_config.intersect.obj)
-
-        ' col
-        if m.map_char_config.col.name_up <> invalid and m.game.char.getColUpName() = invalid then m.game.char.setColUpName(m.map_char_config.col.name_up)
-        if m.map_char_config.col.name_down <> invalid and m.game.char.getColDownName() = invalid then m.game.char.setColDownName(m.map_char_config.col.name_down)
-        if m.map_char_config.col.name_left <> invalid and m.game.char.getColLeftName() = invalid then m.game.char.setColLeftName(m.map_char_config.col.name_left)
-        if m.map_char_config.col.name_right <> invalid and m.game.char.getColRightName() = invalid then m.game.char.setColRightName(m.map_char_config.col.name_right)
-        if m.map_char_config.col.up <> invalid and m.game.char.getColUp() = invalid then m.game.char.setColUp(m.map_char_config.col.up)
-        if m.map_char_config.col.down <> invalid and m.game.char.getColDown() = invalid then m.game.char.setColDown(m.map_char_config.col.down)
-        if m.map_char_config.col.left <> invalid and m.game.char.getColLeft() = invalid then m.game.char.setColLeft(m.map_char_config.col.left)
-        if m.map_char_config.col.right <> invalid and m.game.char.getColRight() = invalid then m.game.char.setColRight(m.map_char_config.col.right)
-        if m.map_char_config.col.npc <> invalid and m.game.char.getNPCCol() = invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
-        if m.map_char_config.col.marker <> invalid and m.game.char.getMarkerCol() = invalid then m.game.char.setMarkerCol(m.map_char_config.col.marker)
-        if m.map_char_config.col.offset.x <> invalid and m.game.char.getColOffsetX() = invalid then m.game.char.setColOffsetX(m.map_char_config.col.offset.x)
-        if m.map_char_config.col.offset.y <> invalid and m.game.char.getColOffsetY() = invalid then m.game.char.setColOffsetY(m.map_char_config.col.offset.y)
-        if m.map_char_config.col.size.width <> invalid and m.game.char.getColW() = invalid then m.game.char.setColW(m.map_char_config.col.size.width)
-        if m.map_char_config.col.size.height <> invalid and m.game.char.getColH() = invalid then m.game.char.setColH(m.map_char_config.col.size.height)
-
 
     end function
 
@@ -398,8 +323,8 @@ function map_control(object)
     object.loadMap = function()
 
         ' position
-        m.game.map.setEntityOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX())
-        m.game.map.setEntityOffsetY(m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY())
+        m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX())
+        m.game.map.setOffsetY(m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY())
     
     end function
 

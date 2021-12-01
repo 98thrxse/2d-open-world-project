@@ -10,7 +10,7 @@ function terrain_view(object)
 
         m.terrain_regions = []
 
-        for k = 0 to m.game.terrain.config[id_y[i]][id_x[j]].entity.reg.Count() - 1
+        for k = 0 to m.game.terrain.config[id_y[i]][id_x[j]].reg.Count() - 1
 
             if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getRegElement(id_y[i], id_x[j], k).toStr()) = invalid
                 ' loadBitmap
@@ -30,7 +30,7 @@ function terrain_view(object)
 
     object.entityUnload = function(i, j)
 
-        for k = 0 to m.game.terrain.config[i][j].entity.reg.Count() - 1
+        for k = 0 to m.game.terrain.config[i][j].reg.Count() - 1
 
             if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getRegElement(i, j, k).toStr()) <> invalid
                 ' unloadBitmap
@@ -47,15 +47,15 @@ function terrain_view(object)
             id_y = []
 
             ' load & add
-            if - m.game.map.getEntityOffsetX() <= m.game.terrain.getEntityOffsetX(0, 0)
+            if - m.game.map.getOffsetX() <= m.game.terrain.getOffsetX(0, 0)
                 id_x.push(0)
 
-            else if - m.game.map.getEntityOffsetX() > m.game.terrain.getEntityOffsetX(0, m.game.terrain.config[0].Count() - 1)
+            else if - m.game.map.getOffsetX() > m.game.terrain.getOffsetX(0, m.game.terrain.config[0].Count() - 1)
                 id_x.push(m.game.terrain.config[0].Count() - 1)
 
             else
                 for i = 0 to m.game.terrain.config[0].Count() - 2
-                    if - m.game.map.getEntityOffsetX() >= m.game.terrain.getEntityOffsetX(0, i) and - m.game.map.getEntityOffsetX() <= m.game.terrain.getEntityOffsetX(0, i + 1)
+                    if - m.game.map.getOffsetX() >= m.game.terrain.getOffsetX(0, i) and - m.game.map.getOffsetX() <= m.game.terrain.getOffsetX(0, i + 1)
                         id_x.push(i)
                         id_x.push(i + 1) 
                         i = m.game.terrain.config[0].Count()
@@ -66,15 +66,15 @@ function terrain_view(object)
 
             end if
 
-            if - m.game.map.getEntityOffsetY() <= m.game.terrain.getEntityOffsetY(0, 0)
+            if - m.game.map.getOffsetY() <= m.game.terrain.getOffsetY(0, 0)
                 id_y.push(0)
 
-            else if - m.game.map.getEntityOffsetY() > m.game.terrain.getEntityOffsetY(m.game.terrain.config.Count() - 1, 0)
+            else if - m.game.map.getOffsetY() > m.game.terrain.getOffsetY(m.game.terrain.config.Count() - 1, 0)
                 id_y.push(m.game.terrain.config.Count() - 1)
 
             else
                 for i = 0 to m.game.terrain.config.Count() - 2
-                    if - m.game.map.getEntityOffsetY() >= m.game.terrain.getEntityOffsetY(i, 0) and - m.game.map.getEntityOffsetY() <= m.game.terrain.getEntityOffsetY(i + 1, 0)
+                    if - m.game.map.getOffsetY() >= m.game.terrain.getOffsetY(i, 0) and - m.game.map.getOffsetY() <= m.game.terrain.getOffsetY(i + 1, 0)
                         id_y.push(i)
                         id_y.push(i + 1)  
                         i = m.game.terrain.config.Count()
@@ -87,15 +87,15 @@ function terrain_view(object)
 
             for i = 0 to id_y.Count() - 1
                 for j = 0 to id_x.Count() - 1
-                    if m.getImage(m.game.terrain.getEntityName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr()) = invalid
+                    if m.getImage(m.game.terrain.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr()) = invalid
                         
                         ' load
                         m.entityLoad(id_y, id_x, i, j)
 
                         ' add
-                        m.addAnimatedImage(m.game.terrain.getEntityName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.terrain_regions, { index: m.game.terrain.getIndex(i, j)
-                            offset_x: m.game.terrain.getEntityOffsetX(id_y[i], id_x[j]) 
-                            offset_y: m.game.terrain.getEntityOffsetY(id_y[i], id_x[j])
+                        m.addAnimatedImage(m.game.terrain.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.terrain_regions, { index: m.game.terrain.getIndex(i, j)
+                            offset_x: m.game.terrain.getOffsetX(id_y[i], id_x[j]) 
+                            offset_y: m.game.terrain.getOffsetY(id_y[i], id_x[j])
                         })
                     
                     end if
@@ -106,13 +106,13 @@ function terrain_view(object)
             ' unload & remove
             for i = 0 to m.game.terrain.config.Count() - 1
                 for j = 0 to m.game.terrain.config[i].Count() - 1
-                    if m.getImage(m.game.terrain.getEntityName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not arrayUtils().contains(id_x, j) or not arrayUtils().contains(id_y, i))
+                    if m.getImage(m.game.terrain.getName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not arrayUtils().contains(id_x, j) or not arrayUtils().contains(id_y, i))
                         
                         ' unload
                         m.entityUnload(i, j)
                                             
                         ' remove    
-                        m.removeImage(m.game.terrain.getEntityName(i, j).toStr() + "_" + i.toStr() + j.toStr())
+                        m.removeImage(m.game.terrain.getName(i, j).toStr() + "_" + i.toStr() + j.toStr())
 
                     end if
                 end for

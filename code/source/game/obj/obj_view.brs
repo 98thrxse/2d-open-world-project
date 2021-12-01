@@ -10,7 +10,7 @@ function obj_view(object)
 
         m.obj_regions = []
 
-        for j = 0 to m.game.obj.config[i].entity.reg.Count() - 1
+        for j = 0 to m.game.obj.config[i].reg.Count() - 1
 
              if m.game.getBitmap(m.funcName + "_" + m.game.obj.getRegElement(i, j).toStr()) = invalid
                 ' loadBitmap
@@ -31,7 +31,7 @@ function obj_view(object)
 
     object.entityUnload = function(i)
 
-        for j = 0 to m.game.obj.config[i].entity.reg.Count() - 1
+        for j = 0 to m.game.obj.config[i].reg.Count() - 1
     
           if m.game.getBitmap(m.funcName + "_" + m.game.obj.getRegElement(i, j).toStr()) <> invalid
             ' unloadBitmap
@@ -47,29 +47,29 @@ function obj_view(object)
         if m.game.obj.config.Count() <> 0
             ' load & add
             for i = 0 to m.game.obj.config.Count() - 1
-                if - m.game.map.getEntityOffsetX() <= m.game.obj.getEntityOffsetX(i) + m.game.obj.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.obj.getEntityOffsetY(i) + m.game.obj.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getEntityOffsetY(i)
-                    if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+                if - m.game.map.getOffsetX() <= m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getEntityX(i) and - m.game.map.getOffsetY() <= m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getEntityY(i)
+                    if m.getImage(m.game.obj.getName(i).toStr() + "_" + i.toStr()) = invalid
                             
                         ' load
                         m.entityLoad(i)
 
                         ' add
-                        m.addAnimatedImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr(), m.obj_regions, { index: m.game.obj.getIndex(i)
-                            offset_x: m.game.obj.getEntityOffsetX(i),
-                            offset_y: m.game.obj.getEntityOffsetY(i),
+                        m.addAnimatedImage(m.game.obj.getName(i).toStr() + "_" + i.toStr(), m.obj_regions, { index: m.game.obj.getIndex(i)
+                            offset_x: m.game.obj.getEntityX(i),
+                            offset_y: m.game.obj.getEntityY(i),
                             alpha: m.game.obj.getAlpha(i)
                         })
                         
                     end if
 
                 ' unload & remove
-                else if m.getImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+                else if m.getImage(m.game.obj.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
                     ' unload
                     m.entityUnload(i)
 
                     ' remove
-                    m.removeImage(m.game.obj.getEntityName(i).toStr() + "_" + i.toStr())
+                    m.removeImage(m.game.obj.getName(i).toStr() + "_" + i.toStr())
 
                 end if
             
@@ -82,18 +82,18 @@ function obj_view(object)
         if m.game.obj.config.Count() <> 0
             ' load & add
             for i = 0 to m.game.obj.config.Count() - 1
-                if - m.game.map.getEntityOffsetX() <= m.game.obj.getColOffsetX(i) + m.game.obj.getColW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getColOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.obj.getColOffsetY(i) + m.game.obj.getColH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getColOffsetY(i)
+                if - m.game.map.getOffsetX() <= m.game.obj.getColX(i) + m.game.obj.getColW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getColX(i) and - m.game.map.getOffsetY() <= m.game.obj.getColY(i) + m.game.obj.getColH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getColY(i)
 
-                    if m.colliders[m.game.obj.getColName(i).toStr() + "_" + i.toStr()] = invalid
+                    if m.colliders[m.game.obj.getName(i).toStr() + "_" + i.toStr()] = invalid
                         ' addColliderRectangle
-                        m.addColliderRectangle(m.game.obj.getColName(i).toStr() + "_" + i.toStr(), m.game.obj.getColOffsetX(i), m.game.obj.getColOffsetY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
+                        m.addColliderRectangle(m.game.obj.getName(i).toStr() + "_" + i.toStr(), m.game.obj.getColX(i), m.game.obj.getColY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
                       
                     end if
 
                 ' unload & remove
-                else if m.getCollider(m.game.obj.getColName(i).toStr() + "_" + i.toStr()) <> invalid
+                else if m.getCollider(m.game.obj.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
-                    m.removeCollider(m.game.obj.getColName(i).toStr() + "_" + i.toStr())
+                    m.removeCollider(m.game.obj.getName(i).toStr() + "_" + i.toStr())
 
                 end if
             

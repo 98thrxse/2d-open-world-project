@@ -10,8 +10,8 @@ function terrain_control(object)
     object.controlPos = function()
 
         ' position
-        m.view_wnd.x = m.game.map.getEntityOffsetX()
-        m.view_wnd.y = m.game.map.getEntityOffsetY()
+        m.view_wnd.x = m.game.map.getOffsetX()
+        m.view_wnd.y = m.game.map.getOffsetY()
 
     end function
 

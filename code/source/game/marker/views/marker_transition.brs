@@ -16,7 +16,7 @@ function marker_transition(object)
 
         m.marker_regions = []
 
-        for j = 0 to m.game.marker.config[i].entity.reg.Count() - 1
+        for j = 0 to m.game.marker.config[i].reg.Count() - 1
 
              if m.game.getBitmap(m.funcName + "_" + m.game.marker.getRegElement(i, j).toStr()) = invalid
                 ' loadBitmap
@@ -37,7 +37,7 @@ function marker_transition(object)
 
     object.entityUnload = function(i)
 
-        for j = 0 to m.game.marker.config[i].entity.reg.Count() - 1
+        for j = 0 to m.game.marker.config[i].reg.Count() - 1
     
           if m.game.getBitmap(m.funcName + "_" + m.game.marker.getRegElement(i, j).toStr()) <> invalid
             ' unloadBitmap
@@ -53,29 +53,29 @@ function marker_transition(object)
 
         ' load & add
         for i = 0 to m.game.marker.config.Count() - 1
-          if - m.game.map.getEntityOffsetX() <= m.game.marker.getEntityOffsetX(i) + m.game.marker.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.marker.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.marker.getEntityOffsetY(i) + m.game.marker.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.marker.getEntityOffsetY(i)
-            if m.getImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+          if - m.game.map.getOffsetX() <= m.game.marker.getOffsetX(i) + m.game.marker.getSizeW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.marker.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.marker.getOffsetY(i) + m.game.marker.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.marker.getOffsetY(i)
+            if m.getImage(m.game.marker.getName(i).toStr() + "_" + i.toStr()) = invalid
                     
               ' load
               m.entityLoad(i)
 
               ' add
-              m.addAnimatedImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr(), m.marker_regions, { index: m.game.marker.getIndex(i)
-                  offset_x: m.game.marker.getEntityOffsetX(i),
-                  offset_y: m.game.marker.getEntityOffsetY(i),
+              m.addAnimatedImage(m.game.marker.getName(i).toStr() + "_" + i.toStr(), m.marker_regions, { index: m.game.marker.getIndex(i)
+                  offset_x: m.game.marker.getOffsetX(i),
+                  offset_y: m.game.marker.getOffsetY(i),
                   alpha: m.game.marker.getAlpha(i)
               })
                 
             end if
 
           ' unload & remove
-          else if m.getImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+          else if m.getImage(m.game.marker.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
             ' unload
             m.entityUnload(i)
 
             ' remove
-            m.removeImage(m.game.marker.getEntityName(i).toStr() + "_" + i.toStr())
+            m.removeImage(m.game.marker.getName(i).toStr() + "_" + i.toStr())
 
           end if
         end for
@@ -87,17 +87,17 @@ function marker_transition(object)
 
         ' load & add
         for i = 0 to m.game.marker.config.Count() - 1
-          if - m.game.map.getEntityOffsetX() <= m.game.marker.getColOffsetX(i) + m.game.marker.getColW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.marker.getColOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.marker.getColOffsetY(i) + m.game.marker.getColH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.marker.getColOffsetY(i)
+          if - m.game.map.getOffsetX() <= m.game.marker.getOffsetX(i) + m.game.marker.getSizeW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.marker.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.marker.getOffsetY(i) + m.game.marker.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.marker.getOffsetY(i)
 
-            if m.colliders[m.game.marker.getColName(i).toStr() + "_" + i.toStr()] = invalid
+            if m.colliders[m.game.marker.getName(i).toStr() + "_" + i.toStr()] = invalid
               ' addColliderRectangle
-              m.addColliderRectangle(m.game.marker.getColName(i).toStr() + "_" + i.toStr(), m.game.marker.getColOffsetX(i), m.game.marker.getColOffsetY(i), m.game.marker.getColW(i), m.game.marker.getColH(i))
+              m.addColliderRectangle(m.game.marker.getName(i).toStr() + "_" + i.toStr(), m.game.marker.getOffsetX(i), m.game.marker.getOffsetY(i), m.game.marker.getSizeW(i), m.game.marker.getSizeH(i))
             end if
 
           ' unload & remove
-          else if m.getCollider(m.game.marker.getColName(i).toStr() + "_" + i.toStr()) <> invalid
+          else if m.getCollider(m.game.marker.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
-            m.removeCollider(m.game.marker.getColName(i).toStr() + "_" + i.toStr())
+            m.removeCollider(m.game.marker.getName(i).toStr() + "_" + i.toStr())
 
           end if
         end for
@@ -133,8 +133,8 @@ function marker_transition(object)
       
       if m.game.marker.config.Count() <> 0
         if m.game.char.getMarkerCol() <> invalid
-          DrawText(canvas, "ENTER?", m.game.marker.getEntityOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetX() + m.game.marker.getEntityW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2 + 3, m.game.marker.getEntityOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetY() + m.game.marker.getEntityH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3 + 3, m.transition_font, "center", &h000000FF)
-          DrawText(canvas, "ENTER?", m.game.marker.getEntityOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetX() + m.game.marker.getEntityW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2, m.game.marker.getEntityOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getEntityOffsetY() + m.game.marker.getEntityH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3, m.transition_font, "center", &hFF0000FF)
+          DrawText(canvas, "ENTER?", m.game.marker.getOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.marker.getSizeW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2 + 3, m.game.marker.getOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.marker.getSizeH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3 + 3, m.transition_font, "center", &h000000FF)
+          DrawText(canvas, "ENTER?", m.game.marker.getOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.marker.getSizeW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2, m.game.marker.getOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.marker.getSizeH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3, m.transition_font, "center", &hFF0000FF)
         end if
       end if
 

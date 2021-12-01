@@ -11,7 +11,7 @@ function npc_view(object)
 
     m.npc_regions = []
 
-    for j = 0 to m.game.npc.config[i].entity.reg.Count() - 1
+    for j = 0 to m.game.npc.config[i].reg.Count() - 1
 
       if m.game.getBitmap(m.funcName + "_" + m.game.npc.getRegElement(i, j).toStr()) = invalid
         ' loadBitmap
@@ -32,7 +32,7 @@ function npc_view(object)
 
   object.entityUnload = function(i)
 
-    for j = 0 to m.game.npc.config[i].entity.reg.Count() - 1
+    for j = 0 to m.game.npc.config[i].reg.Count() - 1
 
       if m.game.getBitmap(m.funcName + "_" + m.game.npc.getRegElement(i, j).toStr()) <> invalid
         ' unloadBitmap
@@ -48,16 +48,16 @@ function npc_view(object)
 
       ' load & add
       for i = 0 to m.game.npc.config.Count() - 1
-        if - m.game.map.getEntityOffsetX() <= m.game.npc.getEntityOffsetX(i) + m.game.npc.getEntityW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getEntityOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.npc.getEntityOffsetY(i) + m.game.npc.getEntityH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getEntityOffsetY(i)
-          if m.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+        if - m.game.map.getOffsetX() <= m.game.npc.getOffsetX(i) + m.game.npc.getSizeW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.npc.getOffsetY(i) + m.game.npc.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getOffsetY(i)
+          if m.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()) = invalid
 
             ' load
             m.entityLoad(i)
 
             ' add
-            m.addAnimatedImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr(), m.npc_regions, { index: m.game.npc.getIndex(i)
-              offset_x: m.game.npc.getEntityOffsetX(i),
-              offset_y: m.game.npc.getEntityOffsetY(i)
+            m.addAnimatedImage(m.game.npc.getName(i).toStr() + "_" + i.toStr(), m.npc_regions, { index: m.game.npc.getIndex(i)
+              offset_x: m.game.npc.getOffsetX(i),
+              offset_y: m.game.npc.getOffsetY(i)
               scale_x: m.game.npc.getScaleX(i)
               scale_y: m.game.npc.getScaleY(i)
             })
@@ -65,13 +65,13 @@ function npc_view(object)
           end if
 
         ' unload & remove
-        else if m.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+        else if m.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
           ' unload
           m.entityUnload(i)
 
           ' remove
-          m.removeImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr())
+          m.removeImage(m.game.npc.getName(i).toStr() + "_" + i.toStr())
 
         end if
         
@@ -86,17 +86,17 @@ function npc_view(object)
 
       ' add
       for i = 0 to m.game.npc.config.Count() - 1
-        if - m.game.map.getEntityOffsetX() <= m.game.npc.getColOffsetX(i) + m.game.npc.getColW(i) and - m.game.map.getEntityOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getColOffsetX(i) and - m.game.map.getEntityOffsetY() <= m.game.npc.getColOffsetY(i) + m.game.npc.getColH(i) and - m.game.map.getEntityOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getColOffsetY(i)
+        if - m.game.map.getOffsetX() <= m.game.npc.getOffsetX(i) + m.game.npc.getSizeW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.npc.getOffsetY(i) + m.game.npc.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getOffsetY(i)
 
-          if m.colliders[m.game.npc.getColName(i).toStr() + "_" + i.toStr()] = invalid
+          if m.colliders[m.game.npc.getName(i).toStr() + "_" + i.toStr()] = invalid
             ' addColliderRectangle
-            m.addColliderRectangle(m.game.npc.getColName(i).toStr() + "_" + i.toStr(), m.game.npc.getColOffsetX(i), m.game.npc.getColOffsetY(i), m.game.npc.getColW(i), m.game.npc.getColH(i))
+            m.addColliderRectangle(m.game.npc.getName(i).toStr() + "_" + i.toStr(), m.game.npc.getOffsetX(i), m.game.npc.getOffsetY(i), m.game.npc.getSizeW(i), m.game.npc.getSizeH(i))
           end if
 
         ' remove
-        else if m.getCollider(m.game.npc.getColName(i).toStr() + "_" + i.toStr()) <> invalid
+        else if m.getCollider(m.game.npc.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
-          m.removeCollider(m.game.npc.getColName(i).toStr() + "_" + i.toStr())
+          m.removeCollider(m.game.npc.getName(i).toStr() + "_" + i.toStr())
 
         end if
         

@@ -10,21 +10,20 @@ function npc_control(object)
   object.controlPos = function()
 
     ' entity position
-    m.view_wnd.x = m.game.map.getEntityOffsetX()
-    m.view_wnd.y = m.game.map.getEntityOffsetY()
+    m.view_wnd.x = m.game.map.getOffsetX()
+    m.view_wnd.y = m.game.map.getOffsetY()
 
   end function
 
   object.onUpdate = function(dt as float)
 
       m.controlPos()
-      m.npcColWalk()
-      m.npcEntityWalk()
+      m.npcWalk()
       m.npcPathReset()
       m.npcDeath()
       m.npcAnimDeath()
       m.npcAnimWalk()
-      m.animUpdate()
+      m.controlUpdate()
 
   end function
 
@@ -32,112 +31,63 @@ function npc_control(object)
     for i = 0 to m.game.npc.config.Count() - 1
       if m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
 
-        if m.game.npc.getEntityOffsetX(i) = m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) and m.game.npc.getEntityOffsetY(i) = m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
-          if m.game.npc.getPathCycle(i) = m.game.npc.config[i].attrs.path.position.Count() - 1 then m.game.npc.setPathCycle(i, 0) else m.game.npc.setPathCycle(i, m.game.npc.getPathCycle(i) + 1)
+        if m.game.npc.getOffsetX(i) = m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) and m.game.npc.getOffsetY(i) = m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+          if m.game.npc.getPathCycle(i) = m.game.npc.config[i].path.position.Count() - 1 then m.game.npc.setPathCycle(i, 0) else m.game.npc.setPathCycle(i, m.game.npc.getPathCycle(i) + 1)
         end if
 
       end if
     end for
   end function
 
-  object.npcEntityWalk = function()
+  object.npcWalk = function()
 
     for i = 0 to m.game.npc.config.Count() - 1
 
       if m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
 
-        if m.game.npc.getEntityOffsetX(i) < m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
+        if m.game.npc.getOffsetX(i) < m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 
           if m.game.npc.getScaleX(i) <> 1.0
             m.game.npc.setScaleX(i, 1.0)
-            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getEntityW(i))
-            m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) - m.game.npc.getEntityW(i))
+            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i))
+            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i))
           end if
 
 
-          m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) + m.game.npc.getRightSpeed(i))
+          m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) + m.game.npc.getRightSpeed(i))
 
-        else if m.game.npc.getEntityOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
+        else if m.game.npc.getOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 
           if m.game.npc.getScaleX(i) <> -1.0
 						m.game.npc.setScaleX(i, -1.0)
-            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) + m.game.npc.getEntityW(i))
-						m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) + m.game.npc.getEntityW(i))
+            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) + m.game.npc.getSizeW(i))
+						m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) + m.game.npc.getSizeW(i))
 
 					end if
 
-          m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) - m.game.npc.getLeftSpeed(i))
+          m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getLeftSpeed(i))
         
-        else if m.game.npc.getEntityOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+        else if m.game.npc.getOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 
           if m.game.npc.getScaleX(i) <> 1.0
             m.game.npc.setScaleX(i, 1.0)
-            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getEntityW(i))
-            m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) - m.game.npc.getEntityW(i))
+            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i))
+            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i))
 
           end if
 
-          m.game.npc.setEntityOffsetY(i, m.game.npc.getEntityOffsetY(i) + m.game.npc.getDownSpeed(i))
+          m.game.npc.setOffsetY(i, m.game.npc.getOffsetY(i) + m.game.npc.getDownSpeed(i))
 
-        else if m.game.npc.getEntityOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+        else if m.game.npc.getOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 
           if m.game.npc.getScaleX(i) <> 1.0
             m.game.npc.setScaleX(i, 1.0)
-            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getEntityW(i))
-            m.game.npc.setEntityOffsetX(i, m.game.npc.getEntityOffsetX(i) - m.game.npc.getEntityW(i))
+            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i))
+            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i))
 
           end if
 
-          m.game.npc.setEntityOffsetY(i, m.game.npc.getEntityOffsetY(i) - m.game.npc.getUpSpeed(i))
-
-        end if
-
-      end if
-
-    end for
-
-  end function
-
-  object.npcColWalk = function()
-
-    for i = 0 to m.game.npc.config.Count() - 1
-
-      if m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
-
-        if m.game.npc.getColOffsetX(i) < m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
-
-          if m.game.npc.getScaleX(i) <> 1.0
-            m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) - m.game.npc.getColW(i))
-          end if
-
-          m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) + m.game.npc.getRightSpeed(i))
-
-        else if m.game.npc.getColOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
-
-          if m.game.npc.getScaleX(i) <> -1.0
-            m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) + m.game.npc.getColW(i))
-
-					end if
-
-          m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) - m.game.npc.getLeftSpeed(i))
-        
-        else if m.game.npc.getColOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
-
-          if m.game.npc.getScaleX(i) <> 1.0
-            m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) - m.game.npc.getColW(i))
-
-          end if
-
-          m.game.npc.setColOffsetY(i, m.game.npc.getColOffsetY(i) + m.game.npc.getDownSpeed(i))
-
-        else if m.game.npc.getColOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
-
-          if m.game.npc.getScaleX(i) <> 1.0
-            m.game.npc.setColOffsetX(i, m.game.npc.getColOffsetX(i) - m.game.npc.getColW(i))
-
-          end if
-
-          m.game.npc.setColOffsetY(i, m.game.npc.getColOffsetY(i) - m.game.npc.getUpSpeed(i))
+          m.game.npc.setOffsetY(i, m.game.npc.getOffsetY(i) - m.game.npc.getUpSpeed(i))
 
         end if
 
@@ -172,16 +122,16 @@ function npc_control(object)
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) > 0 and m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
 
-				if m.game.npc.getEntityOffsetX(i) < m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
+				if m.game.npc.getOffsetX(i) < m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 					m.npcAnimWalkSide(i)
 				
-				else if m.game.npc.getEntityOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
+				else if m.game.npc.getOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 					m.npcAnimWalkSide(i)
 				
-				else if m.game.npc.getEntityOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+				else if m.game.npc.getOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 					m.npcAnimWalkDown(i)
 		
-				else if m.game.npc.getEntityOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+				else if m.game.npc.getOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 					m.npcAnimWalkUp(i)
 		
 				end if
@@ -214,7 +164,7 @@ function npc_control(object)
 		arrAnim = []
 
 		for each element in arr
-			for j = 0 to m.game.npc.config[i].entity.reg.Count() - 1
+			for j = 0 to m.game.npc.config[i].reg.Count() - 1
 				if m.game.npc.getRegElement(i, j) = element then arrAnim.push(j)
 			end for
 		end for
@@ -225,23 +175,23 @@ function npc_control(object)
 	end function
 
 
-	object.animUpdate = function()
+	object.controlUpdate = function()
 
 		for i = 0 to m.game.npc.config.Count() - 1
-			if m.view_wnd.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+			if m.view_wnd.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()) <> invalid
 				
 				' update npc data
-				m.view_wnd.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()).index = m.game.npc.getIndex(i)
-				m.view_wnd.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()).scale_x = m.game.npc.getScaleX(i)
-				m.view_wnd.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()).scale_y = m.game.npc.getScaleY(i)
-				m.view_wnd.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()).offset_x = m.game.npc.getEntityOffsetX(i)
-				m.view_wnd.getImage(m.game.npc.getEntityName(i).toStr() + "_" + i.toStr()).offset_y = m.game.npc.getEntityOffsetY(i)
+				m.view_wnd.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()).index = m.game.npc.getIndex(i)
+				m.view_wnd.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()).scale_x = m.game.npc.getScaleX(i)
+				m.view_wnd.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()).scale_y = m.game.npc.getScaleY(i)
+				m.view_wnd.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()).offset_x = m.game.npc.getOffsetX(i)
+				m.view_wnd.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()).offset_y = m.game.npc.getOffsetY(i)
 
 			end if
 
-      if m.view_wnd.getCollider(m.game.npc.getColName(i).toStr() + "_" + i.toStr()) <> invalid
-        m.view_wnd.getCollider(m.game.npc.getColName(i).toStr() + "_" + i.toStr()).offset_x = m.game.npc.getColOffsetX(i)
-				m.view_wnd.getCollider(m.game.npc.getColName(i).toStr() + "_" + i.toStr()).offset_y = m.game.npc.getColOffsetY(i)
+      if m.view_wnd.getCollider(m.game.npc.getName(i).toStr() + "_" + i.toStr()) <> invalid
+        m.view_wnd.getCollider(m.game.npc.getName(i).toStr() + "_" + i.toStr()).offset_x = m.game.npc.getOffsetX(i)
+				m.view_wnd.getCollider(m.game.npc.getName(i).toStr() + "_" + i.toStr()).offset_y = m.game.npc.getOffsetY(i)
       end if
 		end for
 
