@@ -177,13 +177,13 @@ function char_control(object)
   object.charAnimAttack = function()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
 			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
-				m.animPlay(["stand_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "stand_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "stand_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "stand_side2"])
+				m.animPlay(["idle_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "idle_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "idle_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "idle_side2"])
 			
 			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "front")
-				m.animPlay(["stand_front1", "attack_fist1_front", "stand_front1", "attack_fist2_front", "stand_front1", "attack_leg1_front", "stand_front1"])
+				m.animPlay(["idle_front1", "attack_fist1_front", "idle_front1", "attack_fist2_front", "idle_front1", "attack_leg1_front", "idle_front1"])
 
 			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "back")
-				m.animPlay(["stand_back1", "attack_fist1_back", "stand_back1", "attack_fist2_back", "stand_back1", "attack_leg1_back", "stand_back1"])
+				m.animPlay(["idle_back1", "attack_fist1_back", "idle_back1", "attack_fist2_back", "idle_back1", "attack_leg1_back", "idle_back1"])
 
 			end if
 		else
@@ -192,26 +192,26 @@ function char_control(object)
 	end function
 
 	object.charAnimWalkUp = function()
-		m.animPlay(["walk_back1", "stand_back1", "walk_back2"])
+		m.animPlay(["walk_back1", "idle_back1", "walk_back2"])
 	end function
 
 	object.charAnimWalkDown = function()
-		m.animPlay(["walk_front1", "stand_front1", "walk_front2"])
+		m.animPlay(["walk_front1", "idle_front1", "walk_front2"])
 	end function
 
 	object.charAnimWalkSide = function()
-		m.animPlay(["walk_side1", "stand_side1", "walk_side2"])
+		m.animPlay(["walk_side1", "idle_side1", "walk_side2"])
 	end function
 
 	object.charAnimAfterAttack = function()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
 			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
-				m.animPlay(["stand_side2"])
+				m.animPlay(["idle_side2"])
 			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "front")
-				m.animPlay(["stand_front2"])
+				m.animPlay(["idle_front2"])
 
 			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "back")
-				m.animPlay(["stand_back2"])
+				m.animPlay(["idle_back2"])
 			end if
 		else
 			m.animPlay(["sp_zero"])
@@ -220,22 +220,22 @@ function char_control(object)
 
 	object.charAnimIdleUp = function()
 		m.animTimer = invalid
-		m.animPlay(["stand_back1"])
+		m.animPlay(["idle_back1"])
 	end function
 
 	object.charAnimIdleDown = function()
 		m.animTimer = invalid
-		m.animPlay(["stand_front1"])
+		m.animPlay(["idle_front1"])
 	end function
 
 	object.charAnimIdleLeft = function()
 		m.animTimer = invalid
-		m.animPlay(["stand_side1"])
+		m.animPlay(["idle_side1"])
 	end function
 
 	object.charAnimIdleRight = function()
     m.animTimer = invalid
-		m.animPlay(["stand_side1"])
+		m.animPlay(["idle_side1"])
 	end function
 
   object.controlUpdate = function()

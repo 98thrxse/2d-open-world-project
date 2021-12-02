@@ -142,15 +142,15 @@ function npc_control(object)
 	end function
 
 	object.npcAnimWalkUp = function(i)
-		m.animPlay(i, ["walk_back1", "stand_back1", "walk_back2"])
+		m.animPlay(i, ["walk_back1", "idle_back1", "walk_back2"])
 	end function
 
 	object.npcAnimWalkDown = function(i)
-		m.animPlay(i, ["walk_front1", "stand_front1", "walk_front2"])
+		m.animPlay(i, ["walk_front1", "idle_front1", "walk_front2"])
 	end function
 
 	object.npcAnimWalkSide = function(i)
-		m.animPlay(i, ["walk_side1", "stand_side1", "walk_side2"])
+		m.animPlay(i, ["walk_side1", "idle_side1", "walk_side2"])
 	end function
 
 
