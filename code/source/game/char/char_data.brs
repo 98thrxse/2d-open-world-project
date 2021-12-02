@@ -139,7 +139,7 @@ function char_data(ver) as object
         global_save(invalid, "char")
 
         m.char.config = {
-            name: invalid
+            name: invalid,
             name_up: invalid,
             name_down: invalid,
             name_left: invalid,
@@ -164,13 +164,18 @@ function char_data(ver) as object
                 x: invalid,
                 y: invalid
             },
-            up: invalid,
-            down: invalid
-            left: invalid,
-            right: invalid
-            npc: invalid,
-            marker: invalid,
-            veh: invalid,
+            col: {
+                npc: invalid,
+                marker: invalid,
+                veh: invalid,
+                up: invalid,
+                down: invalid
+                left: invalid,
+                right: invalid
+            }
+            intersect: {
+                obj: invalid
+            }
             hp: invalid,
             sp: invalid
             damage: {
@@ -190,9 +195,6 @@ function char_data(ver) as object
                 down: invalid,
                 left: invalid,
                 right: invalid
-            }
-            intersect: {
-                obj: invalid
             }
             map: invalid,
             version: ver
@@ -457,55 +459,55 @@ sub char_setVehCol(i as object)
 end sub
 
 function char_getNPCCol() as object
-    return m.config.npc
+    return m.config.col.npc
 end function
 
 sub char_setNPCCol(i as object) 
-    m.config.npc = i
+    m.config.col.npc = i
 end sub
 
 function char_getMarkerCol() as object
-    return m.config.marker
+    return m.config.col.marker
 end function
 
 sub char_setMarkerCol(i as object) 
-    m.config.marker = i
+    m.config.col.marker = i
 end sub
 
 
 function char_getColUp() as object
-    return m.config.up
+    return m.config.col.up
 end function
 
 sub char_setColUp(col as object) 
-    m.config.up = col
+    m.config.col.up = col
 end sub
 
 
 function char_getColDown() as object
-    return m.config.down
+    return m.config.col.down
 end function
 
 sub char_setColDown(col as object) 
-    m.config.down = col
+    m.config.col.down = col
 end sub
 
 
 function char_getColLeft() as object
-    return m.config.left
+    return m.config.col.left
 end function
 
 sub char_setColLeft(col as object) 
-    m.config.left = col
+    m.config.col.left = col
 end sub
 
 
 function char_getColRight() as object
-    return m.config.right
+    return m.config.col.right
 end function
 
 sub char_setColRight(col as object) 
-    m.config.right = col
+    m.config.col.right = col
 end sub
 
 

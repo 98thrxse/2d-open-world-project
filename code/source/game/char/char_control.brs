@@ -146,6 +146,7 @@ function char_control(object)
       m.game.createInstance("marker_init")
       m.game.createInstance("obj_init")
       m.game.createInstance("npc_init")
+      m.game.createInstance("veh_init")
       m.game.createInstance("terrain_init")
 
       m.game.createInstance("map_control")

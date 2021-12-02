@@ -25,13 +25,15 @@ function testTwo_char_config() as object
             x: invalid,
             y: invalid
         },
-        up: false,
-        down: false
-        left: false,
-        right: false
-        npc: invalid,
-        marker: invalid,
-        veh: invalid,
+        col: {
+            up: false,
+            down: false
+            left: false,
+            right: false
+            npc: invalid,
+            marker: invalid,
+            veh: invalid,
+        }
         hp: 100,
         sp: 100
         damage: {

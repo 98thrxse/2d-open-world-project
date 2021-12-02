@@ -4,7 +4,7 @@ function testOne_veh_config() as object
         {
             id: 0,
             name: "veh",
-            index: 1,
+            index: 2,
             reg: ["veh_car1_back", "veh_car1_front", "veh_car1_side"]
             offset: {
                 x: 9400,
@@ -15,8 +15,8 @@ function testOne_veh_config() as object
                 y: 1.0
             },
             size: {
-                width: 127,
-                height: 95
+                width: 165,
+                height: 123
             }
             speed: {
                 up: 5,

@@ -25,13 +25,15 @@ function testOne_char_config() as object
             x: 9562,
             y: 2194
         },
-        up: false,
-        down: false
-        left: false,
-        right: false
-        npc: invalid,
-        marker: invalid,
-        veh: invalid,
+        col: {
+            up: false,
+            down: false
+            left: false,
+            right: false
+            npc: invalid,
+            marker: invalid,
+            veh: invalid,
+        }
         hp: 100,
         sp: 100
         damage: {
