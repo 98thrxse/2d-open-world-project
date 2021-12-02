@@ -14,6 +14,7 @@ function map_control(object)
             m.map_char_config = testOne_char_config()
             m.map_obj_config = testOne_obj_config()
             m.map_npc_config = testOne_npc_config()
+            m.map_veh_config = testOne_veh_config()
             m.map_terrain_config = testOne_terrain_config()
             m.map_interface_config = testOne_interface_config()
             m.map_marker_config = testOne_marker_config()
@@ -22,6 +23,7 @@ function map_control(object)
             m.map_char_config = testTwo_char_config()
             m.map_obj_config = testTwo_obj_config()
             m.map_npc_config = testTwo_npc_config()
+            m.map_veh_config = testTwo_veh_config()
             m.map_terrain_config = testTwo_terrain_config()
             m.map_interface_config = testTwo_interface_config()
             m.map_marker_config = testTwo_marker_config()
@@ -33,6 +35,7 @@ function map_control(object)
         m.loadChar()
         m.loadNPC()
         m.loadObj()
+        m.loadVeh()
         m.loadTerrain()
         m.loadInterface()
         m.loadMarker()
@@ -252,6 +255,61 @@ function map_control(object)
 
     end function
 
+    object.loadVeh = function()
+
+        ' loading map config to veh data
+        if m.game.veh.config.Count() < m.map_veh_config.Count()
+            for i = m.game.veh.config.Count() to m.map_veh_config.Count() - 1
+                m.game.veh.config.push({
+                    id: i,       
+                    name: invalid,
+                    index: invalid,
+                    reg: [],
+                    offset: {
+                        x: invalid,
+                        y: invalid
+                    },
+                    scale: {
+                        x: invalid,
+                        y: invalid
+                    },
+                    size: {
+                        width: invalid,
+                        height: invalid
+                    }
+                    speed: {
+                        up: invalid,
+                        down: invalid,
+                        left: invalid,
+                        right: invalid
+                    }
+                })
+            end for
+        else if m.game.veh.config.Count() > m.map_veh_config.Count()
+            for i = m.map_veh_config.Count() to m.game.veh.config.Count() - 1
+                m.game.veh.config.pop()
+            end for
+        end if
+
+        for i = 0 to m.map_veh_config.Count() - 1
+
+            if m.map_veh_config[i].speed.up <> invalid then m.game.veh.setUpSpeed(i, m.map_veh_config[i].speed.up)
+            if m.map_veh_config[i].speed.down <> invalid then m.game.veh.setDownSpeed(i, m.map_veh_config[i].speed.down)
+            if m.map_veh_config[i].speed.left <> invalid then m.game.veh.setLeftSpeed(i, m.map_veh_config[i].speed.left)
+            if m.map_veh_config[i].speed.right <> invalid then m.game.veh.setRightSpeed(i, m.map_veh_config[i].speed.right)
+            if m.map_veh_config[i].name <> invalid then m.game.veh.setName(i, m.map_veh_config[i].name)
+            if m.map_veh_config[i].offset.x <> invalid then m.game.veh.setOffsetX(i, m.map_veh_config[i].offset.x)
+            if m.map_veh_config[i].offset.y <> invalid then m.game.veh.setOffsetY(i, m.map_veh_config[i].offset.y)
+            if m.map_veh_config[i].size.width <> invalid then m.game.veh.setSizeW(i, m.map_veh_config[i].size.width)
+            if m.map_veh_config[i].size.height <> invalid then m.game.veh.setSizeH(i, m.map_veh_config[i].size.height)
+            if m.map_veh_config[i].index <> invalid then m.game.veh.setIndex(i, m.map_veh_config[i].index)
+            if m.map_veh_config[i].scale.x <> invalid then m.game.veh.setScaleX(i, m.map_veh_config[i].scale.x)
+            if m.map_veh_config[i].scale.y <> invalid then m.game.veh.setScaleY(i, m.map_veh_config[i].scale.y)
+            if m.map_veh_config[i].reg <> invalid then m.game.veh.setReg(i, m.map_veh_config[i].reg)
+
+        end for
+
+    end function
 
     object.loadChar = function()
 

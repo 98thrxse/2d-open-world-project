@@ -109,6 +109,9 @@ function char_data(ver) as object
         getNPCCol: char_getNPCCol
         setNPCCol: char_setNPCCol
 
+        getVehCol: char_getVehCol
+        setVehCol: char_setVehCol
+
         getMarkerCol: char_getMarkerCol
         setMarkerCol: char_setMarkerCol
 
@@ -166,7 +169,8 @@ function char_data(ver) as object
             left: invalid,
             right: invalid
             npc: invalid,
-            marker: invalid
+            marker: invalid,
+            veh: invalid,
             hp: invalid,
             sp: invalid
             damage: {
@@ -444,7 +448,13 @@ sub char_setObjIntersect(i as object)
     m.config.intersect.obj = i
 end sub
 
+function char_getVehCol() as object
+    return m.config.veh
+end function
 
+sub char_setVehCol(i as object) 
+    m.config.veh = i
+end sub
 
 function char_getNPCCol() as object
     return m.config.npc

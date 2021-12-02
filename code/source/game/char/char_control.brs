@@ -129,6 +129,7 @@ function char_control(object)
       m.game.destroyInstance(m.game.getInstanceByName("marker_init"))
       m.game.destroyInstance(m.game.getInstanceByName("obj_init"))
       m.game.destroyInstance(m.game.getInstanceByName("npc_init"))
+      m.game.destroyInstance(m.game.getInstanceByName("veh_init"))
       m.game.destroyInstance(m.game.getInstanceByName("terrain_init"))
 
       m.game.destroyInstance(m.game.getInstanceByName("map_control"))

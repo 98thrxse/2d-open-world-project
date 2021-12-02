@@ -30,7 +30,8 @@ function testTwo_char_config() as object
         left: false,
         right: false
         npc: invalid,
-        marker: invalid
+        marker: invalid,
+        veh: invalid,
         hp: 100,
         sp: 100
         damage: {
