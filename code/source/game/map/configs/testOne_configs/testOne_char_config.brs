@@ -54,6 +54,7 @@ function testOne_char_config() as object
         intersect: {
             obj: invalid
         }
+        map: invalid
     }
 
     return config

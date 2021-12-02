@@ -136,67 +136,67 @@ function char_data(ver) as object
         global_save(invalid, "char")
 
         m.char.config = {
-            name: "char_entity"
-            name_up: "char_col_up",
-            name_down: "char_col_down",
-            name_left: "char_col_left",
-            name_right: "char_col_right",
+            name: invalid
+            name_up: invalid,
+            name_down: invalid,
+            name_left: invalid,
+            name_right: invalid,
             size: {
-                width: 48,
-                height: 56
+                width: invalid,
+                height: invalid
             },
-            index: 1,
-            alpha: 255,
-            reg: ["stand_back1", "stand_front1", "stand_side1", "walk_back1", "walk_back2", "walk_front1", "walk_front2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "stand_back2", "stand_front2", "stand_side2", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"]
+            index: invalid,
+            alpha: invalid,
+            reg: invalid
             scale: {
-                x: 1.0
-                y: 1.0
+                x: invalid
+                y: invalid
             },
             offset: {
-                x: 616,
-                y: 332
+                x: invalid,
+                y: invalid
             },
-            time: 100
+            time: invalid
             pos: {
-                x: 9562,
-                y: 2194
+                x: invalid,
+                y: invalid
             },
-            up: false,
-            down: false
-            left: false,
-            right: false
+            up: invalid,
+            down: invalid
+            left: invalid,
+            right: invalid
             npc: invalid,
             marker: invalid
-            hp: 100,
-            sp: 100
+            hp: invalid,
+            sp: invalid
             damage: {
-                hp: 10,
-                sp: 10,
-                hp_time: 500,
-                sp_time: 500
+                hp: invalid,
+                sp: invalid,
+                hp_time: invalid,
+                sp_time: invalid
             },
             regen: {
-                hp: 5,
-                sp: 5,
-                hp_time: 1000,
-                sp_time: 1000
+                hp: invalid,
+                sp: invalid,
+                hp_time: invalid,
+                sp_time: invalid
             },
             speed: {
-                up: 2,
-                down: 2,
-                left: 2,
-                right: 2
+                up: invalid,
+                down: invalid,
+                left: invalid,
+                right: invalid
             }
             intersect: {
                 obj: invalid
             }
+            map: invalid,
             version: ver
         }
 
         global_save(m.config, "char")
 
     end if
-
     return m.char
 
 end function
