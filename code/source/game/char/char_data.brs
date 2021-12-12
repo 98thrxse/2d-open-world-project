@@ -451,11 +451,11 @@ sub char_setObjIntersect(i as object)
 end sub
 
 function char_getVehCol() as object
-    return m.config.veh
+    return m.config.col.veh
 end function
 
 sub char_setVehCol(i as object) 
-    m.config.veh = i
+    m.config.col.veh = i
 end sub
 
 function char_getNPCCol() as object
