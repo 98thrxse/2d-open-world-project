@@ -2,6 +2,13 @@ function game_init(object)
     
 	object.onCreate = function(args)
 
+        ' test
+        ' readInternet = createObject("roUrlTransfer")
+        ' readInternet.setUrl("http://192.168.0.106:5500/code/configs/config.json")
+        ' myText = ParseJson(readInternet.GetToString())
+        ' print "Text from server: ";myText.text
+
+
         ' defineObject
 	    m.game.defineObject("game_main", game_main)
         
