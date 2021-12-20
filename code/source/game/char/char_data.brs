@@ -127,6 +127,9 @@ function char_data(ver) as object
         getColRight: char_getColRight
         setColRight: char_setColRight
 
+        getVeh: char_getVeh
+        setVeh: char_setVeh
+
         save: char_save
 
 
@@ -196,6 +199,7 @@ function char_data(ver) as object
                 left: invalid,
                 right: invalid
             }
+            veh: invalid, 
             map: invalid,
             version: ver
         }
@@ -561,6 +565,14 @@ end function
 
 sub char_setReg(reg as object)
     m.config.reg = reg
+end sub
+
+function char_getVeh() as object
+    return m.config.veh
+end function
+
+sub char_setVeh(veh as object)
+    m.config.veh = veh
 end sub
 
 function char_getMap() as object

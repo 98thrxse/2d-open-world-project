@@ -8,6 +8,7 @@ function char_control(object)
   end function
 
 
+  ' stas
   object.savePos = function()
 
     m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.game.map.getOffsetX())
@@ -122,7 +123,7 @@ function char_control(object)
 
   object.markerTransition = function()
 
-    if m.game.char.getMarkerCol() <> invalid
+    if m.game.char.getMarkerCol() <> invalid and m.game.char.getVehCol() = invalid
 
       ' destroyInstance
       m.game.destroyInstance(m.game.getInstanceByName("interface_init"))

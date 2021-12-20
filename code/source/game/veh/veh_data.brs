@@ -17,6 +17,9 @@ function veh_data() as object
         getName: veh_getName
         setName: veh_setName
 
+        getAnimTime: veh_getAnimTime
+        setAnimTime: veh_setAnimTime
+
         getOffsetX: veh_getOffsetX
         setOffsetX: veh_setOffsetX
         
@@ -65,6 +68,14 @@ end function
 
 sub veh_setName(i as object, name as object)
     m.config[i].name = name
+end sub
+
+function veh_getAnimTime(i as object) as object
+    return m.config[i].time
+end function
+
+sub veh_setAnimTime(i as object, time as object)
+    m.config[i].time = time
 end sub
 
 

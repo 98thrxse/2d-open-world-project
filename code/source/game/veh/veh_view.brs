@@ -142,11 +142,9 @@ function veh_view(object)
 
   object.onDrawEnd = function(canvas)
       
-    if m.game.veh.config.Count() <> 0
-      if m.game.char.getVehCol() <> invalid
-        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2 + 3, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3 + 3, m.veh_font, "center", &h000000FF)
-        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3, m.veh_font, "center", &hFF0000FF)
-      end if
+    if m.game.veh.config.Count() <> 0 and m.game.char.getVehCol() <> invalid and m.game.getFocusGroup() <> "veh"
+      DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2 + 3, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3 + 3, m.veh_font, "center", &h000000FF)
+      DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3, m.veh_font, "center", &hFF0000FF)
     end if
 
   end function
