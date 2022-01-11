@@ -9,9 +9,9 @@ function map_init(object)
 	    m.game.defineObject("char_init", char_init)
         m.game.defineObject("interface_init", interface_init)
         m.game.defineObject("marker_init", marker_init)
-        m.game.defineObject("obj_init", obj_init)
         m.game.defineObject("npc_init", npc_init)
         m.game.defineObject("veh_init", veh_init)
+        m.game.defineObject("obj_init", obj_init)
         m.game.defineObject("terrain_init", terrain_init)
 
         ' createInstance

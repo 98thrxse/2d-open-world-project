@@ -5,11 +5,11 @@ function char_data(ver) as object
         getEntityName: char_getEntityName
         setEntityName: char_setEntityName
 
-        getEntityPosX: char_getEntityPosX
-        setEntityPosX: char_setEntityPosX
+        getEntityX: char_getEntityX
+        setEntityX: char_setEntityX
         
-        getEntityPosY: char_getEntityPosY
-        setEntityPosY: char_setEntityPosY  
+        getEntityY: char_getEntityY
+        setEntityY: char_setEntityY  
 
         getSizeH: char_getSizeH
         setSizeH: char_setSizeH
@@ -292,20 +292,20 @@ sub char_setEntityName(name as object)
 end sub
 
 
-function char_getEntityPosX() as object
+function char_getEntityX() as object
     return m.config.pos.x
 end function
 
-sub char_setEntityPosX(x as object)
+sub char_setEntityX(x as object)
     m.config.pos.x = x
 end sub
 
 
-function char_getEntityPosY() as object
+function char_getEntityY() as object
     return m.config.pos.y
 end function
 
-sub char_setEntityPosY(y as object)
+sub char_setEntityY(y as object)
     m.config.pos.y = y
 end sub
 

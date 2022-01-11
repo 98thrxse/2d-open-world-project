@@ -3,7 +3,11 @@ function testOne_veh_config() as object
 
         {
             id: 0,
-            name: "veh",
+            name: "veh_entity",
+            name_up: "veh_col_up",
+            name_down: "veh_col_down",
+            name_left: "veh_col_left",
+            name_right: "veh_col_right",
             index: 2,
             reg: ["veh_car1_back", "veh_car1_front", "veh_car1_side"]
             offset: {
@@ -29,7 +33,11 @@ function testOne_veh_config() as object
 
         {
             id: 1,
-            name: "veh",
+            name: "veh_entity",
+            name_up: "veh_col_up",
+            name_down: "veh_col_down",
+            name_left: "veh_col_left",
+            name_right: "veh_col_right",
             index: 2,
             reg: ["veh_car1_back", "veh_car1_front", "veh_car1_side"]
             offset: {

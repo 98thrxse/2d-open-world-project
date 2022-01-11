@@ -78,5 +78,15 @@ function char_view(object)
     end if
 
   end function
+
+  object.onDrawEnd = function(canvas)
+      
+    ' test
+    canvas.DrawRect(m.game.char.getOffsetX(), m.game.char.getOffsetY(), m.game.char.getSizeW(), 1, &hFFFFFFFF)
+    canvas.DrawRect(m.game.char.getOffsetX(), m.game.char.getOffsetY() + m.game.char.getSizeH(), m.game.char.getSizeW(), 1, &hFFFFFFFF)
+    canvas.DrawRect(m.game.char.getOffsetX(), m.game.char.getOffsetY(), 1, m.game.char.getSizeH(), &hFFFFFFFF)
+    canvas.DrawRect(m.game.char.getOffsetX() + m.game.char.getSizeW(), m.game.char.getOffsetY(), 1, m.game.char.getSizeH(), &hFFFFFFFF)
+
+  end function
     
 end function

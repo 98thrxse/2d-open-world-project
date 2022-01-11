@@ -14,8 +14,8 @@ function veh_data() as object
         getRightSpeed: veh_getRightSpeed
         setRightSpeed: veh_setRightSpeed
  
-        getName: veh_getName
-        setName: veh_setName
+        getEntityName: veh_getEntityName
+        setEntityName: veh_setEntityName
 
         getAnimTime: veh_getAnimTime
         setAnimTime: veh_setAnimTime
@@ -47,6 +47,18 @@ function veh_data() as object
         getScaleY: veh_getScaleY
         setScaleY: veh_setScaleY
 
+        getColUpName: veh_getColUpName
+        setColUpName: veh_setColUpName
+
+        getColDownName: veh_getColDownName
+        setColDownName: veh_setColDownName
+
+        getColLeftName: veh_getColLeftName
+        setColLeftName: veh_setColLeftName
+
+        getColRightName: veh_getColRightName
+        setColRightName: veh_setColRightName
+
         config: invalid
 
     }
@@ -62,12 +74,48 @@ function veh_data() as object
 end function
 
 
-function veh_getName(i as object) as object
+function veh_getEntityName(i as object) as object
     return m.config[i].name
 end function
 
-sub veh_setName(i as object, name as object)
+sub veh_setEntityName(i as object, name as object)
     m.config[i].name = name
+end sub
+
+function veh_getColUpName(i as object) as object
+    return m.config[i].name_up
+end function
+
+sub veh_setColUpName(i as object, name as object)
+    m.config[i].name_up = name
+end sub
+
+
+function veh_getColDownName(i as object) as object
+    return m.config[i].name_down
+end function
+
+
+sub veh_setColDownName(i as object, name as object)
+    m.config[i].name_down = name
+end sub
+
+
+function veh_getColLeftName(i as object) as object
+    return m.config[i].name_left
+end function
+
+sub veh_setColLeftName(i as object, name as object)
+    m.config[i].name_left = name
+end sub
+
+
+function veh_getColRightName(i as object) as object
+    return m.config[i].name_right
+end function
+
+sub veh_setColRightName(i as object, name as object)
+    m.config[i].name_right = name
 end sub
 
 function veh_getAnimTime(i as object) as object

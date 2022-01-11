@@ -6,10 +6,10 @@ function veh_view(object)
 
     ' loadFont
     m.game.loadFont("VT323-21", "VT323", 21, false, false)
-    
+
     ' getFont
     m.veh_font = m.game.getFont("VT323-21")
-
+  
   end function
 
 
@@ -55,13 +55,13 @@ function veh_view(object)
       ' load & add
       for i = 0 to m.game.veh.config.Count() - 1
         if - m.game.map.getOffsetX() <= m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.veh.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getOffsetY(i)
-          if m.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()) = invalid
+          if m.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
 
             ' load
             m.entityLoad(i)
 
             ' add
-            m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
+            m.addAnimatedImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
               offset_x: m.game.veh.getOffsetX(i),
               offset_y: m.game.veh.getOffsetY(i)
               scale_x: m.game.veh.getScaleX(i)
@@ -71,13 +71,13 @@ function veh_view(object)
           end if
 
         ' unload & remove
-        else if m.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()) <> invalid
-
+        else if m.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+          
           ' unload
           m.entityUnload(i)
 
           ' remove
-          m.removeImage(m.game.veh.getName(i).toStr() + "_" + i.toStr())
+          m.removeImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr())
 
         end if
         
@@ -94,18 +94,43 @@ function veh_view(object)
       for i = 0 to m.game.veh.config.Count() - 1
         if - m.game.map.getOffsetX() <= m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.veh.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getOffsetY(i)
 
-          if m.colliders[m.game.veh.getName(i).toStr() + "_" + i.toStr()] = invalid
-            ' addColliderRectangle
-            m.addColliderRectangle(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i), m.game.veh.getOffsetY(i), m.game.veh.getSizeW(i), m.game.veh.getSizeH(i))
+          ' addColliderRectangle
+          if m.colliders[m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()] = invalid
+            m.addColliderRectangle(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i), m.game.veh.getOffsetY(i), m.game.veh.getSizeW(i), 5)
+          end if
+
+          if m.colliders[m.game.veh.getColDownName(i).toStr() + "_" + i.toStr()] = invalid
+            m.addColliderRectangle(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i), m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i), m.game.veh.getSizeW(i), 5)
+          end if
+
+          if m.colliders[m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr()] = invalid
+            m.addColliderRectangle(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i), m.game.veh.getOffsetY(i), 5, m.game.veh.getSizeH(i))
+          end if
+
+          if m.colliders[m.game.veh.getColRightName(i).toStr() + "_" + i.toStr()] = invalid
+            m.addColliderRectangle(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i), m.game.veh.getOffsetY(i), 5, m.game.veh.getSizeH(i))
           end if
 
         ' remove
-        else if m.getCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr()) <> invalid
+        else
+          if m.getCollider(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()) <> invalid
+            m.removeCollider(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr())
+          end if
 
-          m.removeCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr())
+          if m.getCollider(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr()) <> invalid
+            m.removeCollider(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr())
+          end if
+
+          if m.getCollider(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr()) <> invalid
+            m.removeCollider(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr())
+          end if
+
+          if m.getCollider(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr()) <> invalid
+            m.removeCollider(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr())
+          end if
 
         end if
-        
+
       end for
     end if
 
@@ -143,10 +168,23 @@ function veh_view(object)
   object.onDrawEnd = function(canvas)
       
     if m.game.veh.config.Count() <> 0 and m.game.char.getVehCol() <> invalid and m.game.getFocusGroup() <> "veh"
-      DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2 + 3, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3 + 3, m.veh_font, "center", &h000000FF)
-      DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3, m.veh_font, "center", &hFF0000FF)
+      if m.game.veh.getScaleX(m.game.char.getVehCol().split("_").peek().toInt()) <> 1.0
+        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() - m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2 + 3, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3 + 3, m.veh_font, "center", &h000000FF)
+        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() - m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3, m.veh_font, "center", &hFF0000FF)
+      else
+        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2 + 3, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3 + 3, m.veh_font, "center", &h000000FF)
+        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3, m.veh_font, "center", &hFF0000FF)
+      end if
     end if
 
+    ' test
+    for i = 0 to m.game.veh.config.Count() - 1
+      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.map.getOffsetX(), m.game.veh.getOffsetY(i) + m.game.map.getOffsetY(), m.game.veh.getSizeW(i), 1, &hFFFFFFFF)
+      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.map.getOffsetX(), m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i) + m.game.map.getOffsetY(), m.game.veh.getSizeW(i), 1, &hFFFFFFFF)
+      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.map.getOffsetX(), m.game.veh.getOffsetY(i) + m.game.map.getOffsetY(), 1, m.game.veh.getSizeH(i), &hFFFFFFFF)
+      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i) + m.game.map.getOffsetX(), m.game.veh.getOffsetY(i) + m.game.map.getOffsetY(), 1, m.game.veh.getSizeH(i), &hFFFFFFFF)
+    end for
+
   end function
-      
+
 end function

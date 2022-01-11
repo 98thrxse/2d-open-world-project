@@ -263,6 +263,10 @@ function map_control(object)
                 m.game.veh.config.push({
                     id: i,       
                     name: invalid,
+                    name_up: invalid,
+                    name_down: invalid,
+                    name_left: invalid,
+                    name_right: invalid,
                     index: invalid,
                     reg: [],
                     offset: {
@@ -298,7 +302,11 @@ function map_control(object)
             if m.map_veh_config[i].speed.down <> invalid then m.game.veh.setDownSpeed(i, m.map_veh_config[i].speed.down)
             if m.map_veh_config[i].speed.left <> invalid then m.game.veh.setLeftSpeed(i, m.map_veh_config[i].speed.left)
             if m.map_veh_config[i].speed.right <> invalid then m.game.veh.setRightSpeed(i, m.map_veh_config[i].speed.right)
-            if m.map_veh_config[i].name <> invalid then m.game.veh.setName(i, m.map_veh_config[i].name)
+            if m.map_veh_config[i].name <> invalid then m.game.veh.setEntityName(i, m.map_veh_config[i].name)
+            if m.map_veh_config[i].name_up <> invalid then m.game.veh.setColUpName(i, m.map_veh_config[i].name_up)
+            if m.map_veh_config[i].name_down <> invalid then m.game.veh.setColDownName(i, m.map_veh_config[i].name_down)
+            if m.map_veh_config[i].name_left <> invalid then m.game.veh.setColLeftName(i, m.map_veh_config[i].name_left)
+            if m.map_veh_config[i].name_right <> invalid then m.game.veh.setColRightName(i, m.map_veh_config[i].name_right)
             if m.map_veh_config[i].offset.x <> invalid then m.game.veh.setOffsetX(i, m.map_veh_config[i].offset.x)
             if m.map_veh_config[i].offset.y <> invalid then m.game.veh.setOffsetY(i, m.map_veh_config[i].offset.y)
             if m.map_veh_config[i].size.width <> invalid then m.game.veh.setSizeW(i, m.map_veh_config[i].size.width)
@@ -317,8 +325,8 @@ function map_control(object)
 
         ' loading map config to player data
         if m.map_char_config.name <> invalid and m.game.char.getEntityName() = invalid then m.game.char.setEntityName(m.map_char_config.name)
-        if m.map_char_config.pos.x <> invalid and m.game.char.getEntityPosX() = invalid then m.game.char.setEntityPosX(m.map_char_config.pos.x)
-        if m.map_char_config.pos.y <> invalid and m.game.char.getEntityPosY() = invalid then m.game.char.setEntityPosY(m.map_char_config.pos.y)
+        if m.map_char_config.pos.x <> invalid and m.game.char.getEntityX() = invalid then m.game.char.setEntityX(m.map_char_config.pos.x)
+        if m.map_char_config.pos.y <> invalid and m.game.char.getEntityY() = invalid then m.game.char.setEntityY(m.map_char_config.pos.y)
         if m.map_char_config.size.width <> invalid and m.game.char.getSizeW() = invalid then m.game.char.setSizeW(m.map_char_config.size.width)
         if m.map_char_config.size.height <> invalid and m.game.char.getSizeH() = invalid then m.game.char.setSizeH(m.map_char_config.size.height)
         if m.map_char_config.index <> invalid and m.game.char.getIndex() = invalid then m.game.char.setIndex(m.map_char_config.index)
@@ -385,8 +393,8 @@ function map_control(object)
     object.loadMap = function()
 
         ' position
-        m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityPosX())
-        m.game.map.setOffsetY(m.game.screen.GetHeight() / 2 - m.game.char.getEntityPosY())
+        m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityX())
+        m.game.map.setOffsetY(m.game.screen.GetHeight() / 2 - m.game.char.getEntityY())
     
     end function
 

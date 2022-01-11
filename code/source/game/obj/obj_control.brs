@@ -29,7 +29,7 @@ function obj_control(object)
         m.game.char.setObjIntersect(invalid)
 
         for i = 0 to m.game.obj.config.Count() - 1
-            if m.game.char.getEntityPosX() < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityPosX() > m.game.obj.getEntityX(i) and m.game.char.getEntityPosY() + m.game.char.getSizeH() / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityPosY() + m.game.char.getSizeH() / 2 > m.game.obj.getEntityY(i)
+            if m.game.char.getEntityX() < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityX() > m.game.obj.getEntityX(i) and m.game.char.getEntityY() + m.game.char.getSizeH() / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityY() + m.game.char.getSizeH() / 2 > m.game.obj.getEntityY(i)
                 if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
                 m.game.char.setObjIntersect(i)
 
@@ -39,12 +39,14 @@ function obj_control(object)
             end if
         end for
 
-        if m.game.char.getObjIntersect() = invalid
-            if m.game.char.getAlpha() <> 255 then m.game.char.setAlpha(255)
+        if m.game.getFocusGroup() = "char"
+            if m.game.char.getObjIntersect() = invalid
+                if m.game.char.getAlpha() <> 255 then m.game.char.setAlpha(255)
 
-        else
-            if m.game.char.getAlpha() <> 125 then m.game.char.setAlpha(125)
+            else
+                if m.game.char.getAlpha() <> 125 then m.game.char.setAlpha(125)
 
+            end if
         end if
 
     end function

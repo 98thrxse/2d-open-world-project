@@ -109,16 +109,30 @@ function veh_control(object)
       m.game.setFocusGroup("veh")
       m.game.setFocusTarget("")
 
+      m.game.char.setAlpha(0)
+
       m.game.char.setVeh(m.game.char.getVehCol())
 
-      m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 - m.game.veh.getSizeW(m.game.char.getVeh().split("_").peek().toInt()) / 2 - m.game.veh.getOffsetX(m.game.char.getVeh().split("_").peek().toInt()))
+      if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) <> 1.0
+        m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 + m.game.veh.getSizeW(m.game.char.getVeh().split("_").peek().toInt()) / 2 - m.game.veh.getOffsetX(m.game.char.getVeh().split("_").peek().toInt()))
+      else
+        m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 - m.game.veh.getSizeW(m.game.char.getVeh().split("_").peek().toInt()) / 2 - m.game.veh.getOffsetX(m.game.char.getVeh().split("_").peek().toInt()))
+      end if
+
       m.game.map.setOffsetY(m.game.screen.GetHeight() / 2 - m.game.veh.getSizeH(m.game.char.getVeh().split("_").peek().toInt()) / 2 - m.game.veh.getOffsetY(m.game.char.getVeh().split("_").peek().toInt()))
     
     else if m.game.getFocusGroup() = "veh"
       m.game.setFocusGroup("char")
       m.game.setFocusTarget("")
 
-      m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 - m.game.veh.getOffsetX(m.game.char.getVeh().split("_").peek().toInt()))
+      m.game.char.setAlpha(255)
+
+      if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) <> 1.0
+        m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 + m.game.veh.getSizeW(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getOffsetX(m.game.char.getVeh().split("_").peek().toInt()))
+      else
+        m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 - m.game.veh.getOffsetX(m.game.char.getVeh().split("_").peek().toInt()))
+      end if
+
       m.game.map.setOffsetY(m.game.screen.GetHeight() / 2 - m.game.veh.getOffsetY(m.game.char.getVeh().split("_").peek().toInt()))
       
       m.game.char.setVeh(invalid)
@@ -275,21 +289,57 @@ function veh_control(object)
   object.controlUpdate = function()
 
     for i = 0 to m.game.veh.config.Count() - 1
-      if m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()) <> invalid
+      if m.view_wnd.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
         
         ' update veh data
-        m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()).index = m.game.veh.getIndex(i)
-        m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()).scale_x = m.game.veh.getScaleX(i)
-        m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()).scale_y = m.game.veh.getScaleY(i)
-        m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i)
-        m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()).offset_y = m.game.veh.getOffsetY(i)
+        m.view_wnd.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()).index = m.game.veh.getIndex(i)
+        m.view_wnd.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()).scale_x = m.game.veh.getScaleX(i)
+        m.view_wnd.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()).scale_y = m.game.veh.getScaleY(i)
+        m.view_wnd.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i)
+        m.view_wnd.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()).offset_y = m.game.veh.getOffsetY(i)
 
       end if
 
-      if m.view_wnd.getCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr()) <> invalid
-        m.view_wnd.getCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i)
-        m.view_wnd.getCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr()).offset_y = m.game.veh.getOffsetY(i)
+      if m.view_wnd.getCollider(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()) <> invalid
+        if m.game.veh.getScaleX(i) <> 1.0
+          m.view_wnd.getCollider(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i) - m.game.veh.getSizeW(i)
+        else
+          m.view_wnd.getCollider(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i)
+        end if
+
+        m.view_wnd.getCollider(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()).offset_y = m.game.veh.getOffsetY(i)
       end if
+
+      if m.view_wnd.getCollider(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr()) <> invalid
+        if m.game.veh.getScaleX(i) <> 1.0
+          m.view_wnd.getCollider(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i) - m.game.veh.getSizeW(i)
+        else
+          m.view_wnd.getCollider(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i)
+        end if
+
+        m.view_wnd.getCollider(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr()).offset_y = m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i)
+      end if
+
+      if m.view_wnd.getCollider(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr()) <> invalid
+        if m.game.veh.getScaleX(i) <> 1.0
+          m.view_wnd.getCollider(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i) - m.game.veh.getSizeW(i)
+        else
+          m.view_wnd.getCollider(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i)
+        end if
+
+        m.view_wnd.getCollider(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr()).offset_y = m.game.veh.getOffsetY(i)
+      end if
+
+      if m.view_wnd.getCollider(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr()) <> invalid
+        if m.game.veh.getScaleX(i) <> 1.0
+          m.view_wnd.getCollider(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i)
+        else
+          m.view_wnd.getCollider(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i)
+        end if
+
+        m.view_wnd.getCollider(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr()).offset_y = m.game.veh.getOffsetY(i)
+      end if
+      
     end for
 
   end function

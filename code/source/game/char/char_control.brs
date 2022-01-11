@@ -8,11 +8,10 @@ function char_control(object)
   end function
 
 
-  ' stas
   object.savePos = function()
 
-    m.game.char.setEntityPosX(m.game.screen.GetWidth() / 2 - m.game.map.getOffsetX())
-    m.game.char.setEntityPosY(m.game.screen.GetHeight() / 2 - m.game.map.getOffsetY())
+    m.game.char.setEntityX(m.game.screen.GetWidth() / 2 - m.game.map.getOffsetX())
+    m.game.char.setEntityY(m.game.screen.GetHeight() / 2 - m.game.map.getOffsetY())
 
   end function
 
@@ -139,8 +138,8 @@ function char_control(object)
       m.game.char.setMap(m.game.marker.getMap(m.game.char.getMarkerCol().split("_").peek().toInt()))
 
       ' set char pos
-      m.game.char.setEntityPosX(m.game.marker.getTransitionX(m.game.char.getMarkerCol().split("_").peek().toInt()))
-      m.game.char.setEntityPosY(m.game.marker.getTransitionY(m.game.char.getMarkerCol().split("_").peek().toInt()))
+      m.game.char.setEntityX(m.game.marker.getTransitionX(m.game.char.getMarkerCol().split("_").peek().toInt()))
+      m.game.char.setEntityY(m.game.marker.getTransitionY(m.game.char.getMarkerCol().split("_").peek().toInt()))
 
       ' createInstance        
       m.game.createInstance("interface_init")
