@@ -53,8 +53,11 @@ function npc_control(object)
             m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i))
           end if
 
-
-          m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) + m.game.npc.getRightSpeed(i))
+          if m.game.npc.getRightSpeed(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getOffsetX(i)
+            m.game.npc.setOffsetX(i, m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)))
+          else
+            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) + m.game.npc.getRightSpeed(i))
+          end if
 
         else if m.game.npc.getOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 
@@ -65,8 +68,12 @@ function npc_control(object)
 
 					end if
 
-          m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getLeftSpeed(i))
-        
+          if m.game.npc.getLeftSpeed(i) > m.game.npc.getOffsetX(i) - m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
+            m.game.npc.setOffsetX(i, m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)))
+          else
+            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getLeftSpeed(i))
+          end if
+
         else if m.game.npc.getOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 
           if m.game.npc.getScaleX(i) <> 1.0
@@ -76,7 +83,11 @@ function npc_control(object)
 
           end if
 
-          m.game.npc.setOffsetY(i, m.game.npc.getOffsetY(i) + m.game.npc.getDownSpeed(i))
+          if m.game.npc.getDownSpeed(i) > m.game.npc.getPathY(i, m.game.npc.getPathCycle(i)) - m.game.npc.getOffsetY(i)
+            m.game.npc.setOffsetY(i, m.game.npc.getPathY(i, m.game.npc.getPathCycle(i)))
+          else
+            m.game.npc.setOffsetY(i, m.game.npc.getOffsetY(i) + m.game.npc.getDownSpeed(i))
+          end if
 
         else if m.game.npc.getOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 
@@ -87,8 +98,11 @@ function npc_control(object)
 
           end if
 
-          m.game.npc.setOffsetY(i, m.game.npc.getOffsetY(i) - m.game.npc.getUpSpeed(i))
-
+          if m.game.npc.getUpSpeed(i) > m.game.npc.getOffsetY(i) - m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
+            m.game.npc.setOffsetY(i, m.game.npc.getPathY(i, m.game.npc.getPathCycle(i)))
+          else
+            m.game.npc.setOffsetY(i, m.game.npc.getOffsetY(i) - m.game.npc.getUpSpeed(i))
+          end if
         end if
 
       end if
