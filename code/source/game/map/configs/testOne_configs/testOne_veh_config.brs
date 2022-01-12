@@ -15,7 +15,7 @@ function testOne_veh_config() as object
                 y: 2500
             },
             scale: {
-                x: 1.0,
+                x: -1.0,
                 y: 1.0
             },
             size: {
@@ -27,6 +27,15 @@ function testOne_veh_config() as object
                 down: 5,
                 left: 5,
                 right: 5
+            },
+            col: {
+                up: invalid,
+                down: invalid
+                left: invalid,
+                right: invalid
+                npc: invalid,
+                marker: invalid,
+                veh: invalid,
             },
             time: 100
         },
@@ -57,6 +66,15 @@ function testOne_veh_config() as object
                 down: 5,
                 left: 5,
                 right: 5
+            },
+            col: {
+                up: invalid,
+                down: invalid
+                left: invalid,
+                right: invalid
+                npc: invalid,
+                marker: invalid,
+                veh: invalid,
             },
             time: 100
         }

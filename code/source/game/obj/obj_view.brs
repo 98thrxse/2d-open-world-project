@@ -65,11 +65,11 @@ function obj_view(object)
                 ' unload & remove
                 else if m.getImage(m.game.obj.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
-                    ' unload
-                    m.entityUnload(i)
-
                     ' remove
                     m.removeImage(m.game.obj.getName(i).toStr() + "_" + i.toStr())
+
+                    ' unload
+                    m.entityUnload(i)
 
                 end if
             
@@ -114,6 +114,18 @@ function obj_view(object)
 
         else if other_collider_name = m.game.char.getColRightName()
             m.game.char.setColRight(true)
+        
+        else if other_collider_name = m.game.veh.getColUpName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+            m.game.veh.setColUp(m.game.char.getVeh().split("_").peek().toInt(), true)
+
+        else if other_collider_name = m.game.veh.getColDownName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+            m.game.veh.setColDown(m.game.char.getVeh().split("_").peek().toInt(), true)
+
+        else if other_collider_name = m.game.veh.getColLeftName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+            m.game.veh.setColLeft(m.game.char.getVeh().split("_").peek().toInt(), true)
+
+        else if other_collider_name = m.game.veh.getColRightName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+            m.game.veh.setColRight(m.game.char.getVeh().split("_").peek().toInt(), true)
 
         end if
 
@@ -124,6 +136,18 @@ function obj_view(object)
         m.entityGen()
         m.colGen()
 
+    end function
+
+    object.onDrawEnd = function(canvas)
+          
+        ' ' test
+        for i = 0 to m.game.obj.config.Count() - 1
+          canvas.DrawRect(m.game.obj.getColX(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.map.getOffsetY(), m.game.obj.getColW(i), 1, &hFFFFFFFF)
+          canvas.DrawRect(m.game.obj.getColX(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.obj.getColH(i) + m.game.map.getOffsetY(), m.game.obj.getColW(i), 1, &hFFFFFFFF)
+          canvas.DrawRect(m.game.obj.getColX(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.map.getOffsetY(), 1, m.game.obj.getColH(i), &hFFFFFFFF)
+          canvas.DrawRect(m.game.obj.getColX(i) + m.game.obj.getColW(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.map.getOffsetY(), 1, m.game.obj.getColH(i), &hFFFFFFFF)
+        end for
+    
     end function
 
 end function

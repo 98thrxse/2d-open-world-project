@@ -67,11 +67,11 @@ function npc_view(object)
         ' unload & remove
         else if m.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
-          ' unload
-          m.entityUnload(i)
-
           ' remove
           m.removeImage(m.game.npc.getName(i).toStr() + "_" + i.toStr())
+
+          ' unload
+          m.entityUnload(i)
 
         end if
         

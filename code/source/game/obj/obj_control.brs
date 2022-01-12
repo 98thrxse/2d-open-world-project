@@ -18,13 +18,13 @@ function obj_control(object)
     object.onUpdate = function(dt as float)
 
         m.controlPos()
-        m.objAlpha()
+        m.objIntersect()
         m.controlUpdate()
 
     end function
 
 
-    object.objAlpha = function()
+    object.objIntersect = function()
 
         m.game.char.setObjIntersect(invalid)
 

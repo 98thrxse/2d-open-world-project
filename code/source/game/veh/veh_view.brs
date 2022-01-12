@@ -54,31 +54,60 @@ function veh_view(object)
     if m.game.veh.config.Count() <> 0
       ' load & add
       for i = 0 to m.game.veh.config.Count() - 1
-        if - m.game.map.getOffsetX() <= m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.veh.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getOffsetY(i)
-          if m.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+        if m.game.veh.getScaleX(i) <> 1.0
+          if - m.game.map.getOffsetX() <= m.game.veh.getOffsetX(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() + m.game.veh.getSizeW(i) >= m.game.veh.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getOffsetY(i)
+            if m.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
+              ' load
+              m.entityLoad(i)
 
-            ' load
-            m.entityLoad(i)
+              ' add
+              m.addAnimatedImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
+                offset_x: m.game.veh.getOffsetX(i),
+                offset_y: m.game.veh.getOffsetY(i)
+                scale_x: m.game.veh.getScaleX(i)
+                scale_y: m.game.veh.getScaleY(i)
+              })
+      
+            end if
 
-            ' add
-            m.addAnimatedImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
-              offset_x: m.game.veh.getOffsetX(i),
-              offset_y: m.game.veh.getOffsetY(i)
-              scale_x: m.game.veh.getScaleX(i)
-              scale_y: m.game.veh.getScaleY(i)
-            })
-    
+          ' unload & remove
+          else if m.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+
+            ' remove
+            m.removeImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr())
+
+            ' unload
+            m.entityUnload(i)
+
           end if
 
-        ' unload & remove
-        else if m.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
-          
-          ' unload
-          m.entityUnload(i)
+        else
+          if - m.game.map.getOffsetX() <= m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.veh.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getOffsetY(i)
+            if m.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()) = invalid
 
-          ' remove
-          m.removeImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr())
+              ' load
+              m.entityLoad(i)
 
+              ' add
+              m.addAnimatedImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
+                offset_x: m.game.veh.getOffsetX(i),
+                offset_y: m.game.veh.getOffsetY(i)
+                scale_x: m.game.veh.getScaleX(i)
+                scale_y: m.game.veh.getScaleY(i)
+              })
+      
+            end if
+
+          ' unload & remove
+          else if m.getImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr()) <> invalid
+
+            ' remove
+            m.removeImage(m.game.veh.getEntityName(i).toStr() + "_" + i.toStr())
+
+            ' unload
+            m.entityUnload(i)
+
+          end if
         end if
         
       end for
@@ -96,19 +125,19 @@ function veh_view(object)
 
           ' addColliderRectangle
           if m.colliders[m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()] = invalid
-            m.addColliderRectangle(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i), m.game.veh.getOffsetY(i), m.game.veh.getSizeW(i), 5)
+            m.addColliderRectangle(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i) + m.game.veh.getUpSpeed(i) + 1, m.game.veh.getOffsetY(i), m.game.veh.getSizeW(i) - (m.game.veh.getUpSpeed(i) + 1) * 2, m.game.veh.getUpSpeed(i) + 1)
           end if
 
           if m.colliders[m.game.veh.getColDownName(i).toStr() + "_" + i.toStr()] = invalid
-            m.addColliderRectangle(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i), m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i), m.game.veh.getSizeW(i), 5)
+            m.addColliderRectangle(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i) + m.game.veh.getDownSpeed(i) + 1, m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i) - m.game.veh.getDownSpeed(i) + 1, m.game.veh.getSizeW(i) - (m.game.veh.getDownSpeed(i) + 1) * 2, m.game.veh.getDownSpeed(i) + 1)
           end if
 
           if m.colliders[m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr()] = invalid
-            m.addColliderRectangle(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i), m.game.veh.getOffsetY(i), 5, m.game.veh.getSizeH(i))
+            m.addColliderRectangle(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i), m.game.veh.getOffsetY(i) + m.game.veh.getLeftSpeed(i) + 1, m.game.veh.getLeftSpeed(i) + 1, m.game.veh.getSizeH(i) - (m.game.veh.getLeftSpeed(i) + 1) * 2)
           end if
 
           if m.colliders[m.game.veh.getColRightName(i).toStr() + "_" + i.toStr()] = invalid
-            m.addColliderRectangle(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i), m.game.veh.getOffsetY(i), 5, m.game.veh.getSizeH(i))
+            m.addColliderRectangle(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr(), m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i) - m.game.veh.getRightSpeed(i) + 1, m.game.veh.getOffsetY(i) + m.game.veh.getRightSpeed(i) + 1, m.game.veh.getRightSpeed(i) + 1, m.game.veh.getSizeH(i) - (m.game.veh.getRightSpeed(i) + 1) * 2)
           end if
 
         ' remove
@@ -179,10 +208,10 @@ function veh_view(object)
 
     ' test
     for i = 0 to m.game.veh.config.Count() - 1
-      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.map.getOffsetX(), m.game.veh.getOffsetY(i) + m.game.map.getOffsetY(), m.game.veh.getSizeW(i), 1, &hFFFFFFFF)
-      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.map.getOffsetX(), m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i) + m.game.map.getOffsetY(), m.game.veh.getSizeW(i), 1, &hFFFFFFFF)
-      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.map.getOffsetX(), m.game.veh.getOffsetY(i) + m.game.map.getOffsetY(), 1, m.game.veh.getSizeH(i), &hFFFFFFFF)
-      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i) + m.game.map.getOffsetX(), m.game.veh.getOffsetY(i) + m.game.map.getOffsetY(), 1, m.game.veh.getSizeH(i), &hFFFFFFFF)
+      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.map.getOffsetX() + m.game.veh.getUpSpeed(i) + 1, m.game.veh.getOffsetY(i) + m.game.map.getOffsetY(), m.game.veh.getSizeW(i) - (m.game.veh.getUpSpeed(i) + 1) * 2, m.game.veh.getUpSpeed(i) + 1, &hFFFFFFFF)
+      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.map.getOffsetX() + m.game.veh.getDownSpeed(i) + 1, m.game.veh.getOffsetY(i) + m.game.veh.getSizeH(i) + m.game.map.getOffsetY() - m.game.veh.getDownSpeed(i) + 1, m.game.veh.getSizeW(i) - (m.game.veh.getDownSpeed(i) + 1) * 2, m.game.veh.getDownSpeed(i) + 1, &hFFFFFFFF)
+      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.map.getOffsetX(), m.game.veh.getOffsetY(i) + m.game.map.getOffsetY() + m.game.veh.getLeftSpeed(i) + 1, m.game.veh.getLeftSpeed(i) + 1, m.game.veh.getSizeH(i) - (m.game.veh.getLeftSpeed(i) + 1) * 2, &hFFFFFFFF)
+      canvas.DrawRect(m.game.veh.getOffsetX(i) + m.game.veh.getSizeW(i) + m.game.map.getOffsetX() - m.game.veh.getRightSpeed(i) + 1, m.game.veh.getOffsetY(i) + m.game.map.getOffsetY() + m.game.veh.getRightSpeed(i) + 1, m.game.veh.getRightSpeed(i) + 1, m.game.veh.getSizeH(i) - (m.game.veh.getRightSpeed(i) + 1) * 2, &hFFFFFFFF)
     end for
 
   end function

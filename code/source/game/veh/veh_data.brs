@@ -59,6 +59,27 @@ function veh_data() as object
         getColRightName: veh_getColRightName
         setColRightName: veh_setColRightName
 
+        getNPCCol: veh_getNPCCol
+        setNPCCol: veh_setNPCCol
+
+        getVehCol: veh_getVehCol
+        setVehCol: veh_setVehCol
+
+        getMarkerCol: veh_getMarkerCol
+        setMarkerCol: veh_setMarkerCol
+
+        getColUp: veh_getColUp
+        setColUp: veh_setColUp
+
+        getColDown: veh_getColDown
+        setColDown: veh_setColDown
+
+        getColLeft: veh_getColLeft
+        setColLeft: veh_setColLeft
+
+        getColRight: veh_getColRight
+        setColRight: veh_setColRight
+
         config: invalid
 
     }
@@ -239,4 +260,64 @@ end function
 
 sub veh_setRightSpeed(i as object, speed as object) 
     m.config[i].speed.right = speed
+end sub
+
+function veh_getVehCol(i as object) as object
+    return m.config[i].col.veh
+end function
+
+sub veh_setVehCol(i as object, j as object) 
+    m.config[i].col.veh = j
+end sub
+
+function veh_getNPCCol(i as object) as object
+    return m.config[i].col.npc
+end function
+
+sub veh_setNPCCol(i as object, j as object) 
+    m.config[i].col.npc = j
+end sub
+
+function veh_getMarkerCol(i as object) as object
+    return m.config[i].col.marker
+end function
+
+sub veh_setMarkerCol(i as object, j as object) 
+    m.config[i].col.marker = j
+end sub
+
+
+function veh_getColUp(i as object) as object
+    return m.config[i].col.up
+end function
+
+sub veh_setColUp(i as object, col as object) 
+    m.config[i].col.up = col
+end sub
+
+
+function veh_getColDown(i as object) as object
+    return m.config[i].col.down
+end function
+
+sub veh_setColDown(i as object, col as object) 
+    m.config[i].col.down = col
+end sub
+
+
+function veh_getColLeft(i as object) as object
+    return m.config[i].col.left
+end function
+
+sub veh_setColLeft(i as object, col as object) 
+    m.config[i].col.left = col
+end sub
+
+
+function veh_getColRight(i as object) as object
+    return m.config[i].col.right
+end function
+
+sub veh_setColRight(i as object, col as object) 
+    m.config[i].col.right = col
 end sub

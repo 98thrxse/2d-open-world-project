@@ -72,11 +72,11 @@ function marker_transition(object)
         ' unload & remove
         else if m.getImage(m.game.marker.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
-          ' unload
-          m.entityUnload(i)
-
           ' remove
           m.removeImage(m.game.marker.getName(i).toStr() + "_" + i.toStr())
+
+          ' unload
+          m.entityUnload(i)
 
         end if
       end for
