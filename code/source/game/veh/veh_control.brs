@@ -25,7 +25,6 @@ function veh_control(object)
 
   object.onButton = function(code as integer)
 
-    ' stas
     ' pressed
     if code = 2 ' up
       if m.game.getFocusGroup() = "veh"

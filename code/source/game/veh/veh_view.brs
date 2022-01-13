@@ -4,11 +4,11 @@ function veh_view(object)
 
   object.onCreate = function(args)
 
-    ' loadFont
-    m.game.loadFont("VT323-21", "VT323", 21, false, false)
+    ' ' loadFont
+    ' m.game.loadFont("VT323-21", "VT323", 21, false, false)
 
-    ' getFont
-    m.veh_font = m.game.getFont("VT323-21")
+    ' ' getFont
+    ' m.veh_font = m.game.getFont("VT323-21")
   
   end function
 
@@ -196,15 +196,15 @@ function veh_view(object)
 
   object.onDrawEnd = function(canvas)
       
-    if m.game.veh.config.Count() <> 0 and m.game.char.getVehCol() <> invalid and m.game.getFocusGroup() <> "veh"
-      if m.game.veh.getScaleX(m.game.char.getVehCol().split("_").peek().toInt()) <> 1.0
-        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() - m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2 + 3, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3 + 3, m.veh_font, "center", &h000000FF)
-        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() - m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3, m.veh_font, "center", &hFF0000FF)
-      else
-        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2 + 3, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3 + 3, m.veh_font, "center", &h000000FF)
-        DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3, m.veh_font, "center", &hFF0000FF)
-      end if
-    end if
+    ' if m.game.veh.config.Count() <> 0 and m.game.char.getVehCol() <> invalid and m.game.getFocusGroup() <> "veh"
+    '   if m.game.veh.getScaleX(m.game.char.getVehCol().split("_").peek().toInt()) <> 1.0
+    '     DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() - m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2 + 3, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3 + 3, m.veh_font, "center", &h000000FF)
+    '     DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() - m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3, m.veh_font, "center", &hFF0000FF)
+    '   else
+    '     DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2 + 3, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3 + 3, m.veh_font, "center", &h000000FF)
+    '     DrawText(canvas, "ENTER?", m.game.veh.getOffsetX(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.veh.getSizeW(m.game.char.getVehCol().split("_").peek().toInt()) / 2, m.game.veh.getOffsetY(m.game.char.getVehCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.veh.getSizeH(m.game.char.getVehCol().split("_").peek().toInt()) / 3, m.veh_font, "center", &hFF0000FF)
+    '   end if
+    ' end if
 
     ' test
     for i = 0 to m.game.veh.config.Count() - 1
