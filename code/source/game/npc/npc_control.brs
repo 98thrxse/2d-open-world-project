@@ -47,10 +47,10 @@ function npc_control(object)
 
         if m.game.npc.getOffsetX(i) < m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 
-          if m.game.npc.getScaleX(i) <> 1.0
-            m.game.npc.setScaleX(i, 1.0)
-            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i))
-            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i))
+          if m.game.npc.getScaleX(i) < 0.0
+            m.game.npc.setScaleX(i, - m.game.npc.getScaleX(i))
+            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i) * m.game.npc.getScaleX(i))
+            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i) * m.game.npc.getScaleX(i))
           end if
 
           if m.game.npc.getRightSpeed(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getOffsetX(i)
@@ -61,10 +61,10 @@ function npc_control(object)
 
         else if m.game.npc.getOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
 
-          if m.game.npc.getScaleX(i) <> -1.0
-						m.game.npc.setScaleX(i, -1.0)
-            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) + m.game.npc.getSizeW(i))
-						m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) + m.game.npc.getSizeW(i))
+          if m.game.npc.getScaleX(i) > 0.0
+						m.game.npc.setScaleX(i, - m.game.npc.getScaleX(i))
+            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i) * m.game.npc.getScaleX(i))
+						m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i) * m.game.npc.getScaleX(i))
 
 					end if
 
@@ -76,10 +76,10 @@ function npc_control(object)
 
         else if m.game.npc.getOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 
-          if m.game.npc.getScaleX(i) <> 1.0
-            m.game.npc.setScaleX(i, 1.0)
-            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i))
-            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i))
+          if m.game.npc.getScaleX(i) < 0.0
+            m.game.npc.setScaleX(i, - m.game.npc.getScaleX(i))
+            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i) * m.game.npc.getScaleX(i))
+            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i) * m.game.npc.getScaleX(i))
 
           end if
 
@@ -91,10 +91,10 @@ function npc_control(object)
 
         else if m.game.npc.getOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
 
-          if m.game.npc.getScaleX(i) <> 1.0
-            m.game.npc.setScaleX(i, 1.0)
-            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i))
-            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i))
+          if m.game.npc.getScaleX(i) < 0.0
+            m.game.npc.setScaleX(i, - m.game.npc.getScaleX(i))
+            m.game.npc.setPathX(i, m.game.npc.getPathCycle(i), m.game.npc.getPathX(i, m.game.npc.getPathCycle(i)) - m.game.npc.getSizeW(i) * m.game.npc.getScaleX(i))
+            m.game.npc.setOffsetX(i, m.game.npc.getOffsetX(i) - m.game.npc.getSizeW(i) * m.game.npc.getScaleX(i))
 
           end if
 

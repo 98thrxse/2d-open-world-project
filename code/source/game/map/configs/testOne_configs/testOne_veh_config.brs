@@ -15,7 +15,7 @@ function testOne_veh_config() as object
                 y: 2500
             },
             scale: {
-                x: -1.0,
+                x: 1.0,
                 y: 1.0
             },
             size: {

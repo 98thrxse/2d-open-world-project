@@ -62,19 +62,19 @@ function char_view(object)
 
     ' addColliderRectangle
     if m.colliders[m.game.char.getColUpName()] = invalid
-      m.addColliderRectangle(m.game.char.getColUpName(), m.game.char.getOffsetX() + m.game.char.getUpSpeed() + 1, m.game.char.getOffsetY(), m.game.char.getSizeW() - (m.game.char.getUpSpeed() + 1) * 2, m.game.char.getUpSpeed() + 1)
+      m.addColliderRectangle(m.game.char.getColUpName(), m.game.char.getOffsetX() + (m.game.char.getUpSpeed() + 1), m.game.char.getOffsetY(), m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getUpSpeed() + 1) * 2, m.game.char.getUpSpeed() + 1)
     end if
 
     if m.colliders[m.game.char.getColDownName()] = invalid
-      m.addColliderRectangle(m.game.char.getColDownName(), m.game.char.getOffsetX() + m.game.char.getDownSpeed() + 1, m.game.char.getOffsetY() + m.game.char.getSizeH() - m.game.char.getDownSpeed() + 1, m.game.char.getSizeW() - (m.game.char.getDownSpeed() + 1) * 2, m.game.char.getDownSpeed() + 1)
+      m.addColliderRectangle(m.game.char.getColDownName(), m.game.char.getOffsetX() + (m.game.char.getDownSpeed() + 1), m.game.char.getOffsetY() + m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getDownSpeed() + 1), m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getDownSpeed() + 1) * 2, m.game.char.getDownSpeed() + 1)
     end if
 
     if m.colliders[m.game.char.getColLeftName()] = invalid
-      m.addColliderRectangle(m.game.char.getColLeftName(), m.game.char.getOffsetX(), m.game.char.getOffsetY() + m.game.char.getLeftSpeed() + 1, m.game.char.getLeftSpeed() + 1, m.game.char.getSizeH() - (m.game.char.getLeftSpeed() + 1) * 2)
+      m.addColliderRectangle(m.game.char.getColLeftName(), m.game.char.getOffsetX(), m.game.char.getOffsetY() + (m.game.char.getLeftSpeed() + 1), m.game.char.getLeftSpeed() + 1, m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getLeftSpeed() + 1) * 2)
     end if
 
     if m.colliders[m.game.char.getColRightName()] = invalid
-      m.addColliderRectangle(m.game.char.getColRightName(), m.game.char.getOffsetX() + m.game.char.getSizeW() - m.game.char.getRightSpeed() + 1, m.game.char.getOffsetY() + m.game.char.getRightSpeed() + 1, m.game.char.getRightSpeed() + 1, m.game.char.getSizeH() - (m.game.char.getRightSpeed() + 1) * 2)
+      m.addColliderRectangle(m.game.char.getColRightName(), m.game.char.getOffsetX() + m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getRightSpeed() + 1), m.game.char.getOffsetY() + (m.game.char.getRightSpeed() + 1), m.game.char.getRightSpeed() + 1, m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getRightSpeed() + 1) * 2)
     end if
 
   end function
@@ -82,10 +82,10 @@ function char_view(object)
   object.onDrawEnd = function(canvas)
       
     ' test
-    canvas.DrawRect(m.game.char.getOffsetX() + m.game.char.getUpSpeed() + 1, m.game.char.getOffsetY(), m.game.char.getSizeW() - (m.game.char.getUpSpeed() + 1) * 2, m.game.char.getUpSpeed() + 1, &hFFFFFFFF)
-    canvas.DrawRect(m.game.char.getOffsetX() + m.game.char.getDownSpeed() + 1, m.game.char.getOffsetY() + m.game.char.getSizeH() - m.game.char.getDownSpeed() + 1, m.game.char.getSizeW() - (m.game.char.getDownSpeed() + 1) * 2, m.game.char.getDownSpeed() + 1, &hFFFFFFFF)
-    canvas.DrawRect(m.game.char.getOffsetX(), m.game.char.getOffsetY() + m.game.char.getLeftSpeed() + 1, m.game.char.getLeftSpeed() + 1, m.game.char.getSizeH() - (m.game.char.getLeftSpeed() + 1) * 2, &hFFFFFFFF)
-    canvas.DrawRect(m.game.char.getOffsetX() + m.game.char.getSizeW() - m.game.char.getRightSpeed() + 1, m.game.char.getOffsetY() + m.game.char.getRightSpeed() + 1, m.game.char.getRightSpeed() + 1, m.game.char.getSizeH() - (m.game.char.getRightSpeed() + 1) * 2, &hFFFFFFFF)
+    canvas.DrawRect(m.game.char.getOffsetX() + (m.game.char.getUpSpeed() + 1), m.game.char.getOffsetY(), m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getUpSpeed() + 1) * 2, m.game.char.getUpSpeed() + 1, &hFFFFFFFF)
+    canvas.DrawRect(m.game.char.getOffsetX() + (m.game.char.getDownSpeed() + 1), m.game.char.getOffsetY() + m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getDownSpeed() + 1), m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getDownSpeed() + 1) * 2, (m.game.char.getDownSpeed() + 1), &hFFFFFFFF)
+    canvas.DrawRect(m.game.char.getOffsetX(), m.game.char.getOffsetY() + (m.game.char.getLeftSpeed() + 1), m.game.char.getLeftSpeed() + 1, m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getLeftSpeed() + 1) * 2, &hFFFFFFFF)
+    canvas.DrawRect(m.game.char.getOffsetX() + m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getRightSpeed() + 1), m.game.char.getOffsetY() + (m.game.char.getRightSpeed() + 1), m.game.char.getRightSpeed() + 1, m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getRightSpeed() + 1) * 2, &hFFFFFFFF)
 
   end function
     

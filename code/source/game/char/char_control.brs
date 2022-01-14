@@ -253,34 +253,86 @@ function char_control(object)
       m.view_wnd.getImage(m.game.char.getEntityName()).offset_y = m.game.char.getOffsetY()
 
     end if
+
+    if m.view_wnd.getCollider(m.game.char.getColUpName().toStr()) <> invalid
+      if m.game.char.getScaleX() < 0.0
+        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_x = m.game.char.getOffsetX() - m.game.char.getSizeW() * abs(m.game.char.getScaleX()) + (m.game.char.getUpSpeed() + 1)
+      else
+        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_x = m.game.char.getOffsetX() + (m.game.char.getUpSpeed() + 1)
+      end if
+
+      m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_y = m.game.char.getOffsetY()
+      m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).width = m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getUpSpeed() + 1) * 2
+      m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).height = m.game.char.getUpSpeed() + 1
+
+    end if
+
+    if m.view_wnd.getCollider(m.game.char.getColDownName().toStr()) <> invalid
+      if m.game.char.getScaleX() < 0.0
+        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_x = m.game.char.getOffsetX() - m.game.char.getSizeW() * abs(m.game.char.getScaleX()) + (m.game.char.getDownSpeed() + 1)
+      else
+        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_x = m.game.char.getOffsetX() + (m.game.char.getDownSpeed() + 1)
+      end if
+
+      m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_y = m.game.char.getOffsetY() + m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getDownSpeed() + 1)
+      m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).width = m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getDownSpeed() + 1) * 2
+      m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).height = m.game.char.getDownSpeed() + 1
+
+    end if
+
+    if m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()) <> invalid
+      if m.game.char.getScaleX() < 0.0
+        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_x = m.game.char.getOffsetX() - m.game.char.getSizeW() * abs(m.game.char.getScaleX())
+      else
+        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_x = m.game.char.getOffsetX()
+      end if
+
+      m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_y = m.game.char.getOffsetY() + (m.game.char.getLeftSpeed() + 1)
+      m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).width = m.game.char.getLeftSpeed() + 1
+      m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).height = m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getLeftSpeed() + 1) * 2
+
+    end if
+
+    if m.view_wnd.getCollider(m.game.char.getColRightName().toStr()) <> invalid
+      if m.game.char.getScaleX() < 0.0
+        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_x = m.game.char.getOffsetX() - (m.game.char.getRightSpeed() + 1)
+      else
+        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_x = m.game.char.getOffsetX() + m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getRightSpeed() + 1)
+      end if
+
+      m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_y = m.game.char.getOffsetY() + (m.game.char.getRightSpeed() + 1)
+      m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).width = m.game.char.getRightSpeed() + 1
+      m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).height = m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getRightSpeed() + 1) * 2
+
+    end if
       
   end function
 
   object.charTurnUp = function()
-    if m.game.char.getScaleX() <> 1.0
-      m.game.char.setOffsetX(m.game.char.getOffsetX() - m.game.char.getSizeW())
-      m.game.char.setScaleX(1.0)
+    if m.game.char.getScaleX() < 0.0
+      m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW() * m.game.char.getScaleX())
+      m.game.char.setScaleX(- m.game.char.getScaleX())
     end if
   end function
 
   object.charTurnDown = function()
-    if m.game.char.getScaleX() <> 1.0
-      m.game.char.setOffsetX(m.game.char.getOffsetX() - m.game.char.getSizeW())
-      m.game.char.setScaleX(1.0)
+    if m.game.char.getScaleX() < 0.0
+      m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW() * m.game.char.getScaleX())
+      m.game.char.setScaleX(- m.game.char.getScaleX())
     end if
   end function
 
   object.charTurnLeft = function()
-    if m.game.char.getScaleX() <> -1.0
-      m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW())
-      m.game.char.setScaleX(-1.0)
+    if m.game.char.getScaleX() > 0.0
+      m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW() * m.game.char.getScaleX())
+      m.game.char.setScaleX(- m.game.char.getScaleX())
     end if
   end function
 
   object.charTurnRight = function()
-    if m.game.char.getScaleX() <> 1.0
-      m.game.char.setOffsetX(m.game.char.getOffsetX() - m.game.char.getSizeW())
-      m.game.char.setScaleX(1.0)
+    if m.game.char.getScaleX() < 0.0
+      m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW() * m.game.char.getScaleX())
+      m.game.char.setScaleX(- m.game.char.getScaleX())
     end if
   end function
 
