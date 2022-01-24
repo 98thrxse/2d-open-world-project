@@ -167,23 +167,53 @@ function veh_view(object)
 
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
-    if other_collider_name = m.game.char.getColUpName()
-      m.game.char.setVehCol(collider_name)
-      m.game.char.setColUp(true)
+    if m.game.getFocusGroup() = "char"
 
-    else if other_collider_name = m.game.char.getColDownName()
-      m.game.char.setVehCol(collider_name)
-      m.game.char.setColDown(true)
+      if other_collider_name = m.game.char.getColUpName()
+        m.game.char.setVehCol(collider_name)
+        m.game.char.setColUp(true)
 
-    else if other_collider_name = m.game.char.getColLeftName()
-      m.game.char.setVehCol(collider_name)
-      m.game.char.setColLeft(true)
+      else if other_collider_name = m.game.char.getColDownName()
+        m.game.char.setVehCol(collider_name)
+        m.game.char.setColDown(true)
 
-    else if other_collider_name = m.game.char.getColRightName()
-      m.game.char.setVehCol(collider_name)
-      m.game.char.setColRight(true)
+      else if other_collider_name = m.game.char.getColLeftName()
+        m.game.char.setVehCol(collider_name)
+        m.game.char.setColLeft(true)
+
+      else if other_collider_name = m.game.char.getColRightName()
+        m.game.char.setVehCol(collider_name)
+        m.game.char.setColRight(true)
+
+      end if
 
     end if
+
+    ' if m.game.getFocusGroup() = "veh"
+
+    '   for i = 0 to m.game.veh.config.Count() - 1
+    '     print m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()
+    '     print collider_name
+
+    '     if collider_name = m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()
+    '       m.game.veh.setColUp(m.game.char.getVeh().split("_").peek().toInt(), true)
+    '       print "stas"
+
+    '     else if collider_name = m.game.veh.getColDownName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+    '       m.game.veh.setColDown(m.game.char.getVeh().split("_").peek().toInt(), true)
+    '       print "stas"
+
+    '     else if collider_name = m.game.veh.getColLeftName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+    '       m.game.veh.setColLeft(m.game.char.getVeh().split("_").peek().toInt(), true)
+    '       print "stas"
+
+    '     else if collider_name = m.game.veh.getColRightName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+    '       m.game.veh.setColRight(m.game.char.getVeh().split("_").peek().toInt(), true)
+    '       print "stas"
+
+    '     end if
+    '   end for
+    ' end if
 
   end function
 
