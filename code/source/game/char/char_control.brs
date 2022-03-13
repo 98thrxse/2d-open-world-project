@@ -5,6 +5,12 @@ function char_control(object)
     ' getInstanceByName
 		m.view_wnd = m.game.getInstanceByName("char_view")
 
+    ' set col false on spawn
+    m.game.char.setColUp(false)
+    m.game.char.setColDown(false)
+    m.game.char.setColLeft(false)
+    m.game.char.setColRight(false)
+
   end function
 
 
@@ -55,26 +61,34 @@ function char_control(object)
 
     ' released
     else if code = 102 ' up
+      if m.game.getFocusGroup() = "char" or m.game.getFocusGroup() = "veh"
+        m.charIdleUp()
+      end if
       if m.game.getFocusGroup() = "char"
-        m.charIdleUp()      
         m.charAnimIdleUp()
       end if
 
     else if code = 103 ' down
+      if m.game.getFocusGroup() = "char" or m.game.getFocusGroup() = "veh"
+        m.charIdleDown()
+      end if
       if m.game.getFocusGroup() = "char"
-        m.charIdleDown() 
         m.charAnimIdleDown()       
       end if
 
     else if code = 104 ' left
-      if m.game.getFocusGroup() = "char"
+      if m.game.getFocusGroup() = "char" or m.game.getFocusGroup() = "veh"
         m.charIdleLeft()
+      end if
+      if m.game.getFocusGroup() = "char"
         m.charAnimIdleLeft()        
       end if
 
     else if code = 105 ' right
+      if m.game.getFocusGroup() = "char" or m.game.getFocusGroup() = "veh"
+        m.charIdleRight()
+      end if
       if m.game.getFocusGroup() = "char"
-        m.charIdleRight() 
         m.charAnimIdleRight()       
       end if
 
@@ -254,56 +268,112 @@ function char_control(object)
 
     end if
 
-    if m.view_wnd.getCollider(m.game.char.getColUpName().toStr()) <> invalid
-      if m.game.char.getScaleX() < 0.0
-        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_x = m.game.char.getOffsetX() - m.game.char.getSizeW() * abs(m.game.char.getScaleX()) + (m.game.char.getUpSpeed() + 1)
-      else
-        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_x = m.game.char.getOffsetX() + (m.game.char.getUpSpeed() + 1)
+    if m.game.getFocusGroup() = "char"
+      if m.view_wnd.getCollider(m.game.char.getColUpName().toStr()) <> invalid
+        if m.game.char.getScaleX() < 0.0
+          m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_x = m.game.char.getOffsetX() - m.game.char.getSizeW() * abs(m.game.char.getScaleX()) + (m.game.char.getUpSpeed() + 1)
+        else
+          m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_x = m.game.char.getOffsetX() + (m.game.char.getUpSpeed() + 1)
+        end if
+
+        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_y = m.game.char.getOffsetY()
+        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).width = m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getUpSpeed() + 1) * 2
+        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).height = m.game.char.getUpSpeed() + 1
+
       end if
 
-      m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_y = m.game.char.getOffsetY()
-      m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).width = m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getUpSpeed() + 1) * 2
-      m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).height = m.game.char.getUpSpeed() + 1
+      if m.view_wnd.getCollider(m.game.char.getColDownName().toStr()) <> invalid
+        if m.game.char.getScaleX() < 0.0
+          m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_x = m.game.char.getOffsetX() - m.game.char.getSizeW() * abs(m.game.char.getScaleX()) + (m.game.char.getDownSpeed() + 1)
+        else
+          m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_x = m.game.char.getOffsetX() + (m.game.char.getDownSpeed() + 1)
+        end if
 
-    end if
+        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_y = m.game.char.getOffsetY() + m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getDownSpeed() + 1)
+        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).width = m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getDownSpeed() + 1) * 2
+        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).height = m.game.char.getDownSpeed() + 1
 
-    if m.view_wnd.getCollider(m.game.char.getColDownName().toStr()) <> invalid
-      if m.game.char.getScaleX() < 0.0
-        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_x = m.game.char.getOffsetX() - m.game.char.getSizeW() * abs(m.game.char.getScaleX()) + (m.game.char.getDownSpeed() + 1)
-      else
-        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_x = m.game.char.getOffsetX() + (m.game.char.getDownSpeed() + 1)
       end if
 
-      m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_y = m.game.char.getOffsetY() + m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getDownSpeed() + 1)
-      m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).width = m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getDownSpeed() + 1) * 2
-      m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).height = m.game.char.getDownSpeed() + 1
+      if m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()) <> invalid
+        if m.game.char.getScaleX() < 0.0
+          m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_x = m.game.char.getOffsetX() - m.game.char.getSizeW() * abs(m.game.char.getScaleX())
+        else
+          m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_x = m.game.char.getOffsetX()
+        end if
 
-    end if
+        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_y = m.game.char.getOffsetY() + (m.game.char.getLeftSpeed() + 1)
+        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).width = m.game.char.getLeftSpeed() + 1
+        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).height = m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getLeftSpeed() + 1) * 2
 
-    if m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()) <> invalid
-      if m.game.char.getScaleX() < 0.0
-        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_x = m.game.char.getOffsetX() - m.game.char.getSizeW() * abs(m.game.char.getScaleX())
-      else
-        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_x = m.game.char.getOffsetX()
       end if
 
-      m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_y = m.game.char.getOffsetY() + (m.game.char.getLeftSpeed() + 1)
-      m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).width = m.game.char.getLeftSpeed() + 1
-      m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).height = m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getLeftSpeed() + 1) * 2
+      if m.view_wnd.getCollider(m.game.char.getColRightName().toStr()) <> invalid
+        if m.game.char.getScaleX() < 0.0
+          m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_x = m.game.char.getOffsetX() - (m.game.char.getRightSpeed() + 1)
+        else
+          m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_x = m.game.char.getOffsetX() + m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getRightSpeed() + 1)
+        end if
 
-    end if
+        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_y = m.game.char.getOffsetY() + (m.game.char.getRightSpeed() + 1)
+        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).width = m.game.char.getRightSpeed() + 1
+        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).height = m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getRightSpeed() + 1) * 2
 
-    if m.view_wnd.getCollider(m.game.char.getColRightName().toStr()) <> invalid
-      if m.game.char.getScaleX() < 0.0
-        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_x = m.game.char.getOffsetX() - (m.game.char.getRightSpeed() + 1)
-      else
-        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_x = m.game.char.getOffsetX() + m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getRightSpeed() + 1)
       end if
 
-      m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_y = m.game.char.getOffsetY() + (m.game.char.getRightSpeed() + 1)
-      m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).width = m.game.char.getRightSpeed() + 1
-      m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).height = m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getRightSpeed() + 1) * 2
+    else if m.game.getFocusGroup() = "veh"
+      
+      if m.view_wnd.getCollider(m.game.char.getColUpName().toStr()) <> invalid
+        if m.game.char.getScaleX() < 0.0
+          m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_x = m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getColW(m.game.char.getVeh().split("_").peek().toInt()) * abs(m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt())) + (m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) + m.game.map.getOffsetX()
+        else
+          m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_x = m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) + (m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) + m.game.map.getOffsetX()
+        end if
 
+        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).offset_y = m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.map.getOffsetY()
+        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).width = m.game.veh.getColW(m.game.char.getVeh().split("_").peek().toInt()) * abs(m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt())) - (m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) * 2
+        m.view_wnd.getCollider(m.game.char.getColUpName().toStr()).height = m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1
+
+      end if
+
+      if m.view_wnd.getCollider(m.game.char.getColDownName().toStr()) <> invalid
+        if m.game.char.getScaleX() < 0.0
+          m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_x = m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getColW(m.game.char.getVeh().split("_").peek().toInt()) * abs(m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt())) + (m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) + m.game.map.getOffsetX()
+        else
+          m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_x = m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) + (m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) + m.game.map.getOffsetX()
+        end if
+
+        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).offset_y = m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getColH(m.game.char.getVeh().split("_").peek().toInt()) * abs(m.game.veh.getScaleY(m.game.char.getVeh().split("_").peek().toInt())) - (m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) + m.game.map.getOffsetY()
+        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).width = m.game.veh.getColW(m.game.char.getVeh().split("_").peek().toInt()) * abs(m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt())) - (m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) * 2
+        m.view_wnd.getCollider(m.game.char.getColDownName().toStr()).height = m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1
+
+      end if
+
+      if m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()) <> invalid
+        if m.game.char.getScaleX() < 0.0
+          m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_x = m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getColW(m.game.char.getVeh().split("_").peek().toInt()) * abs(m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt())) + m.game.map.getOffsetX()
+        else
+          m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_x = m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.map.getOffsetX()
+        end if
+
+        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).offset_y = m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) + (m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) + m.game.map.getOffsetY()
+        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).width = m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1
+        m.view_wnd.getCollider(m.game.char.getColLeftName().toStr()).height = m.game.veh.getColH(m.game.char.getVeh().split("_").peek().toInt()) * abs(m.game.veh.getScaleY(m.game.char.getVeh().split("_").peek().toInt())) - (m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) * 2
+
+      end if
+
+      if m.view_wnd.getCollider(m.game.char.getColRightName().toStr()) <> invalid
+        if m.game.char.getScaleX() < 0.0
+          m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_x = m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) - (m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) + m.game.map.getOffsetX()
+        else
+          m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_x = m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getColW(m.game.char.getVeh().split("_").peek().toInt()) * abs(m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt())) - (m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) + m.game.map.getOffsetX()
+        end if
+
+        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).offset_y = m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) + (m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) + m.game.map.getOffsetY()
+        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).width = m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1
+        m.view_wnd.getCollider(m.game.char.getColRightName().toStr()).height = m.game.veh.getColH(m.game.char.getVeh().split("_").peek().toInt()) * abs(m.game.veh.getScaleY(m.game.char.getVeh().split("_").peek().toInt())) - (m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) * 2
+
+      end if
     end if
       
   end function

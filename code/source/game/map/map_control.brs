@@ -263,38 +263,29 @@ function map_control(object)
                 m.game.veh.config.push({
                     id: i,       
                     name: invalid,
-                    name_up: invalid,
-                    name_down: invalid,
-                    name_left: invalid,
-                    name_right: invalid,
                     index: invalid,
                     reg: [],
-                    offset: {
+                    col: {
                         x: invalid,
-                        y: invalid
+                        y: invalid,
+                        width: invalid,
+                        height: invalid
                     },
+                    entity: {
+                        x: invalid,
+                        y: invalid,
+                        width: invalid,
+                        height: invalid
+                    }
                     scale: {
                         x: invalid,
                         y: invalid
                     },
-                    size: {
-                        width: invalid,
-                        height: invalid
-                    }
                     speed: {
                         up: invalid,
                         down: invalid,
                         left: invalid,
                         right: invalid
-                    },
-                    col: {
-                        up: invalid,
-                        down: invalid
-                        left: invalid,
-                        right: invalid
-                        npc: invalid,
-                        marker: invalid,
-                        veh: invalid,
                     },
                     time: invalid
                 })
@@ -311,29 +302,21 @@ function map_control(object)
             if m.map_veh_config[i].speed.down <> invalid then m.game.veh.setDownSpeed(i, m.map_veh_config[i].speed.down)
             if m.map_veh_config[i].speed.left <> invalid then m.game.veh.setLeftSpeed(i, m.map_veh_config[i].speed.left)
             if m.map_veh_config[i].speed.right <> invalid then m.game.veh.setRightSpeed(i, m.map_veh_config[i].speed.right)
-            if m.map_veh_config[i].name <> invalid then m.game.veh.setEntityName(i, m.map_veh_config[i].name)
-            if m.map_veh_config[i].name_up <> invalid then m.game.veh.setColUpName(i, m.map_veh_config[i].name_up)
-            if m.map_veh_config[i].name_down <> invalid then m.game.veh.setColDownName(i, m.map_veh_config[i].name_down)
-            if m.map_veh_config[i].name_left <> invalid then m.game.veh.setColLeftName(i, m.map_veh_config[i].name_left)
-            if m.map_veh_config[i].name_right <> invalid then m.game.veh.setColRightName(i, m.map_veh_config[i].name_right)
-            if m.map_veh_config[i].offset.x <> invalid then m.game.veh.setOffsetX(i, m.map_veh_config[i].offset.x)
-            if m.map_veh_config[i].offset.y <> invalid then m.game.veh.setOffsetY(i, m.map_veh_config[i].offset.y)
-            if m.map_veh_config[i].size.width <> invalid then m.game.veh.setSizeW(i, m.map_veh_config[i].size.width)
-            if m.map_veh_config[i].size.height <> invalid then m.game.veh.setSizeH(i, m.map_veh_config[i].size.height)
+            if m.map_veh_config[i].name <> invalid then m.game.veh.setName(i, m.map_veh_config[i].name)
+            if m.map_veh_config[i].entity.x <> invalid then m.game.veh.setEntityX(i, m.map_veh_config[i].entity.x)
+            if m.map_veh_config[i].entity.y <> invalid then m.game.veh.setEntityY(i, m.map_veh_config[i].entity.y)
+            if m.map_veh_config[i].entity.width <> invalid then m.game.veh.setEntityW(i, m.map_veh_config[i].entity.width)
+            if m.map_veh_config[i].entity.height <> invalid then m.game.veh.setEntityH(i, m.map_veh_config[i].entity.height)
+            if m.map_veh_config[i].col.x <> invalid then m.game.veh.setColX(i, m.map_veh_config[i].col.x)
+            if m.map_veh_config[i].col.y <> invalid then m.game.veh.setColY(i, m.map_veh_config[i].col.y)
+            if m.map_veh_config[i].col.width <> invalid then m.game.veh.setColW(i, m.map_veh_config[i].col.width)
+            if m.map_veh_config[i].col.height <> invalid then m.game.veh.setColH(i, m.map_veh_config[i].col.height)
             if m.map_veh_config[i].index <> invalid then m.game.veh.setIndex(i, m.map_veh_config[i].index)
             if m.map_veh_config[i].scale.x <> invalid then m.game.veh.setScaleX(i, m.map_veh_config[i].scale.x)
             if m.map_veh_config[i].scale.y <> invalid then m.game.veh.setScaleY(i, m.map_veh_config[i].scale.y)
             if m.map_veh_config[i].reg <> invalid then m.game.veh.setReg(i, m.map_veh_config[i].reg)
             if m.map_veh_config[i].time <> invalid then m.game.veh.setAnimTime(i, m.map_veh_config[i].time)
-            if m.map_veh_config[i].col.up <> invalid then m.game.veh.setColUp(i, m.map_veh_config[i].col.up)
-            if m.map_veh_config[i].col.down <> invalid then m.game.veh.setColDown(i, m.map_veh_config[i].col.down)
-            if m.map_veh_config[i].col.left <> invalid then m.game.veh.setColLeft(i, m.map_veh_config[i].col.left)
-            if m.map_veh_config[i].col.right <> invalid then m.game.veh.setColRight(i, m.map_veh_config[i].col.right)
-            if m.map_veh_config[i].col.npc <> invalid then m.game.veh.setNPCCol(i, m.map_veh_config[i].col.npc)
-            if m.map_veh_config[i].col.marker <> invalid then m.game.veh.setMarkerCol(i, m.map_veh_config[i].col.marker)
-            if m.map_veh_config[i].col.veh <> invalid then m.game.veh.setVehCol(i, m.map_veh_config[i].col.veh)
     
-
         end for
 
     end function
@@ -358,13 +341,6 @@ function map_control(object)
         if m.map_char_config.name_down <> invalid and m.game.char.getColDownName() = invalid then m.game.char.setColDownName(m.map_char_config.name_down)
         if m.map_char_config.name_left <> invalid and m.game.char.getColLeftName() = invalid then m.game.char.setColLeftName(m.map_char_config.name_left)
         if m.map_char_config.name_right <> invalid and m.game.char.getColRightName() = invalid then m.game.char.setColRightName(m.map_char_config.name_right)
-        if m.map_char_config.col.up <> invalid and m.game.char.getColUp() = invalid then m.game.char.setColUp(m.map_char_config.col.up)
-        if m.map_char_config.col.down <> invalid and m.game.char.getColDown() = invalid then m.game.char.setColDown(m.map_char_config.col.down)
-        if m.map_char_config.col.left <> invalid and m.game.char.getColLeft() = invalid then m.game.char.setColLeft(m.map_char_config.col.left)
-        if m.map_char_config.col.right <> invalid and m.game.char.getColRight() = invalid then m.game.char.setColRight(m.map_char_config.col.right)
-        if m.map_char_config.col.npc <> invalid and m.game.char.getNPCCol() = invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
-        if m.map_char_config.col.marker <> invalid and m.game.char.getMarkerCol() = invalid then m.game.char.setMarkerCol(m.map_char_config.col.marker)
-        if m.map_char_config.col.veh <> invalid and m.game.char.getVehCol() = invalid then m.game.char.setVehCol(m.map_char_config.col.veh)
         if m.map_char_config.hp <> invalid and m.game.char.getHP() = invalid then m.game.char.setHP(m.map_char_config.hp)
         if m.map_char_config.sp <> invalid and m.game.char.getSP() = invalid then m.game.char.setSP(m.map_char_config.sp)
         if m.map_char_config.speed.up <> invalid and m.game.char.getUpSpeed() = invalid then m.game.char.setUpSpeed(m.map_char_config.speed.up)
@@ -380,7 +356,6 @@ function map_control(object)
         if m.map_char_config.regen.hp_time <> invalid and m.game.char.getHPRegenTime() = invalid then m.game.char.setHPRegenTime(m.map_char_config.regen.hp_time)
         if m.map_char_config.regen.sp_time <> invalid and m.game.char.getSPRegenTime() = invalid then m.game.char.setSPRegenTime(m.map_char_config.regen.sp_time)
         if m.map_char_config.intersect.obj <> invalid and m.game.char.getObjIntersect() = invalid then m.game.char.setObjIntersect(m.map_char_config.intersect.obj)
-        if m.map_char_config.veh <> invalid and m.game.char.getVeh() = invalid then m.game.char.setVeh(m.map_char_config.veh)
 
     end function
 

@@ -82,10 +82,10 @@ function char_view(object)
   object.onDrawEnd = function(canvas)
       
     ' test
-    canvas.DrawRect(m.game.char.getOffsetX() + (m.game.char.getUpSpeed() + 1), m.game.char.getOffsetY(), m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getUpSpeed() + 1) * 2, m.game.char.getUpSpeed() + 1, &hFFFFFFFF)
-    canvas.DrawRect(m.game.char.getOffsetX() + (m.game.char.getDownSpeed() + 1), m.game.char.getOffsetY() + m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getDownSpeed() + 1), m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getDownSpeed() + 1) * 2, (m.game.char.getDownSpeed() + 1), &hFFFFFFFF)
-    canvas.DrawRect(m.game.char.getOffsetX(), m.game.char.getOffsetY() + (m.game.char.getLeftSpeed() + 1), m.game.char.getLeftSpeed() + 1, m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getLeftSpeed() + 1) * 2, &hFFFFFFFF)
-    canvas.DrawRect(m.game.char.getOffsetX() + m.game.char.getSizeW() * abs(m.game.char.getScaleX()) - (m.game.char.getRightSpeed() + 1), m.game.char.getOffsetY() + (m.game.char.getRightSpeed() + 1), m.game.char.getRightSpeed() + 1, m.game.char.getSizeH() * abs(m.game.char.getScaleY()) - (m.game.char.getRightSpeed() + 1) * 2, &hFFFFFFFF)
+    canvas.DrawRect(m.getCollider(m.game.char.getColUpName().toStr()).offset_x, m.getCollider(m.game.char.getColUpName().toStr()).offset_y, m.getCollider(m.game.char.getColUpName().toStr()).width, m.getCollider(m.game.char.getColUpName().toStr()).height, &hFFFFFFFF)
+    canvas.DrawRect(m.getCollider(m.game.char.getColDownName().toStr()).offset_x, m.getCollider(m.game.char.getColDownName().toStr()).offset_y, m.getCollider(m.game.char.getColDownName().toStr()).width, m.getCollider(m.game.char.getColDownName().toStr()).height, &hFFFFFFFF)
+    canvas.DrawRect(m.getCollider(m.game.char.getColLeftName().toStr()).offset_x, m.getCollider(m.game.char.getColLeftName().toStr()).offset_y, m.getCollider(m.game.char.getColLeftName().toStr()).width, m.getCollider(m.game.char.getColLeftName().toStr()).height, &hFFFFFFFF)
+    canvas.DrawRect(m.getCollider(m.game.char.getColRightName().toStr()).offset_x, m.getCollider(m.game.char.getColRightName().toStr()).offset_y, m.getCollider(m.game.char.getColRightName().toStr()).width, m.getCollider(m.game.char.getColRightName().toStr()).height, &hFFFFFFFF)
 
   end function
     

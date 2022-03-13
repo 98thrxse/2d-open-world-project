@@ -14,23 +14,35 @@ function veh_data() as object
         getRightSpeed: veh_getRightSpeed
         setRightSpeed: veh_setRightSpeed
  
-        getEntityName: veh_getEntityName
-        setEntityName: veh_setEntityName
+        getName: veh_getName
+        setName: veh_setName
 
         getAnimTime: veh_getAnimTime
         setAnimTime: veh_setAnimTime
 
-        getOffsetX: veh_getOffsetX
-        setOffsetX: veh_setOffsetX
+        getEntityX: veh_getEntityX
+        setEntityX: veh_setEntityX
         
-        getOffsetY: veh_getOffsetY
-        setOffsetY: veh_setOffsetY
+        getEntityY: veh_getEntityY
+        setEntityY: veh_setEntityY
 
-        getSizeW: veh_getSizeW
-        setSizeW: veh_setSizeW
+        getEntityW: veh_getEntityW
+        setEntityW: veh_setEntityW
         
-        getSizeH: veh_getSizeH
-        setSizeH: veh_setSizeH
+        getEntityH: veh_getEntityH
+        setEntityH: veh_setEntityH
+
+        getColX: veh_getColX
+        setColX: veh_setColX
+        
+        getColY: veh_getColY
+        setColY: veh_setColY
+
+        getColH: veh_getColH
+        setColH: veh_setColH
+        
+        getColW: veh_getColW
+        setColW: veh_setColW
 
         getIndex: veh_getIndex
         setIndex: veh_setIndex
@@ -47,39 +59,6 @@ function veh_data() as object
         getScaleY: veh_getScaleY
         setScaleY: veh_setScaleY
 
-        getColUpName: veh_getColUpName
-        setColUpName: veh_setColUpName
-
-        getColDownName: veh_getColDownName
-        setColDownName: veh_setColDownName
-
-        getColLeftName: veh_getColLeftName
-        setColLeftName: veh_setColLeftName
-
-        getColRightName: veh_getColRightName
-        setColRightName: veh_setColRightName
-
-        getNPCCol: veh_getNPCCol
-        setNPCCol: veh_setNPCCol
-
-        getVehCol: veh_getVehCol
-        setVehCol: veh_setVehCol
-
-        getMarkerCol: veh_getMarkerCol
-        setMarkerCol: veh_setMarkerCol
-
-        getColUp: veh_getColUp
-        setColUp: veh_setColUp
-
-        getColDown: veh_getColDown
-        setColDown: veh_setColDown
-
-        getColLeft: veh_getColLeft
-        setColLeft: veh_setColLeft
-
-        getColRight: veh_getColRight
-        setColRight: veh_setColRight
-
         config: invalid
 
     }
@@ -94,49 +73,12 @@ function veh_data() as object
 
 end function
 
-
-function veh_getEntityName(i as object) as object
+function veh_getName(i as object) as object
     return m.config[i].name
 end function
 
-sub veh_setEntityName(i as object, name as object)
+sub veh_setName(i as object, name as object)
     m.config[i].name = name
-end sub
-
-function veh_getColUpName(i as object) as object
-    return m.config[i].name_up
-end function
-
-sub veh_setColUpName(i as object, name as object)
-    m.config[i].name_up = name
-end sub
-
-
-function veh_getColDownName(i as object) as object
-    return m.config[i].name_down
-end function
-
-
-sub veh_setColDownName(i as object, name as object)
-    m.config[i].name_down = name
-end sub
-
-
-function veh_getColLeftName(i as object) as object
-    return m.config[i].name_left
-end function
-
-sub veh_setColLeftName(i as object, name as object)
-    m.config[i].name_left = name
-end sub
-
-
-function veh_getColRightName(i as object) as object
-    return m.config[i].name_right
-end function
-
-sub veh_setColRightName(i as object, name as object)
-    m.config[i].name_right = name
 end sub
 
 function veh_getAnimTime(i as object) as object
@@ -147,43 +89,37 @@ sub veh_setAnimTime(i as object, time as object)
     m.config[i].time = time
 end sub
 
-
-function veh_getOffsetX(i as object) as object
-    return m.config[i].offset.x
+function veh_getEntityX(i as object) as object
+    return m.config[i].entity.x
 end function
 
-sub veh_setOffsetX(i as object, x as object)
-    m.config[i].offset.x = x
+sub veh_setEntityX(i as object, x as object)
+    m.config[i].entity.x = x
 end sub
 
-
-function veh_getOffsetY(i as object) as object
-    return m.config[i].offset.y
+function veh_getEntityY(i as object) as object
+    return m.config[i].entity.y
 end function
 
-sub veh_setOffsetY(i as object, y as object)
-    m.config[i].offset.y = y
+sub veh_setEntityY(i as object, y as object)
+    m.config[i].entity.y = y
 end sub
 
-
-
-function veh_getSizeW(i as object) as object
-    return m.config[i].size.width
+function veh_getEntityW(i as object) as object
+    return m.config[i].entity.width
 end function
 
-sub veh_setSizeW(i as object, width as object)
-    m.config[i].size.width = width
+sub veh_setEntityW(i as object, width as object)
+    m.config[i].entity.width = width
 end sub
 
-
-function veh_getSizeH(i as object) as object
-    return m.config[i].size.height
+function veh_getEntityH(i as object) as object
+    return m.config[i].entity.height
 end function
 
-sub veh_setSizeH(i as object, height as object)
-    m.config[i].size.height = height
+sub veh_setEntityH(i as object, height as object)
+    m.config[i].entity.height = height
 end sub
-
 
 function veh_getIndex(i as object) as object
     return m.config[i].index
@@ -192,7 +128,6 @@ end function
 sub veh_setIndex(i as object, index as object)
     m.config[i].index = index
 end sub
-
 
 function veh_getRegElement(i as object, j as object) as object
     return m.config[i].reg[j]
@@ -209,7 +144,6 @@ end function
 sub veh_setReg(i as object, reg as object)
     m.config[i].reg = reg
 end sub
-
 
 function veh_getScaleX(i as object) as object
     return m.config[i].scale.x
@@ -235,7 +169,6 @@ sub veh_setUpSpeed(i as object, speed as object)
     m.config[i].speed.up = speed
 end sub
 
-
 function veh_getDownSpeed(i as object) as object
     return m.config[i].speed.down
 end function
@@ -244,7 +177,6 @@ sub veh_setDownSpeed(i as object, speed as object)
     m.config[i].speed.down = speed
 end sub
 
-
 function veh_getLeftSpeed(i as object) as object
     return m.config[i].speed.left
 end function
@@ -252,7 +184,6 @@ end function
 sub veh_setLeftSpeed(i as object, speed as object) 
     m.config[i].speed.left = speed
 end sub
-
 
 function veh_getRightSpeed(i as object) as object
     return m.config[i].speed.right
@@ -270,54 +201,34 @@ sub veh_setVehCol(i as object, j as object)
     m.config[i].col.veh = j
 end sub
 
-function veh_getNPCCol(i as object) as object
-    return m.config[i].col.npc
+function veh_getColX(i as object) as object
+    return m.config[i].col.x
 end function
 
-sub veh_setNPCCol(i as object, j as object) 
-    m.config[i].col.npc = j
+sub veh_setColX(i as object, x as object)
+    m.config[i].col.x = x
 end sub
 
-function veh_getMarkerCol(i as object) as object
-    return m.config[i].col.marker
+function veh_getColY(i as object) as object
+    return m.config[i].col.y
 end function
 
-sub veh_setMarkerCol(i as object, j as object) 
-    m.config[i].col.marker = j
+sub veh_setColY(i as object, y as object)
+    m.config[i].col.y = y
 end sub
 
-
-function veh_getColUp(i as object) as object
-    return m.config[i].col.up
+function veh_getColH(i as object) as object
+    return m.config[i].col.height
 end function
 
-sub veh_setColUp(i as object, col as object) 
-    m.config[i].col.up = col
+sub veh_setColH(i as object, height as object)
+    m.config[i].col.height = height
 end sub
 
-
-function veh_getColDown(i as object) as object
-    return m.config[i].col.down
+function veh_getColW(i as object) as object
+    return m.config[i].col.width
 end function
 
-sub veh_setColDown(i as object, col as object) 
-    m.config[i].col.down = col
-end sub
-
-
-function veh_getColLeft(i as object) as object
-    return m.config[i].col.left
-end function
-
-sub veh_setColLeft(i as object, col as object) 
-    m.config[i].col.left = col
-end sub
-
-
-function veh_getColRight(i as object) as object
-    return m.config[i].col.right
-end function
-
-sub veh_setColRight(i as object, col as object) 
-    m.config[i].col.right = col
+sub veh_setColW(i as object, width as object)
+    m.config[i].col.width = width
 end sub

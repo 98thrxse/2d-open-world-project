@@ -102,35 +102,17 @@ function obj_view(object)
     end function
 
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
-        if m.game.getFocusGroup() = "char"
-            if other_collider_name = m.game.char.getColUpName()
-                m.game.char.setColUp(true)
+        if other_collider_name = m.game.char.getColUpName()
+            m.game.char.setColUp(true)
 
-            else if other_collider_name = m.game.char.getColDownName()
-                m.game.char.setColDown(true)
+        else if other_collider_name = m.game.char.getColDownName()
+            m.game.char.setColDown(true)
 
-            else if other_collider_name = m.game.char.getColLeftName()
-                m.game.char.setColLeft(true)
+        else if other_collider_name = m.game.char.getColLeftName()
+            m.game.char.setColLeft(true)
 
-            else if other_collider_name = m.game.char.getColRightName()
-                m.game.char.setColRight(true)
-            end if
-        end if
-        
-        if m.game.getFocusGroup() = "veh"
-            if other_collider_name = m.game.veh.getColUpName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
-                m.game.veh.setColUp(m.game.char.getVeh().split("_").peek().toInt(), true)
-
-            else if other_collider_name = m.game.veh.getColDownName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
-                m.game.veh.setColDown(m.game.char.getVeh().split("_").peek().toInt(), true)
-
-            else if other_collider_name = m.game.veh.getColLeftName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
-                m.game.veh.setColLeft(m.game.char.getVeh().split("_").peek().toInt(), true)
-
-            else if other_collider_name = m.game.veh.getColRightName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
-                m.game.veh.setColRight(m.game.char.getVeh().split("_").peek().toInt(), true)
-
-            end if
+        else if other_collider_name = m.game.char.getColRightName()
+            m.game.char.setColRight(true)
         end if
 
     end function
