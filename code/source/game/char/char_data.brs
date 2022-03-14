@@ -132,14 +132,12 @@ function char_data(ver) as object
 
         save: char_save
 
-
         config: invalid
     }
 
     m.char.config = global_load("char")
 
     if m.char.config = invalid OR m.char.config.version <> ver
-        global_save(invalid, "char")
 
         m.char.config = {
             name: invalid,
@@ -203,8 +201,6 @@ function char_data(ver) as object
             map: invalid,
             version: ver
         }
-
-        global_save(m.config, "char")
 
     end if
     return m.char
