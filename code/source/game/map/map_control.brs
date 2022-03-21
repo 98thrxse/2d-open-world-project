@@ -264,6 +264,7 @@ function map_control(object)
                     id: i,       
                     name: invalid,
                     index: invalid,
+                    alpha: invalid,
                     reg: [],
                     col: {
                         x: invalid,
@@ -287,6 +288,9 @@ function map_control(object)
                         left: invalid,
                         right: invalid
                     },
+                    intersect: {
+                        obj: invalid
+                    }
                     time: invalid
                 })
             end for
@@ -316,6 +320,8 @@ function map_control(object)
             if m.map_veh_config[i].scale.y <> invalid then m.game.veh.setScaleY(i, m.map_veh_config[i].scale.y)
             if m.map_veh_config[i].reg <> invalid then m.game.veh.setReg(i, m.map_veh_config[i].reg)
             if m.map_veh_config[i].time <> invalid then m.game.veh.setAnimTime(i, m.map_veh_config[i].time)
+            if m.map_veh_config[i].alpha <> invalid then m.game.veh.setAlpha(i, m.map_veh_config[i].alpha)
+            if m.map_veh_config[i].intersect.obj <> invalid then m.game.veh.setObjIntersect(i, m.map_veh_config[i].intersect.obj)
     
         end for
 

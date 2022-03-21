@@ -269,6 +269,7 @@ function veh_control(object)
         m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()).scale_y = m.game.veh.getScaleY(i)
         m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()).offset_x = m.game.veh.getEntityX(i)
         m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()).offset_y = m.game.veh.getEntityY(i)
+        m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()).alpha = m.game.veh.getAlpha(i)
 
       end if
 

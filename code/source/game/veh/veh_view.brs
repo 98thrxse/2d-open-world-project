@@ -60,6 +60,7 @@ function veh_view(object)
                 offset_y: m.game.veh.getEntityY(i)
                 scale_x: m.game.veh.getScaleX(i)
                 scale_y: m.game.veh.getScaleY(i)
+                alpha: m.game.veh.getAlpha(i)
               })
       
             end if
@@ -84,10 +85,11 @@ function veh_view(object)
 
               ' add
               m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
-                offset_x: m.game.veh.getEntityX(i),
+                offset_x: m.game.veh.getEntityX(i)
                 offset_y: m.game.veh.getEntityY(i)
                 scale_x: m.game.veh.getScaleX(i)
                 scale_y: m.game.veh.getScaleY(i)
+                alpha: m.game.veh.getAlpha(i)
               })
       
             end if

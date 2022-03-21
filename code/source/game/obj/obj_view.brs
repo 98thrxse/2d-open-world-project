@@ -124,16 +124,16 @@ function obj_view(object)
 
     end function
 
-    object.onDrawEnd = function(canvas)
+    ' object.onDrawEnd = function(canvas)
           
-        ' ' test
-        for i = 0 to m.game.obj.config.Count() - 1
-          canvas.DrawRect(m.game.obj.getColX(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.map.getOffsetY(), m.game.obj.getColW(i), 1, &hFFFFFFFF)
-          canvas.DrawRect(m.game.obj.getColX(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.obj.getColH(i) + m.game.map.getOffsetY(), m.game.obj.getColW(i), 1, &hFFFFFFFF)
-          canvas.DrawRect(m.game.obj.getColX(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.map.getOffsetY(), 1, m.game.obj.getColH(i), &hFFFFFFFF)
-          canvas.DrawRect(m.game.obj.getColX(i) + m.game.obj.getColW(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.map.getOffsetY(), 1, m.game.obj.getColH(i), &hFFFFFFFF)
-        end for
+    '     ' ' test
+    '     for i = 0 to m.game.obj.config.Count() - 1
+    '       canvas.DrawRect(m.game.obj.getColX(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.map.getOffsetY(), m.game.obj.getColW(i), 1, &hFFFFFFFF)
+    '       canvas.DrawRect(m.game.obj.getColX(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.obj.getColH(i) + m.game.map.getOffsetY(), m.game.obj.getColW(i), 1, &hFFFFFFFF)
+    '       canvas.DrawRect(m.game.obj.getColX(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.map.getOffsetY(), 1, m.game.obj.getColH(i), &hFFFFFFFF)
+    '       canvas.DrawRect(m.game.obj.getColX(i) + m.game.obj.getColW(i) + m.game.map.getOffsetX(), m.game.obj.getColY(i) + m.game.map.getOffsetY(), 1, m.game.obj.getColH(i), &hFFFFFFFF)
+    '     end for
     
-    end function
+    ' end function
 
 end function

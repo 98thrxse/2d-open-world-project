@@ -5,6 +5,7 @@ function testOne_veh_config() as object
             id: 0,
             name: "veh",
             index: 2,
+            alpha: 255,
             reg: ["veh_car1_back", "veh_car1_front", "veh_car1_side"],
             col: {
                 x: 9400,
@@ -28,6 +29,9 @@ function testOne_veh_config() as object
                 left: 5,
                 right: 5
             },
+            intersect: {
+                obj: invalid
+            }
             time: 100
         },
 
@@ -35,6 +39,7 @@ function testOne_veh_config() as object
             id: 1,
             name: "veh",
             index: 2,
+            alpha: 255,
             reg: ["veh_car1_back", "veh_car1_front", "veh_car1_side"],
             col: {
                 x: 9600,
@@ -57,6 +62,9 @@ function testOne_veh_config() as object
                 down: 5,
                 left: 5,
                 right: 5
+            },
+            intersect: {
+                obj: invalid
             },
             time: 100
         }
