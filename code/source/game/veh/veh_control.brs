@@ -18,7 +18,7 @@ function veh_control(object)
   object.onUpdate = function(dt as float)
 
     m.controlPos()
-
+    m.npcHPDamage()
     m.controlUpdate()
 
   end function
@@ -97,6 +97,12 @@ function veh_control(object)
       
     end if
 
+  end function
+
+  object.npcHPDamage = function()
+    if m.game.getFocusGroup() = "veh" and m.game.char.getNPCCol() <> invalid
+      if m.game.npc.getHP(m.game.char.getNPCCol().split("_").peek().toInt()) > 0 then m.game.npc.setHP(m.game.char.getNPCCol().split("_").peek().toInt(), 0)
+    end if
   end function
 
   object.focusChange = function()
