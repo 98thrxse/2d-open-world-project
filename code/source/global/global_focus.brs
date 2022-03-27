@@ -5,7 +5,12 @@ function global_focus(game)
 	end function
 
 	game.setFocusGroup = function(focusGroup)
+		m.prevFocusGroup = m.focusGroup
 		m.focusGroup = focusGroup
+	end function
+
+	game.getPrevFocusGroup = function()
+		return m.prevFocusGroup
 	end function
 
 	game.getFocusTarget = function()
@@ -13,7 +18,12 @@ function global_focus(game)
 	end function
 
 	game.setFocusTarget = function(focusTarget)
+		m.prevfocusTarget = m.focusTarget
 		m.focusTarget = focusTarget
+	end function
+
+	game.getPrevFocusTarget = function()
+		return m.prevFocusTarget
 	end function
     
 end function

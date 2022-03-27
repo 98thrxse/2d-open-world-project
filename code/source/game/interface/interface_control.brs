@@ -38,11 +38,11 @@ function interface_control(object)
     end function
     
     object.focusChange = function()
-        if m.game.getFocusGroup() = "char"
+        if m.game.getFocusGroup() <> "interface"
             m.game.setFocusGroup("interface")
             m.game.setFocusTarget(0)
-        else if m.game.getFocusGroup() = "interface"
-            m.game.setFocusGroup("char")
+        else
+            m.game.setFocusGroup(m.game.getPrevFocusGroup())
             m.game.setFocusTarget("")
         end if
     end function
