@@ -47,9 +47,9 @@ function obj_control(object)
             m.game.veh.setObjIntersect(m.game.char.getVeh().split("_").peek().toInt(), invalid)
 
             for i = 0 to m.game.obj.config.Count() - 1
-                if m.game.veh.getScaleX(i) > 0.0
+                if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
                     if m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(i) > m.game.obj.getEntityX(i)
-                        if m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityH(m.game.char.getVeh().split("_").peek().toInt()) / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityH(m.game.char.getVeh().split("_").peek().toInt()) / 2 > m.game.obj.getEntityY(i)
+                        if m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityH(m.game.char.getVeh().split("_").peek().toInt()) / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityH(m.game.char.getVeh().split("_").peek().toInt()) > m.game.obj.getEntityY(i)
                             if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
                             m.game.veh.setObjIntersect(m.game.char.getVeh().split("_").peek().toInt(), i)
                         else
@@ -60,7 +60,7 @@ function obj_control(object)
                     end if
                 else
                     if m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getEntityW(i) < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) > m.game.obj.getEntityX(i)
-                        if m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityH(m.game.char.getVeh().split("_").peek().toInt()) / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityH(m.game.char.getVeh().split("_").peek().toInt()) / 2 > m.game.obj.getEntityY(i)
+                        if m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityH(m.game.char.getVeh().split("_").peek().toInt()) / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityH(m.game.char.getVeh().split("_").peek().toInt()) > m.game.obj.getEntityY(i)
                             if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
                             m.game.veh.setObjIntersect(m.game.char.getVeh().split("_").peek().toInt(), i)
                         else
