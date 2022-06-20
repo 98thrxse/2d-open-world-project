@@ -62,6 +62,9 @@ function npc_data() as object
         getScaleY: npc_getScaleY
         setScaleY: npc_setScaleY
 
+        getAlpha: npc_getAlpha
+        setAlpha: npc_setAlpha
+
         config: invalid
 
     }
@@ -248,4 +251,13 @@ end function
 
 sub npc_setRightSpeed(i as object, speed as object) 
     m.config[i].speed.right = speed
+end sub
+
+
+function npc_getAlpha(i as object) as object
+    return m.config[i].alpha
+end function
+
+sub npc_setAlpha(i as object, alpha as object) 
+    m.config[i].alpha = alpha
 end sub

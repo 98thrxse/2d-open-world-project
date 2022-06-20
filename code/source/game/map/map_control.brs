@@ -195,6 +195,7 @@ function map_control(object)
                     id: i,       
                     name: invalid,
                     index: invalid,
+                    alpha: invalid,
                     reg: [],
                     offset: {
                         x: invalid,
@@ -249,6 +250,7 @@ function map_control(object)
             if m.map_npc_config[i].time <> invalid then m.game.npc.setAnimTime(i, m.map_npc_config[i].time)
             if m.map_npc_config[i].scale.x <> invalid then m.game.npc.setScaleX(i, m.map_npc_config[i].scale.x)
             if m.map_npc_config[i].scale.y <> invalid then m.game.npc.setScaleY(i, m.map_npc_config[i].scale.y)
+            if m.map_npc_config[i].alpha <> invalid then m.game.npc.setAlpha(i, m.map_npc_config[i].alpha)
             if m.map_npc_config[i].reg <> invalid then m.game.npc.setReg(i, m.map_npc_config[i].reg)
 
         end for
