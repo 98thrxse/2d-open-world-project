@@ -75,7 +75,7 @@ function obj_control(object)
                 else
                     if m.game.veh.getEntityX(j) - m.game.veh.getEntityW(i) < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.veh.getEntityX(j) > m.game.obj.getEntityX(i)
                         if m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) > m.game.obj.getEntityY(i)
-                            if m.game.char.getVeh().split("_").peek().toInt() = j
+                            if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j
                                 if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
                                 m.game.veh.setObjIntersect(m.game.char.getVeh().split("_").peek().toInt(), i)
                             else
