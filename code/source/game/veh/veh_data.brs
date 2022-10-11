@@ -62,9 +62,6 @@ function veh_data() as object
         getAlpha: veh_getAlpha
         setAlpha: veh_setAlpha
 
-        getObjIntersect: veh_getObjIntersect
-        setObjIntersect: veh_setObjIntersect
-
         config: invalid
 
     }
@@ -245,12 +242,4 @@ end function
 
 sub veh_setAlpha(i as object, alpha as object)
     m.config[i].alpha = alpha
-end sub
-
-function veh_getObjIntersect(i as object) as object
-    return m.config[i].intersect.obj
-end function
-
-sub veh_setObjIntersect(i as object, j as object)
-    m.config[i].intersect.obj = j
 end sub

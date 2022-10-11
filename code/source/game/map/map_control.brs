@@ -290,9 +290,6 @@ function map_control(object)
                         left: invalid,
                         right: invalid
                     },
-                    intersect: {
-                        obj: invalid
-                    }
                     time: invalid
                 })
             end for
@@ -323,7 +320,6 @@ function map_control(object)
             if m.map_veh_config[i].reg <> invalid then m.game.veh.setReg(i, m.map_veh_config[i].reg)
             if m.map_veh_config[i].time <> invalid then m.game.veh.setAnimTime(i, m.map_veh_config[i].time)
             if m.map_veh_config[i].alpha <> invalid then m.game.veh.setAlpha(i, m.map_veh_config[i].alpha)
-            if m.map_veh_config[i].intersect.obj <> invalid then m.game.veh.setObjIntersect(i, m.map_veh_config[i].intersect.obj)
     
         end for
 
@@ -370,7 +366,6 @@ function map_control(object)
         if m.map_char_config.regen.sp <> invalid and m.game.char.getSPRegen() = invalid then m.game.char.setSPRegen(m.map_char_config.regen.sp)
         if m.map_char_config.regen.hp_time <> invalid and m.game.char.getHPRegenTime() = invalid then m.game.char.setHPRegenTime(m.map_char_config.regen.hp_time)
         if m.map_char_config.regen.sp_time <> invalid and m.game.char.getSPRegenTime() = invalid then m.game.char.setSPRegenTime(m.map_char_config.regen.sp_time)
-        if m.map_char_config.intersect.obj <> invalid and m.game.char.getObjIntersect() = invalid then m.game.char.setObjIntersect(m.map_char_config.intersect.obj)
         if m.map_char_config.veh <> invalid and m.game.char.getVeh() = invalid then m.game.char.setVeh(m.map_char_config.veh)
 
     end function

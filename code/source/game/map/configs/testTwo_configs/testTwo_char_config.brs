@@ -54,9 +54,6 @@ function testTwo_char_config() as object
             left: 2,
             right: 2
         }
-        intersect: {
-            obj: invalid
-        },
         veh: invalid,
         map: invalid
     }

@@ -90,10 +90,6 @@ function char_data(ver) as object
         setMap: char_setMap
 
 
-        getObjIntersect: char_getObjIntersect
-        setObjIntersect: char_setObjIntersect
-
-
         getColUpName: char_getColUpName
         setColUpName: char_setColUpName
 
@@ -173,9 +169,6 @@ function char_data(ver) as object
                 down: invalid
                 left: invalid,
                 right: invalid
-            }
-            intersect: {
-                obj: invalid
             }
             hp: invalid,
             sp: invalid
@@ -440,15 +433,6 @@ sub char_setAlpha(alpha as object)
     m.config.alpha = alpha
 end sub
 
-
-
-function char_getObjIntersect() as object
-    return m.config.intersect.obj
-end function
-
-sub char_setObjIntersect(i as object) 
-    m.config.intersect.obj = i
-end sub
 
 function char_getVehCol() as object
     return m.config.col.veh

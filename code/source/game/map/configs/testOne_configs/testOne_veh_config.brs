@@ -29,9 +29,6 @@ function testOne_veh_config() as object
                 left: 5,
                 right: 5
             },
-            intersect: {
-                obj: invalid
-            }
             time: 100
         },
 
@@ -62,9 +59,6 @@ function testOne_veh_config() as object
                 down: 5,
                 left: 5,
                 right: 5
-            },
-            intersect: {
-                obj: invalid
             },
             time: 100
         }

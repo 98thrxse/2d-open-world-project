@@ -53,9 +53,6 @@ function testOne_char_config() as object
             down: 2,
             left: 2,
             right: 2
-        }
-        intersect: {
-            obj: invalid
         },
         veh: invalid,
         map: invalid

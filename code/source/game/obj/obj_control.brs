@@ -26,82 +26,52 @@ function obj_control(object)
 
     object.objCharIntersect = function()
         if m.game.getFocusGroup() = "char"
-
-            m.game.char.setObjIntersect(invalid)
-
             for i = 0 to m.game.obj.config.Count() - 1
                 if m.game.char.getEntityX() < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityX() > m.game.obj.getEntityX(i) and m.game.char.getEntityY() + m.game.char.getSizeH() / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityY() + m.game.char.getSizeH() / 2 > m.game.obj.getEntityY(i)
                     if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
-                    m.game.char.setObjIntersect(i)
+                    if m.game.char.getAlpha() <> 125 then m.game.char.setAlpha(125)
                 else
                     if m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
+                    if m.game.char.getAlpha() <> 255 then m.game.char.setAlpha(255)
                 end if
             end for
-
-            if m.game.char.getObjIntersect() = invalid
-                if m.game.char.getAlpha() <> 255 then m.game.char.setAlpha(255)
-            else
-                if m.game.char.getAlpha() <> 125 then m.game.char.setAlpha(125)
-            end if
         end if
-
     end function
 
     object.objVehIntersect = function()
-        
-        if m.game.char.getVeh() <> invalid then m.game.veh.setObjIntersect(m.game.char.getVeh().split("_").peek().toInt(), invalid)
-
         for i = 0 to m.game.obj.config.Count() - 1
             for j = 0 to m.game.veh.config.Count() - 1
-                if m.game.veh.getScaleX(j) > 0.0
-                    if m.game.veh.getEntityX(j) < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.veh.getEntityX(j) + m.game.veh.getEntityW(i) > m.game.obj.getEntityX(i)
-                        if m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) > m.game.obj.getEntityY(i)
-                            if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j
+                if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j
+                    if m.game.veh.getScaleX(j) > 0.0
+                        if m.game.veh.getEntityX(j) < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.veh.getEntityX(j) + m.game.veh.getEntityW(i) > m.game.obj.getEntityX(i)
+                            if m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) > m.game.obj.getEntityY(i)
                                 if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
-                                m.game.veh.setObjIntersect(m.game.char.getVeh().split("_").peek().toInt(), i)
+                                if m.game.veh.getAlpha(j) <> 125 then m.game.veh.setAlpha(j, 125)
                             else
-                                if m.game.char.getVehCol() <> invalid and m.game.char.getVehCol().split("_").peek().toInt() = j
-                                    if m.game.veh.getAlpha(j) <> 125 then m.game.veh.setAlpha(j, 125)
-                                else
-                                    if m.game.veh.getAlpha(j) <> 0 then m.game.veh.setAlpha(j, 0)
-                                end if
+                                if m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
+                                if m.game.veh.getAlpha(j) <> 255 then m.game.veh.setAlpha(j, 255)
                             end if
                         else
-                            if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j and m.game.char.getVeh().split("_").peek().toInt() = j and m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
+                            if m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
+                            if m.game.veh.getAlpha(j) <> 255 then m.game.veh.setAlpha(j, 255)
                         end if
                     else
-                        if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j and m.game.char.getVeh().split("_").peek().toInt() = j and m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
-                    end if
-                else
-                    if m.game.veh.getEntityX(j) - m.game.veh.getEntityW(i) < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.veh.getEntityX(j) > m.game.obj.getEntityX(i)
-                        if m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) > m.game.obj.getEntityY(i)
-                            if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j
+                        if m.game.veh.getEntityX(j) - m.game.veh.getEntityW(i) < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.veh.getEntityX(j) > m.game.obj.getEntityX(i)
+                            if m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.veh.getEntityY(j) + m.game.veh.getEntityH(j) > m.game.obj.getEntityY(i)
                                 if m.game.obj.getAlpha(i) <> 125 then m.game.obj.setAlpha(i, 125)
-                                m.game.veh.setObjIntersect(m.game.char.getVeh().split("_").peek().toInt(), i)
+                                if m.game.veh.getAlpha(j) <> 125 then m.game.veh.setAlpha(j, 125)
                             else
-                                if m.game.char.getVehCol() <> invalid and m.game.char.getVehCol().split("_").peek().toInt() = j
-                                    if m.game.veh.getAlpha(j) <> 125 then m.game.veh.setAlpha(j, 125)
-                                else
-                                    if m.game.veh.getAlpha(j) <> 0 then m.game.veh.setAlpha(j, 0)
-                                end if
+                                if m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
+                                if m.game.veh.getAlpha(j) <> 255 then m.game.veh.setAlpha(j, 255)
                             end if
                         else
-                            if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j and m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
+                            if m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
+                            if m.game.veh.getAlpha(j) <> 255 then m.game.veh.setAlpha(j, 255)
                         end if
-                    else
-                        if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j and m.game.obj.getAlpha(i) <> 255 then m.game.obj.setAlpha(i, 255)
                     end if
                 end if
             end for
         end for
-
-        if m.game.getFocusGroup() = "veh"
-            if m.game.veh.getObjIntersect(m.game.char.getVeh().split("_").peek().toInt()) = invalid
-                if m.game.veh.getAlpha(m.game.char.getVeh().split("_").peek().toInt()) <> 255 then m.game.veh.setAlpha(m.game.char.getVeh().split("_").peek().toInt(), 255)
-            else
-                if m.game.veh.getAlpha(m.game.char.getVeh().split("_").peek().toInt()) <> 125 then m.game.veh.setAlpha(m.game.char.getVeh().split("_").peek().toInt(), 125)
-            end if
-        end if
     end function
 
     object.controlUpdate = function()
