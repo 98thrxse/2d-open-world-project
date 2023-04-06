@@ -11,7 +11,7 @@ function testOne_obj_config() as object
                 x: 9625,
                 y: 2300,
                 width: 200,
-                height: 100
+                height: 125
             },
             entity: {
                 x: 9600,
