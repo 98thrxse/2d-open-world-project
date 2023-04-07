@@ -47,7 +47,7 @@ function veh_control(object)
       end if
 
     else if code = 13 ' play
-      m.focusChange()
+      m.vehEnter()
 
     ' released
     else if code = 102 ' up
@@ -105,7 +105,7 @@ function veh_control(object)
     end if
   end function
 
-  object.focusChange = function()
+  object.vehEnter = function()
     if m.game.getFocusGroup() = "char" and m.game.char.getVehCol() <> invalid
       m.game.setFocusGroup("veh")
       m.game.setFocusTarget("")

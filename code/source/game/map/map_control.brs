@@ -184,6 +184,7 @@ function map_control(object)
             if m.map_marker_config[i].transition.y <> invalid then m.game.marker.setTransitionY(i, m.map_marker_config[i].transition.y)
 
         end for
+
     end function
 
     object.loadNPC = function()
