@@ -172,7 +172,7 @@ function veh_control(object)
 	end function
 
   object.vehTurnUp = function()
-    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) < 0.0
+    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
@@ -189,7 +189,6 @@ function veh_control(object)
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
-
     end if
   end function
 

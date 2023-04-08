@@ -124,7 +124,6 @@ function char_control(object)
     else if code = 1006 ' select
       if m.game.getFocusGroup() = "char"
         m.charSPDamage()
-        m.npcHPDamage()
 				m.charAnimAttack()
       end if
       
@@ -155,9 +154,9 @@ function char_control(object)
 
   object.charAnimAttack = function()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
-			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
+			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side") or m.game.char.getRegElement(m.game.char.getIndex()) = "sp_zero"
 				m.animPlay(["idle_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "idle_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "idle_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "idle_side2"])
-			
+
 			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "front")
 				m.animPlay(["idle_front1", "attack_fist1_front", "idle_front1", "attack_fist2_front", "idle_front1", "attack_leg1_front", "idle_front1"])
 
@@ -322,7 +321,7 @@ function char_control(object)
   end function
 
   object.charTurnUp = function()
-    if m.game.char.getScaleX() < 0.0
+    if m.game.char.getScaleX() > 0.0
       m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW() * m.game.char.getScaleX())
       m.game.char.setScaleX(- m.game.char.getScaleX())
     end if
@@ -407,28 +406,6 @@ function char_control(object)
     if m.game.char.getColRight() = false
       m.game.map.setOffsetX(m.game.map.getOffsetX() - m.game.char.getRightSpeed())
     end if
-  end function
-  
-  object.npcHPDamage = function()
-    if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage()
-      if m.hp_damage_timer = invalid
-
-        m.game.npc.setHP(m.game.char.getNPCCol().split("_").peek().toInt(), m.game.npc.getHP(m.game.char.getNPCCol().split("_").peek().toInt()) - m.game.char.getHPDamage())
-
-        print m.game.char.getNPCCol() + " was attacked"
-        print m.game.npc.getHP(m.game.char.getNPCCol().split("_").peek().toInt())
-    
-        m.hp_damage_timer = CreateObject("roTimeSpan")
-        m.hp_damage_timer.Mark()
-    
-      end if
-        
-      if m.hp_damage_timer.TotalMilliseconds() + 1 >= m.game.char.getSPDamageTime()
-        m.hp_damage_timer = invalid
-      end if
-
-    end if
-
   end function
 
   object.charSPDamage = function()
