@@ -154,7 +154,7 @@ function char_control(object)
 
   object.charAnimAttack = function()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
-			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side") or m.game.char.getRegElement(m.game.char.getIndex()) = "sp_zero"
+			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
 				m.animPlay(["idle_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "idle_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "idle_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "idle_side2"])
 
 			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "front")
@@ -409,7 +409,7 @@ function char_control(object)
   end function
 
   object.charSPDamage = function()
-    if m.game.char.getSP() >= m.game.char.getSPDamage()
+    if m.game.char.getSP() >= m.game.char.getSPDamage() and m.game.char.getRegElement(m.game.char.getIndex()) <> "sp_zero"
 
       if m.sp_damage_timer = invalid
         m.game.char.setSP(m.game.char.getSP() - m.game.char.getSPDamage())
