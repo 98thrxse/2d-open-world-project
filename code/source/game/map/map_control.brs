@@ -18,6 +18,7 @@ function map_control(object)
             m.map_terrain_config = testOne_terrain_config()
             m.map_interface_config = testOne_interface_config()
             m.map_marker_config = testOne_marker_config()
+            m.map_filler_config = testOne_filler_config()
 
         else if m.game.char.getMap() = "testTwo"
             m.map_char_config = testTwo_char_config()
@@ -27,6 +28,7 @@ function map_control(object)
             m.map_terrain_config = testTwo_terrain_config()
             m.map_interface_config = testTwo_interface_config()
             m.map_marker_config = testTwo_marker_config()
+            m.map_filler_config = testTwo_filler_config()
         end if
 
     end function
@@ -39,10 +41,59 @@ function map_control(object)
         m.loadTerrain()
         m.loadInterface()
         m.loadMarker()
+        m.loadFiller()
 
         m.loadMap()
     end function
     
+    object.loadFiller = function()
+        ' loading map config to filler data      
+        for i = 0 to m.map_filler_config.Count() - 1
+            if i > m.game.filler.config.Count() - 1
+                m.game.filler.config.push(m.map_filler_config[i])
+            else
+                if m.game.filler.config[i].Count() < m.map_filler_config[i].Count()
+                    for j = m.game.filler.config[i].Count() to m.map_filler_config[i].Count() - 1
+                        m.game.filler.config[i].push({
+                            id: [i, j],
+                            name: invalid,
+                            reg: [],
+                            offset: {
+                                x: invalid,
+                                y: invalid
+                            },
+                            time: invalid
+                        })
+                    end for
+                else if m.game.filler.config[i].Count() > m.map_filler_config[i].Count()
+                    for j = m.map_filler_config[i].Count() to m.game.filler.config[i].Count() - 1
+                        m.game.filler.config[i].pop()
+                    end for
+                end if
+            end if
+        end for
+
+        if m.game.filler.config.Count() > m.map_filler_config.Count()
+            for i = m.map_filler_config.Count() to m.game.filler.config.Count() - 1
+                m.game.filler.config.pop()
+            end for
+        end if
+
+        for i = 0 to m.map_filler_config.Count() - 1
+            for j = 0 to m.map_filler_config[i].Count() - 1
+
+                if m.map_filler_config[i][j].name <> invalid then m.game.filler.setName(i, j, m.map_filler_config[i][j].name)
+                if m.map_filler_config[i][j].offset.x <> invalid then m.game.filler.setOffsetX(i, j, m.map_filler_config[i][j].offset.x)
+                if m.map_filler_config[i][j].offset.y <> invalid then m.game.filler.setOffsetY(i, j, m.map_filler_config[i][j].offset.y)
+                if m.map_filler_config[i][j].reg <> invalid then m.game.filler.setReg(i, j, m.map_filler_config[i][j].reg)
+                if m.map_filler_config[i][j].index <> invalid then m.game.filler.setIndex(i, j, m.map_filler_config[i][j].index)
+                if m.map_filler_config[i][j].time <> invalid then m.game.filler.setAnimTime(i, j, m.map_filler_config[i][j].time)
+
+            end for
+        end for
+    end function
+
+
     object.loadTerrain = function()
         ' loading map config to terrain data      
         for i = 0 to m.map_terrain_config.Count() - 1

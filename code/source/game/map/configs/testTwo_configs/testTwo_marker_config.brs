@@ -5,7 +5,7 @@ function testTwo_marker_config() as object
             name: "marker",
             index: 0,
             alpha: 255,
-            reg: ["marker_transition"],
+            reg: ["transition"],
             offset: {
                 x: 125,
                 y: 270

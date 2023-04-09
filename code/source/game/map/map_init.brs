@@ -13,6 +13,7 @@ function map_init(object)
         m.game.defineObject("veh_init", veh_init)
         m.game.defineObject("obj_init", obj_init)
         m.game.defineObject("terrain_init", terrain_init)
+        m.game.defineObject("filler_init", filler_init)
 
         ' createInstance
         m.game.createInstance("map_main")

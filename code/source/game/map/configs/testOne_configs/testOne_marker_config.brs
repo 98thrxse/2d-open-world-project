@@ -6,7 +6,7 @@ function testOne_marker_config() as object
             name: "marker",
             index: 0,
             alpha: 255,
-            reg: ["marker_transition"],
+            reg: ["transition"],
             offset: {
                 x: 2208,
                 y: 1418

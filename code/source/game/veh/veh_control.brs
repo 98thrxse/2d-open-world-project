@@ -201,22 +201,22 @@ function veh_control(object)
 
   object.vehAnimIdleUp = function()
 		m.animTimer = invalid
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["veh_car1_back"])
+		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
 	end function
 
 	object.vehAnimIdleDown = function()
 		m.animTimer = invalid
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["veh_car1_front"])
+		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
 	end function
 
 	object.vehAnimIdleLeft = function()
 		m.animTimer = invalid
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["veh_car1_side"])
+		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
 	end function
 
 	object.vehAnimIdleRight = function()
     m.animTimer = invalid
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["veh_car1_side"])
+		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
 	end function
 
   object.vehWalkUp = function()
@@ -252,15 +252,15 @@ function veh_control(object)
   end function
 
   object.vehAnimWalkUp = function()
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["veh_car1_back"])
+		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
 	end function
 
 	object.vehAnimWalkDown = function()
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["veh_car1_front"])
+		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
 	end function
 
 	object.vehAnimWalkSide = function()
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["veh_car1_side"])
+		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
 	end function
 
   object.controlUpdate = function()

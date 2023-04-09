@@ -6,7 +6,7 @@ function testOne_obj_config() as object
             name: "obj",
             index: 0,
             alpha: 255,
-            reg: ["obj_exterior1_front", "obj_exterior1_back", "obj_exterior1_side1", "obj_exterior1_side2"]
+            reg: ["exterior1_front", "exterior1_back", "exterior1_side1", "exterior1_side2"]
             col: {
                 x: 2138,
                 y: 1302
