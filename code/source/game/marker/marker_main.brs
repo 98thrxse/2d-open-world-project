@@ -11,6 +11,7 @@ function marker_main(object)
     end function
 
     object.onDestroy = function()
+        ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("marker_transition"))
         m.game.destroyInstance(m.game.getInstanceByName("marker_control"))
     end function

@@ -37,6 +37,7 @@ function marker_control(object)
 
         if m.game.char.getMarkerCol() <> invalid and m.game.char.getVehCol() = invalid
 
+		    ' destroyInstance
             m.game.destroyInstance(m.game.getInstanceByName("map_control"))
 
             ' set char map
@@ -46,6 +47,7 @@ function marker_control(object)
             m.game.char.setEntityX(m.game.marker.getTransitionX(m.game.char.getMarkerCol().split("_").peek().toInt()))
             m.game.char.setEntityY(m.game.marker.getTransitionY(m.game.char.getMarkerCol().split("_").peek().toInt()))
 
+            ' createInstance
             m.game.createInstance("map_control")
         end if
     

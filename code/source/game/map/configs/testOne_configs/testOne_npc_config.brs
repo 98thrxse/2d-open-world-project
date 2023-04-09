@@ -8,8 +8,8 @@ function testOne_npc_config() as object
             alpha: 255,
             reg: ["idle_back1", "idle_front1", "idle_side1", "walk_back1", "walk_back2", "walk_front1", "walk_front2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "idle_back2", "idle_front2", "idle_side2", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"]
             offset: {
-                x: 9400,
-                y: 1800
+                x: 1913,
+                y: 802
             },
             scale: {
                 x: 1.0,
@@ -22,7 +22,7 @@ function testOne_npc_config() as object
             }
             path: {
                 cycle: 0,
-                position: [ [9400, 1800], [9500, 2000] ]
+                position: [ [1913, 802], [2013, 1002] ]
             },
             hp: 100,
             speed: {
@@ -41,8 +41,8 @@ function testOne_npc_config() as object
             alpha: 255,
             reg: ["idle_back1", "idle_front1", "idle_side1", "walk_back1", "walk_back2", "walk_front1", "walk_front2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "idle_back2", "idle_front2", "idle_side2", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"]
             offset: {
-                x: 9800,
-                y: 2000
+                x: 2313,
+                y: 1002
             },
             scale: {
                 x: 1.0,

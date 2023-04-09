@@ -8,14 +8,14 @@ function testOne_veh_config() as object
             alpha: 255,
             reg: ["veh_car1_back", "veh_car1_front", "veh_car1_side"],
             col: {
-                x: 9400,
-                y: 2500,
+                x: 1913,
+                y: 1502,
                 width: 165,
                 height: 123
             },
             entity: {
-                x: 9400,
-                y: 2500
+                x: 1913,
+                y: 1502
                 width: 165,
                 height: 123
             }
@@ -39,14 +39,14 @@ function testOne_veh_config() as object
             alpha: 255,
             reg: ["veh_car1_back", "veh_car1_front", "veh_car1_side"],
             col: {
-                x: 9600,
-                y: 2500,
+                x: 2113,
+                y: 1502,
                 width: 165,
                 height: 123
             },
             entity: {
-                x: 9600,
-                y: 2500
+                x: 2113,
+                y: 1502
                 width: 165,
                 height: 123
             }

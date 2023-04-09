@@ -13,6 +13,7 @@ function veh_init(object)
 	end function
 
 	object.onDestroy = function()
+		' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("veh_main"))
     end function
 

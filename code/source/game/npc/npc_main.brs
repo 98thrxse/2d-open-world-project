@@ -11,6 +11,7 @@ function npc_main(object)
     end function
 
     object.onDestroy = function()
+        ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("npc_view"))
         m.game.destroyInstance(m.game.getInstanceByName("npc_control"))
     end function

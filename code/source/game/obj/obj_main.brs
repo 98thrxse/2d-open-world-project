@@ -11,6 +11,7 @@ function obj_main(object)
     end function
 
     object.onDestroy = function()
+        ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("obj_view"))
         m.game.destroyInstance(m.game.getInstanceByName("obj_control"))
     end function

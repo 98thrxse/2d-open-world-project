@@ -6,16 +6,16 @@ function testOne_obj_config() as object
             name: "obj",
             index: 0,
             alpha: 255,
-            reg: ["obj_house1_front", "obj_house1_back", "obj_house1_side1", "obj_house1_side2"]
+            reg: ["obj_exterior1_front", "obj_exterior1_back", "obj_exterior1_side1", "obj_exterior1_side2"]
             col: {
-                x: 9625,
-                y: 2300,
+                x: 2138,
+                y: 1302
                 width: 200,
                 height: 125
             },
             entity: {
-                x: 9600,
-                y: 2200
+                x: 2113,
+                y: 1202
                 width: 250,
                 height: 250
             }

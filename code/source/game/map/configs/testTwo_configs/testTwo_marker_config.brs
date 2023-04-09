@@ -17,8 +17,8 @@ function testTwo_marker_config() as object
 
             transition: {
                 name: "testOne"
-                x: 9720,
-                y: 2450
+                x: 2233,
+                y: 1453
             }
         }
     ]

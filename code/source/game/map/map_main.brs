@@ -18,6 +18,7 @@ function map_main(object)
     end function
 
     object.onDestroy = function()
+		' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("char_init"))
         m.game.destroyInstance(m.game.getInstanceByName("interface_init"))
         m.game.destroyInstance(m.game.getInstanceByName("marker_init"))

@@ -5,15 +5,6 @@ function char_control(object)
     ' getInstanceByName
 		m.view_wnd = m.game.getInstanceByName("char_view")
 
-    ' set col false on spawn
-    m.game.char.setColUp(false)
-    m.game.char.setColDown(false)
-    m.game.char.setColLeft(false)
-    m.game.char.setColRight(false)
-
-    ' set veh invalid on spawn
-    m.game.char.setVeh(invalid)
-
   end function
 
 

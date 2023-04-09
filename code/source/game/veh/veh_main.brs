@@ -11,6 +11,7 @@ function veh_main(object)
     end function
 
     object.onDestroy = function()
+        ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("veh_view"))
         m.game.destroyInstance(m.game.getInstanceByName("veh_control"))
     end function

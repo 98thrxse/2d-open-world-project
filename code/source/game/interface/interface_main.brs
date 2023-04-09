@@ -13,6 +13,7 @@ function interface_main(object)
     end function
 
     object.onDestroy = function()
+		' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("interface_menu"))
         m.game.destroyInstance(m.game.getInstanceByName("interface_hp"))
         m.game.destroyInstance(m.game.getInstanceByName("interface_sp"))

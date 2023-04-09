@@ -20,6 +20,7 @@ function map_init(object)
     end function
 
     object.onDestroy = function()
+		' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("map_main"))
     end function
     

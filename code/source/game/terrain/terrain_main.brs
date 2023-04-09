@@ -11,6 +11,7 @@ function terrain_main(object)
     end function
 
     object.onDestroy = function()
+        ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("terrain_view"))
         m.game.destroyInstance(m.game.getInstanceByName("terrain_control"))
     end function

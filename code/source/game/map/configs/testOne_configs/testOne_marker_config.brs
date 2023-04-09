@@ -8,8 +8,8 @@ function testOne_marker_config() as object
             alpha: 255,
             reg: ["marker_transition"],
             offset: {
-                x: 9695,
-                y: 2415
+                x: 2208,
+                y: 1418
             },
             size: {
                 width: 60,

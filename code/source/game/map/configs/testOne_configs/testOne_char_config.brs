@@ -22,8 +22,8 @@ function testOne_char_config() as object
         },
         time: 100
         pos: {
-            x: 9562,
-            y: 2194
+            x: 1979,
+            y: 1243
         },
         col: {
             up: false,

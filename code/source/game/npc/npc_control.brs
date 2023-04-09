@@ -218,6 +218,8 @@ function npc_control(object)
         m.hp_damage_timer = invalid
       end if
 
+      m.game.char.setNPCCol(invalid)
+
     end if
 
   end function
