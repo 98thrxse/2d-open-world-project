@@ -15,7 +15,6 @@ function filler_control(object)
 
     end function
 
-    ' stas
     object.animPlay = function(i, j, arr)
 
 		if m.timer = invalid
@@ -31,8 +30,8 @@ function filler_control(object)
             end for
         end for
 
-        if m.timer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.filler.getAnimTime(i, j) then m.timer.Mark() ' * 1000 - AnimTime
-		m.game.filler.setIndex(i, j, arrAnim[int(m.timer.TotalMilliseconds() / m.game.filler.getAnimTime(i, j))]) ' / 1000 - AnimTime
+        if m.timer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.filler.getAnimTime(i, j) then m.timer.Mark()
+		m.game.filler.setIndex(i, j, arrAnim[int(m.timer.TotalMilliseconds() / m.game.filler.getAnimTime(i, j))])
 
 	end function
 
