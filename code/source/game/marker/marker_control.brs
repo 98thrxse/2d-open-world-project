@@ -33,6 +33,7 @@ function marker_control(object)
 
     end function
 
+    ' stas - map control refactoring because of marker transition
     object.markerTransition = function()
 
         if m.game.char.getMarkerCol() <> invalid and m.game.char.getVehCol() = invalid

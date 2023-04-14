@@ -49,6 +49,7 @@ function char_control(object)
       end if
 
     ' released
+    ' stas - move to veh
     else if code = 102 ' up
       if m.game.getFocusGroup() = "char" or m.game.getFocusGroup() = "veh"
         m.charIdleUp()
@@ -274,6 +275,7 @@ function char_control(object)
 
       end if
 
+    ' stas - move to veh
     else if m.game.getFocusGroup() = "veh"
       
       if m.view_wnd.getCollider(m.game.char.getColUpName().toStr()) <> invalid

@@ -7,8 +7,8 @@ function map_data() as object
         getOffsetY: map_getOffsetY
         setOffsetY: map_setOffsetY
 
-		getMap: map_getMap
-        setMap: map_setMap
+		getStartMap: map_getStartMap
+        setStartMap: map_setStartMap
 
 		config: invalid
 	}
@@ -46,10 +46,10 @@ sub map_setOffsetY(y as object)
     m.config.offset.y = y
 end sub
 
-function map_getMap() as object
+function map_getStartMap() as object
     return m.config.name
 end function
 
-sub map_setMap(name as object)
+sub map_setStartMap(name as object)
     m.config.name = name
 end sub

@@ -7,8 +7,8 @@ function testTwo_terrain_config() as object
                 index: 0,
                 reg: ["interior_01"]
                 offset: {
-                    x: 0,
-                    y: 0
+                    x: 1770,
+                    y: 924
                 }
             }
         ]

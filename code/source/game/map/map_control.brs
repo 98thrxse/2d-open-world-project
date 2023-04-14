@@ -1,14 +1,13 @@
 function map_control(object)
 
+    ' stas - map control refactoring because of marker transition
     object.onCreate = function(args)
-
-        m.chooseMap()
-        m.loadConfigs()
-
+        m.getConfigs()
     end function
 
-    object.chooseMap = function()
-        if m.game.char.getMap() = invalid then m.game.char.setMap(m.game.map.getMap())
+    ' stas - change method of loading configs
+    object.getConfigs = function()
+        if m.game.char.getMap() = invalid then m.game.char.setMap(m.game.map.getStartMap())
         
         if m.game.char.getMap() = "testOne"
             m.map_char_config = testOne_char_config()
@@ -31,9 +30,6 @@ function map_control(object)
             m.map_filler_config = testTwo_filler_config()
         end if
 
-    end function
-
-    object.loadConfigs = function()
         m.loadChar()
         m.loadNPC()
         m.loadObj()

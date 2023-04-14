@@ -53,7 +53,7 @@ function filler_control(object)
     object.autoAnimPlay = function()
         for i = 0 to m.game.filler.config.Count() - 1
             for j = 0 to m.game.filler.config[i].Count() - 1
-                m.animPlay(i, j, ["filler_02", "filler_01"])
+                m.animPlay(i, j, m.game.filler.getReg(i, j))
             end for
         end for
     end function

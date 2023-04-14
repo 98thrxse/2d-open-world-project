@@ -7,8 +7,8 @@ function testTwo_marker_config() as object
             alpha: 255,
             reg: ["transition"],
             offset: {
-                x: 125,
-                y: 270
+                x: 1895,
+                y: 1194
             },
             size: {
                 width: 60,
