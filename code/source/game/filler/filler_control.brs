@@ -15,7 +15,7 @@ function filler_control(object)
 
     end function
 
-    object.animPlay = function(i, j, arr)
+    object.playAnim = function(i, j, arr)
 
 		if m.timer = invalid
 			m.timer = CreateObject("roTimeSpan")
@@ -50,10 +50,10 @@ function filler_control(object)
 
 	end function
 
-    object.autoAnimPlay = function()
+    object.autoPlayAnim = function()
         for i = 0 to m.game.filler.config.Count() - 1
             for j = 0 to m.game.filler.config[i].Count() - 1
-                m.animPlay(i, j, m.game.filler.getReg(i, j))
+                m.playAnim(i, j, m.game.filler.getReg(i, j))
             end for
         end for
     end function
@@ -61,7 +61,7 @@ function filler_control(object)
     object.onUpdate = function(dt as float)
 
         m.updatePos()
-        m.autoAnimPlay()
+        m.autoPlayAnim()
         m.updateView()
 
     end function

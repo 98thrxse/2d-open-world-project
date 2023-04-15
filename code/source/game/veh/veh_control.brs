@@ -25,7 +25,6 @@ function veh_control(object)
   object.onUpdate = function(dt as float)
 
     m.updatePos()
-    m.npcHPDamage()
     m.updateView()
 
   end function
@@ -35,74 +34,74 @@ function veh_control(object)
     ' pressed
     if code = 2 ' up
       if m.game.getFocusGroup() = "veh"
-        m.vehTurnUp()
+        m.turnUp()
       end if
 
     else if code = 3 ' down
       if m.game.getFocusGroup() = "veh"
-        m.vehTurnDown()
+        m.turnDown()
       end if
 
     else if code = 4 ' left
       if m.game.getFocusGroup() = "veh"
-        m.vehTurnLeft()
+        m.turnLeft()
       end if
 
     else if code = 5 ' right
       if m.game.getFocusGroup() = "veh"
-        m.vehTurnRight()
+        m.turnRight()
       end if
 
     else if code = 13 ' play
-      m.vehEnter()
+      m.focusChange()
 
     ' released
     else if code = 102 ' up
       if m.game.getFocusGroup() = "veh"
-        m.vehAnimIdleUp()
+        m.idleUpAnim()
       end if
 
     else if code = 103 ' down
       if m.game.getFocusGroup() = "veh"
-        m.vehAnimIdleDown()       
+        m.idleDownAnim()       
       end if
 
     else if code = 104 ' left
       if m.game.getFocusGroup() = "veh"
-        m.vehAnimIdleLeft()        
+        m.idleLeftAnim()        
       end if
 
     else if code = 105 ' right
       if m.game.getFocusGroup() = "veh"
-        m.vehAnimIdleRight()       
+        m.idleRightAnim()       
       end if
 
     ' held
     else if code = 1002 ' up
       if m.game.getFocusGroup() = "veh"
-        m.vehWalkUp()
-        m.vehAnimWalkUp()
+        m.walkUp()
+        m.walkUpAnim()
         m.savePos()
       end if
                       
     else if code = 1003 ' down
       if m.game.getFocusGroup() = "veh"
-        m.vehWalkDown()  
-        m.vehAnimWalkDown()
+        m.walkDown()  
+        m.walkDownAnim()
         m.savePos()    
       end if
         
     else if code = 1004 ' left
       if m.game.getFocusGroup() = "veh"
-        m.vehWalkLeft()
-        m.vehAnimWalkSide()
+        m.walkLeft()
+        m.walkSideAnim()
         m.savePos()
       end if
             
     else if code = 1005 ' right
       if m.game.getFocusGroup() = "veh"
-        m.vehWalkRight()
-        m.vehAnimWalkSide()
+        m.walkRight()
+        m.walkSideAnim()
         m.savePos()
       end if
       
@@ -110,13 +109,7 @@ function veh_control(object)
 
   end function
 
-  object.npcHPDamage = function()
-    if m.game.getFocusGroup() = "veh" and m.game.char.getNPCCol() <> invalid
-      if m.game.npc.getHP(m.game.char.getNPCCol().split("_").peek().toInt()) > 0 then m.game.npc.setHP(m.game.char.getNPCCol().split("_").peek().toInt(), 0)
-    end if
-  end function
-
-  object.vehEnter = function()
+  object.focusChange = function()
     if m.game.getFocusGroup() = "char" and m.game.char.getVehCol() <> invalid
       m.game.setFocusGroup("veh")
       m.game.setFocusTarget("")
@@ -162,7 +155,7 @@ function veh_control(object)
     end if
   end function
 
-	object.animPlay = function(i, arr)
+	object.playAnim = function(i, arr)
 
 		if m.timer = invalid
 			m.timer = CreateObject("roTimeSpan")
@@ -182,55 +175,55 @@ function veh_control(object)
 
 	end function
 
-  object.vehTurnUp = function()
+  object.turnUp = function()
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
   end function
 
-  object.vehTurnDown = function()
+  object.turnDown = function()
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) < 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
   end function
 
-  object.vehTurnLeft = function()
+  object.turnLeft = function()
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
   end function
 
-  object.vehTurnRight = function()
+  object.turnRight = function()
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) < 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
   end function
 
-  object.vehAnimIdleUp = function()
+  object.idleUpAnim = function()
 		m.animTimer = invalid
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
 	end function
 
-	object.vehAnimIdleDown = function()
+	object.idleDownAnim = function()
 		m.animTimer = invalid
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
 	end function
 
-	object.vehAnimIdleLeft = function()
+	object.idleLeftAnim = function()
 		m.animTimer = invalid
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
 	end function
 
-	object.vehAnimIdleRight = function()
+	object.idleRightAnim = function()
     m.animTimer = invalid
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
 	end function
 
-  object.vehWalkUp = function()
+  object.walkUp = function()
     if m.game.char.getColUp() = false
       m.game.map.setOffsetY(m.game.map.getOffsetY() + m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityY(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()))
@@ -238,7 +231,7 @@ function veh_control(object)
     end if
   end function
 
-  object.vehWalkDown = function()
+  object.walkDown = function()
     if m.game.char.getColDown() = false
       m.game.map.setOffsetY(m.game.map.getOffsetY() - m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityY(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()))
@@ -246,7 +239,7 @@ function veh_control(object)
     end if
   end function
 
-  object.vehWalkLeft = function()
+  object.walkLeft = function()
     if m.game.char.getColLeft() = false
       m.game.map.setOffsetX(m.game.map.getOffsetX() + m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()))
@@ -254,7 +247,7 @@ function veh_control(object)
     end if
   end function
 
-  object.vehWalkRight = function()
+  object.walkRight = function()
     if m.game.char.getColRight() = false
       m.game.map.setOffsetX(m.game.map.getOffsetX() - m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()))
@@ -262,16 +255,16 @@ function veh_control(object)
     end if
   end function
 
-  object.vehAnimWalkUp = function()
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
+  object.walkUpAnim = function()
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
 	end function
 
-	object.vehAnimWalkDown = function()
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
+	object.walkDownAnim = function()
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
 	end function
 
-	object.vehAnimWalkSide = function()
-		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
+	object.walkSideAnim = function()
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
 	end function
 
   object.updateView = function()

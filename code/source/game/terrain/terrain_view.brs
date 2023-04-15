@@ -6,7 +6,7 @@ function terrain_view(object)
 
     end function
 
-    object.entityLoad = function(id_y, id_x, i, j)
+    object.loadEntity = function(id_y, id_x, i, j)
 
         m.terrain_regions = []
 
@@ -28,7 +28,7 @@ function terrain_view(object)
 
     end function
 
-    object.entityUnload = function(i, j)
+    object.unloadEntity = function(i, j)
 
         for k = 0 to m.game.terrain.config[i][j].reg.Count() - 1
 
@@ -40,7 +40,7 @@ function terrain_view(object)
         end for
     end function
 
-    object.entityGen = function()
+    object.genEntity = function()
 
         if m.game.terrain.config.Count() <> 0
             id_x = []
@@ -90,7 +90,7 @@ function terrain_view(object)
                     if m.getImage(m.game.terrain.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr()) = invalid
                         
                         ' load
-                        m.entityLoad(id_y, id_x, i, j)
+                        m.loadEntity(id_y, id_x, i, j)
 
                         ' add
                         m.addAnimatedImage(m.game.terrain.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.terrain_regions, { index: m.game.terrain.getIndex(i, j)
@@ -109,7 +109,7 @@ function terrain_view(object)
                     if m.getImage(m.game.terrain.getName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not arrayUtils().contains(id_x, j) or not arrayUtils().contains(id_y, i))
                         
                         ' unload
-                        m.entityUnload(i, j)
+                        m.unloadEntity(i, j)
                                             
                         ' remove    
                         m.removeImage(m.game.terrain.getName(i, j).toStr() + "_" + i.toStr() + j.toStr())
@@ -125,7 +125,7 @@ function terrain_view(object)
 
     object.onUpdate = function(dt as float)
 
-        m.entityGen()
+        m.genEntity()
 
     end function
     

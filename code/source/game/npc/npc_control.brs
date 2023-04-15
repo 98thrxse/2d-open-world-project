@@ -18,16 +18,16 @@ function npc_control(object)
   object.onUpdate = function(dt as float)
 
       m.updatePos()
-      m.npcWalk()
-      m.npcPathReset()
-      m.npcDeath()
-      m.npcAnimDeath()
-      m.npcAnimWalk()
+      m.walk()
+      m.pathReset()
+      m.death()
+      m.deathAnim()
+      m.walkAnim()
       m.updateView()
 
   end function
 
-  object.npcPathReset = function()
+  object.pathReset = function()
     for i = 0 to m.game.npc.config.Count() - 1
       if m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
 
@@ -39,7 +39,7 @@ function npc_control(object)
     end for
   end function
 
-  object.npcWalk = function()
+  object.walk = function()
 
     for i = 0 to m.game.npc.config.Count() - 1
 
@@ -111,17 +111,17 @@ function npc_control(object)
 
   end function
 
-	object.npcAnimDeath = function()
+	object.deathAnim = function()
 
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) <= 0 and m.game.npc.getRegElement(i, m.game.npc.getIndex(i)) <> "hp_zero" 
-        m.animPlay(i, ["hp_zero"])
+        m.playAnim(i, ["hp_zero"])
 			end if
 		end for
 
 	end function
 
-  object.npcDeath = function()
+  object.death = function()
 
 		for i = 0 to m.game.npc.config.Count() - 1
       if m.game.npc.getHP(i) <= 0 and m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
@@ -132,21 +132,21 @@ function npc_control(object)
 
 	end function
 
-	object.npcAnimWalk = function()
+	object.walkAnim = function()
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) > 0 and m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
 
 				if m.game.npc.getOffsetX(i) < m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
-					m.npcAnimWalkSide(i)
+					m.walkSideAnim(i)
 				
 				else if m.game.npc.getOffsetX(i) > m.game.npc.getPathX(i, m.game.npc.getPathCycle(i))
-					m.npcAnimWalkSide(i)
+					m.walkSideAnim(i)
 				
 				else if m.game.npc.getOffsetY(i) <= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
-					m.npcAnimWalkDown(i)
+					m.walkDownAnim(i)
 		
 				else if m.game.npc.getOffsetY(i) >= m.game.npc.getPathY(i, m.game.npc.getPathCycle(i))
-					m.npcAnimWalkUp(i)
+					m.walkUpAnim(i)
 		
 				end if
 	
@@ -155,20 +155,20 @@ function npc_control(object)
 		end for
 	end function
 
-	object.npcAnimWalkUp = function(i)
-		m.animPlay(i, ["walk_back1", "idle_back1", "walk_back2"])
+	object.walkUpAnim = function(i)
+		m.playAnim(i, ["walk_back1", "idle_back1", "walk_back2"])
 	end function
 
-	object.npcAnimWalkDown = function(i)
-		m.animPlay(i, ["walk_front1", "idle_front1", "walk_front2"])
+	object.walkDownAnim = function(i)
+		m.playAnim(i, ["walk_front1", "idle_front1", "walk_front2"])
 	end function
 
-	object.npcAnimWalkSide = function(i)
-		m.animPlay(i, ["walk_side1", "idle_side1", "walk_side2"])
+	object.walkSideAnim = function(i)
+		m.playAnim(i, ["walk_side1", "idle_side1", "walk_side2"])
 	end function
 
 
-	object.animPlay = function(i, arr)
+	object.playAnim = function(i, arr)
 
 		if m.timer = invalid
 			m.timer = CreateObject("roTimeSpan")
@@ -193,14 +193,34 @@ function npc_control(object)
     ' held
     if code = 1006 ' select
       if m.game.getFocusGroup() = "char"
-        m.npcHPDamage()
+        m.getCharHPDamage()
+      end if
+
+    else if code = 1002 ' up
+      if m.game.getFocusGroup() = "veh"
+        m.getVehHPDamage()
+      end if
+                      
+    else if code = 1003 ' down
+      if m.game.getFocusGroup() = "veh"
+        m.getVehHPDamage()
+      end if
+        
+    else if code = 1004 ' left
+      if m.game.getFocusGroup() = "veh"
+        m.getVehHPDamage()
+      end if
+            
+    else if code = 1005 ' right
+      if m.game.getFocusGroup() = "veh"
+        m.getVehHPDamage()
       end if
       
     end if
 
   end function
 
-  object.npcHPDamage = function()
+  object.getCharHPDamage = function()
     if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage() and m.game.char.getRegElement(m.game.char.getIndex()) <> "sp_zero"
       if m.hp_damage_timer = invalid
 
@@ -221,7 +241,12 @@ function npc_control(object)
       m.game.char.setNPCCol(invalid)
 
     end if
+  end function
 
+  object.getVehHPDamage = function()
+    if m.game.char.getNPCCol() <> invalid
+      if m.game.npc.getHP(m.game.char.getNPCCol().split("_").peek().toInt()) > 0 then m.game.npc.setHP(m.game.char.getNPCCol().split("_").peek().toInt(), 0)
+    end if
   end function
 
 	object.updateView = function()

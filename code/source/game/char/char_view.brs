@@ -8,12 +8,12 @@ function char_view(object)
 
   object.onUpdate = function(dt as float)
 
-    m.entityGen()
-    m.colGen()
+    m.genEntity()
+    m.genCol()
 
   end function
 
-  object.entityLoad = function()
+  object.loadEntity = function()
 
     m.char_regions = []
 
@@ -38,12 +38,12 @@ function char_view(object)
   end function
 
   
-  object.entityGen = function()
+  object.genEntity = function()
 
     if m.getImage(m.game.char.getEntityName().toStr()) = invalid
 
       'load
-      m.entityLoad()
+      m.loadEntity()
 
       ' addAnimatedImage
       m.addAnimatedImage(m.game.char.getEntityName(), m.char_regions, { index: m.game.char.getIndex()
@@ -58,7 +58,7 @@ function char_view(object)
 
   end function
 
-  object.colGen = function()
+  object.genCol = function()
 
     ' addColliderRectangle
     if m.colliders[m.game.char.getColUpName()] = invalid

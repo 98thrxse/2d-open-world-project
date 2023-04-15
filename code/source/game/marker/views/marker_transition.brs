@@ -12,7 +12,7 @@ function marker_transition(object)
 
   end function
 
-  object.entityLoad = function(i)
+  object.loadEntity = function(i)
 
     m.marker_regions = []
 
@@ -35,7 +35,7 @@ function marker_transition(object)
 
   end function
 
-  object.entityUnload = function(i)
+  object.unloadEntity = function(i)
 
     for j = 0 to m.game.marker.config[i].reg.Count() - 1
 
@@ -48,7 +48,7 @@ function marker_transition(object)
   
   end function
 
-  object.entityGen = function()
+  object.genEntity = function()
 
     if m.game.marker.config.Count() <> 0
 
@@ -58,7 +58,7 @@ function marker_transition(object)
           if m.getImage(m.game.marker.getName(i).toStr() + "_" + i.toStr()) = invalid
                   
             ' load
-            m.entityLoad(i)
+            m.loadEntity(i)
 
             ' add
             m.addAnimatedImage(m.game.marker.getName(i).toStr() + "_" + i.toStr(), m.marker_regions, { index: m.game.marker.getIndex(i)
@@ -76,7 +76,7 @@ function marker_transition(object)
           m.removeImage(m.game.marker.getName(i).toStr() + "_" + i.toStr())
 
           ' unload
-          m.entityUnload(i)
+          m.unloadEntity(i)
 
         end if
       end for
@@ -84,7 +84,7 @@ function marker_transition(object)
 
   end function
 
-  object.colGen = function()
+  object.genCol = function()
 
     if m.game.marker.config.Count() <> 0
 
@@ -128,8 +128,8 @@ function marker_transition(object)
 
   object.onUpdate = function(dt as float)
 
-    m.entityGen()
-    m.colGen()
+    m.genEntity()
+    m.genCol()
 
   end function
 

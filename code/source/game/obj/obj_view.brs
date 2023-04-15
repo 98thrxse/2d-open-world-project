@@ -7,7 +7,7 @@ function obj_view(object)
     end function
 
     ' stas - change namings (loadEntity)
-    object.entityLoad = function(i)
+    object.loadEntity = function(i)
 
         m.obj_regions = []
 
@@ -30,7 +30,7 @@ function obj_view(object)
 
     end function
 
-    object.entityUnload = function(i)
+    object.unloadEntity = function(i)
 
         for j = 0 to m.game.obj.config[i].reg.Count() - 1
     
@@ -43,7 +43,7 @@ function obj_view(object)
     
     end function
 
-    object.entityGen = function()
+    object.genEntity = function()
 
         if m.game.obj.config.Count() <> 0
             ' load & add
@@ -52,7 +52,7 @@ function obj_view(object)
                     if m.getImage(m.game.obj.getName(i).toStr() + "_" + i.toStr()) = invalid
                             
                         ' load
-                        m.entityLoad(i)
+                        m.loadEntity(i)
 
                         ' add
                         m.addAnimatedImage(m.game.obj.getName(i).toStr() + "_" + i.toStr(), m.obj_regions, { index: m.game.obj.getIndex(i)
@@ -70,7 +70,7 @@ function obj_view(object)
                     m.removeImage(m.game.obj.getName(i).toStr() + "_" + i.toStr())
 
                     ' unload
-                    m.entityUnload(i)
+                    m.unloadEntity(i)
 
                 end if
             
@@ -79,7 +79,7 @@ function obj_view(object)
 
     end function
 
-    object.colGen = function()
+    object.genCol = function()
 
         if m.game.obj.config.Count() <> 0
             ' load & add
@@ -121,8 +121,8 @@ function obj_view(object)
 
     object.onUpdate = function(dt as float)
 
-        m.entityGen()
-        m.colGen()
+        m.genEntity()
+        m.genCol()
 
     end function
 

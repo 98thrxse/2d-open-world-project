@@ -7,7 +7,7 @@ function veh_view(object)
   end function
 
 
-  object.entityLoad = function(i)
+  object.loadEntity = function(i)
 
     m.veh_regions = []
 
@@ -30,7 +30,7 @@ function veh_view(object)
     
   end function
 
-  object.entityUnload = function(i)
+  object.unloadEntity = function(i)
 
     for j = 0 to m.game.veh.config[i].reg.Count() - 1
 
@@ -43,7 +43,7 @@ function veh_view(object)
 
   end function
 
-  object.entityGen = function()
+  object.genEntity = function()
 
     if m.game.veh.config.Count() <> 0
       ' load & add
@@ -52,7 +52,7 @@ function veh_view(object)
           if - m.game.map.getOffsetX() <= m.game.veh.getEntityX(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() + m.game.veh.getEntityW(i) * abs(m.game.veh.getScaleX(i)) >= m.game.veh.getEntityX(i) and - m.game.map.getOffsetY() <= m.game.veh.getEntityY(i) + m.game.veh.getEntityH(i) * abs(m.game.veh.getScaleY(i)) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getEntityY(i)
             if m.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()) = invalid
               ' load
-              m.entityLoad(i)
+              m.loadEntity(i)
 
               ' add
               m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
@@ -72,7 +72,7 @@ function veh_view(object)
             m.removeImage(m.game.veh.getName(i).toStr() + "_" + i.toStr())
 
             ' unload
-            m.entityUnload(i)
+            m.unloadEntity(i)
 
           end if
 
@@ -81,7 +81,7 @@ function veh_view(object)
             if m.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()) = invalid
 
               ' load
-              m.entityLoad(i)
+              m.loadEntity(i)
 
               ' add
               m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
@@ -101,7 +101,7 @@ function veh_view(object)
             m.removeImage(m.game.veh.getName(i).toStr() + "_" + i.toStr())
 
             ' unload
-            m.entityUnload(i)
+            m.unloadEntity(i)
 
           end if
         end if
@@ -112,7 +112,7 @@ function veh_view(object)
   end function
 
 
-  object.colGen = function()
+  object.genCol = function()
     if m.game.veh.config.Count() <> 0
 
       for i = 0 to m.game.veh.config.Count() - 1
@@ -160,8 +160,8 @@ function veh_view(object)
 
   object.onUpdate = function(dt as float)
 
-    m.entityGen()
-    m.colGen()
+    m.genEntity()
+    m.genCol()
 
   end function
 

@@ -7,7 +7,7 @@ function npc_view(object)
   end function
 
 
-  object.entityLoad = function(i)
+  object.loadEntity = function(i)
 
     m.npc_regions = []
 
@@ -30,7 +30,7 @@ function npc_view(object)
     
   end function
 
-  object.entityUnload = function(i)
+  object.unloadEntity = function(i)
 
     for j = 0 to m.game.npc.config[i].reg.Count() - 1
 
@@ -43,7 +43,7 @@ function npc_view(object)
 
   end function
 
-  object.entityGen = function()
+  object.genEntity = function()
     if m.game.npc.config.Count() <> 0
 
       ' load & add
@@ -52,7 +52,7 @@ function npc_view(object)
           if m.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()) = invalid
 
             ' load
-            m.entityLoad(i)
+            m.loadEntity(i)
 
             ' add
             m.addAnimatedImage(m.game.npc.getName(i).toStr() + "_" + i.toStr(), m.npc_regions, { index: m.game.npc.getIndex(i)
@@ -71,7 +71,7 @@ function npc_view(object)
           m.removeImage(m.game.npc.getName(i).toStr() + "_" + i.toStr())
 
           ' unload
-          m.entityUnload(i)
+          m.unloadEntity(i)
 
         end if
         
@@ -81,7 +81,7 @@ function npc_view(object)
   end function
 
 
-  object.colGen = function()
+  object.genCol = function()
     if m.game.npc.config.Count() <> 0
 
       ' add
@@ -125,8 +125,8 @@ function npc_view(object)
 
   object.onUpdate = function(dt as float)
 
-    m.entityGen()
-    m.colGen()
+    m.genEntity()
+    m.genCol()
 
   end function
       

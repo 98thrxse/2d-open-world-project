@@ -18,13 +18,13 @@ function obj_control(object)
     object.onUpdate = function(dt as float)
 
         m.updatePos()
-        m.objCharIntersect()
-        m.objVehIntersect()
+        m.intersectChar()
+        m.intersectVeh()
         m.updateView()
 
     end function
 
-    object.objCharIntersect = function()
+    object.intersectChar = function()
         if m.game.getFocusGroup() = "char"
             for i = 0 to m.game.obj.config.Count() - 1
                 if m.game.char.getEntityX() < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityX() > m.game.obj.getEntityX(i) and m.game.char.getEntityY() + m.game.char.getSizeH() / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityY() + m.game.char.getSizeH() / 2 > m.game.obj.getEntityY(i)
@@ -38,7 +38,7 @@ function obj_control(object)
         end if
     end function
 
-    object.objVehIntersect = function()
+    object.intersectVeh = function()
         for i = 0 to m.game.obj.config.Count() - 1
             for j = 0 to m.game.veh.config.Count() - 1
                 if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j

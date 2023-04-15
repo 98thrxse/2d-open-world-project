@@ -9,6 +9,8 @@ function map_control(object)
             if m.map <> invalid then m.destroyMap()
             m.createMap()
             m.getConfigs()
+            m.setConfigs()
+            m.updatePos()
         end if
     end function
 
@@ -61,6 +63,9 @@ function map_control(object)
             m.map_filler_config = testTwo_filler_config()
         end if
 
+    end function
+
+    object.setConfigs = function()
         m.loadChar()
         m.loadNPC()
         m.loadObj()
@@ -69,8 +74,6 @@ function map_control(object)
         m.loadInterface()
         m.loadMarker()
         m.loadFiller()
-
-        m.loadMap()
     end function
     
     object.loadFiller = function()
@@ -476,7 +479,7 @@ function map_control(object)
     end function
 
 
-    object.loadMap = function()
+    object.updatePos = function()
 
         ' position
         m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityX())
