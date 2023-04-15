@@ -78,15 +78,5 @@ function char_view(object)
     end if
 
   end function
-
-  ' object.onDrawEnd = function(canvas)
-      
-  '   ' test
-  '   canvas.DrawRect(m.getCollider(m.game.char.getColUpName().toStr()).offset_x, m.getCollider(m.game.char.getColUpName().toStr()).offset_y, m.getCollider(m.game.char.getColUpName().toStr()).width, m.getCollider(m.game.char.getColUpName().toStr()).height, &hFFFFFFFF)
-  '   canvas.DrawRect(m.getCollider(m.game.char.getColDownName().toStr()).offset_x, m.getCollider(m.game.char.getColDownName().toStr()).offset_y, m.getCollider(m.game.char.getColDownName().toStr()).width, m.getCollider(m.game.char.getColDownName().toStr()).height, &hFFFFFFFF)
-  '   canvas.DrawRect(m.getCollider(m.game.char.getColLeftName().toStr()).offset_x, m.getCollider(m.game.char.getColLeftName().toStr()).offset_y, m.getCollider(m.game.char.getColLeftName().toStr()).width, m.getCollider(m.game.char.getColLeftName().toStr()).height, &hFFFFFFFF)
-  '   canvas.DrawRect(m.getCollider(m.game.char.getColRightName().toStr()).offset_x, m.getCollider(m.game.char.getColRightName().toStr()).offset_y, m.getCollider(m.game.char.getColRightName().toStr()).width, m.getCollider(m.game.char.getColRightName().toStr()).height, &hFFFFFFFF)
-
-  ' end function
     
 end function

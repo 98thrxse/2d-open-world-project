@@ -7,7 +7,7 @@ function npc_control(object)
 
   end function
 
-  object.controlPos = function()
+  object.updatePos = function()
 
     ' entity position
     m.view_wnd.x = m.game.map.getOffsetX()
@@ -17,13 +17,13 @@ function npc_control(object)
 
   object.onUpdate = function(dt as float)
 
-      m.controlPos()
+      m.updatePos()
       m.npcWalk()
       m.npcPathReset()
       m.npcDeath()
       m.npcAnimDeath()
       m.npcAnimWalk()
-      m.controlUpdate()
+      m.updateView()
 
   end function
 
@@ -224,7 +224,7 @@ function npc_control(object)
 
   end function
 
-	object.controlUpdate = function()
+	object.updateView = function()
 
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.view_wnd.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()) <> invalid

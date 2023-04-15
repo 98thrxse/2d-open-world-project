@@ -7,7 +7,7 @@ function marker_control(object)
 
     end function
 
-    object.controlPos = function()
+    object.updatePos = function()
 
         ' entity position
         m.transition_view_wnd.x = m.game.map.getOffsetX()
@@ -17,8 +17,8 @@ function marker_control(object)
 
     object.onUpdate = function(dt as float)
 
-        m.controlPos()
-        m.controlUpdate()
+        m.updatePos()
+        m.updateView()
 
     end function
 
@@ -27,34 +27,28 @@ function marker_control(object)
         ' pressed
         if code = 13 ' play
             if m.game.getFocusGroup() = "char"
-              m.markerTransition()
+              m.transition()
             end if
         end if
 
     end function
 
-    ' stas - map control refactoring because of marker transition
-    object.markerTransition = function()
+    object.transition = function()
 
         if m.game.char.getMarkerCol() <> invalid and m.game.char.getVehCol() = invalid
-
-		    ' destroyInstance
-            m.game.destroyInstance(m.game.getInstanceByName("map_control"))
-
-            ' set char map
-            m.game.char.setMap(m.game.marker.getMap(m.game.char.getMarkerCol().split("_").peek().toInt()))
 
             ' set char pos
             m.game.char.setEntityX(m.game.marker.getTransitionX(m.game.char.getMarkerCol().split("_").peek().toInt()))
             m.game.char.setEntityY(m.game.marker.getTransitionY(m.game.char.getMarkerCol().split("_").peek().toInt()))
 
-            ' createInstance
-            m.game.createInstance("map_control")
+            ' set char map
+            m.game.char.setMap(m.game.marker.getMap(m.game.char.getMarkerCol().split("_").peek().toInt()))
+
         end if
     
     end function
 
-    object.controlUpdate = function()
+    object.updateView = function()
 
         for i = 0 to m.game.marker.config.Count() - 1
             if m.transition_view_wnd.getImage(m.game.marker.getName(i).toStr() + "_" + i.toStr()) <> invalid

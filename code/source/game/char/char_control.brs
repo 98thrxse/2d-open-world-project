@@ -7,7 +7,6 @@ function char_control(object)
 
   end function
 
-
   object.savePos = function()
 
     m.game.char.setEntityX(m.game.screen.GetWidth() / 2 - m.game.map.getOffsetX())
@@ -18,7 +17,6 @@ function char_control(object)
 
   object.onUpdate = function(dt as float)
 
-    m.savePos()
     m.charSPRegen()
     m.controlUpdate()
 
@@ -93,24 +91,28 @@ function char_control(object)
       if m.game.getFocusGroup() = "char"
         m.charWalkUp()
         m.charAnimWalkUp()
+        m.savePos()
       end if
                       
     else if code = 1003 ' down
       if m.game.getFocusGroup() = "char"
         m.charWalkDown()  
         m.charAnimWalkDown()    
+        m.savePos()
       end if
         
     else if code = 1004 ' left
       if m.game.getFocusGroup() = "char"
         m.charWalkLeft()
         m.charAnimWalkSide()
+        m.savePos()
       end if
             
     else if code = 1005 ' right
       if m.game.getFocusGroup() = "char"
         m.charWalkRight()
         m.charAnimWalkSide()
+        m.savePos()
       end if
 
     else if code = 1006 ' select

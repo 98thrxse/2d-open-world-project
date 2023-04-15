@@ -7,7 +7,7 @@ function obj_control(object)
 
     end function
 
-    object.controlPos = function()
+    object.updatePos = function()
 
         ' entity position
         m.view_wnd.x = m.game.map.getOffsetX()
@@ -17,10 +17,10 @@ function obj_control(object)
 
     object.onUpdate = function(dt as float)
 
-        m.controlPos()
+        m.updatePos()
         m.objCharIntersect()
         m.objVehIntersect()
-        m.controlUpdate()
+        m.updateView()
 
     end function
 
@@ -74,7 +74,7 @@ function obj_control(object)
         end for
     end function
 
-    object.controlUpdate = function()
+    object.updateView = function()
 
         for i = 0 to m.game.obj.config.Count() - 1
             if m.view_wnd.getImage(m.game.obj.getName(i).toStr() + "_" + i.toStr()) <> invalid

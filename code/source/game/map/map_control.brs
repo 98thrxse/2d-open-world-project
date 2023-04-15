@@ -1,13 +1,44 @@
 function map_control(object)
 
-    ' stas - map control refactoring because of marker transition
     object.onCreate = function(args)
-        m.getConfigs()
+
+    end function
+    
+    object.onUpdate = function(dt as float)
+        if m.map = invalid or m.game.char.getMap() <> m.map
+            if m.map <> invalid then m.destroyMap()
+            m.createMap()
+            m.getConfigs()
+        end if
     end function
 
-    ' stas - change method of loading configs
+    object.createMap = function()
+        ' createInstance
+        m.game.createInstance("char_init")
+        m.game.createInstance("interface_init")
+        m.game.createInstance("marker_init")
+        m.game.createInstance("npc_init")
+        m.game.createInstance("veh_init")
+        m.game.createInstance("obj_init")
+        m.game.createInstance("terrain_init")
+        m.game.createInstance("filler_init")
+    end function
+
+    object.destroyMap = function()
+        ' destroyInstance
+        m.game.destroyInstance(m.game.getInstanceByName("char_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("interface_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("marker_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("obj_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("npc_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("veh_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("terrain_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("filler_init"))
+    end function
+
     object.getConfigs = function()
         if m.game.char.getMap() = invalid then m.game.char.setMap(m.game.map.getStartMap())
+        m.map = m.game.char.getMap()
         
         if m.game.char.getMap() = "testOne"
             m.map_char_config = testOne_char_config()
@@ -416,7 +447,9 @@ function map_control(object)
         if m.map_char_config.col.npc <> invalid then m.game.char.setNPCCol(m.map_char_config.col.npc)
         if m.map_char_config.col.marker <> invalid then m.game.char.setMarkerCol(m.map_char_config.col.marker)
         if m.map_char_config.col.veh <> invalid then m.game.char.setVehCol(m.map_char_config.col.veh)
-        if m.map_char_config.veh <> invalid then m.game.char.setVeh(m.map_char_config.veh)
+
+        ' no need to load at all
+        if m.game.char.getVeh() <> invalid then m.game.char.setVeh(invalid)
 
     end function
 

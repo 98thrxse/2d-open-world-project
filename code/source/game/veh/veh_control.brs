@@ -7,7 +7,7 @@ function veh_control(object)
 
   end function
 
-  object.controlPos = function()
+  object.updatePos = function()
 
     ' entity position
     m.view_wnd.x = m.game.map.getOffsetX()
@@ -15,11 +15,18 @@ function veh_control(object)
 
   end function
 
+  object.savePos = function()
+
+    m.game.char.setEntityX(m.game.screen.GetWidth() / 2 - m.game.map.getOffsetX())
+    m.game.char.setEntityY(m.game.screen.GetHeight() / 2 - m.game.map.getOffsetY())
+
+  end function
+
   object.onUpdate = function(dt as float)
 
-    m.controlPos()
+    m.updatePos()
     m.npcHPDamage()
-    m.controlUpdate()
+    m.updateView()
 
   end function
 
@@ -75,24 +82,28 @@ function veh_control(object)
       if m.game.getFocusGroup() = "veh"
         m.vehWalkUp()
         m.vehAnimWalkUp()
+        m.savePos()
       end if
                       
     else if code = 1003 ' down
       if m.game.getFocusGroup() = "veh"
         m.vehWalkDown()  
-        m.vehAnimWalkDown()    
+        m.vehAnimWalkDown()
+        m.savePos()    
       end if
         
     else if code = 1004 ' left
       if m.game.getFocusGroup() = "veh"
         m.vehWalkLeft()
         m.vehAnimWalkSide()
+        m.savePos()
       end if
             
     else if code = 1005 ' right
       if m.game.getFocusGroup() = "veh"
         m.vehWalkRight()
         m.vehAnimWalkSide()
+        m.savePos()
       end if
       
     end if
@@ -263,7 +274,7 @@ function veh_control(object)
 		m.animPlay(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
 	end function
 
-  object.controlUpdate = function()
+  object.updateView = function()
 
     for i = 0 to m.game.veh.config.Count() - 1
       if m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()) <> invalid
