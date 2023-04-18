@@ -244,8 +244,10 @@ function npc_control(object)
   end function
 
   object.getVehHPDamage = function()
-    if m.game.char.getNPCCol() <> invalid
-      if m.game.npc.getHP(m.game.char.getNPCCol().split("_").peek().toInt()) > 0 then m.game.npc.setHP(m.game.char.getNPCCol().split("_").peek().toInt(), 0)
+    if m.game.veh.getNPCCol(m.game.char.getVeh().split("_").peek().toInt()) <> invalid
+      if m.game.npc.getHP(m.game.veh.getNPCCol(m.game.char.getVeh().split("_").peek().toInt()).split("_").peek().toInt()) > 0
+        m.game.npc.setHP(m.game.veh.getNPCCol(m.game.char.getVeh().split("_").peek().toInt()).split("_").peek().toInt(), 0)
+      end if
     end if
   end function
 

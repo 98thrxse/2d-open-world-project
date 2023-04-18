@@ -117,18 +117,60 @@ function veh_view(object)
 
       for i = 0 to m.game.veh.config.Count() - 1
       ' load & add
-        if - m.game.map.getOffsetX() <= m.game.veh.getColX(i) + m.game.veh.getColW(i) * abs(m.game.veh.getScaleX(i)) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.veh.getColX(i) and - m.game.map.getOffsetY() <= m.game.veh.getColY(i) + m.game.veh.getColH(i) * abs(m.game.veh.getScaleY(i)) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getColY(i) and m.game.char.getVeh() <> m.game.veh.getName(i).toStr() + "_" + i.toStr()
+        if - m.game.map.getOffsetX() <= m.game.veh.getColX(i) + m.game.veh.getColW(i) * abs(m.game.veh.getScaleX(i)) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.veh.getColX(i) and - m.game.map.getOffsetY() <= m.game.veh.getColY(i) + m.game.veh.getColH(i) * abs(m.game.veh.getScaleY(i)) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getColY(i)
           
-          if m.colliders[m.game.veh.getName(i).toStr() + "_" + i.toStr()] = invalid
+          if m.game.char.getVeh() <> m.game.veh.getName(i).toStr() + "_" + i.toStr()
+
+            if m.getCollider(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()) <> invalid
+              m.removeCollider(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr())
+            end if
+            
+            if m.getCollider(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr()) <> invalid
+              m.removeCollider(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr())
+            end if
+            
+            if m.getCollider(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr()) <> invalid
+              m.removeCollider(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr())
+            end if
+
+            if m.getCollider(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr()) <> invalid
+              m.removeCollider(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr())
+            end if
+
+            if m.getCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr()) = invalid
+              ' addColliderRectangle
+              m.addColliderRectangle(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.game.veh.getColX(i), m.game.veh.getColY(i), m.game.veh.getColW(i), m.game.veh.getColH(i))
+            end if
+
+          else
+
+            if m.getCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr()) <> invalid
+              m.removeCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr())
+            end if
+
             ' addColliderRectangle
-            m.addColliderRectangle(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.game.veh.getColX(i), m.game.veh.getColY(i), m.game.veh.getColW(i), m.game.veh.getColH(i))
+            if m.getCollider(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr()) = invalid
+              m.addColliderRectangle(m.game.veh.getColUpName(i).toStr() + "_" + i.toStr(), m.game.veh.getColX(i) + (m.game.veh.getUpSpeed(i) + 1), m.game.veh.getColY(i), m.game.veh.getColW(i) * abs(m.game.veh.getScaleX(i)) - (m.game.veh.getDownSpeed(i) + 1) * 2, m.game.veh.getUpSpeed(i) + 1)
+            end if
+            
+            if m.getCollider(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr()) = invalid
+              m.addColliderRectangle(m.game.veh.getColDownName(i).toStr() + "_" + i.toStr(), m.game.veh.getColX(i) + (m.game.veh.getDownSpeed(i) + 1), m.game.veh.getColY(i) + m.game.veh.getColH(i) * abs(m.game.veh.getScaleY(i)) - (m.game.veh.getDownSpeed(i) + 1), m.game.veh.getColW(i) * abs(m.game.veh.getScaleX(i)) - (m.game.veh.getDownSpeed(i) + 1) * 2, m.game.veh.getDownSpeed(i) + 1)
+            end if
+            
+            if m.getCollider(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr()) = invalid
+              m.addColliderRectangle(m.game.veh.getColLeftName(i).toStr() + "_" + i.toStr(), m.game.veh.getColX(i), m.game.veh.getColY(i) + (m.game.veh.getLeftSpeed(i) + 1), m.game.veh.getLeftSpeed(i) + 1, m.game.veh.getColH(i) * abs(m.game.veh.getScaleY(i)) - (m.game.veh.getLeftSpeed(i) + 1) * 2)
+            end if
+
+            if m.getCollider(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr()) = invalid
+              m.addColliderRectangle(m.game.veh.getColRightName(i).toStr() + "_" + i.toStr(), m.game.veh.getColX(i) + m.game.veh.getColW(i) * abs(m.game.veh.getScaleX(i)) - (m.game.veh.getRightSpeed(i) + 1), m.game.veh.getColY(i) + (m.game.veh.getRightSpeed(i) + 1), m.game.veh.getRightSpeed(i) + 1, m.game.veh.getColH(i) * abs(m.game.veh.getScaleY(i)) - (m.game.veh.getRightSpeed(i) + 1) * 2)
+            end if
           end if
 
         ' unload & remove
-        else if m.getCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr()) <> invalid or m.game.char.getVeh() = m.game.veh.getName(i).toStr() + "_" + i.toStr()
+        else if m.getCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr()) <> invalid
 
           m.removeCollider(m.game.veh.getName(i).toStr() + "_" + i.toStr())
-
+          
         end if
 
       end for

@@ -88,7 +88,7 @@ function npc_view(object)
       for i = 0 to m.game.npc.config.Count() - 1
         if - m.game.map.getOffsetX() <= m.game.npc.getOffsetX(i) + m.game.npc.getSizeW(i) * abs(m.game.npc.getScaleX(i)) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.npc.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.npc.getOffsetY(i) + m.game.npc.getSizeH(i) * abs(m.game.npc.getScaleY(i)) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.npc.getOffsetY(i)
 
-          if m.colliders[m.game.npc.getName(i).toStr() + "_" + i.toStr()] = invalid
+          if m.getCollider(m.game.npc.getName(i).toStr() + "_" + i.toStr()) = invalid
             ' addColliderRectangle
             m.addColliderRectangle(m.game.npc.getName(i).toStr() + "_" + i.toStr(), m.game.npc.getOffsetX(i), m.game.npc.getOffsetY(i), m.game.npc.getSizeW(i) * abs(m.game.npc.getScaleX(i)), m.game.npc.getSizeH(i) * abs(m.game.npc.getScaleY(i)))
           end if
@@ -107,18 +107,34 @@ function npc_view(object)
 
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
 
-    if other_collider_name = m.game.char.getColUpName()
-      m.game.char.setNPCCol(collider_name)
+    if m.game.getFocusGroup() = "char"
+      if other_collider_name = m.game.char.getColUpName()
+        m.game.char.setNPCCol(collider_name)
 
-    else if other_collider_name = m.game.char.getColDownName()
-      m.game.char.setNPCCol(collider_name)
+      else if other_collider_name = m.game.char.getColDownName()
+        m.game.char.setNPCCol(collider_name)
 
-    else if other_collider_name = m.game.char.getColLeftName()
-      m.game.char.setNPCCol(collider_name)
+      else if other_collider_name = m.game.char.getColLeftName()
+        m.game.char.setNPCCol(collider_name)
 
-    else if other_collider_name = m.game.char.getColRightName()
-      m.game.char.setNPCCol(collider_name)
+      else if other_collider_name = m.game.char.getColRightName()
+        m.game.char.setNPCCol(collider_name)
 
+      end if
+
+    else if m.game.getFocusGroup() = "veh"
+      if other_collider_name = m.game.veh.getColUpName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+        m.game.veh.setNPCCol(m.game.char.getVeh().split("_").peek().toInt(), collider_name)
+
+      else if other_collider_name = m.game.veh.getColDownName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+        m.game.veh.setNPCCol(m.game.char.getVeh().split("_").peek().toInt(), collider_name)
+
+      else if other_collider_name = m.game.veh.getColLeftName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+        m.game.veh.setNPCCol(m.game.char.getVeh().split("_").peek().toInt(), collider_name)
+
+      else if other_collider_name = m.game.veh.getColRightName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+        m.game.veh.setNPCCol(m.game.char.getVeh().split("_").peek().toInt(), collider_name)
+      end if
     end if
 
   end function

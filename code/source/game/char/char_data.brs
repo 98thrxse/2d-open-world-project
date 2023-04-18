@@ -89,7 +89,6 @@ function char_data(ver) as object
         getMap: char_getMap
         setMap: char_setMap
 
-
         getColUpName: char_getColUpName
         setColUpName: char_setColUpName
 

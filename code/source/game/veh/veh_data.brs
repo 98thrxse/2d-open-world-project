@@ -44,6 +44,39 @@ function veh_data() as object
         getColW: veh_getColW
         setColW: veh_setColW
 
+        getColUpName: veh_getColUpName
+        setColUpName: veh_setColUpName
+
+        getColDownName: veh_getColDownName
+        setColDownName: veh_setColDownName
+
+        getColLeftName: veh_getColLeftName
+        setColLeftName: veh_setColLeftName
+
+        getColRightName: veh_getColRightName
+        setColRightName: veh_setColRightName
+
+        getNPCCol: veh_getNPCCol
+        setNPCCol: veh_setNPCCol
+
+        getVehCol: veh_getVehCol
+        setVehCol: veh_setVehCol
+
+        getMarkerCol: veh_getMarkerCol
+        setMarkerCol: veh_setMarkerCol
+
+        getColUp: veh_getColUp
+        setColUp: veh_setColUp
+
+        getColDown: veh_getColDown
+        setColDown: veh_setColDown
+
+        getColLeft: veh_getColLeft
+        setColLeft: veh_setColLeft
+
+        getColRight: veh_getColRight
+        setColRight: veh_setColRight
+
         getIndex: veh_getIndex
         setIndex: veh_setIndex
 
@@ -242,4 +275,92 @@ end function
 
 sub veh_setAlpha(i as object, alpha as object)
     m.config[i].alpha = alpha
+end sub
+
+function veh_getNPCCol(i as object) as object
+    return m.config[i].col.npc
+end function
+
+sub veh_setNPCCol(i as object, j as object) 
+    m.config[i].col.npc = j
+end sub
+
+function veh_getMarkerCol(i as object) as object
+    return m.config[i].col.marker
+end function
+
+sub veh_setMarkerCol(i as object, j as object) 
+    m.config[i].col.marker = j
+end sub
+
+
+function veh_getColUp(i as object) as object
+    return m.config[i].col.up
+end function
+
+sub veh_setColUp(i as object, col as object) 
+    m.config[i].col.up = col
+end sub
+
+
+function veh_getColDown(i as object) as object
+    return m.config[i].col.down
+end function
+
+sub veh_setColDown(i as object, col as object) 
+    m.config[i].col.down = col
+end sub
+
+
+function veh_getColLeft(i as object) as object
+    return m.config[i].col.left
+end function
+
+sub veh_setColLeft(i as object, col as object) 
+    m.config[i].col.left = col
+end sub
+
+
+function veh_getColRight(i as object) as object
+    return m.config[i].col.right
+end function
+
+sub veh_setColRight(i as object, col as object) 
+    m.config[i].col.right = col
+end sub
+
+function veh_getColUpName(i as object) as object
+    return m.config[i].name_up
+end function
+
+sub veh_setColUpName(i as object, name as object)
+    m.config[i].name_up = name
+end sub
+
+
+function veh_getColDownName(i as object) as object
+    return m.config[i].name_down
+end function
+
+
+sub veh_setColDownName(i as object, name as object)
+    m.config[i].name_down = name
+end sub
+
+
+function veh_getColLeftName(i as object) as object
+    return m.config[i].name_left
+end function
+
+sub veh_setColLeftName(i as object, name as object)
+    m.config[i].name_left = name
+end sub
+
+
+function veh_getColRightName(i as object) as object
+    return m.config[i].name_right
+end function
+
+sub veh_setColRightName(i as object, name as object)
+    m.config[i].name_right = name
 end sub

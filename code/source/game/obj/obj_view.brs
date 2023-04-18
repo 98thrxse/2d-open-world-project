@@ -6,7 +6,6 @@ function obj_view(object)
 
     end function
 
-    ' stas - change namings (loadEntity)
     object.loadEntity = function(i)
 
         m.obj_regions = []
@@ -85,8 +84,8 @@ function obj_view(object)
             ' load & add
             for i = 0 to m.game.obj.config.Count() - 1
                 if - m.game.map.getOffsetX() <= m.game.obj.getColX(i) + m.game.obj.getColW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.obj.getColX(i) and - m.game.map.getOffsetY() <= m.game.obj.getColY(i) + m.game.obj.getColH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.obj.getColY(i)
-
-                    if m.colliders[m.game.obj.getName(i).toStr() + "_" + i.toStr()] = invalid
+                    
+                    if m.getCollider(m.game.obj.getName(i).toStr() + "_" + i.toStr()) = invalid
                         ' addColliderRectangle
                         m.addColliderRectangle(m.game.obj.getName(i).toStr() + "_" + i.toStr(), m.game.obj.getColX(i), m.game.obj.getColY(i), m.game.obj.getColW(i), m.game.obj.getColH(i))
                       
@@ -104,17 +103,34 @@ function obj_view(object)
     end function
 
     object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
-        if other_collider_name = m.game.char.getColUpName()
-            m.game.char.setColUp(true)
 
-        else if other_collider_name = m.game.char.getColDownName()
-            m.game.char.setColDown(true)
+        if m.game.getFocusGroup() = "char"
+            if other_collider_name = m.game.char.getColUpName()
+                m.game.char.setColUp(true)
 
-        else if other_collider_name = m.game.char.getColLeftName()
-            m.game.char.setColLeft(true)
+            else if other_collider_name = m.game.char.getColDownName()
+                m.game.char.setColDown(true)
 
-        else if other_collider_name = m.game.char.getColRightName()
-            m.game.char.setColRight(true)
+            else if other_collider_name = m.game.char.getColLeftName()
+                m.game.char.setColLeft(true)
+
+            else if other_collider_name = m.game.char.getColRightName()
+                m.game.char.setColRight(true)
+            end if
+            
+        else if m.game.getFocusGroup() = "veh"
+            if other_collider_name = m.game.veh.getColUpName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+                m.game.veh.setColUp(m.game.char.getVeh().split("_").peek().toInt(), true)
+
+            else if other_collider_name = m.game.veh.getColDownName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+                m.game.veh.setColDown(m.game.char.getVeh().split("_").peek().toInt(), true)
+
+            else if other_collider_name = m.game.veh.getColLeftName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+                m.game.veh.setColLeft(m.game.char.getVeh().split("_").peek().toInt(), true)
+
+            else if other_collider_name = m.game.veh.getColRightName(m.game.char.getVeh().split("_").peek().toInt()).toStr() + "_" + m.game.char.getVeh().split("_").peek().toInt().toStr()
+                m.game.veh.setColRight(m.game.char.getVeh().split("_").peek().toInt(), true)
+            end if
         end if
 
     end function
