@@ -247,6 +247,9 @@ function npc_control(object)
     if m.game.veh.getNPCCol(m.game.char.getVeh().split("_").peek().toInt()) <> invalid
       if m.game.npc.getHP(m.game.veh.getNPCCol(m.game.char.getVeh().split("_").peek().toInt()).split("_").peek().toInt()) > 0
         m.game.npc.setHP(m.game.veh.getNPCCol(m.game.char.getVeh().split("_").peek().toInt()).split("_").peek().toInt(), 0)
+
+        print m.game.veh.getNPCCol(m.game.char.getVeh().split("_").peek().toInt()) + " was attacked"
+        print m.game.npc.getHP(m.game.veh.getNPCCol(m.game.char.getVeh().split("_").peek().toInt()).split("_").peek().toInt())
       end if
     end if
   end function

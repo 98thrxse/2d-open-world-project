@@ -178,6 +178,32 @@ function veh_view(object)
 
   end function
 
+  object.onSelfCollision = function()
+    if m.game.char.getVeh() <> invalid
+      for i = 0 to m.game.veh.config.Count() - 1
+        if m.game.char.getVeh() <> m.game.veh.getName(i).toStr() + "_" + i.toStr()
+
+          if (m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) >= m.game.veh.getColX(i) and m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) <= m.game.veh.getColX(i) + m.game.veh.getColW(i)) or (m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getColW(m.game.char.getVeh().split("_").peek().toInt()) >= m.game.veh.getColX(i) and m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) <= m.game.veh.getColX(i) + m.game.veh.getColW(i))
+            if m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) - (m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) > m.game.veh.getColY(i) and m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) - (m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) < m.game.veh.getColY(i) + m.game.veh.getColH(i)
+              m.game.veh.setColUp(m.game.char.getVeh().split("_").peek().toInt(), true)
+            else if m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getColH(m.game.char.getVeh().split("_").peek().toInt()) + (m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) > m.game.veh.getColY(i) and m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getColH(m.game.char.getVeh().split("_").peek().toInt()) + (m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) < m.game.veh.getColY(i) + m.game.veh.getColH(i)
+              m.game.veh.setColDown(m.game.char.getVeh().split("_").peek().toInt(), true)
+            end if
+          end if
+
+          if (m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) >= m.game.veh.getColY(i) and m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) <= m.game.veh.getColY(i) + m.game.veh.getColH(i)) or (m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getColH(m.game.char.getVeh().split("_").peek().toInt()) >= m.game.veh.getColY(i) and m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) <= m.game.veh.getColY(i) + m.game.veh.getColH(i))
+            if m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) - (m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) > m.game.veh.getColX(i) and m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) - (m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) < m.game.veh.getColX(i) + m.game.veh.getColW(i)
+              m.game.veh.setColLeft(m.game.char.getVeh().split("_").peek().toInt(), true)
+            else if m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getColW(m.game.char.getVeh().split("_").peek().toInt()) + (m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) > m.game.veh.getColX(i) and m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getColW(m.game.char.getVeh().split("_").peek().toInt()) + (m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()) + 1) < m.game.veh.getColX(i) + m.game.veh.getColW(i)
+              m.game.veh.setColRight(m.game.char.getVeh().split("_").peek().toInt(), true)
+            end if
+          end if
+
+        end if
+      end for
+    end if
+  end function
+
   object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
     
     if other_collider_name = m.game.char.getColUpName()
@@ -204,6 +230,7 @@ function veh_view(object)
 
     m.genEntity()
     m.genCol()
+    m.onSelfCollision()
 
   end function
 
