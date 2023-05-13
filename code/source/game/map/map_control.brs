@@ -24,6 +24,8 @@ function map_control(object)
         m.game.createInstance("obj_init")
         m.game.createInstance("terrain_init")
         m.game.createInstance("filler_init")
+
+        m.game.createInstance("interact_init")
     end function
 
     object.destroyMap = function()
@@ -36,6 +38,8 @@ function map_control(object)
         m.game.destroyInstance(m.game.getInstanceByName("veh_init"))
         m.game.destroyInstance(m.game.getInstanceByName("terrain_init"))
         m.game.destroyInstance(m.game.getInstanceByName("filler_init"))
+
+        m.game.destroyInstance(m.game.getInstanceByName("interact_init"))
     end function
 
     object.getConfigs = function()

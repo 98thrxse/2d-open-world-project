@@ -12,6 +12,8 @@ function map_init(object)
         m.game.defineObject("terrain_init", terrain_init)
         m.game.defineObject("filler_init", filler_init)
 
+        m.game.defineObject("interact_init", interact_init)
+
 	    m.game.defineObject("map_control", map_control)
         m.game.defineObject("map_main", map_main)
 

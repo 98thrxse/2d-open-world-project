@@ -7,9 +7,7 @@ function interface_control(object)
     object.onButton = function(code as integer)
 
         ' pressed
-        if code = 10 ' info
-            m.focusChange()
-        else if code = 4 ' left
+        if code = 4 ' left
             if m.game.getFocusGroup() = "interface"
                 m.interfaceLeftTarget()
             end if
@@ -37,14 +35,4 @@ function interface_control(object)
         end if
     end function
     
-    object.focusChange = function()
-        if m.game.getFocusGroup() <> "interface"
-            m.game.setFocusGroup("interface")
-            m.game.setFocusTarget(0)
-        else
-            m.game.setFocusGroup(m.game.getPrevFocusGroup())
-            m.game.setFocusTarget("")
-        end if
-    end function
-
 end function
