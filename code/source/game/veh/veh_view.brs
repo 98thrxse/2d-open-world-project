@@ -72,7 +72,7 @@ function veh_view(object)
             m.removeImage(m.game.veh.getName(i).toStr() + "_" + i.toStr())
 
             ' unload
-            m.unloadEntity(i)
+            ' m.unloadEntity(i)
 
           end if
 
@@ -101,7 +101,7 @@ function veh_view(object)
             m.removeImage(m.game.veh.getName(i).toStr() + "_" + i.toStr())
 
             ' unload
-            m.unloadEntity(i)
+            ' m.unloadEntity(i)
 
           end if
         end if
@@ -232,6 +232,13 @@ function veh_view(object)
     m.genCol()
     m.onSelfCollision()
 
+  end function
+
+  object.onDestroy = function()
+    for i = 0 to m.game.veh.config.Count() - 1
+      m.unloadEntity(i)
+    end for
+    
   end function
 
 end function

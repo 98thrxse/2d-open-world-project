@@ -11,8 +11,8 @@ function interface_sp(object)
 
     object.onDrawEnd = function(canvas)
 
-        DrawText(canvas, m.game.char.getSP().toStr() + "%", canvas.GetWidth() / 2 + 100 + 3, canvas.GetWidth() / 2 + 3, m.sp_font, "center", &h000000FF)
-        DrawText(canvas, m.game.char.getSP().toStr() + "%", canvas.GetWidth() / 2 + 100, canvas.GetWidth() / 2, m.sp_font, "center", &h55ff00FF)
+        DrawText(canvas, m.game.char.getSP().toStr() + "%", canvas.GetWidth() / 2 + 50 + 3, canvas.GetWidth() / 2 + 3, m.sp_font, "center", &h000000FF)
+        DrawText(canvas, m.game.char.getSP().toStr() + "%", canvas.GetWidth() / 2 + 50, canvas.GetWidth() / 2, m.sp_font, "center", &h55ff00FF)
 
     end function
 

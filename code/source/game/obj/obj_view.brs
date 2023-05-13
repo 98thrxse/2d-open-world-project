@@ -69,7 +69,7 @@ function obj_view(object)
                     m.removeImage(m.game.obj.getName(i).toStr() + "_" + i.toStr())
 
                     ' unload
-                    m.unloadEntity(i)
+                    ' m.unloadEntity(i)
 
                 end if
             
@@ -140,6 +140,13 @@ function obj_view(object)
         m.genEntity()
         m.genCol()
 
+    end function
+
+    object.onDestroy = function()
+        for i = 0 to m.game.obj.config.Count() - 1
+          m.unloadEntity(i)
+        end for
+        
     end function
 
 end function

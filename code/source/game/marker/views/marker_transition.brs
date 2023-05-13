@@ -76,7 +76,7 @@ function marker_transition(object)
           m.removeImage(m.game.marker.getName(i).toStr() + "_" + i.toStr())
 
           ' unload
-          m.unloadEntity(i)
+          ' m.unloadEntity(i)
 
         end if
       end for
@@ -156,6 +156,13 @@ function marker_transition(object)
       DrawText(canvas, "ENTER", m.game.marker.getOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.marker.getSizeW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2, m.game.marker.getOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.marker.getSizeH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3, m.transition_font, "center", &hFF0000FF)
     end if
 
+  end function
+
+  object.onDestroy = function()
+    for i = 0 to m.game.marker.config.Count() - 1
+      m.unloadEntity(i)
+    end for
+    
   end function
 
 end function

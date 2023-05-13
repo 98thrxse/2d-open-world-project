@@ -109,7 +109,7 @@ function terrain_view(object)
                     if m.getImage(m.game.terrain.getName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not arrayUtils().contains(id_x, j) or not arrayUtils().contains(id_y, i))
                         
                         ' unload
-                        m.unloadEntity(i, j)
+                        ' m.unloadEntity(i, j)
                                             
                         ' remove    
                         m.removeImage(m.game.terrain.getName(i, j).toStr() + "_" + i.toStr() + j.toStr())
@@ -127,6 +127,15 @@ function terrain_view(object)
 
         m.genEntity()
 
+    end function
+
+    object.onDestroy = function()
+        for i = 0 to m.game.terrain.config.Count() - 1
+            for j = 0 to m.game.terrain.config[i].Count() - 1
+                m.unloadEntity(i, j)
+            end for
+        end for
+        
     end function
     
 end function

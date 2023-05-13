@@ -71,7 +71,7 @@ function npc_view(object)
           m.removeImage(m.game.npc.getName(i).toStr() + "_" + i.toStr())
 
           ' unload
-          m.unloadEntity(i)
+          ' m.unloadEntity(i)
 
         end if
         
@@ -144,6 +144,13 @@ function npc_view(object)
     m.genEntity()
     m.genCol()
 
+  end function
+
+  object.onDestroy = function()
+    for i = 0 to m.game.npc.config.Count() - 1
+      m.unloadEntity(i)
+    end for
+    
   end function
       
 end function
