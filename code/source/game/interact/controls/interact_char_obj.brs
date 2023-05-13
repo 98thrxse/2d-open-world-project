@@ -1,12 +1,12 @@
-function interact_char_obj(object)
+sub interact_char_obj(object)
 
-    object.onUpdate = function(dt as float)
+    object.onUpdate = sub(dt as float)
 
         m.intersect()
 
-    end function
+    end sub
 
-    object.intersect = function()
+    object.intersect = sub()
         if m.game.getFocusGroup() = "char"
             for i = 0 to m.game.obj.config.Count() - 1
                 if m.game.char.getEntityX() < m.game.obj.getEntityX(i) + m.game.obj.getEntityW(i) and m.game.char.getEntityX() > m.game.obj.getEntityX(i) and m.game.char.getEntityY() + m.game.char.getSizeH() / 2 < m.game.obj.getEntityY(i) + m.game.obj.getEntityH(i) and m.game.char.getEntityY() + m.game.char.getSizeH() / 2 > m.game.obj.getEntityY(i)
@@ -18,6 +18,6 @@ function interact_char_obj(object)
                 end if
             end for
         end if
-    end function
+    end sub
 
-end function
+end sub

@@ -1,6 +1,6 @@
 function terrain_data() as object
 
-    m.terrain = {
+    terrain = {
 
         getName: terrain_getName
         setName: terrain_setName
@@ -24,13 +24,13 @@ function terrain_data() as object
 
     }
 
-    if m.terrain.config = invalid
+    if terrain.config = invalid
 
-        m.terrain.config = []
+        terrain.config = []
 
     end if
 
-    return m.terrain
+    return terrain
 
 end function
 

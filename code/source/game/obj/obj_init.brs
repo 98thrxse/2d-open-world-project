@@ -1,6 +1,6 @@
-function obj_init(object)
+sub obj_init(object)
 
-	object.onCreate = function(args)
+	object.onCreate = sub(args as object)
 
         ' defineObject
         m.game.defineObject("obj_main", obj_main)
@@ -10,11 +10,11 @@ function obj_init(object)
         ' createInstance
         m.game.createInstance("obj_main")
     
-    end function
+    end sub
 
-    object.onDestroy = function()
+    object.onDestroy = sub()
         ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("obj_main"))
-    end function
+    end sub
 
-end function
+end sub

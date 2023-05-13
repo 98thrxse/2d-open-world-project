@@ -1,28 +1,28 @@
-function marker_control(object)
+sub marker_control(object)
 
-    object.onCreate = function(args)
+    object.onCreate = sub(args as object)
 
         ' getInstanceByName
         m.transition_view_wnd = m.game.getInstanceByName("marker_transition")
 
-    end function
+    end sub
 
-    object.updatePos = function()
+    object.updatePos = sub()
 
         ' entity position
         m.transition_view_wnd.x = m.game.map.getOffsetX()
         m.transition_view_wnd.y = m.game.map.getOffsetY()
 
-    end function
+    end sub
 
-    object.onUpdate = function(dt as float)
+    object.onUpdate = sub(dt as float)
 
         m.updatePos()
         m.updateView()
 
-    end function
+    end sub
 
-    object.updateView = function()
+    object.updateView = sub()
 
         for i = 0 to m.game.marker.config.Count() - 1
             if m.transition_view_wnd.getImage(m.game.marker.getName(i).toStr() + "_" + i.toStr()) <> invalid
@@ -39,6 +39,6 @@ function marker_control(object)
                 m.transition_view_wnd.getCollider(m.game.marker.getName(i).toStr() + "_" + i.toStr()).offset_y = m.game.marker.getOffsetY(i)
             end if
         end for
-    end function
+    end sub
 
-end function
+end sub

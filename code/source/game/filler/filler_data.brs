@@ -1,6 +1,6 @@
 function filler_data() as object
 
-    m.filler = {
+    filler = {
 
         getName: filler_getName
         setName: filler_setName
@@ -27,13 +27,13 @@ function filler_data() as object
 
     }
 
-    if m.filler.config = invalid
+    if filler.config = invalid
 
-        m.filler.config = []
+        filler.config = []
 
     end if
 
-    return m.filler
+    return filler
 
 end function
 

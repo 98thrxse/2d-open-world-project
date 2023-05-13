@@ -1,21 +1,21 @@
-function filler_control(object)
+sub filler_control(object)
 
-    object.onCreate = function(args)
+    object.onCreate = sub(args as object)
 
         ' getInstanceByName
         m.view_wnd = m.game.getInstanceByName("filler_view")
 
-    end function
+    end sub
 
-    object.updatePos = function()
+    object.updatePos = sub()
 
         ' position
         m.view_wnd.x = m.game.map.getOffsetX()
         m.view_wnd.y = m.game.map.getOffsetY()
 
-    end function
+    end sub
 
-    object.playAnim = function(i, j, arr)
+    object.playAnim = sub(i as integer, j as integer, arr as object)
 
 		if m.timer = invalid
 			m.timer = CreateObject("roTimeSpan")
@@ -33,9 +33,9 @@ function filler_control(object)
         if m.timer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.filler.getAnimTime(i, j) then m.timer.Mark()
 		m.game.filler.setIndex(i, j, arrAnim[int(m.timer.TotalMilliseconds() / m.game.filler.getAnimTime(i, j))])
 
-	end function
+	end sub
 
-    object.updateView = function()
+    object.updateView = sub()
 
         for i = 0 to m.game.filler.config.Count() - 1
             for j = 0 to m.game.filler.config[i].Count() - 1
@@ -48,22 +48,22 @@ function filler_control(object)
             end for
         end for
 
-	end function
+	end sub
 
-    object.autoPlayAnim = function()
+    object.autoPlayAnim = sub()
         for i = 0 to m.game.filler.config.Count() - 1
             for j = 0 to m.game.filler.config[i].Count() - 1
                 m.playAnim(i, j, m.game.filler.getReg(i, j))
             end for
         end for
-    end function
+    end sub
 
-    object.onUpdate = function(dt as float)
+    object.onUpdate = sub(dt as float)
 
         m.updatePos()
         m.autoPlayAnim()
         m.updateView()
 
-    end function
+    end sub
     
-end function
+end sub

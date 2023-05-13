@@ -1,28 +1,28 @@
-function obj_control(object)
+sub obj_control(object)
 
-    object.onCreate = function(args)
+    object.onCreate = sub(args as object)
 
         ' getInstanceByName
         m.view_wnd = m.game.getInstanceByName("obj_view")
 
-    end function
+    end sub
 
-    object.updatePos = function()
+    object.updatePos = sub()
 
         ' entity position
         m.view_wnd.x = m.game.map.getOffsetX()
         m.view_wnd.y = m.game.map.getOffsetY()
 
-    end function
+    end sub
 
-    object.onUpdate = function(dt as float)
+    object.onUpdate = sub(dt as float)
 
         m.updatePos()
         m.updateView()
 
-    end function
+    end sub
 
-    object.updateView = function()
+    object.updateView = sub()
 
         for i = 0 to m.game.obj.config.Count() - 1
             if m.view_wnd.getImage(m.game.obj.getName(i).toStr() + "_" + i.toStr()) <> invalid
@@ -33,6 +33,6 @@ function obj_control(object)
             end if
         
         end for
-    end function
+    end sub
 
-end function
+end sub

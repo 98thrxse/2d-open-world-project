@@ -1,6 +1,6 @@
-function marker_main(object)
+sub marker_main(object)
     
-	object.onCreate = function(args)
+	object.onCreate = sub(args as object)
 
         m.game.marker = marker_data()
 
@@ -8,12 +8,12 @@ function marker_main(object)
         m.game.createInstance("marker_transition")
         m.game.createInstance("marker_control")
 
-    end function
+    end sub
 
-    object.onDestroy = function()
+    object.onDestroy = sub()
         ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("marker_transition"))
         m.game.destroyInstance(m.game.getInstanceByName("marker_control"))
-    end function
+    end sub
     
-end function
+end sub

@@ -1,14 +1,14 @@
-function game_main(object)
+sub game_main(object)
     
-	object.onCreate = function(args)
+	object.onCreate = sub(args as object)
 
         ' set focus
         m.game.setFocusGroup("char")
-        m.game.setFocusTarget("")
+        m.game.setFocusTarget(0)
 
         ' createInstance        
         m.game.createInstance("map_init")
 
-    end function
+    end sub
     
-end function
+end sub

@@ -1,13 +1,8 @@
-function npc_view(object)
+sub npc_view(object)
 
   object.funcName = "npc_view"
 
-  object.onCreate = function(args)
-
-  end function
-
-
-  object.loadEntity = function(i)
+  object.loadEntity = sub(i as integer)
 
     m.npc_regions = []
 
@@ -28,9 +23,9 @@ function npc_view(object)
 
     end for
     
-  end function
+  end sub
 
-  object.unloadEntity = function(i)
+  object.unloadEntity = sub(i as integer)
 
     for j = 0 to m.game.npc.config[i].reg.Count() - 1
 
@@ -41,9 +36,9 @@ function npc_view(object)
 
     end for
 
-  end function
+  end sub
 
-  object.genEntity = function()
+  object.genEntity = sub()
     if m.game.npc.config.Count() <> 0
 
       ' load & add
@@ -78,10 +73,10 @@ function npc_view(object)
       end for
     end if
 
-  end function
+  end sub
 
 
-  object.genCol = function()
+  object.genCol = sub()
     if m.game.npc.config.Count() <> 0
 
       ' add
@@ -103,9 +98,9 @@ function npc_view(object)
       end for
     end if
 
-  end function
+  end sub
 
-  object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
+  object.onCollision = sub(collider_name as string, other_collider_name as string, other_instance as object)
 
     if m.game.getFocusGroup() = "char"
       if other_collider_name = m.game.char.getColUpName()
@@ -137,20 +132,20 @@ function npc_view(object)
       end if
     end if
 
-  end function
+  end sub
 
-  object.onUpdate = function(dt as float)
+  object.onUpdate = sub(dt as float)
 
     m.genEntity()
     m.genCol()
 
-  end function
+  end sub
 
-  object.onDestroy = function()
+  object.onDestroy = sub()
     for i = 0 to m.game.npc.config.Count() - 1
       m.unloadEntity(i)
     end for
     
-  end function
+  end sub
       
-end function
+end sub

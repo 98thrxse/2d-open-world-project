@@ -1,4 +1,4 @@
-function testTwo_interface_config() as object
+function testTwo_hud_config() as object
     config = {
         menu: [
         ]

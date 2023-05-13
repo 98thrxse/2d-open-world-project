@@ -1,29 +1,28 @@
-function char_control(object)
+sub char_control(object)
 
-  object.onCreate = function(args)
-
+  object.onCreate = sub(args as object)
     ' getInstanceByName
 		m.view_wnd = m.game.getInstanceByName("char_view")
 
-  end function
+  end sub
 
-  object.savePos = function()
+  object.savePos = sub()
 
     m.game.char.setEntityX(m.game.screen.GetWidth() / 2 - m.game.map.getOffsetX())
     m.game.char.setEntityY(m.game.screen.GetHeight() / 2 - m.game.map.getOffsetY())
 
-  end function
+  end sub
 
 
-  object.onUpdate = function(dt as float)
+  object.onUpdate = sub(dt as float)
 
     m.regenSP()
     m.updateView()
 
-  end function
+  end sub
 
 
-  object.onButton = function(code as integer)
+  object.onButton = sub(code as integer)
 
 		' pressed
     if code = 2 ' up
@@ -114,9 +113,9 @@ function char_control(object)
       
 		end if
 
-	end function
+	end sub
 
-	object.playAnim = function(arr)
+	object.playAnim = sub(arr as object)
 
 		if m.animTimer = invalid
 			m.animTimer = CreateObject("roTimeSpan")
@@ -135,9 +134,9 @@ function char_control(object)
 		m.game.char.setIndex(arrAnim[int(m.animTimer.TotalMilliseconds() / m.game.char.getAnimTime())])
 
 
-	end function
+	end sub
 
-  object.attackAnim = function()
+  object.attackAnim = sub()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
 			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
 				m.playAnim(["idle_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "idle_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "idle_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "idle_side2"])
@@ -152,21 +151,21 @@ function char_control(object)
 		else
 			m.playAnim(["sp_zero"])
 		end if
-	end function
+	end sub
 
-	object.walkUpAnim = function()
+	object.walkUpAnim = sub()
 		m.playAnim(["walk_back1", "idle_back1", "walk_back2"])
-	end function
+	end sub
 
-	object.walkDownAnim = function()
+	object.walkDownAnim = sub()
 		m.playAnim(["walk_front1", "idle_front1", "walk_front2"])
-	end function
+	end sub
 
-	object.walkSideAnim = function()
+	object.walkSideAnim = sub()
 		m.playAnim(["walk_side1", "idle_side1", "walk_side2"])
-	end function
+	end sub
 
-	object.afterAttackAnim = function()
+	object.afterAttackAnim = sub()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
 			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
 				m.playAnim(["idle_side2"])
@@ -179,29 +178,29 @@ function char_control(object)
 		else
 			m.playAnim(["sp_zero"])
 		end if
-	end function
+	end sub
 
-	object.idleUpAnim = function()
+	object.idleUpAnim = sub()
 		m.animTimer = invalid
 		m.playAnim(["idle_back1"])
-	end function
+	end sub
 
-	object.idleDownAnim = function()
+	object.idleDownAnim = sub()
 		m.animTimer = invalid
 		m.playAnim(["idle_front1"])
-	end function
+	end sub
 
-	object.idleLeftAnim = function()
+	object.idleLeftAnim = sub()
 		m.animTimer = invalid
 		m.playAnim(["idle_side1"])
-	end function
+	end sub
 
-	object.idleRightAnim = function()
+	object.idleRightAnim = sub()
     m.animTimer = invalid
 		m.playAnim(["idle_side1"])
-	end function
+	end sub
 
-  object.updateView = function()
+  object.updateView = sub()
 
     if m.view_wnd.getImage(m.game.char.getEntityName()) <> invalid
 
@@ -267,97 +266,97 @@ function char_control(object)
 
     end if
       
-  end function
+  end sub
 
-  object.turnUp = function()
+  object.turnUp = sub()
     if m.game.char.getScaleX() > 0.0
       m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW() * m.game.char.getScaleX())
       m.game.char.setScaleX(- m.game.char.getScaleX())
     end if
-  end function
+  end sub
 
-  object.turnDown = function()
+  object.turnDown = sub()
     if m.game.char.getScaleX() < 0.0
       m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW() * m.game.char.getScaleX())
       m.game.char.setScaleX(- m.game.char.getScaleX())
     end if
-  end function
+  end sub
 
-  object.turnLeft = function()
+  object.turnLeft = sub()
     if m.game.char.getScaleX() > 0.0
       m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW() * m.game.char.getScaleX())
       m.game.char.setScaleX(- m.game.char.getScaleX())
     end if
-  end function
+  end sub
 
-  object.turnRight = function()
+  object.turnRight = sub()
     if m.game.char.getScaleX() < 0.0
       m.game.char.setOffsetX(m.game.char.getOffsetX() + m.game.char.getSizeW() * m.game.char.getScaleX())
       m.game.char.setScaleX(- m.game.char.getScaleX())
     end if
-  end function
+  end sub
 
-  object.idleUp = function()
+  object.idleUp = sub()
     m.game.char.setNPCCol(invalid)
     m.game.char.setMarkerCol(invalid)
     m.game.char.setVehCol(invalid)
     m.game.char.setColDown(false)
     m.game.char.setColLeft(false)
     m.game.char.setColRight(false)
-  end function
+  end sub
 
-  object.idleDown = function()
+  object.idleDown = sub()
     m.game.char.setNPCCol(invalid)
     m.game.char.setMarkerCol(invalid)
     m.game.char.setVehCol(invalid)
     m.game.char.setColUp(false)
     m.game.char.setColLeft(false)
     m.game.char.setColRight(false)
-  end function
+  end sub
 
-  object.idleLeft = function()
+  object.idleLeft = sub()
     m.game.char.setNPCCol(invalid)
     m.game.char.setMarkerCol(invalid)
     m.game.char.setVehCol(invalid)
     m.game.char.setColUp(false)
     m.game.char.setColDown(false)
     m.game.char.setColRight(false)
-  end function
+  end sub
 
-  object.idleRight = function()
+  object.idleRight = sub()
     m.game.char.setNPCCol(invalid)
     m.game.char.setMarkerCol(invalid)
     m.game.char.setVehCol(invalid)
     m.game.char.setColUp(false)
     m.game.char.setColDown(false)
     m.game.char.setColLeft(false)
-  end function
+  end sub
 
-  object.walkUp = function()
+  object.walkUp = sub()
     if m.game.char.getColUp() = false
       m.game.map.setOffsetY(m.game.map.getOffsetY() + m.game.char.getUpSpeed())
     end if
-  end function
+  end sub
 
-  object.walkDown = function()
+  object.walkDown = sub()
     if m.game.char.getColDown() = false
       m.game.map.setOffsetY(m.game.map.getOffsetY() - m.game.char.getDownSpeed())
     end if
-  end function
+  end sub
 
-  object.walkLeft = function()
+  object.walkLeft = sub()
     if m.game.char.getColLeft() = false
       m.game.map.setOffsetX(m.game.map.getOffsetX() + m.game.char.getLeftSpeed())
     end if
-  end function
+  end sub
 
-  object.walkRight = function()
+  object.walkRight = sub()
     if m.game.char.getColRight() = false
       m.game.map.setOffsetX(m.game.map.getOffsetX() - m.game.char.getRightSpeed())
     end if
-  end function
+  end sub
 
-  object.damageSP = function()
+  object.damageSP = sub()
     if m.game.char.getSP() >= m.game.char.getSPDamage() and m.game.char.getRegElement(m.game.char.getIndex()) <> "sp_zero"
 
       if m.sp_damage_timer = invalid
@@ -372,9 +371,9 @@ function char_control(object)
 
     end if
 
-  end function
+  end sub
 
-  object.regenSP = function()
+  object.regenSP = sub()
 
     if m.game.char.getSP() < 100
       if m.sp_regen_timer = invalid
@@ -388,6 +387,6 @@ function char_control(object)
       end if
     end if
 
-  end function
+  end sub
     
-end function
+end sub

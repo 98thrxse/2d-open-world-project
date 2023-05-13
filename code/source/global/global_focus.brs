@@ -1,29 +1,29 @@
-function global_focus(game)
+sub global_focus(game as object)
 
-    game.getFocusGroup = function()
+    game.getFocusGroup = function() as string
 		return m.focusGroup
 	end function
 
-	game.setFocusGroup = function(focusGroup)
+	game.setFocusGroup = sub(focusGroup as string)
 		m.prevFocusGroup = m.focusGroup
 		m.focusGroup = focusGroup
-	end function
+	end sub
 
-	game.getPrevFocusGroup = function()
+	game.getPrevFocusGroup = function() as string
 		return m.prevFocusGroup
 	end function
 
-	game.getFocusTarget = function()
+	game.getFocusTarget = function() as integer
 		return m.focusTarget
 	end function
 
-	game.setFocusTarget = function(focusTarget)
+	game.setFocusTarget = sub(focusTarget as integer)
 		m.prevfocusTarget = m.focusTarget
 		m.focusTarget = focusTarget
-	end function
+	end sub
 
-	game.getPrevFocusTarget = function()
+	game.getPrevFocusTarget = function() as integer
 		return m.prevFocusTarget
 	end function
     
-end function
+end sub

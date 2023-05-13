@@ -1,10 +1,10 @@
-function map_init(object)
+sub map_init(object)
     
-	object.onCreate = function(args)
+	object.onCreate = sub(args as object)
 
         ' defineObject       
 	    m.game.defineObject("char_init", char_init)
-        m.game.defineObject("interface_init", interface_init)
+        m.game.defineObject("hud_init", hud_init)
         m.game.defineObject("marker_init", marker_init)
         m.game.defineObject("npc_init", npc_init)
         m.game.defineObject("veh_init", veh_init)
@@ -20,11 +20,11 @@ function map_init(object)
         ' createInstance
         m.game.createInstance("map_main")
 
-    end function
+    end sub
 
-    object.onDestroy = function()
+    object.onDestroy = sub()
 		' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("map_main"))
-    end function
+    end sub
     
-end function
+end sub

@@ -1,19 +1,15 @@
-function char_view(object)
+sub char_view(object)
 
   object.funcName = "char_view"
 
-  object.onCreate = function(args)
-
-  end function
-
-  object.onUpdate = function(dt as float)
+  object.onUpdate = sub(dt as float)
 
     m.genEntity()
     m.genCol()
 
-  end function
+  end sub
 
-  object.loadEntity = function()
+  object.loadEntity = sub()
 
     m.char_regions = []
 
@@ -35,10 +31,10 @@ function char_view(object)
 
     end for
 
-  end function
+  end sub
 
   
-  object.genEntity = function()
+  object.genEntity = sub()
 
     if m.getImage(m.game.char.getEntityName().toStr()) = invalid
 
@@ -56,9 +52,9 @@ function char_view(object)
 
     end if
 
-  end function
+  end sub
 
-  object.genCol = function()
+  object.genCol = sub()
 
     if m.game.char.getVeh() = invalid
       ' addColliderRectangle
@@ -95,6 +91,6 @@ function char_view(object)
       end if
     end if
 
-  end function
+  end sub
     
-end function
+end sub

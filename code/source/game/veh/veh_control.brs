@@ -1,35 +1,35 @@
-function veh_control(object)
+sub veh_control(object)
 
-  object.onCreate = function(args)
+  object.onCreate = sub(args as object)
 
     ' getInstanceByName
     m.view_wnd = m.game.getInstanceByName("veh_view")
 
-  end function
+  end sub
 
-  object.updatePos = function()
+  object.updatePos = sub()
 
     ' entity position
     m.view_wnd.x = m.game.map.getOffsetX()
     m.view_wnd.y = m.game.map.getOffsetY()
 
-  end function
+  end sub
 
-  object.savePos = function()
+  object.savePos = sub()
 
     m.game.char.setEntityX(m.game.screen.GetWidth() / 2 - m.game.map.getOffsetX())
     m.game.char.setEntityY(m.game.screen.GetHeight() / 2 - m.game.map.getOffsetY())
 
-  end function
+  end sub
 
-  object.onUpdate = function(dt as float)
+  object.onUpdate = sub(dt as float)
 
     m.updatePos()
     m.updateView()
 
-  end function
+  end sub
 
-  object.onButton = function(code as integer)
+  object.onButton = sub(code as integer)
 
     ' pressed
     if code = 2 ' up
@@ -108,9 +108,9 @@ function veh_control(object)
       
     end if
 
-  end function
+  end sub
 
-	object.playAnim = function(i, arr)
+	object.playAnim = sub(i as integer, arr as object)
 
 		if m.timer = invalid
 			m.timer = CreateObject("roTimeSpan")
@@ -128,136 +128,136 @@ function veh_control(object)
 		if m.timer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.veh.getAnimTime(i) then m.timer.Mark()
 		m.game.veh.setIndex(i, arrAnim[int(m.timer.TotalMilliseconds() / m.game.veh.getAnimTime(i))])
 
-	end function
+	end sub
 
-  object.turnUp = function()
+  object.turnUp = sub()
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
-  end function
+  end sub
 
-  object.turnDown = function()
+  object.turnDown = sub()
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) < 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
-  end function
+  end sub
 
-  object.turnLeft = function()
+  object.turnLeft = sub()
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
-  end function
+  end sub
 
-  object.turnRight = function()
+  object.turnRight = sub()
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) < 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
-  end function
+  end sub
 
-  object.idleUpAnim = function()
+  object.idleUpAnim = sub()
 		m.animTimer = invalid
 		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
-	end function
+	end sub
 
-	object.idleDownAnim = function()
+	object.idleDownAnim = sub()
 		m.animTimer = invalid
 		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
-	end function
+	end sub
 
-	object.idleLeftAnim = function()
+	object.idleLeftAnim = sub()
 		m.animTimer = invalid
 		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
-	end function
+	end sub
 
-	object.idleRightAnim = function()
+	object.idleRightAnim = sub()
     m.animTimer = invalid
 		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
-	end function
+	end sub
 
-  object.idleUp = function()
+  object.idleUp = sub()
     m.game.veh.setNPCCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setMarkerCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setVehCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setColDown(m.game.char.getVeh().split("_").peek().toInt(), false)
     m.game.veh.setColLeft(m.game.char.getVeh().split("_").peek().toInt(), false)
     m.game.veh.setColRight(m.game.char.getVeh().split("_").peek().toInt(), false)
-  end function
+  end sub
 
-  object.idleDown = function()
+  object.idleDown = sub()
     m.game.veh.setNPCCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setMarkerCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setVehCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setColUp(m.game.char.getVeh().split("_").peek().toInt(), false)
     m.game.veh.setColLeft(m.game.char.getVeh().split("_").peek().toInt(), false)
     m.game.veh.setColRight(m.game.char.getVeh().split("_").peek().toInt(), false)
-  end function
+  end sub
 
-  object.idleLeft = function()
+  object.idleLeft = sub()
     m.game.veh.setNPCCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setMarkerCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setVehCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setColUp(m.game.char.getVeh().split("_").peek().toInt(), false)
     m.game.veh.setColDown(m.game.char.getVeh().split("_").peek().toInt(), false)
     m.game.veh.setColRight(m.game.char.getVeh().split("_").peek().toInt(), false)
-  end function
+  end sub
 
-  object.idleRight = function()
+  object.idleRight = sub()
     m.game.veh.setNPCCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setMarkerCol(m.game.char.getVeh().split("_").peek().toInt(), invalid)
     m.game.veh.setColUp(m.game.char.getVeh().split("_").peek().toInt(), false)
     m.game.veh.setColDown(m.game.char.getVeh().split("_").peek().toInt(), false)
     m.game.veh.setColLeft(m.game.char.getVeh().split("_").peek().toInt(), false)
-  end function
+  end sub
 
-  object.walkUp = function()
+  object.walkUp = sub()
     if m.game.veh.getColUp(m.game.char.getVeh().split("_").peek().toInt()) = false
       m.game.map.setOffsetY(m.game.map.getOffsetY() + m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityY(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setColY(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()))
     end if
-  end function
+  end sub
 
-  object.walkDown = function()
+  object.walkDown = sub()
     if m.game.veh.getColDown(m.game.char.getVeh().split("_").peek().toInt()) = false
       m.game.map.setOffsetY(m.game.map.getOffsetY() - m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityY(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setColY(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getColY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()))
     end if
-  end function
+  end sub
 
-  object.walkLeft = function()
+  object.walkLeft = sub()
     if m.game.veh.getColLeft(m.game.char.getVeh().split("_").peek().toInt()) = false
       m.game.map.setOffsetX(m.game.map.getOffsetX() + m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setColX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()))
     end if
-  end function
+  end sub
 
-  object.walkRight = function()
+  object.walkRight = sub()
     if m.game.veh.getColRight(m.game.char.getVeh().split("_").peek().toInt()) = false
       m.game.map.setOffsetX(m.game.map.getOffsetX() - m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setColX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getColX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()))
     end if
-  end function
+  end sub
 
-  object.walkUpAnim = function()
+  object.walkUpAnim = sub()
 		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
-	end function
+	end sub
 
-	object.walkDownAnim = function()
+	object.walkDownAnim = sub()
 		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
-	end function
+	end sub
 
-	object.walkSideAnim = function()
+	object.walkSideAnim = sub()
 		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
-	end function
+	end sub
 
-  object.updateView = function()
+  object.updateView = sub()
 
     for i = 0 to m.game.veh.config.Count() - 1
       if m.view_wnd.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()) <> invalid
@@ -314,6 +314,6 @@ function veh_control(object)
       end if
     end if
 
-  end function
+  end sub
       
-end function
+end sub

@@ -1,6 +1,6 @@
 function veh_data() as object
 
-    m.veh = {
+    veh = {
 
         getUpSpeed: veh_getUpSpeed
         setUpSpeed: veh_setUpSpeed
@@ -99,13 +99,13 @@ function veh_data() as object
 
     }
 
-    if m.veh.config = invalid
+    if veh.config = invalid
 
-        m.veh.config = []
+        veh.config = []
 
     end if
 
-    return m.veh
+    return veh
 
 end function
 

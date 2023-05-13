@@ -1,5 +1,5 @@
 function map_data() as object
-    m.map = {
+    map = {
 
         getOffsetX: map_getOffsetX
         setOffsetX: map_setOffsetX
@@ -13,9 +13,9 @@ function map_data() as object
 		config: invalid
 	}
 
-	if m.map.config = invalid
+	if map.config = invalid
 
-		m.map.config = {
+		map.config = {
 			offset: {
 				x: 0,
 				y: 0
@@ -26,7 +26,7 @@ function map_data() as object
 
 	end if
 
-	return m.map
+	return map
 
 end function
 

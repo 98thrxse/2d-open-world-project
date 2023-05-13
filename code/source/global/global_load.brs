@@ -1,4 +1,4 @@
-function global_load(save as string) as dynamic
+function global_load(save as string) as object
 	json = getRegistryString(save)
 	if json <> ""
 		data = parseJSON(json)

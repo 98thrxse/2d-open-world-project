@@ -1,6 +1,6 @@
-function filler_init(object)
+sub filler_init(object)
 
-	object.onCreate = function(args)
+	object.onCreate = sub(args as object)
 
         ' defineObject
         m.game.defineObject("filler_main", filler_main)
@@ -10,11 +10,11 @@ function filler_init(object)
         ' createInstance
         m.game.createInstance("filler_main")
     
-    end function
+    end sub
 
-    object.onDestroy = function()
+    object.onDestroy = sub()
         ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("filler_main"))
-    end function
+    end sub
 
-end function
+end sub

@@ -1,12 +1,8 @@
-function terrain_view(object)
+sub terrain_view(object)
 
     object.funcName = "terrain_view"
 
-    object.onCreate = function(args)
-
-    end function
-
-    object.loadEntity = function(id_y, id_x, i, j)
+    object.loadEntity = sub(id_y as object, id_x as object, i as integer, j as integer)
 
         m.terrain_regions = []
 
@@ -26,9 +22,9 @@ function terrain_view(object)
             m.terrain_regions.push(terrain_region)
         end for
 
-    end function
+    end sub
 
-    object.unloadEntity = function(i, j)
+    object.unloadEntity = sub(i as integer, j as integer)
 
         for k = 0 to m.game.terrain.config[i][j].reg.Count() - 1
 
@@ -38,9 +34,9 @@ function terrain_view(object)
             end if
 
         end for
-    end function
+    end sub
 
-    object.genEntity = function()
+    object.genEntity = sub()
 
         if m.game.terrain.config.Count() <> 0
             id_x = []
@@ -121,21 +117,21 @@ function terrain_view(object)
 
         end if
 
-    end function
+    end sub
 
-    object.onUpdate = function(dt as float)
+    object.onUpdate = sub(dt as float)
 
         m.genEntity()
 
-    end function
+    end sub
 
-    object.onDestroy = function()
+    object.onDestroy = sub()
         for i = 0 to m.game.terrain.config.Count() - 1
             for j = 0 to m.game.terrain.config[i].Count() - 1
                 m.unloadEntity(i, j)
             end for
         end for
         
-    end function
+    end sub
     
-end function
+end sub

@@ -1,6 +1,6 @@
-function npc_init(object)
+sub npc_init(object)
 
-	object.onCreate = function(args)
+	object.onCreate = sub(args as object)
 
 		' defineObject
 		m.game.defineObject("npc_main", npc_main)
@@ -10,10 +10,10 @@ function npc_init(object)
 		' createInstance
         m.game.createInstance("npc_main")
 
-	end function
+	end sub
 
-	object.onDestroy = function()
+	object.onDestroy = sub()
         m.game.destroyInstance(m.game.getInstanceByName("npc_main"))
-    end function
+    end sub
 
-end function
+end sub

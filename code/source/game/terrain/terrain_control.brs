@@ -1,24 +1,24 @@
-function terrain_control(object)
+sub terrain_control(object)
 
-    object.onCreate = function(args)
+    object.onCreate = sub(args as object)
 
         ' getInstanceByName
         m.view_wnd = m.game.getInstanceByName("terrain_view")
 
-    end function
+    end sub
 
-    object.updatePos = function()
+    object.updatePos = sub()
 
         ' position
         m.view_wnd.x = m.game.map.getOffsetX()
         m.view_wnd.y = m.game.map.getOffsetY()
 
-    end function
+    end sub
 
-    object.onUpdate = function(dt as float)
+    object.onUpdate = sub(dt as float)
 
         m.updatePos()
 
-    end function
+    end sub
     
-end function
+end sub

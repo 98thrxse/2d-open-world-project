@@ -1,10 +1,6 @@
-function map_control(object)
-
-    object.onCreate = function(args)
-
-    end function
+sub map_control(object)
     
-    object.onUpdate = function(dt as float)
+    object.onUpdate = sub(dt as float)
         if m.map = invalid or m.game.char.getMap() <> m.map
             if m.map <> invalid then m.destroyMap()
             m.createMap()
@@ -12,12 +8,12 @@ function map_control(object)
             m.setConfigs()
             m.updatePos()
         end if
-    end function
+    end sub
 
-    object.createMap = function()
+    object.createMap = sub()
         ' createInstance
         m.game.createInstance("char_init")
-        m.game.createInstance("interface_init")
+        m.game.createInstance("hud_init")
         m.game.createInstance("marker_init")
         m.game.createInstance("npc_init")
         m.game.createInstance("veh_init")
@@ -26,12 +22,12 @@ function map_control(object)
         m.game.createInstance("filler_init")
 
         m.game.createInstance("interact_init")
-    end function
+    end sub
 
-    object.destroyMap = function()
+    object.destroyMap = sub()
         ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("char_init"))
-        m.game.destroyInstance(m.game.getInstanceByName("interface_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("hud_init"))
         m.game.destroyInstance(m.game.getInstanceByName("marker_init"))
         m.game.destroyInstance(m.game.getInstanceByName("obj_init"))
         m.game.destroyInstance(m.game.getInstanceByName("npc_init"))
@@ -40,9 +36,9 @@ function map_control(object)
         m.game.destroyInstance(m.game.getInstanceByName("filler_init"))
 
         m.game.destroyInstance(m.game.getInstanceByName("interact_init"))
-    end function
+    end sub
 
-    object.getConfigs = function()
+    object.getConfigs = sub()
         if m.game.char.getMap() = invalid then m.game.char.setMap(m.game.map.getStartMap())
         m.map = m.game.char.getMap()
         
@@ -52,7 +48,7 @@ function map_control(object)
             m.map_npc_config = testOne_npc_config()
             m.map_veh_config = testOne_veh_config()
             m.map_terrain_config = testOne_terrain_config()
-            m.map_interface_config = testOne_interface_config()
+            m.map_hud_config = testOne_hud_config()
             m.map_marker_config = testOne_marker_config()
             m.map_filler_config = testOne_filler_config()
 
@@ -62,25 +58,25 @@ function map_control(object)
             m.map_npc_config = testTwo_npc_config()
             m.map_veh_config = testTwo_veh_config()
             m.map_terrain_config = testTwo_terrain_config()
-            m.map_interface_config = testTwo_interface_config()
+            m.map_hud_config = testTwo_hud_config()
             m.map_marker_config = testTwo_marker_config()
             m.map_filler_config = testTwo_filler_config()
         end if
 
-    end function
+    end sub
 
-    object.setConfigs = function()
+    object.setConfigs = sub()
         m.loadChar()
         m.loadNPC()
         m.loadObj()
         m.loadVeh()
         m.loadTerrain()
-        m.loadInterface()
+        m.loadhud()
         m.loadMarker()
         m.loadFiller()
-    end function
+    end sub
     
-    object.loadFiller = function()
+    object.loadFiller = sub()
         ' loading map config to filler data      
         for i = 0 to m.map_filler_config.Count() - 1
             if i > m.game.filler.config.Count() - 1
@@ -125,10 +121,10 @@ function map_control(object)
 
             end for
         end for
-    end function
+    end sub
 
 
-    object.loadTerrain = function()
+    object.loadTerrain = sub()
         ' loading map config to terrain data      
         for i = 0 to m.map_terrain_config.Count() - 1
             if i > m.game.terrain.config.Count() - 1
@@ -171,10 +167,10 @@ function map_control(object)
 
             end for
         end for
-    end function
+    end sub
 
 
-    object.loadObj = function()
+    object.loadObj = sub()
 
         ' loading map config to obj data
         if m.game.obj.config.Count() < m.map_obj_config.Count()
@@ -221,9 +217,9 @@ function map_control(object)
             if m.map_obj_config[i].reg <> invalid then m.game.obj.setReg(i, m.map_obj_config[i].reg)
 
         end for
-    end function
+    end sub
 
-    object.loadMarker = function()
+    object.loadMarker = sub()
         ' loading map config to marker data
         if m.game.marker.config.Count() < m.map_marker_config.Count()
             for i = m.game.marker.config.Count() to m.map_marker_config.Count() - 1
@@ -270,9 +266,9 @@ function map_control(object)
 
         end for
 
-    end function
+    end sub
 
-    object.loadNPC = function()
+    object.loadNPC = sub()
 
         ' loading map config to npc data
         if m.game.npc.config.Count() < m.map_npc_config.Count()
@@ -341,9 +337,9 @@ function map_control(object)
 
         end for
 
-    end function
+    end sub
 
-    object.loadVeh = function()
+    object.loadVeh = sub()
 
         ' loading map config to veh data
         if m.game.veh.config.Count() < m.map_veh_config.Count()
@@ -431,9 +427,9 @@ function map_control(object)
        
         end for
 
-    end function
+    end sub
 
-    object.loadChar = function()
+    object.loadChar = sub()
 
         ' loading map config to player data
         if m.map_char_config.name <> invalid and m.game.char.getEntityName() = invalid then m.game.char.setEntityName(m.map_char_config.name)
@@ -480,37 +476,37 @@ function map_control(object)
         ' no need to load at all
         if m.game.char.getVeh() <> invalid then m.game.char.setVeh(invalid)
 
-    end function
+    end sub
 
-    object.loadInterface = function()
+    object.loadhud = sub()
 
-        if m.game.interface.config.menu.Count() < m.map_interface_config.menu.Count()
-            for i = m.game.interface.config.menu.Count() to m.map_interface_config.menu.Count() - 1
-                m.game.interface.config.menu.push({
+        if m.game.hud.config.menu.Count() < m.map_hud_config.menu.Count()
+            for i = m.game.hud.config.menu.Count() to m.map_hud_config.menu.Count() - 1
+                m.game.hud.config.menu.push({
                     id: i,
                     name: invalid,
                 })
             end for
 
-        else if m.game.interface.config.menu.Count() > m.map_interface_config.menu.Count()
-            for i = m.map_interface_config.menu.Count() to m.game.interface.config.menu.Count() - 1
-                m.game.interface.config.menu.pop()
+        else if m.game.hud.config.menu.Count() > m.map_hud_config.menu.Count()
+            for i = m.map_hud_config.menu.Count() to m.game.hud.config.menu.Count() - 1
+                m.game.hud.config.menu.pop()
             end for
         end if
 
-        for i = 0 to m.map_interface_config.menu.Count() - 1
-            if m.map_interface_config.menu <> invalid then m.game.interface.setMenuItemName(i, m.map_interface_config.menu[i].name)
+        for i = 0 to m.map_hud_config.menu.Count() - 1
+            if m.map_hud_config.menu <> invalid then m.game.hud.setMenuItemName(i, m.map_hud_config.menu[i].name)
         end for
             
-    end function
+    end sub
 
 
-    object.updatePos = function()
+    object.updatePos = sub()
 
         ' position
         m.game.map.setOffsetX(m.game.screen.GetWidth() / 2 - m.game.char.getEntityX())
         m.game.map.setOffsetY(m.game.screen.GetHeight() / 2 - m.game.char.getEntityY())
     
-    end function
+    end sub
 
-end function
+end sub

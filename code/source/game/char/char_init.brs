@@ -1,6 +1,6 @@
-function char_init(object)
+sub char_init(object)
 
-	object.onCreate = function(args)
+	object.onCreate = sub(args as object)
 
 		' defineObject
 		m.game.defineObject("char_main", char_main)
@@ -10,11 +10,11 @@ function char_init(object)
 		' createInstance
         m.game.createInstance("char_main")
 
-	end function
+	end sub
 
-	object.onDestroy = function()
+	object.onDestroy = sub()
 		' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("char_main"))
-    end function
+    end sub
 
-end function
+end sub

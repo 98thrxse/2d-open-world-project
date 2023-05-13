@@ -1,6 +1,6 @@
-function filler_main(object)
+sub filler_main(object)
 
-    object.onCreate = function(args)
+    object.onCreate = sub(args as object)
 
 		m.game.filler = filler_data()
         
@@ -8,12 +8,12 @@ function filler_main(object)
         m.game.createInstance("filler_view")
         m.game.createInstance("filler_control")
 
-    end function
+    end sub
 
-    object.onDestroy = function()
+    object.onDestroy = sub()
         ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("filler_view"))
         m.game.destroyInstance(m.game.getInstanceByName("filler_control"))
-    end function
+    end sub
     
-end function
+end sub

@@ -1,13 +1,8 @@
-function veh_view(object)
+sub veh_view(object)
 
   object.funcName = "veh_view"
 
-  object.onCreate = function(args)
-  
-  end function
-
-
-  object.loadEntity = function(i)
+  object.loadEntity = sub(i as integer)
 
     m.veh_regions = []
 
@@ -28,9 +23,9 @@ function veh_view(object)
 
     end for
     
-  end function
+  end sub
 
-  object.unloadEntity = function(i)
+  object.unloadEntity = sub(i as integer)
 
     for j = 0 to m.game.veh.config[i].reg.Count() - 1
 
@@ -41,9 +36,9 @@ function veh_view(object)
 
     end for
 
-  end function
+  end sub
 
-  object.genEntity = function()
+  object.genEntity = sub()
 
     if m.game.veh.config.Count() <> 0
       ' load & add
@@ -109,10 +104,10 @@ function veh_view(object)
       end for
     end if
 
-  end function
+  end sub
 
 
-  object.genCol = function()
+  object.genCol = sub()
     if m.game.veh.config.Count() <> 0
 
       for i = 0 to m.game.veh.config.Count() - 1
@@ -176,9 +171,9 @@ function veh_view(object)
       end for
     end if
 
-  end function
+  end sub
 
-  object.onSelfCollision = function()
+  object.onSelfCollision = sub()
     if m.game.char.getVeh() <> invalid
       for i = 0 to m.game.veh.config.Count() - 1
         if m.game.char.getVeh() <> m.game.veh.getName(i).toStr() + "_" + i.toStr()
@@ -202,9 +197,9 @@ function veh_view(object)
         end if
       end for
     end if
-  end function
+  end sub
 
-  object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
+  object.onCollision = sub(collider_name as string, other_collider_name as string, other_instance as object)
     
     if other_collider_name = m.game.char.getColUpName()
       m.game.char.setVehCol(collider_name)
@@ -224,21 +219,21 @@ function veh_view(object)
 
     end if
 
-  end function
+  end sub
 
-  object.onUpdate = function(dt as float)
+  object.onUpdate = sub(dt as float)
 
     m.genEntity()
     m.genCol()
     m.onSelfCollision()
 
-  end function
+  end sub
 
-  object.onDestroy = function()
+  object.onDestroy = sub()
     for i = 0 to m.game.veh.config.Count() - 1
       m.unloadEntity(i)
     end for
     
-  end function
+  end sub
 
-end function
+end sub

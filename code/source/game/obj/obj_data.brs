@@ -1,6 +1,6 @@
 function obj_data() as object
 
-    m.obj = {
+    obj = {
 
         getName: obj_getName
         setName: obj_setName
@@ -45,13 +45,13 @@ function obj_data() as object
 
     }
 
-    if m.obj.config = invalid
+    if obj.config = invalid
 
-        m.obj.config = []
+        obj.config = []
 
     end if
 
-    return m.obj
+    return obj
 
 end function
 

@@ -1,12 +1,12 @@
-function interact_obj_veh(object)
+sub interact_obj_veh(object)
 
-    object.onUpdate = function(dt as float)
+    object.onUpdate = sub(dt as float)
 
         m.intersect()
 
-    end function
+    end sub
 
-    object.intersect = function()
+    object.intersect = sub()
         for i = 0 to m.game.obj.config.Count() - 1
             for j = 0 to m.game.veh.config.Count() - 1
                 if m.game.getFocusGroup() = "veh" and m.game.char.getVeh().split("_").peek().toInt() = j
@@ -40,6 +40,6 @@ function interact_obj_veh(object)
                 end if
             end for
         end for
-    end function
+    end sub
 
-end function
+end sub

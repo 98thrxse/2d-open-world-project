@@ -1,6 +1,6 @@
 function marker_data() as object
 
-    m.marker = {
+    marker = {
 
         getName: marker_getName
         setName: marker_setName
@@ -42,13 +42,13 @@ function marker_data() as object
 
     }
 
-    if m.marker.config = invalid
+    if marker.config = invalid
 
-        m.marker.config = []
+        marker.config = []
 
     end if
 
-    return m.marker
+    return marker
 
 end function
 

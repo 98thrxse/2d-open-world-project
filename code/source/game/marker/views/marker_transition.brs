@@ -1,8 +1,8 @@
-function marker_transition(object)
+sub marker_transition(object)
 
   object.funcName = "marker_transition"
 
-  object.onCreate = function(args)
+  object.onCreate = sub(args as object)
 
     ' loadFont
     m.game.loadFont("VT323-21", "VT323", 21, false, false)
@@ -10,9 +10,9 @@ function marker_transition(object)
     ' getFont
     m.transition_font = m.game.getFont("VT323-21")
 
-  end function
+  end sub
 
-  object.loadEntity = function(i)
+  object.loadEntity = sub(i as integer)
 
     m.marker_regions = []
 
@@ -33,9 +33,9 @@ function marker_transition(object)
 
     end for
 
-  end function
+  end sub
 
-  object.unloadEntity = function(i)
+  object.unloadEntity = sub(i as integer)
 
     for j = 0 to m.game.marker.config[i].reg.Count() - 1
 
@@ -46,9 +46,9 @@ function marker_transition(object)
 
     end for
   
-  end function
+  end sub
 
-  object.genEntity = function()
+  object.genEntity = sub()
 
     if m.game.marker.config.Count() <> 0
 
@@ -82,9 +82,9 @@ function marker_transition(object)
       end for
     end if
 
-  end function
+  end sub
 
-  object.genCol = function()
+  object.genCol = sub()
 
     if m.game.marker.config.Count() <> 0
 
@@ -106,9 +106,9 @@ function marker_transition(object)
       end for
     end if
 
-  end function
+  end sub
     
-  object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
+  object.onCollision = sub(collider_name as string, other_collider_name as string, other_instance as object)
   
     if m.game.getFocusGroup() = "char"
       if other_collider_name = m.game.char.getColUpName()
@@ -140,29 +140,29 @@ function marker_transition(object)
       end if
     end if
   
-  end function
+  end sub
 
-  object.onUpdate = function(dt as float)
+  object.onUpdate = sub(dt as float)
 
     m.genEntity()
     m.genCol()
 
-  end function
+  end sub
 
-  object.onDrawEnd = function(canvas)
+  object.onDrawEnd = sub(canvas)
     
     if m.game.marker.config.Count() <> 0 and m.game.char.getMarkerCol() <> invalid and m.game.getFocusGroup() = "char"
       DrawText(canvas, "ENTER", m.game.marker.getOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.marker.getSizeW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2 + 3, m.game.marker.getOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.marker.getSizeH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3 + 3, m.transition_font, "center", &h000000FF)
-      DrawText(canvas, "ENTER", m.game.marker.getOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.marker.getSizeW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2, m.game.marker.getOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.marker.getSizeH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3, m.transition_font, "center", &hFF0000FF)
+      DrawText(canvas, "ENTER", m.game.marker.getOffsetX(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetX() + m.game.marker.getSizeW(m.game.char.getMarkerCol().split("_").peek().toInt()) / 2, m.game.marker.getOffsetY(m.game.char.getMarkerCol().split("_").peek().toInt()) + m.game.map.getOffsetY() + m.game.marker.getSizeH(m.game.char.getMarkerCol().split("_").peek().toInt()) / 3, m.transition_font, "center", &hFFFFFFFF)
     end if
 
-  end function
+  end sub
 
-  object.onDestroy = function()
+  object.onDestroy = sub()
     for i = 0 to m.game.marker.config.Count() - 1
       m.unloadEntity(i)
     end for
     
-  end function
+  end sub
 
-end function
+end sub

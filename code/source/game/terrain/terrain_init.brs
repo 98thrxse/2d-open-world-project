@@ -1,6 +1,6 @@
-function terrain_init(object)
+sub terrain_init(object)
 
-	object.onCreate = function(args)
+	object.onCreate = sub(args as object)
 
         ' defineObject
         m.game.defineObject("terrain_main", terrain_main)
@@ -10,11 +10,11 @@ function terrain_init(object)
         ' createInstance
         m.game.createInstance("terrain_main")
     
-    end function
+    end sub
 
-    object.onDestroy = function()
+    object.onDestroy = sub()
         ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("terrain_main"))
-    end function
+    end sub
 
-end function
+end sub

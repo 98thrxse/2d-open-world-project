@@ -1,6 +1,6 @@
 function npc_data() as object
 
-    m.npc = {
+    npc = {
 
         getHP: npc_getHP
         setHP: npc_setHP
@@ -69,13 +69,13 @@ function npc_data() as object
 
     }
 
-    if m.npc.config = invalid
+    if npc.config = invalid
 
-        m.npc.config = []
+        npc.config = []
 
     end if
 
-    return m.npc
+    return npc
 
 end function
 

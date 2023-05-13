@@ -1,6 +1,6 @@
-function interact_char_marker(object)
+sub interact_char_marker(object)
 
-    object.onButton = function(code as integer)
+    object.onButton = sub(code as integer)
 
         ' pressed
         if code = 13 ' play
@@ -9,9 +9,9 @@ function interact_char_marker(object)
             end if
         end if
 
-    end function
+    end sub
 
-    object.transition = function()
+    object.transition = sub()
 
         if m.game.char.getMarkerCol() <> invalid and m.game.char.getVehCol() = invalid
 
@@ -24,6 +24,6 @@ function interact_char_marker(object)
 
         end if
     
-    end function
+    end sub
 
-end function
+end sub

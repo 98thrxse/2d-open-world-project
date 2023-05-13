@@ -1,6 +1,6 @@
-function veh_main(object)
+sub veh_main(object)
 
-    object.onCreate = function(args)
+    object.onCreate = sub(args as object)
 
 		m.game.veh = veh_data()
 
@@ -8,12 +8,12 @@ function veh_main(object)
         m.game.createInstance("veh_view")
         m.game.createInstance("veh_control")
 
-    end function
+    end sub
 
-    object.onDestroy = function()
+    object.onDestroy = sub()
         ' destroyInstance
         m.game.destroyInstance(m.game.getInstanceByName("veh_view"))
         m.game.destroyInstance(m.game.getInstanceByName("veh_control"))
-    end function
+    end sub
     
-end function
+end sub

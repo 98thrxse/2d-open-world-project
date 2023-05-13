@@ -1,4 +1,4 @@
-function testOne_interface_config() as object
+function testOne_hud_config() as object
     config = {
 
         menu: [

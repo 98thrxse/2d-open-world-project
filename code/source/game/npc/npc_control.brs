@@ -1,21 +1,21 @@
-function npc_control(object)
+sub npc_control(object)
 
-  object.onCreate = function(args)
+  object.onCreate = sub(args as object)
 
     ' getInstanceByName
     m.view_wnd = m.game.getInstanceByName("npc_view")
 
-  end function
+  end sub
 
-  object.updatePos = function()
+  object.updatePos = sub()
 
     ' entity position
     m.view_wnd.x = m.game.map.getOffsetX()
     m.view_wnd.y = m.game.map.getOffsetY()
 
-  end function
+  end sub
 
-  object.onUpdate = function(dt as float)
+  object.onUpdate = sub(dt as float)
 
       m.updatePos()
       m.walk()
@@ -25,9 +25,9 @@ function npc_control(object)
       m.walkAnim()
       m.updateView()
 
-  end function
+  end sub
 
-  object.pathReset = function()
+  object.pathReset = sub()
     for i = 0 to m.game.npc.config.Count() - 1
       if m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
 
@@ -37,9 +37,9 @@ function npc_control(object)
 
       end if
     end for
-  end function
+  end sub
 
-  object.walk = function()
+  object.walk = sub()
 
     for i = 0 to m.game.npc.config.Count() - 1
 
@@ -109,9 +109,9 @@ function npc_control(object)
 
     end for
 
-  end function
+  end sub
 
-	object.deathAnim = function()
+	object.deathAnim = sub()
 
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) <= 0 and m.game.npc.getRegElement(i, m.game.npc.getIndex(i)) <> "hp_zero" 
@@ -119,9 +119,9 @@ function npc_control(object)
 			end if
 		end for
 
-	end function
+	end sub
 
-  object.death = function()
+  object.death = sub()
 
 		for i = 0 to m.game.npc.config.Count() - 1
       if m.game.npc.getHP(i) <= 0 and m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
@@ -130,9 +130,9 @@ function npc_control(object)
 			end if
 		end for
 
-	end function
+	end sub
 
-	object.walkAnim = function()
+	object.walkAnim = sub()
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) > 0 and m.game.npc.getPathCycle(i) <> invalid and m.game.npc.getPath(i) <> invalid
 
@@ -153,22 +153,22 @@ function npc_control(object)
 			end if
 	
 		end for
-	end function
+	end sub
 
-	object.walkUpAnim = function(i)
+	object.walkUpAnim = sub(i as integer)
 		m.playAnim(i, ["walk_back1", "idle_back1", "walk_back2"])
-	end function
+	end sub
 
-	object.walkDownAnim = function(i)
+	object.walkDownAnim = sub(i as integer)
 		m.playAnim(i, ["walk_front1", "idle_front1", "walk_front2"])
-	end function
+	end sub
 
-	object.walkSideAnim = function(i)
+	object.walkSideAnim = sub(i as integer)
 		m.playAnim(i, ["walk_side1", "idle_side1", "walk_side2"])
-	end function
+	end sub
 
 
-	object.playAnim = function(i, arr)
+	object.playAnim = sub(i as integer, arr as object)
 
 		if m.timer = invalid
 			m.timer = CreateObject("roTimeSpan")
@@ -186,9 +186,9 @@ function npc_control(object)
 		if m.timer.TotalMilliseconds() + 1 >= arrAnim.Count() * m.game.npc.getAnimTime(i) then m.timer.Mark()
 		m.game.npc.setIndex(i, arrAnim[int(m.timer.TotalMilliseconds() / m.game.npc.getAnimTime(i))])
 
-	end function
+	end sub
 
-  object.updateView = function()
+  object.updateView = sub()
 
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.view_wnd.getImage(m.game.npc.getName(i).toStr() + "_" + i.toStr()) <> invalid
@@ -208,6 +208,6 @@ function npc_control(object)
       end if
 		end for
 
-	end function
+	end sub
       
-end function
+end sub

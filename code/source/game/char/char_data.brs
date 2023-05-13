@@ -1,6 +1,6 @@
-function char_data(ver) as object
+function char_data(ver as string) as object
 
-    m.char = {
+    char = {
 
         getEntityName: char_getEntityName
         setEntityName: char_setEntityName
@@ -130,11 +130,11 @@ function char_data(ver) as object
         config: invalid
     }
 
-    m.char.config = global_load("char")
+    char.config = global_load("char")
 
-    if m.char.config = invalid OR m.char.config.version <> ver
+    if char.config = invalid OR char.config.version <> ver
 
-        m.char.config = {
+        char.config = {
             name: invalid,
             name_up: invalid,
             name_down: invalid,
@@ -195,7 +195,7 @@ function char_data(ver) as object
         }
 
     end if
-    return m.char
+    return char
 
 end function
 
