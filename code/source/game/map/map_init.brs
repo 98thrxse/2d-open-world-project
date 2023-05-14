@@ -11,6 +11,7 @@ sub map_init(object)
         m.game.defineObject("obj_init", obj_init)
         m.game.defineObject("terrain_init", terrain_init)
         m.game.defineObject("filler_init", filler_init)
+        m.game.defineObject("border_init", border_init)
 
         m.game.defineObject("interact_init", interact_init)
 

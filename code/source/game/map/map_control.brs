@@ -20,6 +20,7 @@ sub map_control(object)
         m.game.createInstance("obj_init")
         m.game.createInstance("terrain_init")
         m.game.createInstance("filler_init")
+        m.game.createInstance("border_init")
 
         m.game.createInstance("interact_init")
     end sub
@@ -34,6 +35,7 @@ sub map_control(object)
         m.game.destroyInstance(m.game.getInstanceByName("veh_init"))
         m.game.destroyInstance(m.game.getInstanceByName("terrain_init"))
         m.game.destroyInstance(m.game.getInstanceByName("filler_init"))
+        m.game.destroyInstance(m.game.getInstanceByName("border_init"))
 
         m.game.destroyInstance(m.game.getInstanceByName("interact_init"))
     end sub
@@ -51,6 +53,7 @@ sub map_control(object)
             m.map_hud_config = testOne_hud_config()
             m.map_marker_config = testOne_marker_config()
             m.map_filler_config = testOne_filler_config()
+            m.map_border_config = testOne_border_config()
 
         else if m.game.char.getMap() = "testTwo"
             m.map_char_config = testTwo_char_config()
@@ -61,6 +64,7 @@ sub map_control(object)
             m.map_hud_config = testTwo_hud_config()
             m.map_marker_config = testTwo_marker_config()
             m.map_filler_config = testTwo_filler_config()
+            m.map_border_config = testTwo_border_config()
         end if
 
     end sub
@@ -71,9 +75,10 @@ sub map_control(object)
         m.loadObj()
         m.loadVeh()
         m.loadTerrain()
-        m.loadhud()
+        m.loadHud()
         m.loadMarker()
         m.loadFiller()
+        m.loadBorder()
     end sub
     
     object.loadFiller = sub()
@@ -215,6 +220,39 @@ sub map_control(object)
             if m.map_obj_config[i].entity.height <> invalid then m.game.obj.setEntityH(i, m.map_obj_config[i].entity.height)
             if m.map_obj_config[i].alpha <> invalid then m.game.obj.setAlpha(i, m.map_obj_config[i].alpha)
             if m.map_obj_config[i].reg <> invalid then m.game.obj.setReg(i, m.map_obj_config[i].reg)
+
+        end for
+    end sub
+
+    object.loadBorder = sub()
+
+        ' loading map config to border data
+        if m.game.border.config.Count() < m.map_border_config.Count()
+            for i = m.game.border.config.Count() to m.map_border_config.Count() - 1
+                m.game.border.config.push({
+                    id: i,                   
+                    name: invalid,
+                    col: {
+                        x: invalid,
+                        y: invalid,
+                        width: invalid,
+                        height: invalid
+                    }
+                })
+            end for
+        else if m.game.border.config.Count() > m.map_border_config.Count()
+            for i = m.map_border_config.Count() to m.game.border.config.Count() - 1
+                m.game.border.config.pop()
+            end for
+        end if
+
+        for i = 0 to m.map_border_config.Count() - 1
+
+            if m.map_border_config[i].name <> invalid then m.game.border.setName(i, m.map_border_config[i].name)
+            if m.map_border_config[i].col.x <> invalid then m.game.border.setColX(i, m.map_border_config[i].col.x)
+            if m.map_border_config[i].col.y <> invalid then m.game.border.setColY(i, m.map_border_config[i].col.y)
+            if m.map_border_config[i].col.width <> invalid then m.game.border.setColW(i, m.map_border_config[i].col.width)
+            if m.map_border_config[i].col.height <> invalid then m.game.border.setColH(i, m.map_border_config[i].col.height)
 
         end for
     end sub
@@ -478,7 +516,7 @@ sub map_control(object)
 
     end sub
 
-    object.loadhud = sub()
+    object.loadHud = sub()
 
         if m.game.hud.config.menu.Count() < m.map_hud_config.menu.Count()
             for i = m.game.hud.config.menu.Count() to m.map_hud_config.menu.Count() - 1
