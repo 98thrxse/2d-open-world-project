@@ -24,6 +24,41 @@ sub terrain_view(object)
 
     end sub
 
+    object.loadAllEntity = sub()
+        if m.terrain_regions = invalid then 
+            m.terrain_regions = []
+
+            for i = 0 to m.game.terrain.config.Count() - 1
+
+                m.terrain_regions.push(i)
+                m.terrain_regions[i] = []
+
+                for j = 0 to m.game.terrain.config[i].Count() - 1
+
+                    m.terrain_regions[i].push(j)
+                    m.terrain_regions[i][j] = []
+
+                    for k = 0 to m.game.terrain.config[i][j].reg.Count() - 1
+
+                        if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getRegElement(i, j, k).toStr()) = invalid
+                            ' loadBitmap
+                            m.game.loadBitmap(m.funcName + "_" + m.game.terrain.getRegElement(i, j, k).toStr(), "pkg:/media/terrain/sprites/" + m.game.terrain.getRegElement(i, j, k).toStr() + ".png")
+                        end if
+
+                        ' getBitmap
+                        terrain_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.terrain.getRegElement(i, j, k).toStr())
+
+                        ' roRegion
+                        terrain_region = CreateObject("roRegion", terrain_bitmap, 0, 0, terrain_bitmap.GetWidth(), terrain_bitmap.GetHeight())
+
+                        m.terrain_regions[i][j].push(terrain_region)
+
+                    end for
+                end for
+            end for
+        end if
+    end sub
+
     object.unloadEntity = sub(i as integer, j as integer)
 
         for k = 0 to m.game.terrain.config[i][j].reg.Count() - 1
@@ -32,8 +67,23 @@ sub terrain_view(object)
                 ' unloadBitmap
                 m.game.unloadBitmap(m.funcName + "_" + m.game.terrain.getRegElement(i, j, k).toStr())
             end if
-
         end for
+    end sub
+
+    object.unloadAllEntity = sub()
+        for i = 0 to m.game.terrain.config.Count() - 1
+            for j = 0 to m.game.terrain.config[i].Count() - 1
+                for k = 0 to m.game.terrain.config[i][j].reg.Count() - 1
+
+                    if m.game.getBitmap(m.funcName + "_" + m.game.terrain.getRegElement(i, j, k).toStr()) <> invalid
+                        ' unloadBitmap
+                        m.game.unloadBitmap(m.funcName + "_" + m.game.terrain.getRegElement(i, j, k).toStr())
+                    end if
+                end for
+            end for
+        end for
+
+        m.terrain_regions = invalid
     end sub
 
     object.genEntity = sub()
@@ -85,11 +135,17 @@ sub terrain_view(object)
                 for j = 0 to id_x.Count() - 1
                     if m.getImage(m.game.terrain.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr()) = invalid
                         
-                        ' load
-                        m.loadEntity(id_y, id_x, i, j)
+                        ' load (dynamic)
+                        ' m.loadEntity(id_y, id_x, i, j)
+                        
+                        ' add (dynamic)
+                        ' m.addAnimatedImage(m.game.terrain.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.terrain_regions, { index: m.game.terrain.getIndex(i, j)
+                        '     offset_x: m.game.terrain.getOffsetX(id_y[i], id_x[j]) 
+                        '     offset_y: m.game.terrain.getOffsetY(id_y[i], id_x[j])
+                        ' })
 
-                        ' add
-                        m.addAnimatedImage(m.game.terrain.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.terrain_regions, { index: m.game.terrain.getIndex(i, j)
+                        ' add (all)
+                        m.addAnimatedImage(m.game.terrain.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.terrain_regions[id_y[i]][id_x[j]], { index: m.game.terrain.getIndex(i, j)
                             offset_x: m.game.terrain.getOffsetX(id_y[i], id_x[j]) 
                             offset_y: m.game.terrain.getOffsetY(id_y[i], id_x[j])
                         })
@@ -120,18 +176,13 @@ sub terrain_view(object)
     end sub
 
     object.onUpdate = sub(dt as float)
-
+        m.loadAllEntity()
         m.genEntity()
-
     end sub
 
     object.onDestroy = sub()
-        for i = 0 to m.game.terrain.config.Count() - 1
-            for j = 0 to m.game.terrain.config[i].Count() - 1
-                m.unloadEntity(i, j)
-            end for
-        end for
-        
+
+        m.unloadAllEntity()
     end sub
     
 end sub

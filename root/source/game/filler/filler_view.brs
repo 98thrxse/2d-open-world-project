@@ -24,6 +24,41 @@ sub filler_view(object)
 
     end sub
 
+    object.loadAllEntity = sub()
+        if m.filler_regions = invalid then 
+            m.filler_regions = []
+
+            for i = 0 to m.game.filler.config.Count() - 1
+
+                m.filler_regions.push(i)
+                m.filler_regions[i] = []
+
+                for j = 0 to m.game.filler.config[i].Count() - 1
+
+                    m.filler_regions[i].push(j)
+                    m.filler_regions[i][j] = []
+
+                    for k = 0 to m.game.filler.config[i][j].reg.Count() - 1
+
+                        if m.game.getBitmap(m.funcName + "_" + m.game.filler.getRegElement(i, j, k).toStr()) = invalid
+                            ' loadBitmap
+                            m.game.loadBitmap(m.funcName + "_" + m.game.filler.getRegElement(i, j, k).toStr(), "pkg:/media/filler/sprites/" + m.game.filler.getRegElement(i, j, k).toStr() + ".png")
+                        end if
+
+                        ' getBitmap
+                        filler_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.filler.getRegElement(i, j, k).toStr())
+
+                        ' roRegion
+                        filler_region = CreateObject("roRegion", filler_bitmap, 0, 0, filler_bitmap.GetWidth(), filler_bitmap.GetHeight())
+
+                        m.filler_regions[i][j].push(filler_region)
+
+                    end for
+                end for
+            end for
+        end if
+    end sub
+
     object.unloadEntity = sub(i as integer, j as integer)
 
         for k = 0 to m.game.filler.config[i][j].reg.Count() - 1
@@ -34,6 +69,22 @@ sub filler_view(object)
             end if
 
         end for
+    end sub
+
+    object.unloadAllEntity = sub()
+        for i = 0 to m.game.filler.config.Count() - 1
+            for j = 0 to m.game.filler.config[i].Count() - 1
+                for k = 0 to m.game.filler.config[i][j].reg.Count() - 1
+
+                    if m.game.getBitmap(m.funcName + "_" + m.game.filler.getRegElement(i, j, k).toStr()) <> invalid
+                        ' unloadBitmap
+                        m.game.unloadBitmap(m.funcName + "_" + m.game.filler.getRegElement(i, j, k).toStr())
+                    end if
+                end for
+            end for
+        end for
+
+        m.filler_regions = invalid
     end sub
 
     object.genEntity = sub()
@@ -85,11 +136,17 @@ sub filler_view(object)
                 for j = 0 to id_x.Count() - 1
                     if m.getImage(m.game.filler.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr()) = invalid
                         
-                        ' load
-                        m.loadEntity(id_y, id_x, i, j)
+                        ' load (dynamic)
+                        ' m.loadEntity(id_y, id_x, i, j)
+                        
+                        ' add (dynamic)
+                        ' m.addAnimatedImage(m.game.filler.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.filler_regions, { index: m.game.filler.getIndex(i, j)
+                        '     offset_x: m.game.filler.getOffsetX(id_y[i], id_x[j]) 
+                        '     offset_y: m.game.filler.getOffsetY(id_y[i], id_x[j])
+                        ' })
 
-                        ' add
-                        m.addAnimatedImage(m.game.filler.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.filler_regions, { index: m.game.filler.getIndex(i, j)
+                        ' add (all)
+                        m.addAnimatedImage(m.game.filler.getName(id_y[i], id_x[j]).toStr() + "_" + id_y[i].toStr() + id_x[j].toStr(), m.filler_regions[id_y[i]][id_x[j]], { index: m.game.filler.getIndex(i, j)
                             offset_x: m.game.filler.getOffsetX(id_y[i], id_x[j]) 
                             offset_y: m.game.filler.getOffsetY(id_y[i], id_x[j])
                         })
@@ -120,18 +177,12 @@ sub filler_view(object)
     end sub
 
     object.onUpdate = sub(dt as float)
-
+        m.loadAllEntity()
         m.genEntity()
-
     end sub
 
     object.onDestroy = sub()
-        for i = 0 to m.game.filler.config.Count() - 1
-            for j = 0 to m.game.filler.config[i].Count() - 1
-                m.unloadEntity(i, j)
-            end for
-        end for
-        
+        m.unloadAllEntity()
     end sub
     
 end sub

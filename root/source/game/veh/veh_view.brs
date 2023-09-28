@@ -25,6 +25,37 @@ sub veh_view(object)
     
   end sub
 
+  object.loadAllEntity = sub()
+
+    if m.veh_regions = invalid then 
+      m.veh_regions = []
+
+      for i = 0 to m.game.veh.config.Count() - 1
+
+        m.veh_regions.push(i)
+        m.veh_regions[i] = []
+
+        for j = 0 to m.game.veh.config[i].reg.Count() - 1
+
+          if m.game.getBitmap(m.funcName + "_" + m.game.veh.getRegElement(i, j).toStr()) = invalid
+            ' loadBitmap
+            m.game.loadBitmap(m.funcName + "_" + m.game.veh.getRegElement(i, j).toStr(), "pkg:/media/veh/sprites/" + m.game.veh.getRegElement(i, j).toStr() + ".png")
+          end if
+          
+          ' getBitmap
+          veh_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.veh.getRegElement(i, j).toStr())
+      
+          ' roRegion
+          veh_region = CreateObject("roRegion", veh_bitmap, 0, 0, veh_bitmap.GetWidth(), veh_bitmap.GetHeight())
+
+          m.veh_regions[i].push(veh_region)
+
+        end for
+      end for
+    end if
+    
+  end sub
+
   object.unloadEntity = sub(i as integer)
 
     for j = 0 to m.game.veh.config[i].reg.Count() - 1
@@ -38,6 +69,21 @@ sub veh_view(object)
 
   end sub
 
+  object.unloadAllEntity = sub()
+    for i = 0 to m.game.veh.config.Count() - 1
+      for j = 0 to m.game.veh.config[i].reg.Count() - 1
+
+        if m.game.getBitmap(m.funcName + "_" + m.game.veh.getRegElement(i, j).toStr()) <> invalid
+          ' unloadBitmap
+          m.game.unloadBitmap(m.funcName + "_" + m.game.veh.getRegElement(i, j).toStr())
+        end if
+
+      end for
+    end for
+
+    m.veh_regions = invalid
+  end sub
+
   object.genEntity = sub()
 
     if m.game.veh.config.Count() <> 0
@@ -46,11 +92,20 @@ sub veh_view(object)
         if m.game.veh.getScaleX(i) < 0.0
           if - m.game.map.getOffsetX() <= m.game.veh.getEntityX(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() + m.game.veh.getEntityW(i) * abs(m.game.veh.getScaleX(i)) >= m.game.veh.getEntityX(i) and - m.game.map.getOffsetY() <= m.game.veh.getEntityY(i) + m.game.veh.getEntityH(i) * abs(m.game.veh.getScaleY(i)) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getEntityY(i)
             if m.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()) = invalid
-              ' load
-              m.loadEntity(i)
+              ' load (dynamic)
+              ' m.loadEntity(i)
 
-              ' add
-              m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
+              ' add (dynamic)
+              ' m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
+              '   offset_x: m.game.veh.getEntityX(i),
+              '   offset_y: m.game.veh.getEntityY(i)
+              '   scale_x: m.game.veh.getScaleX(i)
+              '   scale_y: m.game.veh.getScaleY(i)
+              '   alpha: m.game.veh.getAlpha(i)
+              ' })
+
+              ' add (all)
+              m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions[i], { index: m.game.veh.getIndex(i)
                 offset_x: m.game.veh.getEntityX(i),
                 offset_y: m.game.veh.getEntityY(i)
                 scale_x: m.game.veh.getScaleX(i)
@@ -75,12 +130,21 @@ sub veh_view(object)
           if - m.game.map.getOffsetX() <= m.game.veh.getEntityX(i) + m.game.veh.getEntityW(i) * abs(m.game.veh.getScaleX(i)) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.veh.getEntityX(i) and - m.game.map.getOffsetY() <= m.game.veh.getEntityY(i) + m.game.veh.getEntityH(i) * abs(m.game.veh.getScaleY(i)) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.veh.getEntityY(i)
             if m.getImage(m.game.veh.getName(i).toStr() + "_" + i.toStr()) = invalid
 
-              ' load
-              m.loadEntity(i)
+              ' load (dynamic)
+              ' m.loadEntity(i)
 
-              ' add
-              m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
-                offset_x: m.game.veh.getEntityX(i)
+              ' add (dynamic)
+              ' m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions, { index: m.game.veh.getIndex(i)
+              '   offset_x: m.game.veh.getEntityX(i)
+              '   offset_y: m.game.veh.getEntityY(i)
+              '   scale_x: m.game.veh.getScaleX(i)
+              '   scale_y: m.game.veh.getScaleY(i)
+              '   alpha: m.game.veh.getAlpha(i)
+              ' })
+
+              ' add (all)
+              m.addAnimatedImage(m.game.veh.getName(i).toStr() + "_" + i.toStr(), m.veh_regions[i], { index: m.game.veh.getIndex(i)
+                offset_x: m.game.veh.getEntityX(i),
                 offset_y: m.game.veh.getEntityY(i)
                 scale_x: m.game.veh.getScaleX(i)
                 scale_y: m.game.veh.getScaleY(i)
@@ -222,18 +286,14 @@ sub veh_view(object)
   end sub
 
   object.onUpdate = sub(dt as float)
-
+    m.loadAllEntity()
     m.genEntity()
     m.genCol()
     m.onSelfCollision()
-
   end sub
 
   object.onDestroy = sub()
-    for i = 0 to m.game.veh.config.Count() - 1
-      m.unloadEntity(i)
-    end for
-    
+      m.unloadAllEntity()
   end sub
 
 end sub

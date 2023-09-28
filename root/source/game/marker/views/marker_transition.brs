@@ -35,6 +35,37 @@ sub marker_transition(object)
 
   end sub
 
+  object.loadAllEntity = sub()
+
+    if m.marker_regions = invalid then 
+      m.marker_regions = []
+
+      for i = 0 to m.game.marker.config.Count() - 1
+
+        m.marker_regions.push(i)
+        m.marker_regions[i] = []
+
+        for j = 0 to m.game.marker.config[i].reg.Count() - 1
+
+          if m.game.getBitmap(m.funcName + "_" + m.game.marker.getRegElement(i, j).toStr()) = invalid
+            ' loadBitmap
+            m.game.loadBitmap(m.funcName + "_" + m.game.marker.getRegElement(i, j).toStr(), "pkg:/media/marker/sprites/" + m.game.marker.getRegElement(i, j).toStr() + ".png")
+          end if
+          
+          ' getBitmap
+          marker_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.marker.getRegElement(i, j).toStr())
+      
+          ' roRegion
+          marker_region = CreateObject("roRegion", marker_bitmap, 0, 0, marker_bitmap.GetWidth(), marker_bitmap.GetHeight())
+
+          m.marker_regions[i].push(marker_region)
+
+        end for
+      end for
+    end if
+    
+  end sub
+
   object.unloadEntity = sub(i as integer)
 
     for j = 0 to m.game.marker.config[i].reg.Count() - 1
@@ -48,6 +79,21 @@ sub marker_transition(object)
   
   end sub
 
+  object.unloadAllEntity = sub()
+    for i = 0 to m.game.marker.config.Count() - 1
+      for j = 0 to m.game.marker.config[i].reg.Count() - 1
+
+        if m.game.getBitmap(m.funcName + "_" + m.game.marker.getRegElement(i, j).toStr()) <> invalid
+          ' unloadBitmap
+          m.game.unloadBitmap(m.funcName + "_" + m.game.marker.getRegElement(i, j).toStr())
+        end if
+
+      end for
+    end for
+
+    m.marker_regions = invalid
+  end sub
+
   object.genEntity = sub()
 
     if m.game.marker.config.Count() <> 0
@@ -57,11 +103,18 @@ sub marker_transition(object)
         if - m.game.map.getOffsetX() <= m.game.marker.getOffsetX(i) + m.game.marker.getSizeW(i) and - m.game.map.getOffsetX() + m.game.screen.GetWidth() >= m.game.marker.getOffsetX(i) and - m.game.map.getOffsetY() <= m.game.marker.getOffsetY(i) + m.game.marker.getSizeH(i) and - m.game.map.getOffsetY() + m.game.screen.GetHeight() >= m.game.marker.getOffsetY(i)
           if m.getImage(m.game.marker.getName(i).toStr() + "_" + i.toStr()) = invalid
                   
-            ' load
-            m.loadEntity(i)
+            ' load (dynamic)
+            ' m.loadEntity(i)
 
-            ' add
-            m.addAnimatedImage(m.game.marker.getName(i).toStr() + "_" + i.toStr(), m.marker_regions, { index: m.game.marker.getIndex(i)
+            ' add (dynamic)
+            ' m.addAnimatedImage(m.game.marker.getName(i).toStr() + "_" + i.toStr(), m.marker_regions, { index: m.game.marker.getIndex(i)
+            '     offset_x: m.game.marker.getOffsetX(i),
+            '     offset_y: m.game.marker.getOffsetY(i),
+            '     alpha: m.game.marker.getAlpha(i)
+            ' })
+            
+            ' add (all)
+            m.addAnimatedImage(m.game.marker.getName(i).toStr() + "_" + i.toStr(), m.marker_regions[i], { index: m.game.marker.getIndex(i)
                 offset_x: m.game.marker.getOffsetX(i),
                 offset_y: m.game.marker.getOffsetY(i),
                 alpha: m.game.marker.getAlpha(i)
@@ -143,10 +196,9 @@ sub marker_transition(object)
   end sub
 
   object.onUpdate = sub(dt as float)
-
+    m.loadAllEntity()
     m.genEntity()
     m.genCol()
-
   end sub
 
   object.onDrawEnd = sub(canvas)
@@ -159,10 +211,7 @@ sub marker_transition(object)
   end sub
 
   object.onDestroy = sub()
-    for i = 0 to m.game.marker.config.Count() - 1
-      m.unloadEntity(i)
-    end for
-    
+    m.unloadAllEntity()
   end sub
 
 end sub
