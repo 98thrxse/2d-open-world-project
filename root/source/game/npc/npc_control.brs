@@ -114,8 +114,8 @@ sub npc_control(object)
 	object.deathAnim = sub()
 
 		for i = 0 to m.game.npc.config.Count() - 1
-			if m.game.npc.getHP(i) <= 0 and m.game.npc.getRegElement(i, m.game.npc.getIndex(i)) <> "hp_zero" 
-        m.playAnim(i, ["hp_zero"])
+			if m.game.npc.getHP(i) <= 0 and m.game.npc.getRegElement(i, m.game.npc.getIndex(i)) <> "npc1_hp_zero" 
+        m.playAnim(i, ["npc1_hp_zero"])
 			end if
 		end for
 
@@ -156,15 +156,36 @@ sub npc_control(object)
 	end sub
 
 	object.walkUpAnim = sub(i as integer)
-		m.playAnim(i, ["walk_back1", "idle_back1", "walk_back2"])
+    anims = []
+    for each anim in m.game.npc.getReg(i)
+      if stringUtils().includes(anim, "_walk_back1") or stringUtils().includes(anim, "_idle_back1") or stringUtils().includes(anim, "_walk_back2")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(i, anims)
 	end sub
 
 	object.walkDownAnim = sub(i as integer)
-		m.playAnim(i, ["walk_front1", "idle_front1", "walk_front2"])
+    anims = []
+    for each anim in m.game.npc.getReg(i)
+      if stringUtils().includes(anim, "_walk_front1") or stringUtils().includes(anim, "_idle_front1") or stringUtils().includes(anim, "_walk_front2")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(i, anims)
 	end sub
 
 	object.walkSideAnim = sub(i as integer)
-		m.playAnim(i, ["walk_side1", "idle_side1", "walk_side2"])
+    anims = []
+    for each anim in m.game.npc.getReg(i)
+      if stringUtils().includes(anim, "_walk_side1") or stringUtils().includes(anim, "_idle_side1") or stringUtils().includes(anim, "_walk_side2")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(i, anims)
 	end sub
 
 
@@ -177,9 +198,9 @@ sub npc_control(object)
 
 		arrAnim = []
 
-		for each element in arr
+		for each anim in arr
 			for j = 0 to m.game.npc.config[i].reg.Count() - 1
-				if m.game.npc.getRegElement(i, j) = element then arrAnim.push(j)
+				if m.game.npc.getRegElement(i, j) = anim then arrAnim.push(j)
 			end for
 		end for
 		

@@ -24,9 +24,9 @@ sub filler_control(object)
 
 		arrAnim = []
 
-		for each element in arr
+		for each anim in arr
             for k = 0 to m.game.filler.config[i][j].reg.Count() - 1
-                if m.game.filler.getRegElement(i, j, k) = element then arrAnim.push(k)
+                if m.game.filler.getRegElement(i, j, k) = anim then arrAnim.push(k)
             end for
         end for
 

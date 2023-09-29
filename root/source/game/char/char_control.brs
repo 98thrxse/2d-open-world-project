@@ -124,9 +124,10 @@ sub char_control(object)
 
 		arrAnim = []
 
-		for each element in arr
+		for each anim in arr
 			for i = 0 to m.game.char.config.reg.Count() - 1
-				if m.game.char.getRegElement(i) = element then arrAnim.push(i)
+        ' char_1 is temp hardcoded skin - stas
+				if m.game.char.getRegElement(i) = "char1" + anim then arrAnim.push(i)
 			end for
 		end for
 		
@@ -138,66 +139,66 @@ sub char_control(object)
 
   object.attackAnim = sub()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
-			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
-				m.playAnim(["idle_side2", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist2_side", "attack_fist1_side", "idle_side2", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_fist5_side", "attack_fist4_side", "idle_side2", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side", "attack_leg2_side", "attack_leg1_side", "idle_side2"])
+			if stringUtils().includes(m.game.char.getRegElement(m.game.char.getIndex()), "_side")
+				m.playAnim(["_idle_side2", "_attack_fist1_side", "_attack_fist2_side", "_attack_fist3_side", "_attack_fist2_side", "_attack_fist1_side", "_idle_side2", "_attack_fist4_side", "_attack_fist5_side", "_attack_fist6_side", "_attack_fist5_side", "_attack_fist4_side", "_idle_side2", "_attack_leg1_side", "_attack_leg2_side", "_attack_leg3_side", "_attack_leg2_side", "_attack_leg1_side", "_idle_side2"])
 
-			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "front")
-				m.playAnim(["idle_front1", "attack_fist1_front", "idle_front1", "attack_fist2_front", "idle_front1", "attack_leg1_front", "idle_front1"])
+			else if stringUtils().includes(m.game.char.getRegElement(m.game.char.getIndex()), "_front")
+				m.playAnim(["_idle_front1", "_attack_fist1_front", "_idle_front1", "_attack_fist2_front", "_idle_front1", "_attack_leg1_front", "_idle_front1"])
 
-			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "back")
-				m.playAnim(["idle_back1", "attack_fist1_back", "idle_back1", "attack_fist2_back", "idle_back1", "attack_leg1_back", "idle_back1"])
+			else if stringUtils().includes(m.game.char.getRegElement(m.game.char.getIndex()), "_back")
+				m.playAnim(["_idle_back1", "_attack_fist1_back", "_idle_back1", "_attack_fist2_back", "_idle_back1", "_attack_leg1_back", "_idle_back1"])
 
 			end if
 		else
-			m.playAnim(["sp_zero"])
+			m.playAnim(["_sp_zero"])
 		end if
 	end sub
 
 	object.walkUpAnim = sub()
-		m.playAnim(["walk_back1", "idle_back1", "walk_back2"])
+		m.playAnim(["_walk_back1", "_idle_back1", "_walk_back2"])
 	end sub
 
 	object.walkDownAnim = sub()
-		m.playAnim(["walk_front1", "idle_front1", "walk_front2"])
+		m.playAnim(["_walk_front1", "_idle_front1", "_walk_front2"])
 	end sub
 
 	object.walkSideAnim = sub()
-		m.playAnim(["walk_side1", "idle_side1", "walk_side2"])
+		m.playAnim(["_walk_side1", "_idle_side1", "_walk_side2"])
 	end sub
 
 	object.afterAttackAnim = sub()
 		if m.game.char.getSP() >= m.game.char.getSPDamage()
-			if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "side")
-				m.playAnim(["idle_side2"])
-			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "front")
-				m.playAnim(["idle_front2"])
+			if stringUtils().includes(m.game.char.getRegElement(m.game.char.getIndex()), "_side")
+				m.playAnim(["_idle_side2"])
+			else if stringUtils().includes(m.game.char.getRegElement(m.game.char.getIndex()), "_front")
+				m.playAnim(["_idle_front2"])
 
-			else if stringUtils().include(m.game.char.getRegElement(m.game.char.getIndex()), "back")
-				m.playAnim(["idle_back2"])
+			else if stringUtils().includes(m.game.char.getRegElement(m.game.char.getIndex()), "_back")
+				m.playAnim(["_idle_back2"])
 			end if
 		else
-			m.playAnim(["sp_zero"])
+			m.playAnim(["_sp_zero"])
 		end if
 	end sub
 
 	object.idleUpAnim = sub()
 		m.animTimer = invalid
-		m.playAnim(["idle_back1"])
+		m.playAnim(["_idle_back1"])
 	end sub
 
 	object.idleDownAnim = sub()
 		m.animTimer = invalid
-		m.playAnim(["idle_front1"])
+		m.playAnim(["_idle_front1"])
 	end sub
 
 	object.idleLeftAnim = sub()
 		m.animTimer = invalid
-		m.playAnim(["idle_side1"])
+		m.playAnim(["_idle_side1"])
 	end sub
 
 	object.idleRightAnim = sub()
     m.animTimer = invalid
-		m.playAnim(["idle_side1"])
+		m.playAnim(["_idle_side1"])
 	end sub
 
   object.updateView = sub()

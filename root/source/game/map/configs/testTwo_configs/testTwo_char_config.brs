@@ -11,7 +11,7 @@ function testTwo_char_config() as object
         },
         index: 0,
         alpha: 255,
-        reg: ["idle_back1", "idle_front1", "idle_side1", "walk_back1", "walk_back2", "walk_front1", "walk_front2", "walk_side1", "walk_side2", "hp_zero", "sp_zero", "idle_back2", "idle_front2", "idle_side2", "attack_fist1_back", "attack_fist2_back", "attack_leg1_back", "attack_fist1_front", "attack_fist2_front", "attack_leg1_front", "attack_fist1_side", "attack_fist2_side", "attack_fist3_side", "attack_fist4_side", "attack_fist5_side", "attack_fist6_side", "attack_leg1_side", "attack_leg2_side", "attack_leg3_side"]
+        reg: ["char1_idle_back1", "char1_idle_front1", "char1_idle_side1", "char1_walk_back1", "char1_walk_back2", "char1_walk_front1", "char1_walk_front2", "char1_walk_side1", "char1_walk_side2", "char1_hp_zero", "char1_sp_zero", "char1_idle_back2", "char1_idle_front2", "char1_idle_side2", "char1_attack_fist1_back", "char1_attack_fist2_back", "char1_attack_leg1_back", "char1_attack_fist1_front", "char1_attack_fist2_front", "char1_attack_leg1_front", "char1_attack_fist1_side", "char1_attack_fist2_side", "char1_attack_fist3_side", "char1_attack_fist4_side", "char1_attack_fist5_side", "char1_attack_fist6_side", "char1_attack_leg1_side", "char1_attack_leg2_side", "char1_attack_leg3_side"]
         scale: {
             x: 1.0
             y: 1.0

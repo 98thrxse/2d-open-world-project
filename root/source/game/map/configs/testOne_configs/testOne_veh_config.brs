@@ -10,7 +10,7 @@ function testOne_veh_config() as object
             name_right: "veh_col_right",
             index: 2,
             alpha: 255,
-            reg: ["car1_back", "car1_front", "car1_side"],
+            reg: ["veh1_idle_back", "veh1_idle_front", "veh1_idle_side"],
             col: {
                 x: 1913,
                 y: 1502,
@@ -52,7 +52,7 @@ function testOne_veh_config() as object
             name_right: "veh_col_right",
             index: 2,
             alpha: 255,
-            reg: ["car1_back", "car1_front", "car1_side"],
+            reg: ["veh1_idle_back", "veh1_idle_front", "veh1_idle_side"],
             col: {
                 x: 2113,
                 y: 1502,

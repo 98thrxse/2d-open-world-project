@@ -158,7 +158,7 @@ sub terrain_view(object)
             ' unload & remove
             for i = 0 to m.game.terrain.config.Count() - 1
                 for j = 0 to m.game.terrain.config[i].Count() - 1
-                    if m.getImage(m.game.terrain.getName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not arrayUtils().contains(id_x, j) or not arrayUtils().contains(id_y, i))
+                    if m.getImage(m.game.terrain.getName(i, j).toStr() + "_" + i.toStr() + j.toStr()) <> invalid and (not arrayUtils().includes(id_x, j) or not arrayUtils().includes(id_y, i))
                         
                         ' unload
                         ' m.unloadEntity(i, j)

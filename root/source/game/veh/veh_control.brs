@@ -80,29 +80,29 @@ sub veh_control(object)
     ' held
     else if code = 1002 ' up
       if m.game.getFocusGroup() = "veh"
-        m.walkUp()
-        m.walkUpAnim()
+        m.driveUp()
+        m.driveUpAnim()
         m.savePos()
       end if
                       
     else if code = 1003 ' down
       if m.game.getFocusGroup() = "veh"
-        m.walkDown()  
-        m.walkDownAnim()
+        m.driveDown()  
+        m.driveDownAnim()
         m.savePos()    
       end if
         
     else if code = 1004 ' left
       if m.game.getFocusGroup() = "veh"
-        m.walkLeft()
-        m.walkSideAnim()
+        m.driveLeft()
+        m.driveSideAnim()
         m.savePos()
       end if
             
     else if code = 1005 ' right
       if m.game.getFocusGroup() = "veh"
-        m.walkRight()
-        m.walkSideAnim()
+        m.driveRight()
+        m.driveSideAnim()
         m.savePos()
       end if
       
@@ -119,9 +119,9 @@ sub veh_control(object)
 
 		arrAnim = []
 
-		for each element in arr
+		for each anim in arr
 			for j = 0 to m.game.veh.config[i].reg.Count() - 1
-				if m.game.veh.getRegElement(i, j) = element then arrAnim.push(j)
+				if m.game.veh.getRegElement(i, j) = anim then arrAnim.push(j)
 			end for
 		end for
 		
@@ -160,22 +160,54 @@ sub veh_control(object)
 
   object.idleUpAnim = sub()
 		m.animTimer = invalid
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
+
+    anims = []
+    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
+      if stringUtils().includes(anim, "_idle_back")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
 	end sub
 
 	object.idleDownAnim = sub()
 		m.animTimer = invalid
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
+
+    anims = []
+    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
+      if stringUtils().includes(anim, "_idle_front")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
 	end sub
 
 	object.idleLeftAnim = sub()
 		m.animTimer = invalid
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
+
+    anims = []
+    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
+      if stringUtils().includes(anim, "_idle_side")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
 	end sub
 
 	object.idleRightAnim = sub()
     m.animTimer = invalid
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
+
+    anims = []
+    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
+      if stringUtils().includes(anim, "_idle_side")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
 	end sub
 
   object.idleUp = sub()
@@ -213,7 +245,7 @@ sub veh_control(object)
     m.game.veh.setColLeft(m.game.char.getVeh().split("_").peek().toInt(), false)
   end sub
 
-  object.walkUp = sub()
+  object.driveUp = sub()
     if m.game.veh.getColUp(m.game.char.getVeh().split("_").peek().toInt()) = false
       m.game.map.setOffsetY(m.game.map.getOffsetY() + m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityY(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getUpSpeed(m.game.char.getVeh().split("_").peek().toInt()))
@@ -221,7 +253,7 @@ sub veh_control(object)
     end if
   end sub
 
-  object.walkDown = sub()
+  object.driveDown = sub()
     if m.game.veh.getColDown(m.game.char.getVeh().split("_").peek().toInt()) = false
       m.game.map.setOffsetY(m.game.map.getOffsetY() - m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityY(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityY(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getDownSpeed(m.game.char.getVeh().split("_").peek().toInt()))
@@ -229,7 +261,7 @@ sub veh_control(object)
     end if
   end sub
 
-  object.walkLeft = sub()
+  object.driveLeft = sub()
     if m.game.veh.getColLeft(m.game.char.getVeh().split("_").peek().toInt()) = false
       m.game.map.setOffsetX(m.game.map.getOffsetX() + m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) - m.game.veh.getLeftSpeed(m.game.char.getVeh().split("_").peek().toInt()))
@@ -237,7 +269,7 @@ sub veh_control(object)
     end if
   end sub
 
-  object.walkRight = sub()
+  object.driveRight = sub()
     if m.game.veh.getColRight(m.game.char.getVeh().split("_").peek().toInt()) = false
       m.game.map.setOffsetX(m.game.map.getOffsetX() - m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getRightSpeed(m.game.char.getVeh().split("_").peek().toInt()))
@@ -245,16 +277,37 @@ sub veh_control(object)
     end if
   end sub
 
-  object.walkUpAnim = sub()
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_back"])
+  object.driveUpAnim = sub()
+    anims = []
+    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
+      if stringUtils().includes(anim, "_idle_back")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
 	end sub
 
-	object.walkDownAnim = sub()
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_front"])
+	object.driveDownAnim = sub()
+    anims = []
+    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
+      if stringUtils().includes(anim, "_idle_front")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
 	end sub
 
-	object.walkSideAnim = sub()
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), ["car1_side"])
+	object.driveSideAnim = sub()
+    anims = []
+    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
+      if stringUtils().includes(anim, "_idle_side")
+        anims.push(anim)
+      end if
+    end for
+
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
 	end sub
 
   object.updateView = sub()

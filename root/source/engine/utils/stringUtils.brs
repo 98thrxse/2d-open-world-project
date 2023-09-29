@@ -1,6 +1,6 @@
 function stringUtils()
     func = {
-        include: function(str as string, substr as string) as Boolean
+        includes: function(str as string, substr as string) as Boolean
             arrOfStr = str.split("")
             arrOfSubstr = substr.split("")
             result = false

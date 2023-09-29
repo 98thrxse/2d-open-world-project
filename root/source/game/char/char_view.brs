@@ -23,7 +23,7 @@ sub char_view(object)
 
       ' getBitmap
       char_bitmap = m.game.getBitmap(m.funcName + "_" + m.game.char.getRegElement(i).toStr())
-  
+
       ' roRegion
       char_region = CreateObject("roRegion", char_bitmap, 0, 0, char_bitmap.GetWidth(), char_bitmap.GetHeight())
 
