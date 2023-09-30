@@ -19,10 +19,10 @@ sub npc_control(object)
 
       m.updatePos()
       m.walk()
+      m.walkAnim()
       m.pathReset()
       m.death()
       m.deathAnim()
-      m.walkAnim()
       m.updateView()
 
   end sub

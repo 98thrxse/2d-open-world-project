@@ -144,28 +144,28 @@ sub veh_control(object)
   end function
 
   object.turnUp = sub()
-    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
+    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0 and not stringUtils().includes(m.game.veh.getRegElement(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getIndex(m.game.char.getVeh().split("_").peek().toInt())), "_idle_front")
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
   end sub
 
   object.turnDown = sub()
-    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) < 0.0
+    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) < 0.0 and not stringUtils().includes(m.game.veh.getRegElement(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getIndex(m.game.char.getVeh().split("_").peek().toInt())), "_idle_back")
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
   end sub
 
   object.turnLeft = sub()
-    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
+    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0 and not stringUtils().includes(m.game.veh.getRegElement(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getIndex(m.game.char.getVeh().split("_").peek().toInt())), "_idle_side")
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
   end sub
 
   object.turnRight = sub()
-    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) < 0.0
+    if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) < 0.0 and not stringUtils().includes(m.game.veh.getRegElement(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getIndex(m.game.char.getVeh().split("_").peek().toInt())), "_idle_side")
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
       m.game.veh.setScaleX(m.game.char.getVeh().split("_").peek().toInt(), - m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
     end if
@@ -173,12 +173,16 @@ sub veh_control(object)
 
   object.idleUpAnim = sub()
 		m.animTimer = invalid
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_back"]))
+    if not stringUtils().includes(m.game.veh.getRegElement(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getIndex(m.game.char.getVeh().split("_").peek().toInt())), "_idle_front")
+		  m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_back"]))
+    end if
 	end sub
 
 	object.idleDownAnim = sub()
 		m.animTimer = invalid
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_front"]))
+    if not stringUtils().includes(m.game.veh.getRegElement(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getIndex(m.game.char.getVeh().split("_").peek().toInt())), "_idle_back")
+		  m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_front"]))
+    end if
 	end sub
 
 	object.idleLeftAnim = sub()
@@ -259,11 +263,15 @@ sub veh_control(object)
   end sub
 
   object.driveUpAnim = sub()
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_back"]))
+    if not stringUtils().includes(m.game.veh.getRegElement(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getIndex(m.game.char.getVeh().split("_").peek().toInt())), "_idle_front")
+		  m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_back"]))
+    end if
 	end sub
 
 	object.driveDownAnim = sub()
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_front"]))
+    if not stringUtils().includes(m.game.veh.getRegElement(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getIndex(m.game.char.getVeh().split("_").peek().toInt())), "_idle_back")
+		  m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_front"]))
+    end if
 	end sub
 
 	object.driveSideAnim = sub()
