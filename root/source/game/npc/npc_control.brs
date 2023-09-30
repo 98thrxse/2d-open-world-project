@@ -112,10 +112,16 @@ sub npc_control(object)
   end sub
 
 	object.deathAnim = sub()
-
 		for i = 0 to m.game.npc.config.Count() - 1
-			if m.game.npc.getHP(i) <= 0 and m.game.npc.getRegElement(i, m.game.npc.getIndex(i)) <> "npc1_hp_zero" 
-        m.playAnim(i, ["npc1_hp_zero"])
+			if m.game.npc.getHP(i) <= 0 and not stringUtils().includes(m.game.npc.getRegElement(i, m.game.npc.getIndex(i)), "_hp_zero")
+        anims = []
+        for each anim in m.game.npc.getReg(i)
+          if stringUtils().includes(anim, "_hp_zero")
+            anims.push(anim)
+          end if
+        end for
+
+        m.playAnim(i, anims)
 			end if
 		end for
 

@@ -358,7 +358,7 @@ sub char_control(object)
   end sub
 
   object.damageSP = sub()
-    if m.game.char.getSP() >= m.game.char.getSPDamage() and m.game.char.getRegElement(m.game.char.getIndex()) <> "sp_zero"
+    if m.game.char.getSP() >= m.game.char.getSPDamage() and not stringUtils().includes(m.game.char.getRegElement(m.game.char.getIndex()), "_sp_zero")
 
       if m.sp_damage_timer = invalid
         m.game.char.setSP(m.game.char.getSP() - m.game.char.getSPDamage())

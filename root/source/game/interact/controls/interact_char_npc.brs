@@ -12,7 +12,7 @@ sub interact_char_npc(object)
   end sub
 
   object.npcHPDamage = sub()
-    if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage() and m.game.char.getRegElement(m.game.char.getIndex()) <> "sp_zero"
+    if m.game.char.getNPCCol() <> invalid and m.game.char.getSP() >= m.game.char.getSPDamage() and not stringUtils().includes(m.game.char.getRegElement(m.game.char.getIndex()), "_sp_zero")
       if m.hp_damage_timer = invalid
 
         m.game.npc.setHP(m.game.char.getNPCCol().split("_").peek().toInt(), m.game.npc.getHP(m.game.char.getNPCCol().split("_").peek().toInt()) - m.game.char.getHPDamage())
