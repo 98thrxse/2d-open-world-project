@@ -130,6 +130,19 @@ sub veh_control(object)
 
 	end sub
 
+	object.getAnim = function(i as integer, arr as object)
+    anims = []
+    for each find in arr
+      for each anim in m.game.veh.getReg(i)
+        if stringUtils().includes(anim, find)
+          anims.push(anim)
+        end if
+      end for
+    end for
+
+    return anims
+  end function
+
   object.turnUp = sub()
     if m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()) > 0.0
       m.game.veh.setEntityX(m.game.char.getVeh().split("_").peek().toInt(), m.game.veh.getEntityX(m.game.char.getVeh().split("_").peek().toInt()) + m.game.veh.getEntityW(m.game.char.getVeh().split("_").peek().toInt()) * m.game.veh.getScaleX(m.game.char.getVeh().split("_").peek().toInt()))
@@ -160,54 +173,22 @@ sub veh_control(object)
 
   object.idleUpAnim = sub()
 		m.animTimer = invalid
-
-    anims = []
-    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
-      if stringUtils().includes(anim, "_idle_back")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_back"]))
 	end sub
 
 	object.idleDownAnim = sub()
 		m.animTimer = invalid
-
-    anims = []
-    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
-      if stringUtils().includes(anim, "_idle_front")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_front"]))
 	end sub
 
 	object.idleLeftAnim = sub()
 		m.animTimer = invalid
-
-    anims = []
-    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
-      if stringUtils().includes(anim, "_idle_side")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_side"]))
 	end sub
 
 	object.idleRightAnim = sub()
     m.animTimer = invalid
-
-    anims = []
-    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
-      if stringUtils().includes(anim, "_idle_side")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_side"]))
 	end sub
 
   object.idleUp = sub()
@@ -278,36 +259,15 @@ sub veh_control(object)
   end sub
 
   object.driveUpAnim = sub()
-    anims = []
-    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
-      if stringUtils().includes(anim, "_idle_back")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_back"]))
 	end sub
 
 	object.driveDownAnim = sub()
-    anims = []
-    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
-      if stringUtils().includes(anim, "_idle_front")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_front"]))
 	end sub
 
 	object.driveSideAnim = sub()
-    anims = []
-    for each anim in m.game.veh.getReg(m.game.char.getVeh().split("_").peek().toInt())
-      if stringUtils().includes(anim, "_idle_side")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), anims)
+		m.playAnim(m.game.char.getVeh().split("_").peek().toInt(), m.getAnim(m.game.char.getVeh().split("_").peek().toInt(), ["_idle_side"]))
 	end sub
 
   object.updateView = sub()

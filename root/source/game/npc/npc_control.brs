@@ -114,14 +114,7 @@ sub npc_control(object)
 	object.deathAnim = sub()
 		for i = 0 to m.game.npc.config.Count() - 1
 			if m.game.npc.getHP(i) <= 0 and not stringUtils().includes(m.game.npc.getRegElement(i, m.game.npc.getIndex(i)), "_hp_zero")
-        anims = []
-        for each anim in m.game.npc.getReg(i)
-          if stringUtils().includes(anim, "_hp_zero")
-            anims.push(anim)
-          end if
-        end for
-
-        m.playAnim(i, anims)
+        m.playAnim(i, m.getAnim(i, ["_hp_zero"]))
 			end if
 		end for
 
@@ -162,38 +155,16 @@ sub npc_control(object)
 	end sub
 
 	object.walkUpAnim = sub(i as integer)
-    anims = []
-    for each anim in m.game.npc.getReg(i)
-      if stringUtils().includes(anim, "_walk_back1") or stringUtils().includes(anim, "_idle_back1") or stringUtils().includes(anim, "_walk_back2")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(i, anims)
+    m.playAnim(i, m.getAnim(i, ["_walk_back1", "_idle_back1", "_walk_back2"]))
 	end sub
 
 	object.walkDownAnim = sub(i as integer)
-    anims = []
-    for each anim in m.game.npc.getReg(i)
-      if stringUtils().includes(anim, "_walk_front1") or stringUtils().includes(anim, "_idle_front1") or stringUtils().includes(anim, "_walk_front2")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(i, anims)
+    m.playAnim(i, m.getAnim(i, ["_walk_front1", "_idle_front1", "_walk_front2"]))
 	end sub
 
 	object.walkSideAnim = sub(i as integer)
-    anims = []
-    for each anim in m.game.npc.getReg(i)
-      if stringUtils().includes(anim, "_walk_side1") or stringUtils().includes(anim, "_idle_side1") or stringUtils().includes(anim, "_walk_side2")
-        anims.push(anim)
-      end if
-    end for
-
-		m.playAnim(i, anims)
+    m.playAnim(i, m.getAnim(i, ["_walk_side1", "_idle_side1", "_walk_side2"]))
 	end sub
-
 
 	object.playAnim = sub(i as integer, arr as object)
 
@@ -214,6 +185,19 @@ sub npc_control(object)
 		m.game.npc.setIndex(i, arrAnim[int(m.timer.TotalMilliseconds() / m.game.npc.getAnimTime(i))])
 
 	end sub
+
+	object.getAnim = function(i as integer, arr as object)
+    anims = []
+    for each find in arr
+      for each anim in m.game.npc.getReg(i)
+        if stringUtils().includes(anim, find)
+          anims.push(anim)
+        end if
+      end for
+    end for
+
+    return anims
+  end function
 
   object.updateView = sub()
 
