@@ -25,7 +25,7 @@ GTA-LIKE project is supposed to be a clone of game series such as Grand Theft Au
 - move all strings in separate files;
 - fix instersection between object and npc;
 - fix instersection between vehicle and npc;
-- test basic network connection;
+- test basic network connection.
 
 ### Additional libraries:
-- Roku-gameEngine
+- Roku-gameEngine - https://github.com/Romans-I-XVI/Roku-gameEngine
