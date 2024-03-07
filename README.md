@@ -1,6 +1,6 @@
 # GTA-LIKE PROJECT
 ### Introduction
-GTA-LIKE project is supposed to be a clone of game series such as Grand Theft Auto, Sims, etc. for Roku platform.
+GTA-LIKE PROJECT is supposed to be a clone of game series such as Grand Theft Auto, Sims, etc. for Roku platform.
 
 ### To-do:
 - add lobby/main menu;
