@@ -1,6 +1,6 @@
-# GTA-LIKE PROJECT
+# 2D OPEN WORLD PROJECT
 ### Introduction
-GTA-LIKE PROJECT is supposed to be a clone of game series such as Grand Theft Auto, Sims, etc. for Roku platform.
+2D OPEN WORLD PROJECT is supposed to be a clone of game series such as Grand Theft Auto, Sims, etc. for Roku platform.
 
 ### To-do:
 - add lobby/main menu;
